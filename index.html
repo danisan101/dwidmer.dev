@@ -292,9 +292,14 @@
             right: 0;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: 10001;
             padding: 1rem 2rem;
             border-bottom: 1px solid var(--light);
+        }
+
+        /* Light mode adjustments: make nav visible on light background */
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .nav-container {
@@ -330,6 +335,9 @@
             padding: 0.5rem 1rem;
             border: 1px solid transparent;
         }
+        body.light-mode .nav-links a {
+            color: var(--light);
+        }
 
         .nav-links a:hover {
             border-color: var(--light);
@@ -360,6 +368,10 @@
             cursor: pointer;
             font-family: 'Space Mono', monospace;
             margin-left: 1rem;
+        }
+        body.light-mode .theme-toggle {
+            border-color: var(--light);
+            color: var(--light);
         }
 
         .theme-toggle:hover {
@@ -889,6 +901,9 @@
             color: var(--light);
             font-weight: 700;
         }
+        body.light-mode .form-group label {
+            color: var(--light);
+        }
 
         .form-group input,
         .form-group textarea {
@@ -902,11 +917,22 @@
             font-size: 1rem;
         }
 
+        /* Light mode: use dark borders for visibility on white background */
+        body.light-mode .form-group input,
+        body.light-mode .form-group textarea {
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--light);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        body.light-mode .form-group input:focus,
+        body.light-mode .form-group textarea:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         .form-group textarea {
@@ -973,6 +999,9 @@
                 flex-direction: column;
                 padding: 1rem;
                 border-top: 1px solid var(--light);
+            }
+            body.light-mode .nav-links {
+                background: rgba(255, 255, 255, 0.95);
             }
 
             .nav-links.active {
