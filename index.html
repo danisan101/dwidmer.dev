@@ -162,7 +162,7 @@
             margin-left: 1rem;
         }
 
-        /* Enhanced Konami Effects */
+        /* Konami effects (commented out)
         .konami-rainbow {
             animation: rainbow 2s infinite, pulse 1s infinite;
         }
@@ -227,6 +227,7 @@
             z-index: 10000;
             animation: rainbow 2s infinite;
         }
+        */
 
         /* Game Over Screen */
         .game-over {
@@ -291,9 +292,14 @@
             right: 0;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: 10001;
             padding: 1rem 2rem;
             border-bottom: 1px solid var(--light);
+        }
+
+        /* Light mode adjustments: make nav visible on light background */
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .nav-container {
@@ -318,6 +324,8 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            justify-content: center;
+            margin: 0 auto;
         }
 
         .nav-links a {
@@ -326,6 +334,9 @@
             transition: all 0.3s ease;
             padding: 0.5rem 1rem;
             border: 1px solid transparent;
+        }
+        body.light-mode .nav-links a {
+            color: var(--light);
         }
 
         .nav-links a:hover {
@@ -357,6 +368,10 @@
             cursor: pointer;
             font-family: 'Space Mono', monospace;
             margin-left: 1rem;
+        }
+        body.light-mode .theme-toggle {
+            border-color: var(--light);
+            color: var(--light);
         }
 
         .theme-toggle:hover {
@@ -440,12 +455,21 @@
         /* About Section */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: start;
+            align-items: center;
+            justify-items: center;
         }
 
         .profile-section {
+            text-align: center;
+        }
+
+        .about-text h3 {
+            text-align: center;
+        }
+
+        .about-text h4 {
             text-align: center;
         }
 
@@ -877,6 +901,9 @@
             color: var(--light);
             font-weight: 700;
         }
+        body.light-mode .form-group label {
+            color: var(--light);
+        }
 
         .form-group input,
         .form-group textarea {
@@ -890,11 +917,22 @@
             font-size: 1rem;
         }
 
+        /* Light mode: use dark borders for visibility on white background */
+        body.light-mode .form-group input,
+        body.light-mode .form-group textarea {
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--light);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        body.light-mode .form-group input:focus,
+        body.light-mode .form-group textarea:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         .form-group textarea {
@@ -961,6 +999,9 @@
                 flex-direction: column;
                 padding: 1rem;
                 border-top: 1px solid var(--light);
+            }
+            body.light-mode .nav-links {
+                background: rgba(255, 255, 255, 0.95);
             }
 
             .nav-links.active {
@@ -1080,7 +1121,6 @@
                 <h1 id="typed-name"></h1>
                 <p>Creative Developer & Digital Artist</p>
                 <p>Ich erschaffe digitale Erlebnisse, die begeistern und inspirieren</p>
-                <a href="#projects" class="cta-button">Meine Arbeiten</a>
             </div>
         </section>
 
@@ -1149,7 +1189,7 @@
                         <div class="timeline-item no-dot">
                             <div class="timeline-date"></div>
                             <div class="timeline-title">
-                                <a href="#" class="cv-download">📄 Lebenslauf downloaden</a>
+                                <a href="#download-cv" class="cv-download">📄 Lebenslauf downloaden</a>
                             </div>
                         </div>
                     </div>
@@ -1285,9 +1325,10 @@
             <a href="#" title="Instagram">📷</a>
         </div>
         <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
-        <p>🎮 Easter Eggs: Snake (Ctrl+G) | Tetris (Ctrl+T) | Konami Code (↑↑↓↓←→←→BA)</p>
+        <p>🎮 Easter Eggs: Snake (Ctrl+G) | Tetris (Ctrl+T)</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         // Loading Screen
         function initLoadingScreen() {
@@ -1867,7 +1908,132 @@
             });
         }
 
-        // Enhanced Konami Code
+        // Konami Code removed
+
+        // Live Code Editor Simulator
+        function initCodeEditor() {
+            const codeContent = document.getElementById('codeContent');
+            const typingIndicator = codeContent.querySelector('.typing-indicator');
+            
+            const codeLines = [
+                '<div class="code-line"><span class="code-comment">// Creating awesome web experiences</span></div>',
+                '<div class="code-line"><span class="code-keyword">const</span> <span class="code-function">developer</span> = {</div>',
+                '<div class="code-line">  name: <span class="code-string">"Daniel Widmer"</span>,</div>',
+                '<div class="code-line">  skills: [<span class="code-string">"React"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"Design"</span>],</div>',
+                '<div class="code-line">  passion: <span class="code-string">"Building cool stuff"</span>,</div>',
+                '<div class="code-line">  coffee: <span class="code-number">Infinity</span></div>',
+                '<div class="code-line">};</div>',
+                '<div class="code-line"></div>',
+                '<div class="code-line"><span class="code-comment">// Let\'s create something amazing!</span></div>',
+                '<div class="code-line"><span class="code-function">createPortfolio</span>(<span class="code-function">developer</span>)<span class="code-operator">.</span><span class="code-function">deploy</span>();</div>',
+                '<div class="code-line"></div>',
+                '<div class="code-line"><span class="code-comment">// Ready for your next project? 🚀</span></div>'
+            ];
+
+            let currentLine = 0;
+            
+            function typeNextLine() {
+                if (currentLine < codeLines.length) {
+                    const lineElement = document.createElement('div');
+                    lineElement.innerHTML = codeLines[currentLine];
+                    lineElement.firstChild.style.animationDelay = '0s';
+                    
+                    codeContent.insertBefore(lineElement.firstChild, typingIndicator);
+                    currentLine++;
+                    
+                    // Random delay between 800ms and 2000ms for realistic typing
+                    setTimeout(typeNextLine, Math.random() * 1200 + 800);
+                } else {
+                    // Hide typing indicator when done
+                    typingIndicator.style.display = 'none';
+                    
+                    // Add cursor at the end
+                    const cursor = document.createElement('span');
+                    cursor.className = 'code-cursor';
+                    codeContent.appendChild(cursor);
+                }
+            }
+
+            // Start typing after a short delay
+            setTimeout(typeNextLine, 2000);
+        }
+
+        // ASCII Art Animation Controller
+        function initASCIIAnimations() {
+            const spinners = document.querySelectorAll('.ascii-spinner');
+            const spinnerChars = ['◐', '◓', '◑', '◒'];
+            let charIndex = 0;
+
+            setInterval(() => {
+                spinners.forEach(spinner => {
+                    spinner.textContent = spinnerChars[charIndex];
+                });
+                charIndex = (charIndex + 1) % spinnerChars.length;
+            }, 200);
+
+            // Animate ASCII art glow randomly
+            setInterval(() => {
+                const asciiElements = document.querySelectorAll('.ascii-animation');
+                asciiElements.forEach(element => {
+                    if (Math.random() < 0.3) { // 30% chance
+                        element.style.animation = 'none';
+                        setTimeout(() => {
+                            element.style.animation = 'asciiGlow 3s ease-in-out infinite alternate';
+                        }, 100);
+                    }
+                });
+            }, 5000);
+        }
+        function initContactForm() {
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
+                
+                const mailtoLink = `mailto:daniel.widmer@beispiel.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nE-Mail: ${data.email}\n\nNachricht:\n${data.message}`)}`;
+                
+                alert('Vielen Dank für deine Nachricht!');
+                window.location.href = mailtoLink;
+                this.reset();
+            });
+        }
+
+        // CV Download as PDF
+        function initCVDownload() {
+            const downloadLink = document.querySelector('.cv-download');
+            if (!downloadLink) return;
+
+            downloadLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const cvElement = document.querySelector('.timeline');
+                if (!cvElement || typeof html2pdf === 'undefined') return;
+
+                // Temporarily hide the download button to avoid capturing it
+                const previousDisplay = downloadLink.style.display;
+                downloadLink.style.display = 'none';
+
+                const options = {
+                    margin:       10,
+                    filename:     'Lebenslauf_Daniel_Widmer.pdf',
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    html2canvas:  { scale: 2, useCORS: true, logging: false },
+                    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+
+                html2pdf().set(options).from(cvElement).save().finally(() => {
+                    downloadLink.style.display = previousDisplay;
+                });
+            });
+        }
+
+        /*
+        // Enhanced Konami Code (commented out)
         function initEnhancedKonami() {
             const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
             let konamiIndex = 0;
@@ -1975,110 +2141,7 @@
         function initKonamiCode() {
             // This function is now replaced by initEnhancedKonami
         }
-
-        // Live Code Editor Simulator
-        function initCodeEditor() {
-            const codeContent = document.getElementById('codeContent');
-            const typingIndicator = codeContent.querySelector('.typing-indicator');
-            
-            const codeLines = [
-                '<div class="code-line"><span class="code-comment">// Creating awesome web experiences</span></div>',
-                '<div class="code-line"><span class="code-keyword">const</span> <span class="code-function">developer</span> = {</div>',
-                '<div class="code-line">  name: <span class="code-string">"Daniel Widmer"</span>,</div>',
-                '<div class="code-line">  skills: [<span class="code-string">"React"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"Design"</span>],</div>',
-                '<div class="code-line">  passion: <span class="code-string">"Building cool stuff"</span>,</div>',
-                '<div class="code-line">  coffee: <span class="code-number">Infinity</span></div>',
-                '<div class="code-line">};</div>',
-                '<div class="code-line"></div>',
-                '<div class="code-line"><span class="code-comment">// Let\'s create something amazing!</span></div>',
-                '<div class="code-line"><span class="code-function">createPortfolio</span>(<span class="code-function">developer</span>)<span class="code-operator">.</span><span class="code-function">deploy</span>();</div>',
-                '<div class="code-line"></div>',
-                '<div class="code-line"><span class="code-comment">// Ready for your next project? 🚀</span></div>'
-            ];
-
-            let currentLine = 0;
-            
-            function typeNextLine() {
-                if (currentLine < codeLines.length) {
-                    const lineElement = document.createElement('div');
-                    lineElement.innerHTML = codeLines[currentLine];
-                    lineElement.firstChild.style.animationDelay = '0s';
-                    
-                    codeContent.insertBefore(lineElement.firstChild, typingIndicator);
-                    currentLine++;
-                    
-                    // Random delay between 800ms and 2000ms for realistic typing
-                    setTimeout(typeNextLine, Math.random() * 1200 + 800);
-                } else {
-                    // Hide typing indicator when done
-                    typingIndicator.style.display = 'none';
-                    
-                    // Add cursor at the end
-                    const cursor = document.createElement('span');
-                    cursor.className = 'code-cursor';
-                    codeContent.appendChild(cursor);
-                }
-            }
-
-            // Start typing after a short delay
-            setTimeout(typeNextLine, 2000);
-        }
-
-        // ASCII Art Animation Controller
-        function initASCIIAnimations() {
-            const spinners = document.querySelectorAll('.ascii-spinner');
-            const spinnerChars = ['◐', '◓', '◑', '◒'];
-            let charIndex = 0;
-
-            setInterval(() => {
-                spinners.forEach(spinner => {
-                    spinner.textContent = spinnerChars[charIndex];
-                });
-                charIndex = (charIndex + 1) % spinnerChars.length;
-            }, 200);
-
-            // Animate ASCII art glow randomly
-            setInterval(() => {
-                const asciiElements = document.querySelectorAll('.ascii-animation');
-                asciiElements.forEach(element => {
-                    if (Math.random() < 0.3) { // 30% chance
-                        element.style.animation = 'none';
-                        setTimeout(() => {
-                            element.style.animation = 'asciiGlow 3s ease-in-out infinite alternate';
-                        }, 100);
-                    }
-                });
-            }, 5000);
-        }
-        function initContactForm() {
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(this);
-                const data = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    subject: formData.get('subject'),
-                    message: formData.get('message')
-                };
-                
-                const mailtoLink = `mailto:daniel.widmer@beispiel.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nE-Mail: ${data.email}\n\nNachricht:\n${data.message}`)}`;
-                
-                alert('Vielen Dank für deine Nachricht!');
-                window.location.href = mailtoLink;
-                this.reset();
-            });
-        }
-
-        // Rainbow animation for Konami Code
-        const rainbowStyle = document.createElement('style');
-        rainbowStyle.textContent = `
-            @keyframes rainbow {
-                0% { filter: hue-rotate(0deg); }
-                100% { filter: hue-rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(rainbowStyle);
+        */
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
@@ -2088,12 +2151,13 @@
             initSmoothScrolling();
             initActiveNavigation();
             initScrollAnimations();
-            initEnhancedKonami();
             initSnakeGame();
             initTetrisGame();
             initContactForm();
+            initCVDownload();
             initCodeEditor();
             initASCIIAnimations();
+            // initEnhancedKonami(); // commented out
         });
 
         // Console Easter Egg
@@ -2107,7 +2171,7 @@
 
         🎮 Easter Eggs:
         - Snake Game: Ctrl+G
-        - Konami Code: ↑↑↓↓←→←→BA
+        // - Konami Code: ↑↑↓↓←→←→BA (commented out)
         `);
     </script>
 </body>
