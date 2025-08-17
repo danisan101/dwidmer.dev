@@ -1148,7 +1148,7 @@
                         <div class="timeline-item no-dot">
                             <div class="timeline-date"></div>
                             <div class="timeline-title">
-                                <a href="#" class="cv-download">📄 Lebenslauf downloaden</a>
+                                <a href="#download-cv" class="cv-download">📄 Lebenslauf downloaden</a>
                             </div>
                         </div>
                     </div>
@@ -1287,6 +1287,7 @@
         <p>🎮 Easter Eggs: Snake (Ctrl+G) | Tetris (Ctrl+T) | Konami Code (↑↑↓↓←→←→BA)</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         // Loading Screen
         function initLoadingScreen() {
@@ -2069,6 +2070,34 @@
             });
         }
 
+        // CV Download as PDF
+        function initCVDownload() {
+            const downloadLink = document.querySelector('.cv-download');
+            if (!downloadLink) return;
+
+            downloadLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const cvElement = document.querySelector('.timeline');
+                if (!cvElement || typeof html2pdf === 'undefined') return;
+
+                // Temporarily hide the download button to avoid capturing it
+                const previousDisplay = downloadLink.style.display;
+                downloadLink.style.display = 'none';
+
+                const options = {
+                    margin:       10,
+                    filename:     'Lebenslauf_Daniel_Widmer.pdf',
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    html2canvas:  { scale: 2, useCORS: true, logging: false },
+                    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+
+                html2pdf().set(options).from(cvElement).save().finally(() => {
+                    downloadLink.style.display = previousDisplay;
+                });
+            });
+        }
+
         // Rainbow animation for Konami Code
         const rainbowStyle = document.createElement('style');
         rainbowStyle.textContent = `
@@ -2091,6 +2120,7 @@
             initSnakeGame();
             initTetrisGame();
             initContactForm();
+            initCVDownload();
             initCodeEditor();
             initASCIIAnimations();
         });
