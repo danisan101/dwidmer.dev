@@ -1148,7 +1148,7 @@
                         <div class="timeline-item no-dot">
                             <div class="timeline-date"></div>
                             <div class="timeline-title">
-                                <a href="assets/cv/daniel_widmer_lebenslauf.html" class="cv-download" download="Daniel_Widmer_Lebenslauf.html">📄 Lebenslauf downloaden</a>
+                                <a href="#" class="cv-download" id="cvDownload">📄 Lebenslauf downloaden (PDF)</a>
                             </div>
                         </div>
                     </div>
@@ -1287,6 +1287,7 @@
         <p>🎮 Easter Eggs: Snake (Ctrl+G) | Tetris (Ctrl+T) | Konami Code (↑↑↓↓←→←→BA)</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
     <script>
         // Loading Screen
         function initLoadingScreen() {
@@ -2093,6 +2094,7 @@
             initContactForm();
             initCodeEditor();
             initASCIIAnimations();
+            initCvPdfDownload();
         });
 
         // Console Easter Egg
@@ -2108,6 +2110,76 @@
         - Snake Game: Ctrl+G
         - Konami Code: ↑↑↓↓←→←→BA
         `);
+
+        // Client-side PDF generation for CV
+        function initCvPdfDownload() {
+            const btn = document.getElementById('cvDownload');
+            if (!btn) return;
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                try {
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+                    const marginLeft = 48;
+                    const marginTop = 48;
+                    const lineHeight = 18;
+                    let y = marginTop;
+                    const pageWidth = doc.internal.pageSize.getWidth();
+                    const maxWidth = pageWidth - marginLeft * 2;
+
+                    function text(txt, opts = {}) {
+                        const size = opts.size || 12;
+                        const bold = opts.bold || false;
+                        doc.setFont('helvetica', bold ? 'bold' : 'normal');
+                        doc.setFontSize(size);
+                        const lines = doc.splitTextToSize(txt, maxWidth);
+                        doc.text(lines, marginLeft, y);
+                        y += lines.length * lineHeight;
+                    }
+
+                    function spacer(h = lineHeight) { y += h; }
+
+                    // Header
+                    text('Daniel Widmer', { size: 20, bold: true });
+                    text('Senior Frontend Developer', { size: 12 });
+                    text('E-Mail: daniel.widmer@beispiel.com · Standort: CH', { size: 11 });
+                    spacer(lineHeight / 2);
+
+                    // Section: Berufserfahrung
+                    text('Berufserfahrung', { size: 14, bold: true });
+                    spacer(6);
+                    text('Senior Frontend Developer (2023 – Heute)', { bold: true });
+                    text('• Leitung von Frontend-Projekten, Architektur und Code-Reviews');
+                    text('• Performance-Optimierung und Barrierefreiheit');
+                    spacer(8);
+                    text('Fullstack Developer (2021 – 2023)', { bold: true });
+                    text('• Implementierung von End-to-End-Features (Frontend/Backend)');
+                    text('• CI/CD, Tests und Monitoring');
+                    spacer(8);
+                    text('Junior Developer (2019 – 2021)', { bold: true });
+                    text('• Umsetzung von UI-Komponenten und Bugfixes');
+                    text('• Zusammenarbeit in cross-funktionalen Teams');
+                    spacer(lineHeight / 2);
+
+                    // Section: Skills
+                    text('Skills', { size: 14, bold: true });
+                    spacer(6);
+                    text('React · Vue.js · Node.js · TypeScript · CSS · Figma · Docker · AWS');
+                    spacer(lineHeight / 2);
+
+                    // Section: Ausbildung
+                    text('Ausbildung', { size: 14, bold: true });
+                    spacer(6);
+                    text('B.Sc. Informatik — FH — Jahrgang');
+
+                    doc.save('Daniel_Widmer_Lebenslauf.pdf');
+                } catch (err) {
+                    console.error('CV PDF generation failed:', err);
+                    alert('PDF konnte nicht erstellt werden.');
+                }
+            });
+        }
     </script>
 </body>
 </html>
