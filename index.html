@@ -712,6 +712,11 @@
             padding-left: 2rem;
             margin-bottom: 2rem;
             position: relative;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            column-gap: 1.5rem;
+            align-items: start;
+            row-gap: 0.25rem;
         }
 
         .timeline-item::before {
@@ -725,15 +730,31 @@
             border-radius: 50%;
         }
 
+        .timeline-item.no-dot::before {
+            display: none;
+        }
+
         .timeline-date {
             color: var(--light);
             font-weight: 700;
             font-size: 0.9rem;
+            grid-column: 1;
         }
 
         .timeline-title {
             font-weight: 700;
-            margin: 0.5rem 0;
+            margin: 0;
+            grid-column: 2;
+        }
+
+        .timeline-item p {
+            grid-column: 2;
+            margin: 0.25rem 0 0;
+        }
+
+        .timeline-item .cv-download {
+            grid-column: 2;
+            justify-self: start;
         }
 
         /* Interests */
@@ -1040,7 +1061,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#home" class="logo">PORTFOLIO</a>
+            <!-- .logo entfernt -->
             <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
@@ -1076,7 +1097,6 @@
                             <div class="pixel-layer pixel-face-think"></div>
                         </div>
                     </div>
-                    <a href="#" class="cv-download">📄 Lebenslauf downloaden</a>
                 </div>
                 <div class="about-text">
                     <h3>Hallo, ich bin Daniel!</h3>
@@ -1125,6 +1145,12 @@
                             <div class="timeline-date">2019 - 2021</div>
                             <div class="timeline-title">Junior Developer</div>
                             <p>Erste professionelle Erfahrungen in der Webentwicklung</p>
+                        </div>
+                        <div class="timeline-item no-dot">
+                            <div class="timeline-date"></div>
+                            <div class="timeline-title">
+                                <a href="#" class="cv-download">📄 Lebenslauf downloaden</a>
+                            </div>
                         </div>
                     </div>
 
