@@ -712,6 +712,10 @@
             padding-left: 2rem;
             margin-bottom: 2rem;
             position: relative;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            column-gap: 1.5rem;
+            align-items: start;
         }
 
         .timeline-item::before {
@@ -725,15 +729,30 @@
             border-radius: 50%;
         }
 
+        .timeline-item.no-dot::before {
+            display: none;
+        }
+
         .timeline-date {
             color: var(--light);
             font-weight: 700;
             font-size: 0.9rem;
+            grid-column: 1;
         }
 
         .timeline-title {
             font-weight: 700;
             margin: 0.5rem 0;
+            grid-column: 2;
+        }
+
+        .timeline-item p {
+            grid-column: 2;
+        }
+
+        .timeline-item .cv-download {
+            grid-column: 2;
+            justify-self: start;
         }
 
         /* Interests */
@@ -1076,7 +1095,6 @@
                             <div class="pixel-layer pixel-face-think"></div>
                         </div>
                     </div>
-                    <a href="#" class="cv-download">📄 Lebenslauf downloaden</a>
                 </div>
                 <div class="about-text">
                     <h3>Hallo, ich bin Daniel!</h3>
@@ -1111,10 +1129,11 @@
                     <!-- Career Timeline -->
                     <div class="timeline">
                         <h4>🎯 Mein Werdegang</h4>
-                        <div class="timeline-item">
+                        <div class="timeline-item no-dot">
                             <div class="timeline-date">2023 - Heute</div>
                             <div class="timeline-title">Senior Frontend Developer</div>
                             <p>Führende Rolle in der Entwicklung moderner Web-Anwendungen</p>
+                            <a href="#" class="cv-download">📄 Lebenslauf downloaden</a>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-date">2021 - 2023</div>
