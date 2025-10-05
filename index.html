@@ -4,8 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Widmer - Portfolio</title>
+    <meta name="description" content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Ich erschaffe digitale Erlebnisse, die begeistern und inspirieren.">
+    <link rel="canonical" href="https://dwidmer.dev/">
+    <link rel="icon" href="/favicon.ico">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:title" content="Daniel Widmer - Portfolio">
+    <meta property="og:description" content="Creative Developer & Digital Artist. Digitale Erlebnisse, die begeistern und inspirieren.">
+    <meta property="og:url" content="https://dwidmer.dev/">
+    <meta property="og:site_name" content="Daniel Widmer">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daniel Widmer - Portfolio">
+    <meta name="twitter:description" content="Creative Developer & Digital Artist.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
+        
         
         * {
             margin: 0;
@@ -1103,14 +1118,14 @@
     <nav>
         <div class="nav-container">
             <!-- .logo entfernt -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Über mich</a></li>
                 <li><a href="#projects">Projekte</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
-            <button class="theme-toggle" id="themeToggle">🌓</button>
+            <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">🌓</button>
         </div>
     </nav>
 
@@ -1319,16 +1334,15 @@
     <!-- Footer -->
     <footer>
         <div class="social-links">
-            <a href="#" title="GitHub">⚡</a>
-            <a href="#" title="LinkedIn">🔗</a>
-            <a href="#" title="Twitter">🐦</a>
-            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="GitHub" aria-label="GitHub">⚡</a>
+            <a href="#" title="LinkedIn" aria-label="LinkedIn">🔗</a>
+            <a href="#" title="Twitter" aria-label="Twitter">🐦</a>
+            <a href="#" title="Instagram" aria-label="Instagram">📷</a>
         </div>
         <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
-        <p>🎮 Easter Eggs: Snake (Ctrl+G) | Tetris (Ctrl+T)</p>
+        <p>🎮 Easter Eggs: Snake (Shift+G) | Tetris (Shift+T)</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         // Loading Screen
         function initLoadingScreen() {
@@ -1463,18 +1477,22 @@
                 switch(e.key) {
                     case 'ArrowUp':
                     case 'w':
+                        e.preventDefault();
                         if (dy === 0) { dx = 0; dy = -10; }
                         break;
                     case 'ArrowDown':
                     case 's':
+                        e.preventDefault();
                         if (dy === 0) { dx = 0; dy = 10; }
                         break;
                     case 'ArrowLeft':
                     case 'a':
+                        e.preventDefault();
                         if (dx === 0) { dx = -10; dy = 0; }
                         break;
                     case 'ArrowRight':
                     case 'd':
+                        e.preventDefault();
                         if (dx === 0) { dx = 10; dy = 0; }
                         break;
                     case 'Escape':
@@ -1483,9 +1501,9 @@
                 }
             });
 
-            // Snake Game Easter Egg
+            // Snake Game Easter Egg (Shift+G to avoid browser conflicts)
             document.addEventListener('keydown', (e) => {
-                if (e.ctrlKey && e.key === 'g') {
+                if (e.shiftKey && e.key.toLowerCase() === 'g') {
                     e.preventDefault();
                     showSnakeGame();
                 }
@@ -1500,6 +1518,7 @@
             mobileToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
                 mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+                mobileToggle.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
             });
         }
 
@@ -1519,6 +1538,8 @@
                     themeToggle.textContent = '🌓';
                     console.log('Switched to dark mode');
                 }
+                // Update aria state
+                themeToggle.setAttribute('aria-pressed', body.classList.contains('light-mode') ? 'true' : 'false');
                 
                 // Save preference
                 localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
@@ -1531,6 +1552,7 @@
                 themeToggle.textContent = '🌙';
                 console.log('Loaded light mode from storage');
             }
+            themeToggle.setAttribute('aria-pressed', savedTheme === 'light' ? 'true' : 'false');
         }
 
         // Smooth Scrolling
@@ -1547,6 +1569,7 @@
                         if (navLinks.classList.contains('active')) {
                             navLinks.classList.remove('active');
                             mobileToggle.textContent = '☰';
+                            mobileToggle.setAttribute('aria-expanded', 'false');
                         }
                     }
                 });
@@ -1873,24 +1896,29 @@
                     case 'a':
                     case 'A':
                     case 'ArrowLeft':
+                        e.preventDefault();
                         movePiece(currentPiece, -1, 0);
                         break;
                     case 'd':
                     case 'D':
                     case 'ArrowRight':
+                        e.preventDefault();
                         movePiece(currentPiece, 1, 0);
                         break;
                     case 's':
                     case 'S':
                     case 'ArrowDown':
+                        e.preventDefault();
                         movePiece(currentPiece, 0, 1);
                         break;
                     case 'w':
                     case 'W':
                     case 'ArrowUp':
+                        e.preventDefault();
                         rotatePiece(currentPiece);
                         break;
                     case ' ':
+                        e.preventDefault();
                         while (movePiece(currentPiece, 0, 1)) {}
                         break;
                     case 'Escape':
@@ -1899,9 +1927,9 @@
                 }
             });
 
-            // Tetris Game Easter Egg (Ctrl+T)
+            // Tetris Game Easter Egg (Shift+T to avoid browser conflicts)
             document.addEventListener('keydown', (e) => {
-                if (e.ctrlKey && e.key === 't') {
+                if (e.shiftKey && e.key.toLowerCase() === 't') {
                     e.preventDefault();
                     startTetris();
                 }
@@ -2012,7 +2040,16 @@
             downloadLink.addEventListener('click', function(e) {
                 e.preventDefault();
                 const cvElement = document.querySelector('.timeline');
-                if (!cvElement || typeof html2pdf === 'undefined') return;
+                if (!cvElement) return;
+
+                // Lazy-load html2pdf on demand
+                function withHtml2Pdf(cb) {
+                    if (typeof html2pdf !== 'undefined') { cb(); return; }
+                    const s = document.createElement('script');
+                    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                    s.onload = cb;
+                    document.head.appendChild(s);
+                }
 
                 // Temporarily hide the download button to avoid capturing it
                 const previousDisplay = downloadLink.style.display;
@@ -2026,8 +2063,11 @@
                     jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
                 };
 
-                html2pdf().set(options).from(cvElement).save().finally(() => {
-                    downloadLink.style.display = previousDisplay;
+                withHtml2Pdf(() => {
+                    if (typeof html2pdf === 'undefined') { downloadLink.style.display = previousDisplay; return; }
+                    html2pdf().set(options).from(cvElement).save().finally(() => {
+                        downloadLink.style.display = previousDisplay;
+                    });
                 });
             });
         }
@@ -2168,9 +2208,10 @@
         ██╔══██╗██╔══╝     ██║   ██╔══██╗██║   ██║
         ██║  ██║███████╗   ██║   ██║  ██║╚██████╔╝
         ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ 
-
+        
         🎮 Easter Eggs:
-        - Snake Game: Ctrl+G
+        - Snake Game: Shift+G
+        - Tetris: Shift+T
         // - Konami Code: ↑↑↓↓←→←→BA (commented out)
         `);
     </script>
