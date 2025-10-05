@@ -20,8 +20,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        
-        
+        /*
+         * Globale Styles
+         * Hinweis: Die Seite startet immer im Dunkelmodus. Das helle Theme
+         *          wird lediglich über die Klasse `light-mode` aktiviert,
+         *          wenn der Nutzer es manuell umschaltet.
+         */
         * {
             margin: 0;
             padding: 0;
@@ -131,7 +135,7 @@
             51%, 100% { opacity: 0; }
         }
 
-        /* Tetris Game */
+        /* --- Tetris Spiel (UI) --- */
         .tetris-game {
             position: fixed;
             top: 50%;
@@ -263,6 +267,7 @@
         .game-over.active {
             display: block;
         }
+        /* --- Snake Spiel (UI) --- */
         .snake-game {
             position: fixed;
             top: 50%;
@@ -299,7 +304,7 @@
             font-size: 0.8rem;
         }
 
-        /* Navigation */
+        /* --- Navigation --- */
         nav {
             position: fixed;
             top: 0;
@@ -394,7 +399,7 @@
             color: var(--dark);
         }
 
-        /* Hero Section */
+        /* --- Hero Abschnitt --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -467,7 +472,7 @@
             margin: 1rem auto;
         }
 
-        /* About Section */
+        /* --- Über mich Abschnitt --- */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -477,6 +482,11 @@
         }
 
         .profile-section {
+            text-align: center;
+        }
+
+        /* Gesamten Text mittig ausrichten */
+        .about-text {
             text-align: center;
         }
 
@@ -900,7 +910,7 @@
             border: 1px solid var(--light);
         }
 
-        /* Contact Form */
+        /* --- Kontaktformular --- */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -972,7 +982,7 @@
             color: var(--dark);
         }
 
-        /* Footer */
+        /* --- Footer --- */
         footer {
             background: #111;
             padding: 2rem;
@@ -1000,6 +1010,14 @@
         .social-links a:hover {
             transform: translateY(-3px);
             filter: drop-shadow(0 5px 10px rgba(255,255,255,0.5));
+        }
+
+        /* SVG-Icons erben die Textfarbe */
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            display: block;
         }
 
         /* Mobile Responsive */
@@ -1081,11 +1099,12 @@
         </div>
     </div>
 
-    <!-- Tetris Game -->
+    <!-- Tetris Spiel -->
     <div class="tetris-game" id="tetrisGame">
         <div class="tetris-header">
             <div>
                 <div>Score: <span id="tetrisScore">0</span></div>
+                <div>Highscore: <span id="tetrisHighscore">0</span></div>
                 <div>Lines: <span id="tetrisLines">0</span></div>
                 <div>Level: <span id="tetrisLevel">1</span></div>
             </div>
@@ -1097,17 +1116,18 @@
         </div>
     </div>
 
-    <!-- Game Over Screen -->
+    <!-- Game Over Screen (Tetris) -->
     <div class="game-over" id="gameOver">
         <h2>GAME OVER</h2>
         <p>Final Score: <span id="finalScore">0</span></p>
         <p>Lines Cleared: <span id="finalLines">0</span></p>
+        <p>Highscore: <span id="finalHighscore">0</span></p>
         <p>Press SPACE to restart or ESC to close</p>
     </div>
 
-    <!-- Snake Game -->
+    <!-- Snake Spiel -->
     <div class="snake-game" id="snakeGame">
-        <div class="snake-score">Score: <span id="snakeScore">0</span></div>
+        <div class="snake-score">Score: <span id="snakeScore">0</span> | Highscore: <span id="snakeHighscore">0</span></div>
         <canvas class="snake-canvas" id="snakeCanvas" width="300" height="300"></canvas>
         <div class="snake-controls">
             Use WASD or Arrow Keys | ESC to close
@@ -1130,12 +1150,12 @@
     </nav>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Bereich -->
         <section id="home" class="hero">
             <div class="hero-content fade-in">
                 <h1 id="typed-name"></h1>
-                <p>Creative Developer & Digital Artist</p>
-                <p>Ich erschaffe digitale Erlebnisse, die begeistern und inspirieren</p>
+                <!-- Untertitel (nur eine Zeile; Platzhalter frei anpassbar) -->
+                <p id="heroTagline">Creative Developer</p>
             </div>
         </section>
 
@@ -1334,17 +1354,24 @@
     <!-- Footer -->
     <footer>
         <div class="social-links">
-            <a href="#" title="GitHub" aria-label="GitHub">⚡</a>
-            <a href="#" title="LinkedIn" aria-label="LinkedIn">🔗</a>
-            <a href="#" title="Twitter" aria-label="Twitter">🐦</a>
-            <a href="#" title="Instagram" aria-label="Instagram">📷</a>
+            <!-- Hinweis: Ersetze die #-Links mit deinen echten Profil-URLs -->
+            <a href="#" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.85 3.14 8.96 7.49 10.41.55.1.75-.24.75-.53 0-.26-.01-1.12-.02-2.03-3.05.66-3.69-1.34-3.69-1.34-.5-1.27-1.23-1.61-1.23-1.61-1-.69.08-.68.08-.68 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5-1.22-5-5.43 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.42.11-2.96 0 0 .93-.3 3.05 1.13.88-.24 1.82-.37 2.78-.37s1.9.13 2.78.37c2.12-1.43 3.05-1.13 3.05-1.13.6 1.54.22 2.68.11 2.96.7.77 1.13 1.75 1.13 2.95 0 4.22-2.57 5.15-5.02 5.42.39.33.74.98.74 1.98 0 1.43-.01 2.59-.01 2.95 0 .29.2.64.76.53 4.35-1.45 7.49-5.56 7.49-10.41C23.02 5.24 18.27.5 12 .5z"></path>
+                </svg>
+            </a>
+            <a href="#" title="LinkedIn" aria-label="LinkedIn" rel="noopener" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zM8 8h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.79 2.66 4.79 6.12V24h-4V15.2c0-2.1-.04-4.8-2.92-4.8-2.92 0-3.37 2.28-3.37 4.64V24H8V8z"></path>
+                </svg>
+            </a>
         </div>
         <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
         <p>🎮 Easter Eggs: Snake (Shift+G) | Tetris (Shift+T)</p>
     </footer>
 
     <script>
-        // Loading Screen
+        // Ladebildschirm initialisieren (kleine Terminal-Animation beim Start)
         function initLoadingScreen() {
             setTimeout(() => {
                 document.getElementById('loadingOverlay').classList.add('hidden');
@@ -1352,10 +1379,10 @@
             }, 2000);
         }
 
-        // Typing Animation for Name
+        // Schreibmaschinen-Effekt für den Namen im Hero
         function initTypingAnimation() {
             const nameElement = document.getElementById('typed-name');
-            const name = 'daniel widmer';
+            const name = 'daniel widmer'; // Platzhalter: Name
             let i = 0;
             
             function typeWriter() {
@@ -1377,12 +1404,14 @@
             typeWriter();
         }
 
-        // Snake Game
+        // Snake Spiel initialisieren
+        // Hinweis: Abbruch nur bei Wand-Kollision. Highscore wird gespeichert und angezeigt.
         function initSnakeGame() {
             const gameContainer = document.getElementById('snakeGame');
             const canvas = document.getElementById('snakeCanvas');
             const ctx = canvas.getContext('2d');
             const scoreElement = document.getElementById('snakeScore');
+            const highscoreElement = document.getElementById('snakeHighscore');
 
             let snake = [{x: 150, y: 150}];
             let food = {x: 90, y: 90};
@@ -1390,6 +1419,8 @@
             let dy = 0;
             let score = 0;
             let gameRunning = false;
+            let highscore = Number(localStorage.getItem('snakeHighscore') || 0);
+            highscoreElement.textContent = String(highscore);
 
             function drawSnake() {
                 ctx.fillStyle = '#ffffff';
@@ -1424,14 +1455,10 @@
             }
 
             function checkCollision() {
+                // Nur Wand-Kollision führt zum Game Over (kein Selbst-Kollision-Check)
                 const head = snake[0];
                 if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300) {
                     return true;
-                }
-                for (let i = 1; i < snake.length; i++) {
-                    if (head.x === snake[i].x && head.y === snake[i].y) {
-                        return true;
-                    }
                 }
                 return false;
             }
@@ -1444,7 +1471,13 @@
                 
                 if (checkCollision()) {
                     gameRunning = false;
-                    alert(`Game Over! Score: ${score}`);
+                    // Highscore aktualisieren und anzeigen
+                    if (score > highscore) {
+                        highscore = score;
+                        localStorage.setItem('snakeHighscore', String(highscore));
+                    }
+                    highscoreElement.textContent = String(highscore);
+                    alert(`Game Over!\nScore: ${score}\nHighscore: ${highscore}`);
                     hideSnakeGame();
                     return;
                 }
@@ -1462,6 +1495,9 @@
                 dy = 0;
                 score = 0;
                 scoreElement.textContent = score;
+                // Highscore zur Sicherheit beim Start aktualisieren
+                highscore = Number(localStorage.getItem('snakeHighscore') || 0);
+                highscoreElement.textContent = String(highscore);
                 generateFood();
                 gameLoop();
             }
@@ -1501,7 +1537,7 @@
                 }
             });
 
-            // Snake Game Easter Egg (Shift+G to avoid browser conflicts)
+            // Snake starten (Easter Egg): Umschalt+G
             document.addEventListener('keydown', (e) => {
                 if (e.shiftKey && e.key.toLowerCase() === 'g') {
                     e.preventDefault();
@@ -1510,7 +1546,7 @@
             });
         }
 
-        // Mobile Menu
+        // Mobiles Menü (Burger-Button)
         function initMobileMenu() {
             const mobileToggle = document.getElementById('mobileMenuToggle');
             const navLinks = document.getElementById('navLinks');
@@ -1522,40 +1558,27 @@
             });
         }
 
-        // Theme Toggle
+        // Theme-Umschalter
+        // Wichtig: Die Seite startet IMMER im Dunkelmodus (kein Laden aus localStorage)
         function initThemeToggle() {
             const themeToggle = document.getElementById('themeToggle');
             const body = document.body;
             
+            // Sicherstellen, dass beim Start Dunkelmodus aktiv ist
+            body.classList.remove('light-mode');
+            themeToggle.textContent = '🌓';
+            themeToggle.setAttribute('aria-pressed', 'false');
+
             themeToggle.addEventListener('click', () => {
                 body.classList.toggle('light-mode');
-                
-                // Update button text
-                if (body.classList.contains('light-mode')) {
-                    themeToggle.textContent = '🌙';
-                    console.log('Switched to light mode');
-                } else {
-                    themeToggle.textContent = '🌓';
-                    console.log('Switched to dark mode');
-                }
-                // Update aria state
-                themeToggle.setAttribute('aria-pressed', body.classList.contains('light-mode') ? 'true' : 'false');
-                
-                // Save preference
-                localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+                const isLight = body.classList.contains('light-mode');
+                themeToggle.textContent = isLight ? '🌙' : '🌓';
+                themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+                // Hinweis: keine Persistenz, damit die Seite immer dunkel startet
             });
-            
-            // Load saved theme
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                body.classList.add('light-mode');
-                themeToggle.textContent = '🌙';
-                console.log('Loaded light mode from storage');
-            }
-            themeToggle.setAttribute('aria-pressed', savedTheme === 'light' ? 'true' : 'false');
         }
 
-        // Smooth Scrolling
+        // Weiches Scrollen für interne Ankerlinks
         function initSmoothScrolling() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -1576,7 +1599,7 @@
             });
         }
 
-        // Active Navigation
+        // Aktive Navigationslinks beim Scrollen hervorheben
         function initActiveNavigation() {
             window.addEventListener('scroll', () => {
                 const sections = document.querySelectorAll('section');
@@ -1600,7 +1623,7 @@
             });
         }
 
-        // Scroll Animations
+        // Einfache Scroll-Animationen (Fade-in)
         function initScrollAnimations() {
             const observerOptions = {
                 threshold: 0.1,
@@ -1620,7 +1643,8 @@
             });
         }
 
-        // Tetris Game Implementation
+        // Tetris Spiel initialisieren
+        // Hinweis: Highscore wird gespeichert und Grid-Linien zeichnen das Spielfeld sichtbar.
         function initTetrisGame() {
             const gameContainer = document.getElementById('tetrisGame');
             const canvas = document.getElementById('tetrisCanvas');
@@ -1631,6 +1655,8 @@
             const linesElement = document.getElementById('tetrisLines');
             const levelElement = document.getElementById('tetrisLevel');
             const gameOverScreen = document.getElementById('gameOver');
+            const highscoreElement = document.getElementById('tetrisHighscore');
+            const finalHighscoreElement = document.getElementById('finalHighscore');
 
             const BOARD_WIDTH = 10;
             const BOARD_HEIGHT = 20;
@@ -1645,8 +1671,10 @@
             let level = 1;
             let dropTime = 0;
             let lastTime = 0;
+            let highscore = Number(localStorage.getItem('tetrisHighscore') || 0);
+            highscoreElement.textContent = String(highscore);
 
-            // Tetris pieces
+            // Tetris-Steine (Formen)
             const pieces = [
                 // I-piece
                 [
@@ -1692,6 +1720,7 @@
                 ]
             ];
 
+            // Farben pro Stein (Platzhalter)
             const colors = ['#00f', '#ff0', '#f0f', '#0f0', '#f00', '#00f', '#fa0'];
 
             function createBoard() {
@@ -1726,6 +1755,28 @@
                 }
             }
 
+            function drawGrid() {
+                // Deutlich sichtbares Raster zur besseren Orientierung
+                ctx.save();
+                ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+                ctx.lineWidth = 1;
+                // Vertikale Linien
+                for (let x = 0; x <= BOARD_WIDTH; x++) {
+                    ctx.beginPath();
+                    ctx.moveTo(x * BLOCK_SIZE + 0.5, 0);
+                    ctx.lineTo(x * BLOCK_SIZE + 0.5, BOARD_HEIGHT * BLOCK_SIZE);
+                    ctx.stroke();
+                }
+                // Horizontale Linien
+                for (let y = 0; y <= BOARD_HEIGHT; y++) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y * BLOCK_SIZE + 0.5);
+                    ctx.lineTo(BOARD_WIDTH * BLOCK_SIZE, y * BLOCK_SIZE + 0.5);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            }
+
             function drawPiece(piece, context = ctx) {
                 piece.shape.forEach((row, y) => {
                     row.forEach((value, x) => {
@@ -1755,13 +1806,21 @@
             }
 
             function collides(piece, board) {
+                // Kollision nur prüfen, wenn tatsächlich ein Block im Shape liegt
                 for (let y = 0; y < piece.shape.length; y++) {
                     for (let x = 0; x < piece.shape[y].length; x++) {
-                        if (piece.shape[y][x] &&
-                            (board[piece.y + y] && board[piece.y + y][piece.x + x]) !== 0 ||
-                            piece.x + x < 0 ||
-                            piece.x + x >= BOARD_WIDTH ||
-                            piece.y + y >= BOARD_HEIGHT) {
+                        if (!piece.shape[y][x]) continue;
+
+                        const newX = piece.x + x;
+                        const newY = piece.y + y;
+
+                        // Links/rechts/unten außerhalb? -> Kollision
+                        if (newX < 0 || newX >= BOARD_WIDTH || newY >= BOARD_HEIGHT) {
+                            return true;
+                        }
+
+                        // Oben negative y-Werte sind erlaubt, daher erst prüfen wenn >= 0
+                        if (newY >= 0 && board[newY][newX] !== 0) {
                             return true;
                         }
                     }
@@ -1822,6 +1881,7 @@
                 scoreElement.textContent = score;
                 linesElement.textContent = lines;
                 levelElement.textContent = level;
+                highscoreElement.textContent = String(highscore);
             }
 
             function gameLoop(time = 0) {
@@ -1847,6 +1907,7 @@
                 }
 
                 drawBoard();
+                drawGrid();
                 drawPiece(currentPiece);
                 drawNextPiece();
                 requestAnimationFrame(gameLoop);
@@ -1861,14 +1922,23 @@
                 createBoard();
                 currentPiece = createPiece();
                 nextPiece = createPiece();
+                // Highscore laden und anzeigen
+                highscore = Number(localStorage.getItem('tetrisHighscore') || 0);
                 updateDisplay();
                 gameLoop();
             }
 
             function endGame() {
                 gameRunning = false;
+                // Highscore prüfen und ggf. speichern
+                if (score > highscore) {
+                    highscore = score;
+                    localStorage.setItem('tetrisHighscore', String(highscore));
+                }
                 document.getElementById('finalScore').textContent = score;
                 document.getElementById('finalLines').textContent = lines;
+                finalHighscoreElement.textContent = String(highscore);
+                highscoreElement.textContent = String(highscore);
                 gameOverScreen.classList.add('active');
             }
 
@@ -1878,7 +1948,7 @@
                 gameRunning = false;
             }
 
-            // Tetris controls
+            // Tastensteuerung Tetris
             document.addEventListener('keydown', (e) => {
                 if (!gameRunning) {
                     if (gameOverScreen.classList.contains('active')) {
@@ -1927,7 +1997,7 @@
                 }
             });
 
-            // Tetris Game Easter Egg (Shift+T to avoid browser conflicts)
+            // Tetris starten (Easter Egg): Umschalt+T
             document.addEventListener('keydown', (e) => {
                 if (e.shiftKey && e.key.toLowerCase() === 't') {
                     e.preventDefault();
@@ -1938,7 +2008,7 @@
 
         // Konami Code removed
 
-        // Live Code Editor Simulator
+        // Simulierter Code-Editor im Über-mich-Bereich (reine Deko)
         function initCodeEditor() {
             const codeContent = document.getElementById('codeContent');
             const typingIndicator = codeContent.querySelector('.typing-indicator');
@@ -1946,7 +2016,7 @@
             const codeLines = [
                 '<div class="code-line"><span class="code-comment">// Creating awesome web experiences</span></div>',
                 '<div class="code-line"><span class="code-keyword">const</span> <span class="code-function">developer</span> = {</div>',
-                '<div class="code-line">  name: <span class="code-string">"Daniel Widmer"</span>,</div>',
+                '<div class="code-line">  name: <span class="code-string">"Daniel Widmer"</span>,</div>', // Platzhalter: Name
                 '<div class="code-line">  skills: [<span class="code-string">"React"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"Design"</span>],</div>',
                 '<div class="code-line">  passion: <span class="code-string">"Building cool stuff"</span>,</div>',
                 '<div class="code-line">  coffee: <span class="code-number">Infinity</span></div>',
@@ -1986,7 +2056,7 @@
             setTimeout(typeNextLine, 2000);
         }
 
-        // ASCII Art Animation Controller
+        // ASCII-Animationen (reine Deko)
         function initASCIIAnimations() {
             const spinners = document.querySelectorAll('.ascii-spinner');
             const spinnerChars = ['◐', '◓', '◑', '◒'];
@@ -2012,6 +2082,8 @@
                 });
             }, 5000);
         }
+        // Kontaktformular: Öffnet das Standard-Mailprogramm mit vorgefüllten Daten
+        // Hinweis: Ersetze die E-Mail-Adresse unten mit deiner echten Adresse.
         function initContactForm() {
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -2024,7 +2096,7 @@
                     message: formData.get('message')
                 };
                 
-                const mailtoLink = `mailto:daniel.widmer@beispiel.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nE-Mail: ${data.email}\n\nNachricht:\n${data.message}`)}`;
+                const mailtoLink = `mailto:widmer.daniel40@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nE-Mail: ${data.email}\n\nNachricht:\n${data.message}`)}`;
                 
                 alert('Vielen Dank für deine Nachricht!');
                 window.location.href = mailtoLink;
@@ -2183,7 +2255,7 @@
         }
         */
 
-        // Initialize everything
+        // Initialisierung aller Module
         document.addEventListener('DOMContentLoaded', function() {
             initLoadingScreen();
             initMobileMenu();
@@ -2198,6 +2270,21 @@
             initCodeEditor();
             initASCIIAnimations();
             // initEnhancedKonami(); // commented out
+
+            // Globaler ESC-Handler: Bricht aktive Spiele ab und kehrt zur Seite zurück
+            document.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                const snake = document.getElementById('snakeGame');
+                const tetris = document.getElementById('tetrisGame');
+                const gameOver = document.getElementById('gameOver');
+                if (snake && snake.classList.contains('active')) {
+                    snake.classList.remove('active');
+                }
+                if (tetris && (tetris.classList.contains('active') || gameOver.classList.contains('active'))) {
+                    tetris.classList.remove('active');
+                    gameOver.classList.remove('active');
+                }
+            });
         });
 
         // Console Easter Egg
