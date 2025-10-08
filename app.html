@@ -6,31 +6,133 @@
     <title>Schälle Sau – Projekt</title>
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://dwidmer.dev/app.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --dark:#000; --light:#fff; }
+        :root { --primary:#ffffff; --dark:#000000; --light:#ffffff; --gray:#cccccc; }
+        body.light-mode { --primary:#000000; --dark:#ffffff; --light:#000000; --gray:#333333; }
         html, body { background: var(--dark); }
-        body { margin:0; font-family: 'Space Mono', monospace; color:var(--light); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; }
-        main { max-width: 800px; text-align: center; }
+        body { margin:0; font-family: 'Space Mono', monospace; color:var(--light); min-height:100vh; overflow-x:hidden; }
+
+        /* Navigation */
+        nav { position: fixed; top:0; left:0; right:0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 10001; padding: 1rem 2rem; border-bottom:1px solid var(--light); }
+        body.light-mode nav { background: rgba(255,255,255,0.95); }
+        .nav-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        .nav-links { display:flex; list-style:none; gap:2rem; justify-content:center; margin:0 auto; }
+        .nav-links a { color: var(--light); text-decoration:none; transition: all .3s ease; padding:.5rem 1rem; border:1px solid transparent; }
+        .nav-links a:hover { border-color: var(--light); box-shadow: 0 0 10px rgba(255,255,255,.5); }
+        .nav-links a.active { border-color: var(--light); }
+        .mobile-menu-toggle { display:none; background:none; border:1px solid var(--light); color:var(--light); font-size:1.5rem; padding:.5rem; cursor:pointer; }
+        .theme-toggle { background:none; border:1px solid var(--light); color:var(--light); padding:.5rem 1rem; cursor:pointer; font-family:'Space Mono', monospace; margin-left:1rem; }
+        body.light-mode .theme-toggle { border-color: var(--light); color: var(--light); }
+        .theme-toggle:hover { background: var(--light); color: var(--dark); }
+
+        /* Layout */
+        main { max-width: 1200px; margin: 0 auto; padding: 7rem 2rem 3rem; }
+        section { max-width: 900px; margin: 0 auto; text-align:center; }
+        .section-title { font-family:'Orbitron', sans-serif; font-size: clamp(2rem, 5vw, 2.5rem); text-align:center; margin-bottom:2rem; color:var(--light); }
+        .section-title::after { content:''; display:block; width:100px; height:3px; background:var(--light); margin:1rem auto; }
         a { color: var(--light); }
-        .card { border:1px solid var(--light); padding:2rem; border-radius:8px; }
+        .card { border:1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.02); padding:2rem; border-radius:8px; }
         h1 { margin-top:0; font-weight:400; }
-        .muted { opacity: .8; }
+        .muted { opacity: .85; }
         .links { margin-top:1rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
         .btn { border:1px solid var(--light); padding:0.6rem 1rem; text-decoration:none; border-radius:4px; }
         .btn:hover { background: var(--light); color: var(--dark); }
+
+        /* Footer */
+        footer { background:#111; padding:2rem; text-align:center; border-top:2px solid var(--light); }
+        body.light-mode footer { background:#eee; }
+        .social-links { display:flex; justify-content:center; gap:2rem; margin-bottom:1rem; }
+        .social-links a { color: var(--light); font-size:1.5rem; transition: all .3s ease; }
+        .social-links a:hover { transform: translateY(-3px); filter: drop-shadow(0 5px 10px rgba(255,255,255,0.5)); }
+        .social-links svg { width:24px; height:24px; fill: currentColor; display:block; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background: rgba(0,0,0,0.95); flex-direction:column; padding:1rem; border-top:1px solid var(--light); }
+            body.light-mode .nav-links { background: rgba(255,255,255,0.95); }
+            .nav-links.active { display:flex; }
+            .mobile-menu-toggle { display:block; }
+            main { padding:6rem 1rem 2rem; }
+        }
     </style>
 </head>
 <body>
-    <main>
-        <div class="card">
-            <h1>Schälle Sau (App)</h1>
-            <p class="muted">Kommt bald, ganz ruhig...</p>
-            <div class="links">
-                <a class="btn" href="/app-privacy.html" aria-label="Datenschutzerklärung">Datenschutz</a>
-                <a class="btn" href="/index.html#projects" aria-label="Zurück zu Projekte">Zurück</a>
-            </div>
+    <nav>
+        <div class="nav-container">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#about">Über mich</a></li>
+                <li><a href="/index.html#projects" class="active">Projekte</a></li>
+                <li><a href="/index.html#contact">Kontakt</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">🌓</button>
         </div>
+    </nav>
+    <main>
+        <section>
+            <h2 class="section-title">Schälle Sau (App)</h2>
+            <div class="card">
+                <p class="muted">Kommt bald, ganz ruhig...</p>
+                <div class="links">
+                    <a class="btn" href="/app-privacy.html" aria-label="Datenschutzerklärung">Datenschutz</a>
+                    <a class="btn" href="/index.html#projects" aria-label="Zurück zu Projekte">Zurück</a>
+                </div>
+            </div>
+        </section>
     </main>
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/danisan101" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.85 3.14 8.96 7.49 10.41.55.1.75-.24.75-.53 0-.26-.01-1.12-.02-2.03-3.05.66-3.69-1.34-3.69-1.34-.5-1.27-1.23-1.61-1.23-1.61-1-.69.08-.68.08-.68 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5-1.22-5-5.43 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.42.11-2.96 0 0 .93-.3 3.05 1.13.88-.24 1.82-.37 2.78-.37s1.9.13 2.78.37c2.12-1.43 3.05-1.13 3.05-1.13.6 1.54.22 2.68.11 2.96.7.77 1.13 1.75 1.13 2.95 0 4.22-2.57 5.15-5.02 5.42.39.33.74.98.74 1.98 0 1.43-.01 2.59-.01 2.95 0 .29.2.64.76.53 4.35-1.45 7.49-5.56 7.49-10.41C23.02 5.24 18.27.5 12 .5z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/daniel-widmer-26426a173?" title="LinkedIn" aria-label="LinkedIn" rel="noopener" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zM8 8h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.79 2.66 4.79 6.12V24h-4V15.2c0-2.1-.04-4.8-2.92-4.8-2.92 0-3.37 2.28-3.37 4.64V24H8V8z"></path></svg>
+            </a>
+        </div>
+        <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
+        <p><a href="/app-privacy.html" style="color:inherit;">Datenschutz (Schälle Sau)</a></p>
+    </footer>
+    <script>
+        function initMobileMenu() {
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+                mobileToggle.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
+            });
+        }
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            body.classList.remove('light-mode');
+            themeToggle.textContent = '🌓';
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                const isLight = body.classList.contains('light-mode');
+                themeToggle.textContent = isLight ? '🌙' : '🌓';
+                themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+            });
+        }
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+                });
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initThemeToggle();
+            initSmoothScrolling();
+        });
+    </script>
 </body>
 </html>
 
