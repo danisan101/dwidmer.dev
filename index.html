@@ -2,7 +2,8 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
     <title>Daniel Widmer - Portfolio</title>
     <meta name="description" content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Ich erschaffe digitale Erlebnisse, die begeistern und inspirieren.">
     <link rel="canonical" href="https://dwidmer.dev/">
@@ -55,12 +56,22 @@
             cursor: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="2" height="2" fill="black"/><rect x="0" y="2" width="2" height="2" fill="black"/><rect x="0" y="4" width="2" height="2" fill="black"/></svg>'), auto;
         }
 
+        html, body {
+            background: var(--dark);
+        }
+
         body {
             font-family: 'Space Mono', monospace;
             background: var(--dark);
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            padding-bottom: env(safe-area-inset-bottom, 0);
+        }
+
+        @supports (height: 100dvh) {
+            body { min-height: 100dvh; }
         }
 
         /* CRT Monitor Effects */
@@ -640,99 +651,18 @@
             }
         }
 
-        /* Code Editor Simulator */
-        .code-editor {
-            background: #1e1e1e;
+        /* About gallery */
+        .about-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .about-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border: 2px solid var(--light);
-            border-radius: 8px;
-            margin: 2rem 0;
-            overflow: hidden;
-            font-family: 'Space Mono', monospace;
-            box-shadow: 0 0 20px rgba(255,255,255,0.1);
-        }
-
-        .code-header {
-            background: #333;
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 1px solid var(--light);
-        }
-
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .code-dot.red { background: #ff5f56; }
-        .code-dot.yellow { background: #ffbd2e; }
-        .code-dot.green { background: #27ca3f; }
-
-        .code-filename {
-            color: #ccc;
-            margin-left: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .code-content {
-            padding: 1rem;
-            background: #1e1e1e;
-            color: #d4d4d4;
-            min-height: 200px;
-            position: relative;
-        }
-
-        .code-line {
-            margin: 0.3rem 0;
-            opacity: 0;
-            transform: translateX(-10px);
-            animation: codeType 0.5s ease forwards;
-        }
-
-        @keyframes codeType {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .code-cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1em;
-            background: #fff;
-            animation: blink 1s infinite;
-            margin-left: 2px;
-        }
-
-        .code-comment { color: #6a9955; }
-        .code-keyword { color: #569cd6; }
-        .code-string { color: #ce9178; }
-        .code-function { color: #dcdcaa; }
-        .code-number { color: #b5cea8; }
-        .code-operator { color: #d4d4d4; }
-
-        .typing-indicator {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            color: #888;
-            font-size: 0.8rem;
-        }
-
-        .typing-dot {
-            display: inline-block;
-            animation: typingDots 1.4s infinite;
-        }
-
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes typingDots {
-            0%, 60%, 100% { opacity: 0.3; }
-            30% { opacity: 1; }
         }
 
         .cv-download {
@@ -877,11 +807,19 @@
             height: 200px;
             background: var(--dark);
             border: 1px solid var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--light);
+            display: block;
+            overflow: hidden;
+        }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .project-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .project-content {
@@ -1164,13 +1102,10 @@
             <h2 class="section-title">Über mich</h2>
             <div class="about-content">
                 <div class="profile-section">
-                    <div class="profile-img">
-                        <div class="pixel-portrait">
-                            <div class="pixel-layer pixel-face"></div>
-                            <div class="pixel-layer pixel-face-smile"></div>
-                            <div class="pixel-layer pixel-face-code"></div>
-                            <div class="pixel-layer pixel-face-think"></div>
-                        </div>
+                    <div class="about-gallery">
+                        <img src="/assets/images/me1.pgn" alt="Daniel – Portrait 1" loading="lazy">
+                        <img src="/assets/images/me2.pgn" alt="Daniel – Portrait 2" loading="lazy">
+                        <img src="/assets/images/me3.pgn" alt="Daniel – Portrait 3" loading="lazy">
                     </div>
                 </div>
                 <div class="about-text">
@@ -1178,30 +1113,20 @@
                     <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer Vision. Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur funktional, sondern auch ästhetisch ansprechend sind.</p>
                     
                     <!-- ASCII Art Animation -->
-                    <div class="ascii-animation">
-╔═══════════════════════════════════════╗
-║  <span class="ascii-spinner">◐</span> DANIEL.EXE WIRD AUSGEFÜHRT... <span class="ascii-spinner">◑</span>  ║
-║                                       ║
-║  ░░░░░░░░░░ 85% CREATIVITY            ║
-║  ████████░░ 90% CODING SKILLS         ║
-║  ██████████ 100% VISION               ║
-╚═══════════════════════════════════════╝
+                     <div class="ascii-animation">
+╔════════════════════════════════════════════╗
+║  <span class="ascii-spinner">◐</span> DANIEL.EXE WIRD AUSGEFÜHRT... <span class="ascii-spinner">◑</span>       ║
+║                                            ║
+║  MODULES:                                  ║
+║  [██████████░] UI/UX Toolkit        90%    ║
+║  [█████████░░] Creative Engine      85%    ║
+║  [███████████] Problem Solver       100%   ║
+║                                            ║
+║  STATUS: ONLINE • READY • LET'S BUILD 🚀   ║
+╚════════════════════════════════════════════╝
                     </div>
 
-                    <!-- Live Code Editor Simulator -->
-                    <div class="code-editor">
-                        <div class="code-header">
-                            <div class="code-dot red"></div>
-                            <div class="code-dot yellow"></div>
-                            <div class="code-dot green"></div>
-                            <div class="code-filename">daniel_portfolio.js</div>
-                        </div>
-                        <div class="code-content" id="codeContent">
-                            <div class="typing-indicator">
-                                Daniel tippt<span class="typing-dot">.</span><span class="typing-dot">.</span><span class="typing-dot">.</span>
-                            </div>
-                        </div>
-                    </div>
+                    
                     
                     <!-- Career Timeline -->
                     <div class="timeline">
@@ -1262,29 +1187,37 @@
             <h2 class="section-title">Meine Projekte</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">🌐</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Meine Website</h3>
-                        <p>Auf dieser Seite befindest du dich gerade. Zentralisierung und Spielwiese meiner ganzen Experimente und Projekte.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
+                    <a href="/website.html" aria-label="Projektseite: Meine Website">
+                        <div class="project-image">
+                            <img src="/assets/images/website.pgn" alt="Vorschau: Meine Website" loading="lazy">
                         </div>
-                    </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Meine Website</h3>
+                            <p>Auf dieser Seite befindest du dich gerade. Zentralisierung und Spielwiese meiner ganzen Experimente und Projekte.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image">📱</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Schälle Sau</h3>
-                        <p>Konzeption, Entwicklung und UI/UX Design für eine Scorekeeper App (iOS). Fokus auf minimalistische Einfachheit.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Swift (iOS)</span>
-                            <span class="tech-tag">Prototyping</span>
-                            <span class="tech-tag">UI/UX</span>
-                            <span class="tech-tag">Mobile Design</span>
+                    <a href="/app.html" aria-label="Projektseite: Schälle Sau">
+                        <div class="project-image">
+                            <img src="/assets/images/schaellesau.pgn" alt="Vorschau: Schälle Sau App" loading="lazy">
                         </div>
-                    </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Schälle Sau</h3>
+                            <p>Konzeption, Entwicklung und UI/UX Design für eine Scorekeeper App (iOS). Fokus auf minimalistische Einfachheit.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift (iOS)</span>
+                                <span class="tech-tag">Prototyping</span>
+                                <span class="tech-tag">UI/UX</span>
+                                <span class="tech-tag">Mobile Design</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1332,10 +1265,35 @@
             </a>
         </div>
         <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
-        <p>🎮 Easter Eggs: Snake (Shift+G) | Tetris (Shift+T)</p>
+        <p>🎮 Easter Eggs: Snake (Ctrl+Alt+Shift+G) | Tetris (Ctrl+Alt+Shift+T)</p>
+        <p><a href="/app-privacy.html" style="color:inherit;">Datenschutz (Schälle Sau)</a></p>
     </footer>
 
+    <!-- Printable CV (hidden) -->
+    <div id="cvPrintable" style="display:none;">
+        <div style="font-family: 'Space Mono', monospace; color:#000; padding:20px; max-width:800px; margin:0 auto;">
+            <h1 style="margin-bottom:0;">Daniel Widmer</h1>
+            <p style="margin-top:4px;">Creative Developer</p>
+            <hr style="margin:16px 0;">
+            <h2>Werdegang</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li><strong>2017 - Heute</strong> — Senior Business Analyst</li>
+                <li><strong>2024 - Heute</strong> — App Developer (iOS, privat)</li>
+            </ul>
+            <h2>Skills</h2>
+            <ul style="columns:2; -webkit-columns:2; -moz-columns:2;">
+                <li>JavaScript, HTML5, CSS3, Swift</li>
+                <li>Node.js, Python, PHP, Databases, R, SQL</li>
+                <li>Figma, Adobe Suite, UI/UX Design</li>
+                <li>Git, AWS</li>
+            </ul>
+            <h2>Kontakt</h2>
+            <p>Web: www.dwidmer.dev • E-Mail: info@dwidmer.dev</p>
+        </div>
+    </div>
+
     <script>
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your_form_id';
         // Ladebildschirm initialisieren (kleine Terminal-Animation beim Start)
         function initLoadingScreen() {
             setTimeout(() => {
@@ -1504,7 +1462,7 @@
 
             // Snake starten (Easter Egg): Umschalt+G
             document.addEventListener('keydown', (e) => {
-                if (e.shiftKey && e.key.toLowerCase() === 'g') {
+                if (e.shiftKey && e.altKey && e.ctrlKey && e.key.toLowerCase() === 'g') {
                     e.preventDefault();
                     showSnakeGame();
                 }
@@ -1964,7 +1922,7 @@
 
             // Tetris starten (Easter Egg): Umschalt+T
             document.addEventListener('keydown', (e) => {
-                if (e.shiftKey && e.key.toLowerCase() === 't') {
+                if (e.shiftKey && e.altKey && e.ctrlKey && e.key.toLowerCase() === 't') {
                     e.preventDefault();
                     startTetris();
                 }
@@ -2047,25 +2005,33 @@
                 });
             }, 5000);
         }
-        // Kontaktformular: Öffnet das Standard-Mailprogramm mit vorgefüllten Daten
-        // Hinweis: Ersetze die E-Mail-Adresse unten mit deiner echten Adresse.
+        // Kontaktformular: Sendet E-Mail serverseitig via Formspree (kein Mailprogramm)
         function initContactForm() {
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 const formData = new FormData(this);
-                const data = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    subject: formData.get('subject'),
-                    message: formData.get('message')
-                };
-                
-                const mailtoLink = `mailto:widmer.daniel40@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nE-Mail: ${data.email}\n\nNachricht:\n${data.message}`)}`;
-                
-                alert('Vielen Dank für deine Nachricht!');
-                window.location.href = mailtoLink;
-                this.reset();
+                if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.includes('your_form_id')) {
+                    alert('Kontaktformular ist noch nicht konfiguriert. Bitte Form-Endpunkt setzen.');
+                    return;
+                }
+
+                fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                }).then(async (res) => {
+                    if (res.ok) {
+                        alert('Vielen Dank für deine Nachricht!');
+                        (e.target).reset();
+                    } else {
+                        const data = await res.json().catch(() => ({}));
+                        const msg = data && data.errors ? data.errors.map(x => x.message).join('\n') : 'Senden fehlgeschlagen.';
+                        alert(msg);
+                    }
+                }).catch(() => {
+                    alert('Netzwerkfehler beim Senden. Bitte später erneut versuchen.');
+                });
             });
         }
 
@@ -2076,7 +2042,7 @@
 
             downloadLink.addEventListener('click', function(e) {
                 e.preventDefault();
-                const cvElement = document.querySelector('.timeline');
+                const cvElement = document.getElementById('cvPrintable');
                 if (!cvElement) return;
 
                 // Lazy-load html2pdf on demand
@@ -2088,9 +2054,8 @@
                     document.head.appendChild(s);
                 }
 
-                // Temporarily hide the download button to avoid capturing it
-                const previousDisplay = downloadLink.style.display;
-                downloadLink.style.display = 'none';
+                const previousDisplay = cvElement.style.display;
+                cvElement.style.display = 'block';
 
                 const options = {
                     margin:       10,
@@ -2101,9 +2066,9 @@
                 };
 
                 withHtml2Pdf(() => {
-                    if (typeof html2pdf === 'undefined') { downloadLink.style.display = previousDisplay; return; }
+                    if (typeof html2pdf === 'undefined') { cvElement.style.display = previousDisplay; return; }
                     html2pdf().set(options).from(cvElement).save().finally(() => {
-                        downloadLink.style.display = previousDisplay;
+                        cvElement.style.display = previousDisplay;
                     });
                 });
             });
@@ -2232,7 +2197,6 @@
             initTetrisGame();
             initContactForm();
             initCVDownload();
-            initCodeEditor();
             initASCIIAnimations();
             // initEnhancedKonami(); // commented out
 
@@ -2262,8 +2226,8 @@
         ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ 
         
         🎮 Easter Eggs:
-        - Snake Game: Shift+G
-        - Tetris: Shift+T
+        - Snake Game: Ctrl+Alt+Shift+G
+        - Tetris: Ctrl+Alt+Shift+T
         // - Konami Code: ↑↑↓↓←→←→BA (commented out)
         `);
     </script>
