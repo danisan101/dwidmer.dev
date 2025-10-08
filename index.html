@@ -486,7 +486,7 @@
         /* --- Über mich Abschnitt --- */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.3fr 1fr;
             gap: 3rem;
             align-items: center;
             justify-items: center;
@@ -548,8 +548,8 @@
 
         /* Animated Pixel Art Profile */
         .profile-img {
-            width: 300px;
-            height: 300px;
+            width: 380px;
+            height: 380px;
             margin: 0 auto 2rem;
             border: 2px solid var(--light);
             position: relative;
@@ -654,13 +654,13 @@
         /* About gallery */
         .about-gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 0.75rem;
             margin-top: 1rem;
         }
         .about-gallery img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
             border: 2px solid var(--light);
         }
@@ -679,6 +679,11 @@
         .cv-download:hover {
             background: var(--light);
             color: var(--dark);
+        }
+
+        .cv-actions {
+            text-align: center;
+            margin-top: 2rem;
         }
 
         /* Timeline */
@@ -742,6 +747,7 @@
             flex-wrap: wrap;
             gap: 1rem;
             margin-top: 2rem;
+            justify-content: center;
         }
 
         .interest-tag {
@@ -997,8 +1003,8 @@
             }
 
             .profile-img {
-                width: 250px;
-                height: 250px;
+                width: 300px;
+                height: 300px;
             }
         }
 
@@ -1141,9 +1147,7 @@
                         </div>
                         <div class="timeline-item no-dot">
                             <div class="timeline-date"></div>
-                            <div class="timeline-title">
-                                <a href="#download-cv" class="cv-download">📄 Lebenslauf downloaden</a>
-                            </div>
+                            <div class="timeline-title"></div>
                         </div>
                     </div>
 
@@ -1179,6 +1183,10 @@
                 </div>
             </div>
         </section>
+
+        <div class="cv-actions">
+            <a href="#download-cv" class="cv-download">📄 Lebenslauf downloaden</a>
+        </div>
 
         <!-- Projects Section -->
         <section id="projects" class="fade-in">
