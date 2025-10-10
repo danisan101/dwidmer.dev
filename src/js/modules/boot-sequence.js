@@ -13,13 +13,19 @@ export function initBootSequence() {
             loadingOverlay.style.display = 'none';
             bootSequence.style.display = 'flex';
             
-            // Hide boot sequence after 3 seconds
+            // Hide boot sequence after 3 seconds and mark as visited
             setTimeout(() => {
                 bootSequence.style.display = 'none';
+                loadingOverlay.style.display = 'flex';
                 localStorage.setItem('hasVisited', 'true');
+                
+                // Then hide loading overlay after 2.5 seconds
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 2500);
             }, 3000);
         }
     }
-    // Otherwise, the normal loading screen will be shown
+    // Otherwise, the normal loading screen will be shown (handled by inline script)
 }
 
