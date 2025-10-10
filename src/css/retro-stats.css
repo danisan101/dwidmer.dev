@@ -1,0 +1,63 @@
+/* Retro Stats Section */
+.retro-stats-section {
+    background: transparent;
+    border: 1px solid var(--light);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-family: 'Space Mono', monospace;
+}
+
+.retro-stats-title {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--light);
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.retro-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+}
+
+.retro-stat-item {
+    background: transparent;
+    border: 1px solid var(--light);
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.retro-stat-label {
+    font-size: 0.6rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+    color: var(--light);
+}
+
+.retro-stat-value {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--light);
+    font-family: 'Space Mono', monospace;
+}
+
+.retro-stat-unit {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 0.25rem;
+    color: var(--light);
+}
+
+.retro-stats-footer {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    opacity: 0.5;
+    color: var(--light);
+}
+

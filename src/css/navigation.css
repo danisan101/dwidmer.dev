@@ -1,0 +1,138 @@
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 10001;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--light);
+    transition: background var(--transition-speed) ease;
+}
+
+body.light-mode nav {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo removed - keep style for potential reuse */
+.logo {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+}
+
+.nav-links a:hover {
+    border-color: var(--light);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-links a.active {
+    border-color: var(--light);
+}
+
+/* Controls (Theme & CRT Toggle) */
+.nav-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.theme-toggle,
+.crt-toggle,
+.easter-egg-btn {
+    background: transparent;
+    border: 1px solid var(--light);
+    color: var(--light);
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    transition: all 0.2s ease;
+    font-size: 0.65rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.theme-toggle:hover,
+.crt-toggle:hover,
+.easter-egg-btn:hover {
+    opacity: 1;
+    background: var(--light);
+    color: var(--dark);
+}
+
+.easter-egg-btn {
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.crt-toggle,
+.theme-toggle {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+}
+
+/* Mobile Menu */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--light);
+    color: var(--light);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 1rem;
+        border-top: 1px solid var(--light);
+    }
+    
+    body.light-mode .nav-links {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+

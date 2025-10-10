@@ -1,0 +1,252 @@
+/* About Section */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-section {
+    text-align: center;
+}
+
+.about-text {
+    text-align: center;
+}
+
+.about-text h3,
+.about-text h4 {
+    text-align: center;
+}
+
+/* Profile Image */
+.profile-img {
+    width: 200px;
+    height: 200px;
+    margin: 2rem auto;
+    border: 1px solid var(--light);
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.about-gallery {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.about-gallery img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid var(--light);
+    loading: lazy;
+}
+
+/* ASCII Art Animations */
+.ascii-animation {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1;
+    text-align: center;
+    margin: 2rem 0;
+    white-space: pre;
+    color: var(--light);
+    animation: asciiGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes asciiGlow {
+    0% { 
+        text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 15px rgba(255,255,255,0.8);
+        transform: scale(1.02);
+    }
+    100% { 
+        text-shadow: 0 0 10px rgba(255,255,255,0.6);
+        transform: scale(1);
+    }
+}
+
+.ascii-spinner {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Timeline */
+.timeline {
+    margin: 3rem 0;
+    margin-bottom: 4rem;
+}
+
+.timeline-item {
+    border-left: 2px solid var(--light);
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    column-gap: 1.5rem;
+    align-items: start;
+    row-gap: 0.25rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background: var(--light);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover::before {
+    width: 15px;
+    height: 15px;
+    left: -8.5px;
+    box-shadow: 0 0 10px var(--light);
+}
+
+.timeline-item.no-dot::before {
+    display: none;
+}
+
+.timeline-date {
+    color: var(--light);
+    font-weight: 700;
+    font-size: 0.9rem;
+    grid-column: 1;
+}
+
+.timeline-title {
+    font-weight: 700;
+    margin: 0;
+    grid-column: 2;
+}
+
+.timeline-item p {
+    grid-column: 2;
+    margin: 0.25rem 0 0;
+}
+
+/* Interests */
+.interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.interest-tag {
+    background: transparent;
+    border: 1px solid var(--light);
+    color: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.interest-tag:hover {
+    background: var(--light);
+    color: var(--dark);
+    transform: translateY(-3px);
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--light);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.skill-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--light);
+    opacity: 0.1;
+    transition: height 0.3s ease;
+}
+
+.skill-item:hover::before {
+    height: 100%;
+}
+
+.skill-item h4 {
+    position: relative;
+    z-index: 1;
+}
+
+.skill-item p {
+    position: relative;
+    z-index: 1;
+}
+
+/* Skill Progress Bar - Full White Retro Style */
+.skill-progress {
+    margin-top: 1rem;
+    background: var(--light);
+    height: 4px;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    opacity: 0.3;
+}
+
+.skill-progress-bar {
+    height: 100%;
+    background: var(--light);
+    width: 100%;
+    transition: none;
+    border-radius: 0;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .profile-img {
+        width: 300px;
+        height: 300px;
+    }
+}
+

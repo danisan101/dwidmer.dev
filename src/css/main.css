@@ -1,0 +1,22 @@
+/* Main Stylesheet - Imports all modules */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
+
+@import './reset.css';
+@import './effects.css';
+@import './navigation.css';
+@import './components.css';
+@import './hero.css';
+@import './about.css';
+@import './projects.css';
+@import './contact.css';
+@import './games.css';
+@import './retro-stats.css';
+@import './footer.css';
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 1rem;
+    }
+}
+

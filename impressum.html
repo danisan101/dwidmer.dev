@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Impressum – Daniel Widmer</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://dwidmer.dev/impressum.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary:#ffffff; --dark:#000000; --light:#ffffff; --gray:#cccccc; --muted:#bbb; }
+        body.light-mode { --primary:#000000; --dark:#ffffff; --light:#000000; --gray:#333333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Mono', monospace !important; }
+        html, body { background: var(--dark); }
+        body { color:var(--light); line-height:1.7; overflow-x:hidden; }
+        
+        nav { position: fixed; top:0; left:0; right:0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 10001; padding: 1rem 2rem; border-bottom:1px solid var(--light); }
+        body.light-mode nav { background: rgba(255,255,255,0.95); }
+        .nav-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        .nav-links { display:flex; list-style:none; gap:2rem; justify-content:center; margin:0 auto; }
+        .nav-links a { color: var(--light); text-decoration:none; transition: all .3s ease; padding:.5rem 1rem; border:1px solid transparent; }
+        .nav-links a:hover { border-color: var(--light); box-shadow: 0 0 10px rgba(255,255,255,.5); }
+        .mobile-menu-toggle { display:none; background:none; border:1px solid var(--light); color:var(--light); font-size:1.5rem; padding:.5rem; cursor:pointer; }
+        .theme-toggle { background:none; border:none; color:var(--light); padding:.5rem; cursor:pointer; opacity:0.8; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:4px; }
+        .theme-toggle:hover { opacity:1; background: rgba(255,255,255,0.1); }
+        
+        main { max-width: 1200px; margin: 0 auto; padding: 7rem 2rem 3rem; }
+        section { max-width: 900px; margin: 0 auto; }
+        .section-title { font-size: clamp(2rem, 5vw, 2.5rem); text-align:center; margin-bottom:2rem; color:var(--light); }
+        .section-title::after { content:''; display:block; width:100px; height:3px; background:var(--light); margin:1rem auto; }
+        a { color: var(--light); }
+        hr { border:0; border-top:1px solid var(--light); opacity:.2; margin:1.5rem 0; }
+        .back { margin-top:1.5rem; display:inline-block; border:1px solid var(--light); padding:.6rem 1rem; border-radius:4px; text-decoration:none; }
+        .back:hover { background: var(--light); color: var(--dark); }
+        
+        footer { background:#111; padding:2rem; text-align:center; border-top:2px solid var(--light); margin-top:3rem; }
+        body.light-mode footer { background:#eee; }
+        
+        @media (max-width: 768px) {
+            .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background: rgba(0,0,0,0.95); flex-direction:column; padding:1rem; border-top:1px solid var(--light); }
+            body.light-mode .nav-links { background: rgba(255,255,255,0.95); }
+            .nav-links.active { display:flex; }
+            .mobile-menu-toggle { display:block; }
+            main { padding:6rem 1rem 2rem; }
+        }
+    </style>
+</head>
+<body class="crt-enabled">
+    <nav>
+        <div class="nav-container">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#about">Über mich</a></li>
+                <li><a href="/index.html#projects">Projekte</a></li>
+                <li><a href="/index.html#contact">Kontakt</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">🌓</button>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <h2 class="section-title">Impressum</h2>
+            
+            <h3>Verantwortlich für den Inhalt:</h3>
+            <p>Daniel Widmer</p>
+            <hr>
+            
+            <h3>Adresse:</h3>
+            <p>Daniel Widmer<br>
+            8047 Zürich<br>
+            Schweiz</p>
+            <hr>
+            
+            <h3>Kontakt:</h3>
+            <p>🌐 www.dwidmer.dev</p>
+            <hr>
+            
+            <h3>Haftungsausschluss:</h3>
+            <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für externe Links. Für den Inhalt verlinkter Seiten sind ausschliesslich deren Betreiber verantwortlich.</p>
+            <hr>
+            
+            <h3>Urheberrecht:</h3>
+            <p>Alle Inhalte dieser Website sind urheberrechtlich geschützt. Jede Nutzung bedarf der ausdrücklichen Zustimmung des Urhebers.</p>
+            
+            <p><a class="back" href="/index.html" aria-label="Zurück zur Startseite">← Zurück zur Startseite</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
+    </footer>
+    <script>
+        function initMobileMenu() {
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+        }
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            body.classList.remove('light-mode');
+            themeToggle.textContent = '🌓';
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                const isLight = body.classList.contains('light-mode');
+                themeToggle.textContent = isLight ? '🌙' : '🌓';
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initThemeToggle();
+        });
+    </script>
+</body>
+</html>
+
+
+

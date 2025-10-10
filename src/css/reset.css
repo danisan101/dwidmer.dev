@@ -1,0 +1,74 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ffffff;
+    --dark: #000000;
+    --light: #ffffff;
+    --gray: #cccccc;
+    --transition-speed: 0.5s;
+}
+
+body.light-mode {
+    --primary: #000000;
+    --dark: #ffffff;
+    --light: #000000;
+    --gray: #333333;
+}
+
+html, body {
+    background: var(--dark);
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+    background: var(--dark);
+    color: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Force Space Mono everywhere */
+* {
+    font-family: 'Space Mono', monospace !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace !important;
+}
+
+@supports (height: 100dvh) {
+    body { min-height: 100dvh; }
+}
+
+/* Custom Retro Cursor */
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="2" height="2" fill="white"/><rect x="0" y="2" width="2" height="2" fill="white"/><rect x="0" y="4" width="2" height="2" fill="white"/></svg>'), auto;
+}
+
+body.light-mode {
+    cursor: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="2" height="2" fill="black"/><rect x="0" y="2" width="2" height="2" fill="black"/><rect x="0" y="4" width="2" height="2" fill="black"/></svg>'), auto;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--light);
+    border-radius: 4px;
+}
+
