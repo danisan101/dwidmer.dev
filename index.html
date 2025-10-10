@@ -71,7 +71,7 @@
     </div>
 
     <!-- Game Over Screen -->
-    <div class="game-over" id="gameOver" style="display: none;">
+    <div class="game-over" id="gameOver" style="display: none !important; visibility: hidden !important;">
         <h2>GAME OVER</h2>
         <p>Final Score: <span id="finalScore">0</span></p>
         <p>Lines Cleared: <span id="finalLines">0</span></p>
@@ -379,6 +379,24 @@
                 overlay.style.display = 'none';
             }
         }, 2500);
+        
+        // CRITICAL: Hide game elements immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            var gameOver = document.getElementById('gameOver');
+            var tetrisGame = document.getElementById('tetrisGame');
+            var snakeGame = document.getElementById('snakeGame');
+            
+            if (gameOver) {
+                gameOver.style.display = 'none';
+                gameOver.style.visibility = 'hidden';
+            }
+            if (tetrisGame) {
+                tetrisGame.style.display = 'none';
+            }
+            if (snakeGame) {
+                snakeGame.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
