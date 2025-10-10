@@ -476,5 +476,16 @@
     </div>
 
     <script type="module" src="/src/js/main.js"></script>
+    
+    <!-- Fallback: Hide loading screen after 2 seconds (guaranteed) -->
+    <script>
+        // This script runs immediately and guarantees the loading screen disappears
+        setTimeout(function() {
+            var overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.classList.add('hidden');
+            }
+        }, 2000);
+    </script>
 </body>
 </html>
