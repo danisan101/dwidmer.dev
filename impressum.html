@@ -60,10 +60,10 @@
                 <li><a href="/index.html#contact">Kontakt</a></li>
             </ul>
             <div class="nav-controls">
-                <button class="easter-egg-btn" data-game="snake" aria-label="Snake spielen">🐍</button>
-                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris spielen">🎮</button>
-                <button class="crt-toggle" id="crtToggle" aria-label="CRT-Effekt umschalten">📺 ON</button>
-                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">🌓</button>
+                <button class="easter-egg-btn" data-game="snake" aria-label="Snake spielen">SNAKE</button>
+                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris spielen">TETRIS</button>
+                <button class="crt-toggle" id="crtToggle" aria-label="CRT-Effekt umschalten">TV</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">DARK</button>
             </div>
         </div>
     </nav>
@@ -120,11 +120,11 @@
             const themeToggle = document.getElementById('themeToggle');
             const body = document.body;
             body.classList.remove('light-mode');
-            themeToggle.textContent = '🌓';
+            themeToggle.textContent = 'DARK';
             themeToggle.addEventListener('click', () => {
                 body.classList.toggle('light-mode');
                 const isLight = body.classList.contains('light-mode');
-                themeToggle.textContent = isLight ? '🌙' : '🌓';
+                themeToggle.textContent = isLight ? 'LIGHT' : 'DARK';
             });
         }
         document.addEventListener('DOMContentLoaded', function() {

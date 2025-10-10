@@ -7,7 +7,7 @@ export function initThemeToggle() {
     
     // Always start in dark mode
     body.classList.remove('light-mode');
-    themeToggle.textContent = '🌓';
+    themeToggle.textContent = 'DARK';
     themeToggle.setAttribute('aria-pressed', 'false');
 
     themeToggle.addEventListener('click', () => {
@@ -16,7 +16,7 @@ export function initThemeToggle() {
         
         body.classList.toggle('light-mode');
         const isLight = body.classList.contains('light-mode');
-        themeToggle.textContent = isLight ? '🌙' : '🌓';
+        themeToggle.textContent = isLight ? 'LIGHT' : 'DARK';
         themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
         
         // Optional: Add particle effect on toggle

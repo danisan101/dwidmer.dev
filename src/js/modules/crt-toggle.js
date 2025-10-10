@@ -10,15 +10,15 @@ export function initCRTToggle() {
     
     if (crtEnabled) {
         body.classList.add('crt-enabled');
-        crtToggle.textContent = '📺 ON';
+        crtToggle.textContent = 'TV';
     } else {
         body.classList.remove('crt-enabled');
-        crtToggle.textContent = '📺 OFF';
+        crtToggle.textContent = 'TV';
     }
 
     crtToggle.addEventListener('click', () => {
         const isEnabled = body.classList.toggle('crt-enabled');
-        crtToggle.textContent = isEnabled ? '📺 ON' : '📺 OFF';
+        crtToggle.textContent = 'TV';
         localStorage.setItem('crtEnabled', isEnabled);
     });
 }
