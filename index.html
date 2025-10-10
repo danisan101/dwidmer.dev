@@ -36,8 +36,20 @@
 
     <!-- Loading Animation -->
     <div class="loading-overlay" id="loadingOverlay">
-        <div class="terminal-loader">
+        <div class="terminal-loader" id="terminalLoader">
             > Lade Portfolio<span class="cursor">_</span>
+        </div>
+    </div>
+
+    <!-- Boot Sequence (only first visit) -->
+    <div class="boot-sequence" id="bootSequence" style="display:none;">
+        <div class="boot-content">
+            <div class="boot-line" id="bootLine1">SYSTEM BOOT v2.0</div>
+            <div class="boot-line" id="bootLine2">Loading modules...</div>
+            <div class="boot-line" id="bootLine3">[OK] UI/UX Toolkit initialized</div>
+            <div class="boot-line" id="bootLine4">[OK] Creative Engine loaded</div>
+            <div class="boot-line" id="bootLine5">[OK] Portfolio ready</div>
+            <div class="boot-line" id="bootLine6">Welcome to dwidmer.dev<span class="cursor">_</span></div>
         </div>
     </div>
 

@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti';
 
 // Import all modules
 import { initLoadingScreen } from './modules/loading.js';
+import { initBootSequence } from './modules/boot-sequence.js';
 import { initTypingAnimation } from './modules/typing.js';
 import { initThemeToggle } from './modules/theme.js';
 import { initCRTToggle } from './modules/crt-toggle.js';
@@ -42,6 +43,9 @@ console.log(`
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', async function() {
     try {
+        // Check for first visit and show boot sequence
+        initBootSequence();
+        
         // Show loading screen and initialize typing
         await initLoadingScreen();
         initTypingAnimation();

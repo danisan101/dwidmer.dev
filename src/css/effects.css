@@ -98,4 +98,110 @@ body.crt-enabled::after {
     pointer-events: all;
 }
 
+/* Boot Sequence - First Visit Only */
+.boot-sequence {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    color: var(--light);
+}
+
+.boot-content {
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.boot-line {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: bootFadeIn 0.3s ease forwards;
+}
+
+#bootLine1 { animation-delay: 0s; font-weight: 700; }
+#bootLine2 { animation-delay: 0.4s; }
+#bootLine3 { animation-delay: 0.8s; }
+#bootLine4 { animation-delay: 1.2s; }
+#bootLine5 { animation-delay: 1.6s; }
+#bootLine6 { animation-delay: 2.2s; font-weight: 700; }
+
+@keyframes bootFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* VHS Glitch Effect - Subtle on hover */
+.glitch-hover {
+    position: relative;
+}
+
+.glitch-hover:hover {
+    animation: glitch 0.3s ease-in-out;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Apply glitch to important elements */
+.project-card:hover,
+.skill-item:hover,
+.btn:hover,
+.cta-button:hover,
+.submit-btn:hover,
+.tech-tag:hover,
+.interest-tag:hover {
+    animation: glitch 0.3s ease-in-out;
+}
+
+/* VHS color shift effect */
+.project-card:hover::before,
+.skill-item:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(255,0,0,0.03) 0%,
+        rgba(0,255,0,0.03) 50%,
+        rgba(0,0,255,0.03) 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.project-card:hover::before,
+.skill-item:hover::after {
+    opacity: 1;
+}
+
 
