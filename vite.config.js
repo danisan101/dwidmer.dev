@@ -7,7 +7,6 @@ export default defineConfig({
     assetsDir: 'assets',
     minify: 'esbuild',
     sourcemap: false,
-    cssCodeSplit: false, // Alle CSS in eine Datei
     rollupOptions: {
       output: {
         manualChunks: {

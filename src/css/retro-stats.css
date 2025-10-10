@@ -1,3 +1,34 @@
+/* Retro Stats Floating Panel */
+.retro-stats {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--light);
+    padding: 1rem;
+    z-index: 1000;
+    min-width: 300px;
+    max-width: 400px;
+    font-family: 'Space Mono', monospace;
+    backdrop-filter: blur(10px);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.retro-stats:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .retro-stats {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        min-width: auto;
+        max-width: none;
+    }
+}
+
 /* Retro Stats Section */
 .retro-stats-section {
     background: transparent;
