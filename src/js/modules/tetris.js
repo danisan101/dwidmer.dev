@@ -312,6 +312,10 @@ export function initTetrisGame() {
             startTetris();
         }
     });
+
+    // Make startTetris available globally for button clicks
+    window.startTetris = startTetris;
+    window.hideTetris = hideTetris;
 }
 
 

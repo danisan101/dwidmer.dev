@@ -118,14 +118,10 @@ function initEasterEggButtons() {
                 });
                 document.dispatchEvent(event);
             } else if (game === 'tetris') {
-                // Trigger tetris game
-                const event = new KeyboardEvent('keydown', {
-                    key: 't',
-                    shiftKey: true,
-                    altKey: true,
-                    ctrlKey: true
-                });
-                document.dispatchEvent(event);
+                // Directly start tetris game
+                if (window.startTetris) {
+                    window.startTetris();
+                }
             }
         });
     });
