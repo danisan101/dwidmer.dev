@@ -76,35 +76,6 @@
         </div>
     </div>
 
-    <!-- Session Stats -->
-    <div class="retro-stats" id="retroStats">
-        <div class="retro-stats-content">
-            <div class="retro-stats-title">⚡ SESSION STATS</div>
-            <div class="retro-stats-grid">
-                <div class="retro-stat-item">
-                    <span class="retro-stat-label">Zeit</span>
-                    <span class="retro-stat-value" id="stat-time">00:00</span>
-                </div>
-                <div class="retro-stat-item">
-                    <span class="retro-stat-label">Zeichen</span>
-                    <span class="retro-stat-value" id="stat-chars">0</span>
-                </div>
-                <div class="retro-stat-item">
-                    <span class="retro-stat-label">Maus</span>
-                    <span class="retro-stat-value" id="stat-mouse">0m</span>
-                </div>
-                <div class="retro-stat-item">
-                    <span class="retro-stat-label">Klicks</span>
-                    <span class="retro-stat-value" id="stat-clicks">0</span>
-                </div>
-                <div class="retro-stat-item">
-                    <span class="retro-stat-label">Scroll</span>
-                    <span class="retro-stat-value" id="stat-scroll">0px</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -113,11 +84,13 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Über mich</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projekte</a></li>
-                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
             <div class="nav-controls">
+                <button class="easter-egg-btn" data-game="snake" aria-label="Snake spielen">🐍</button>
+                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris spielen">🎮</button>
                 <button class="crt-toggle" id="crtToggle" aria-label="CRT-Effekt umschalten">📺 ON</button>
                 <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">🌓</button>
             </div>
@@ -129,31 +102,7 @@
         <section id="home" class="hero">
             <div class="hero-content fade-in">
                 <h1 id="typed-name"></h1>
-                <p id="heroTagline">Creative Developer & Digital Artist</p>
-                <a href="#contact" class="cta-button">Lass uns zusammenarbeiten</a>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="fade-in">
-            <h2 class="section-title">In Zahlen</h2>
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number" data-count="8">0</span>
-                    <span class="stat-label">Jahre Erfahrung</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="20">0</span>
-                    <span class="stat-label">Projekte</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="15">0</span>
-                    <span class="stat-label">Technologien</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="1000">0</span>
-                    <span class="stat-label">Kaffee ☕</span>
-                </div>
+                <p id="heroTagline">creative developer</p>
             </div>
         </section>
 
@@ -161,32 +110,21 @@
         <section id="about" class="fade-in">
             <h2 class="section-title">Über mich</h2>
             <div class="about-content">
+                <div class="about-text">
+                    <h3>Hallo, ich bin Daniel!</h3>
+                    <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer Vision. Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur funktional, sondern auch ästhetisch ansprechend sind.</p>
+                </div>
+                
                 <div class="profile-section">
                     <div class="about-gallery">
                         <img src="/assets/me1.png" alt="Daniel Widmer – Portrait" loading="lazy">
                     </div>
                 </div>
-                <div class="about-text">
-                    <h3>Hallo, ich bin Daniel!</h3>
-                    <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer Vision. Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur funktional, sondern auch ästhetisch ansprechend sind.</p>
-                    
-                    <!-- ASCII Art Animation -->
-                    <div class="ascii-animation">
-╔════════════════════════════════════════════╗
-║  <span class="ascii-spinner">◐</span> DANIEL.EXE WIRD AUSGEFÜHRT... <span class="ascii-spinner">◑</span>       ║
-║                                            ║
-║  MODULES:                                  ║
-║  [██████████░] UI/UX Toolkit        90%    ║
-║  [█████████░░] Creative Engine      85%    ║
-║  [███████████] Problem Solver       100%   ║
-║                                            ║
-║  STATUS: ONLINE • READY • LET'S BUILD      ║
-╚════════════════════════════════════════════╝
-                    </div>
 
+                <div class="about-text">
                     <!-- Career Timeline -->
                     <div class="timeline">
-                        <h4>🎯 Mein Werdegang</h4>
+                        <h4>Werdegang</h4>
                         <div class="timeline-item">
                             <div class="timeline-date">2017 - Heute</div>
                             <div class="timeline-title">Senior Business Analyst</div>
@@ -200,7 +138,7 @@
                     </div>
 
                     <!-- Interests -->
-                    <h4>🎮 Meine Interessen</h4>
+                    <h4>Interessen</h4>
                     <div class="interests">
                         <span class="interest-tag">Fussball</span>
                         <span class="interest-tag">Coding</span>
@@ -209,43 +147,46 @@
                         <span class="interest-tag">Sport</span>
                         <span class="interest-tag">Fotografie</span>
                     </div>
-
-                    <!-- Skills Grid with Progress Bars -->
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <h4>Frontend Development</h4>
-                            <p>JavaScript, HTML5, CSS3, Swift</p>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h4>Backend Development</h4>
-                            <p>Node.js, Python, PHP, SQL</p>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h4>Design & UX</h4>
-                            <p>Figma, Adobe Suite, UI/UX</p>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h4>Tools & Technologies</h4>
-                            <p>Git, AWS, Vite</p>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-progress="80"></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="cv-actions">
                 <a href="#download-cv" class="cv-download">📄 Lebenslauf downloaden</a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="fade-in">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h4>Frontend Development</h4>
+                    <p>JavaScript, HTML5, CSS3, Swift</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="90"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h4>Backend Development</h4>
+                    <p>Node.js, Python, PHP, SQL</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="85"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h4>Design & UX</h4>
+                    <p>Figma, Adobe Suite, UI/UX</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="90"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h4>Tools & Technologies</h4>
+                    <p>Git, AWS, Vite</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="80"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -291,112 +232,6 @@
             </div>
         </section>
 
-        <!-- Code Showcase Section -->
-        <section id="code-showcase" class="fade-in">
-            <h2 class="section-title">Code Showcase</h2>
-            <div class="code-showcase">
-                <div class="code-editor">
-                    <div class="code-editor-header">
-                        <div class="code-editor-dots">
-                            <span class="code-editor-dot red"></span>
-                            <span class="code-editor-dot yellow"></span>
-                            <span class="code-editor-dot green"></span>
-                        </div>
-                        <span class="code-editor-title">portfolio.js</span>
-                        <div class="code-editor-tabs">
-                            <button class="code-tab active">JavaScript</button>
-                        </div>
-                    </div>
-                    <div class="code-editor-body">
-                        <pre class="code-block"><code><span class="code-comment">// Beispiel: Modular Loading System</span>
-<span class="code-keyword">export</span> <span class="code-keyword">async</span> <span class="code-keyword">function</span> <span class="code-function">initLoadingScreen</span>() {
-  <span class="code-keyword">return</span> <span class="code-keyword">new</span> <span class="code-function">Promise</span>(<span class="code-variable">resolve</span> => {
-    <span class="code-function">setTimeout</span>(() => {
-      <span class="code-keyword">const</span> <span class="code-variable">overlay</span> = document.<span class="code-function">getElementById</span>(<span class="code-string">'loadingOverlay'</span>);
-      overlay?.classList.<span class="code-function">add</span>(<span class="code-string">'hidden'</span>);
-      <span class="code-function">resolve</span>();
-    }, <span class="code-number">2000</span>);
-  });
-}</code></pre>
-                        <div class="code-result">
-                            <div class="code-result-title">Output:</div>
-                            <p>✓ Loading complete with smooth animations</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Section -->
-        <section id="blog" class="fade-in">
-            <h2 class="section-title">Blog & Artikel</h2>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <!-- Placeholder for blog image -->
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>📅 Coming Soon</span>
-                            <span>⏱️ 5 min read</span>
-                        </div>
-                        <h3 class="blog-title">Modernes Portfolio mit Vite erstellen</h3>
-                        <p class="blog-excerpt">Wie du dein Portfolio mit modernem Build-Tooling aufsetzt und dabei Performance, SEO und User Experience optimierst.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Vite</span>
-                            <span class="blog-tag">Performance</span>
-                            <span class="blog-tag">Tutorial</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <!-- Placeholder -->
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>📅 Coming Soon</span>
-                            <span>⏱️ 7 min read</span>
-                        </div>
-                        <h3 class="blog-title">iOS App Entwicklung: Best Practices</h3>
-                        <p class="blog-excerpt">Meine Erfahrungen und Learnings aus der Entwicklung der Schälle Sau App – von der Konzeption bis zum Launch.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">iOS</span>
-                            <span class="blog-tag">Swift</span>
-                            <span class="blog-tag">Mobile</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="fade-in">
-            <h2 class="section-title">Was andere sagen</h2>
-            <div class="testimonials-container">
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Placeholder für Testimonial – Arbeite mit Daniel zusammen und erlebe seine kreativen Lösungen!"</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-info">
-                            <h4>Coming Soon</h4>
-                            <p>Position, Firma</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Placeholder – Deine Empfehlung könnte hier stehen!"</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-info">
-                            <h4>Dein Name?</h4>
-                            <p>Deine Position</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Contact Section -->
         <section id="contact" class="fade-in">
             <h2 class="section-title">Kontakt</h2>
@@ -431,6 +266,36 @@
                 </form>
             </div>
         </section>
+
+        <!-- Retro Stats Section -->
+        <section class="fade-in">
+            <h2 class="section-title">Retro Statistik</h2>
+            <div class="retro-stats-section">
+                <div class="retro-stats-title">SESSION STATS</div>
+                <div class="retro-stats-grid">
+                    <div class="retro-stat-item">
+                        <span class="retro-stat-label">Zeit</span>
+                        <span class="retro-stat-value" id="stat-time">00:00</span>
+                    </div>
+                    <div class="retro-stat-item">
+                        <span class="retro-stat-label">Zeichen</span>
+                        <span class="retro-stat-value" id="stat-chars">0</span>
+                    </div>
+                    <div class="retro-stat-item">
+                        <span class="retro-stat-label">Maus</span>
+                        <span class="retro-stat-value" id="stat-mouse">0m</span>
+                    </div>
+                    <div class="retro-stat-item">
+                        <span class="retro-stat-label">Klicks</span>
+                        <span class="retro-stat-value" id="stat-clicks">0</span>
+                    </div>
+                    <div class="retro-stat-item">
+                        <span class="retro-stat-label">Scroll</span>
+                        <span class="retro-stat-value" id="stat-scroll">0px</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -448,15 +313,14 @@
             </a>
         </div>
         <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
-        <p>🎮 Easter Eggs: Snake (Ctrl+Alt+Shift+G) | Tetris (Ctrl+Alt+Shift+T)</p>
-        <p><a href="/app-privacy.html" style="color:inherit;">Datenschutz (Schälle Sau)</a></p>
+        <p><a href="/impressum.html" style="color:inherit;">Impressum</a></p>
     </footer>
 
     <!-- Printable CV (hidden) -->
     <div id="cvPrintable" style="display:none;">
         <div style="font-family: 'Space Mono', monospace; color:#000; padding:20px; max-width:800px; margin:0 auto;">
             <h1 style="margin-bottom:0;">Daniel Widmer</h1>
-            <p style="margin-top:4px;">Creative Developer & Digital Artist</p>
+            <p style="margin-top:4px;">creative developer</p>
             <hr style="margin:16px 0;">
             <h2>Werdegang</h2>
             <ul style="list-style: none; padding: 0;">
@@ -471,7 +335,7 @@
                 <li>Git, AWS, Vite</li>
             </ul>
             <h2>Kontakt</h2>
-            <p>Web: www.dwidmer.dev • E-Mail: info@dwidmer.dev</p>
+            <p>Web: www.dwidmer.dev • E-Mail: widmer.daniel40@gmail.com</p>
         </div>
     </div>
 
@@ -485,7 +349,7 @@
             if (overlay) {
                 overlay.style.display = 'none';
             }
-        }, 2000);
+        }, 2500);
     </script>
 </body>
 </html>

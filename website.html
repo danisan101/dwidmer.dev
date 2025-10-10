@@ -24,9 +24,9 @@
         .nav-links a:hover { border-color: var(--light); box-shadow: 0 0 10px rgba(255,255,255,.5); }
         .nav-links a.active { border-color: var(--light); }
         .mobile-menu-toggle { display:none; background:none; border:1px solid var(--light); color:var(--light); font-size:1.5rem; padding:.5rem; cursor:pointer; }
-        .theme-toggle { background:none; border:1px solid var(--light); color:var(--light); padding:.5rem 1rem; cursor:pointer; font-family:'Space Mono', monospace; margin-left:1rem; }
-        body.light-mode .theme-toggle { border-color: var(--light); color: var(--light); }
-        .theme-toggle:hover { background: var(--light); color: var(--dark); }
+        .nav-controls { display:flex; gap:.5rem; align-items:center; }
+        .theme-toggle, .crt-toggle, .easter-egg-btn { background:transparent; border:1px solid var(--light); color:var(--light); padding:.4rem .7rem; cursor:pointer; font-family:'Space Mono', monospace; transition:all .2s ease; font-size:.65rem; opacity:.8; }
+        .theme-toggle:hover, .crt-toggle:hover, .easter-egg-btn:hover { opacity:1; background:var(--light); color:var(--dark); }
 
         /* Layout */
         main { max-width: 1200px; margin: 0 auto; padding: 7rem 2rem 3rem; }
@@ -59,14 +59,21 @@
 <body>
     <nav>
         <div class="nav-container">
+            <a href="/index.html" class="logo" style="display:none;">DW</a>
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="/index.html#home">Home</a></li>
                 <li><a href="/index.html#about">Über mich</a></li>
+                <li><a href="/index.html#skills">Skills</a></li>
                 <li><a href="/index.html#projects" class="active">Projekte</a></li>
                 <li><a href="/index.html#contact">Kontakt</a></li>
             </ul>
-            <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">🌓</button>
+            <div class="nav-controls">
+                <button class="easter-egg-btn" data-game="snake" aria-label="Snake spielen">🐍</button>
+                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris spielen">🎮</button>
+                <button class="crt-toggle" id="crtToggle" aria-label="CRT-Effekt umschalten">📺 ON</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">🌓</button>
+            </div>
         </div>
     </nav>
     <main>
@@ -88,7 +95,7 @@
             </a>
         </div>
         <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
-        <p><a href="/app-privacy.html" style="color:inherit;">Datenschutz (Schälle Sau)</a></p>
+        <p><a href="/impressum.html" style="color:inherit;">Impressum</a></p>
     </footer>
     <script>
         function initMobileMenu() {

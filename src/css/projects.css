@@ -37,6 +37,14 @@
     transition: transform 0.3s ease;
 }
 
+/* Special styling for Schälle Sau image to fit better */
+.project-card a[href="/app.html"] .project-image img {
+    object-fit: contain;
+    object-position: center;
+    padding: 1rem;
+    background: var(--dark);
+}
+
 .project-card:hover .project-image img {
     transform: scale(1.05);
 }
