@@ -1,5 +1,4 @@
 // Main JavaScript Entry Point
-import '../css/main.css';
 import confetti from 'canvas-confetti';
 
 // Import all modules

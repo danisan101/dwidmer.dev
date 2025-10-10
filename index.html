@@ -27,6 +27,273 @@
     <!-- Preconnect to external resources -->
     <meta name="preconnect" href="https://fonts.googleapis.com">
     <meta name="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap">
+    
+    <!-- Critical CSS for immediate display -->
+    <style>
+        :root {
+            --dark: #000000;
+            --light: #ffffff;
+            --gray: #888888;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        /* Hide game elements immediately */
+        .game-over, .tetris-game, .snake-game {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        
+        /* Basic layout */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--light);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 2rem;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 400;
+        }
+        
+        .nav-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .nav-controls button {
+            background: transparent;
+            border: 1px solid var(--light);
+            color: var(--light);
+            padding: 0.5rem 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        
+        /* Main content */
+        main {
+            margin-top: 80px;
+        }
+        
+        /* Hero section */
+        #hero {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        
+        #heroTitle {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+        
+        #heroTagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--gray);
+        }
+        
+        /* About section */
+        .about-content {
+            display: grid;
+            gap: 3rem;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .profile-section img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid var(--light);
+        }
+        
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            border: 2px solid var(--light);
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--light);
+            display: block;
+        }
+        
+        .project-card:hover {
+            border-color: var(--gray);
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 1px solid var(--light);
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1rem 0 0.5rem 0;
+        }
+        
+        /* Contact */
+        #contact {
+            text-align: center;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--light);
+            color: var(--light);
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: transparent;
+            border: 2px solid var(--light);
+            color: var(--light);
+            padding: 1rem 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        .submit-btn:hover {
+            background: var(--light);
+            color: var(--dark);
+        }
+        
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            font-family: 'Space Mono', monospace;
+            color: var(--light);
+        }
+        
+        .terminal-loader {
+            font-size: 1.5rem;
+        }
+        
+        .cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            #heroTitle {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body class="crt-enabled">
     <!-- Parallax Background -->
