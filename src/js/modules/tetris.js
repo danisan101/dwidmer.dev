@@ -2,7 +2,13 @@
 export function initTetrisGame() {
     const gameContainer = document.getElementById('tetrisGame');
     const canvas = document.getElementById('tetrisCanvas');
-    if (!canvas) return;
+    const gameOverScreen = document.getElementById('gameOver');
+    
+    if (!canvas || !gameContainer || !gameOverScreen) return;
+    
+    // Ensure both game container and game over screen are hidden on init
+    gameContainer.classList.remove('active');
+    gameOverScreen.classList.remove('active');
     
     const ctx = canvas.getContext('2d');
     const nextCanvas = document.getElementById('nextPieceCanvas');
@@ -10,7 +16,6 @@ export function initTetrisGame() {
     const scoreElement = document.getElementById('tetrisScore');
     const linesElement = document.getElementById('tetrisLines');
     const levelElement = document.getElementById('tetrisLevel');
-    const gameOverScreen = document.getElementById('gameOver');
     const highscoreElement = document.getElementById('tetrisHighscore');
     const finalHighscoreElement = document.getElementById('finalHighscore');
 
