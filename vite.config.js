@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/', // Für Custom Domain (dwidmer.dev)
+  base: './', // Relative Pfade für GitHub Pages
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
