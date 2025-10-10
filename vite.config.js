@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: './', // Relative Pfade für GitHub Pages
+  base: '/', // Für Custom Domain (dwidmer.dev)
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     minify: 'esbuild',
     sourcemap: false,
+    cssCodeSplit: false, // Alle CSS in eine Datei
     rollupOptions: {
       output: {
         manualChunks: {
