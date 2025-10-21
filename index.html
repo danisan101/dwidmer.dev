@@ -319,7 +319,12 @@
                 <div class="terminal-line">✓ Vite v5.4.20 ready in 150ms</div>
                 <div class="terminal-line">✓ Local: http://localhost:3002/</div>
                 <div class="terminal-line">✓ Loading portfolio assets...</div>
-                <div class="terminal-line">✓ Initializing games...</div>
+                <div class="terminal-line">✓ Compiling CSS modules...</div>
+                <div class="terminal-line">✓ Building JavaScript bundles...</div>
+                <div class="terminal-line">✓ Initializing Snake Game...</div>
+                <div class="terminal-line">✓ Initializing Tetris Game...</div>
+                <div class="terminal-line">✓ Loading animations...</div>
+                <div class="terminal-line">✓ Setting up navigation...</div>
                 <div class="terminal-line">✓ Portfolio ready!</div>
                 <div class="terminal-line">PS C:\Users\Daniel> <span class="cursor">_</span></div>
             </div>
@@ -668,28 +673,10 @@
             if (overlay) {
                 overlay.style.display = 'none';
             }
-        }, 2000);
+        }, 4000);
         
-        // CRITICAL: Hide game elements immediately (but allow them to be shown later)
-        document.addEventListener('DOMContentLoaded', function() {
-            var gameOver = document.getElementById('gameOver');
-            var tetrisGame = document.getElementById('tetrisGame');
-            var snakeGame = document.getElementById('snakeGame');
-            
-            if (gameOver) {
-                gameOver.style.display = 'none';
-                gameOver.style.visibility = 'hidden';
-            }
-            // Don't force hide games - let them be controlled by game logic
-            if (tetrisGame) {
-                tetrisGame.style.display = 'none';
-                tetrisGame.classList.remove('active');
-            }
-            if (snakeGame) {
-                snakeGame.style.display = 'none';
-                snakeGame.classList.remove('active');
-            }
-        });
+        // Games are controlled by their own JavaScript modules
+        // No need to force hide them here
     </script>
 </body>
 </html>

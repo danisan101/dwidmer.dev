@@ -239,9 +239,22 @@ export function initTetrisGame() {
         console.log('Game container:', gameContainer);
         
         if (gameContainer) {
+            // Force visibility with multiple methods
+            gameContainer.style.display = 'flex';
+            gameContainer.style.visibility = 'visible';
+            gameContainer.style.opacity = '1';
             gameContainer.classList.add('active');
-            gameContainer.style.display = 'flex'; // Force display
+            
+            // Ensure it's on top
+            gameContainer.style.zIndex = '10002';
+            
             console.log('✅ Tetris game container activated');
+            console.log('Container styles:', {
+                display: gameContainer.style.display,
+                visibility: gameContainer.style.visibility,
+                opacity: gameContainer.style.opacity,
+                zIndex: gameContainer.style.zIndex
+            });
         } else {
             console.error('❌ Game container not found!');
         }
