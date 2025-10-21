@@ -1,8 +1,15 @@
 // Snake Game Module
 export function initSnakeGame() {
+    console.log('🐍 Initializing Snake Game...');
     const gameContainer = document.getElementById('snakeGame');
     const canvas = document.getElementById('snakeCanvas');
-    if (!canvas) return;
+    
+    if (!canvas) {
+        console.error('❌ Snake canvas not found!');
+        return;
+    }
+    
+    console.log('✅ Snake canvas found, initializing...');
     
     const ctx = canvas.getContext('2d');
     const scoreElement = document.getElementById('snakeScore');
@@ -205,5 +212,8 @@ export function initSnakeGame() {
     // Make functions available globally for button clicks
     window.showSnakeGame = showSnakeGame;
     window.hideSnakeGame = hideSnakeGame;
+    
+    console.log('✅ Snake Game initialized successfully!');
+    console.log('🎮 Available functions:', { showSnakeGame, hideSnakeGame });
 }
 

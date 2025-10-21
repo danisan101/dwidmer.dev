@@ -1,10 +1,16 @@
 // Tetris Game Module
 export function initTetrisGame() {
+    console.log('🧩 Initializing Tetris Game...');
     const gameContainer = document.getElementById('tetrisGame');
     const canvas = document.getElementById('tetrisCanvas');
     const gameOverScreen = document.getElementById('gameOver');
     
-    if (!canvas || !gameContainer || !gameOverScreen) return;
+    if (!canvas || !gameContainer || !gameOverScreen) {
+        console.error('❌ Tetris elements not found!', { canvas: !!canvas, gameContainer: !!gameContainer, gameOverScreen: !!gameOverScreen });
+        return;
+    }
+    
+    console.log('✅ Tetris elements found, initializing...');
     
     // Ensure both game container and game over screen are hidden on init
     gameContainer.classList.remove('active');
@@ -370,6 +376,9 @@ export function initTetrisGame() {
     // Make startTetris available globally for button clicks
     window.startTetris = startTetris;
     window.hideTetris = hideTetris;
+    
+    console.log('✅ Tetris Game initialized successfully!');
+    console.log('🎮 Available functions:', { startTetris, hideTetris });
 }
 
 

@@ -106,29 +106,41 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 // Easter Egg Buttons in Header
 function initEasterEggButtons() {
+    console.log('🎮 Initializing Easter Egg Buttons...');
     const buttons = document.querySelectorAll('.easter-egg-btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const game = btn.getAttribute('data-game');
-            console.log('Button clicked:', game); // Debug log
+    console.log('Found buttons:', buttons.length);
+    
+    buttons.forEach((btn, index) => {
+        const game = btn.getAttribute('data-game');
+        console.log(`Button ${index}:`, game);
+        
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('🎯 Button clicked:', game);
             
             if (game === 'snake') {
-                // Directly start snake game
+                console.log('🐍 Starting Snake Game...');
                 if (window.showSnakeGame) {
                     window.showSnakeGame();
+                    console.log('✅ Snake Game started!');
                 } else {
-                    console.error('showSnakeGame not available');
+                    console.error('❌ showSnakeGame not available!');
+                    console.log('Available window functions:', Object.keys(window).filter(k => k.includes('snake') || k.includes('Snake')));
                 }
             } else if (game === 'tetris') {
-                // Directly start tetris game
+                console.log('🧩 Starting Tetris Game...');
                 if (window.startTetris) {
                     window.startTetris();
+                    console.log('✅ Tetris Game started!');
                 } else {
-                    console.error('startTetris not available');
+                    console.error('❌ startTetris not available!');
+                    console.log('Available window functions:', Object.keys(window).filter(k => k.includes('tetris') || k.includes('Tetris')));
                 }
             }
         });
     });
+    
+    console.log('✅ Easter Egg Buttons initialized!');
 }
 
 // Service Worker for PWA (optional)
