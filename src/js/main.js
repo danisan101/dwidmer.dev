@@ -110,19 +110,21 @@ function initEasterEggButtons() {
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
             const game = btn.getAttribute('data-game');
+            console.log('Button clicked:', game); // Debug log
+            
             if (game === 'snake') {
-                // Trigger snake game
-                const event = new KeyboardEvent('keydown', {
-                    key: 's',
-                    shiftKey: true,
-                    altKey: true,
-                    ctrlKey: true
-                });
-                document.dispatchEvent(event);
+                // Directly start snake game
+                if (window.showSnakeGame) {
+                    window.showSnakeGame();
+                } else {
+                    console.error('showSnakeGame not available');
+                }
             } else if (game === 'tetris') {
                 // Directly start tetris game
                 if (window.startTetris) {
                     window.startTetris();
+                } else {
+                    console.error('startTetris not available');
                 }
             }
         });

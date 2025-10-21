@@ -201,5 +201,9 @@ export function initSnakeGame() {
             }
         });
     }
+    
+    // Make functions available globally for button clicks
+    window.showSnakeGame = showSnakeGame;
+    window.hideSnakeGame = hideSnakeGame;
 }
 
