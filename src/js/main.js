@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         initCRTToggle();
         initSmoothScrolling();
         initActiveNavigation();
-        initEasterEggButtons();
         
         // Initialize visual effects
         initParallax();
@@ -71,6 +70,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         initTetrisGame();
         initContactForm();
         initCVDownload();
+        
+        // Initialize Easter Egg Buttons AFTER games are ready
+        initEasterEggButtons();
         
         // Initialize SEO, Analytics and Retro Stats
         initSEO();
