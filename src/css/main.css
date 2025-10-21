@@ -12,6 +12,7 @@
 @import './games.css';
 @import './retro-stats.css';
 @import './footer.css';
+@import './powershell.css';
 
 /* Mobile Responsive */
 @media (max-width: 768px) {

@@ -1,0 +1,80 @@
+/* PowerShell Loading Screen */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.powershell-terminal {
+    width: 80%;
+    max-width: 800px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    color: #fff;
+}
+
+.terminal-header {
+    background: #2d2d30;
+    padding: 8px 12px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal-buttons .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.terminal-buttons .close { background: #ff5f56; }
+.terminal-buttons .minimize { background: #ffbd2e; }
+.terminal-buttons .maximize { background: #27ca3f; }
+
+.terminal-title {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.terminal-body {
+    padding: 16px;
+    background: #1e1e1e;
+    min-height: 200px;
+}
+
+.terminal-line {
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.terminal-line .command {
+    color: #4fc1ff;
+}
+
+.terminal-line .cursor {
+    animation: blink 1s infinite;
+    color: #fff;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
