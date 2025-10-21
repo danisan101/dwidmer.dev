@@ -162,5 +162,44 @@ export function initSnakeGame() {
             }
         }
     });
+    
+    // Mobile touch controls for Snake
+    const snakeContainer = document.getElementById('snakeGame');
+    if (snakeContainer) {
+        let touchStartX = 0;
+        let touchStartY = 0;
+        
+        snakeContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+        
+        snakeContainer.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+            
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                // Horizontal swipe
+                if (deltaX > 30) {
+                    // Right swipe
+                    if (direction !== 'left') direction = 'right';
+                } else if (deltaX < -30) {
+                    // Left swipe
+                    if (direction !== 'right') direction = 'left';
+                }
+            } else {
+                // Vertical swipe
+                if (deltaY > 30) {
+                    // Down swipe
+                    if (direction !== 'up') direction = 'down';
+                } else if (deltaY < -30) {
+                    // Up swipe
+                    if (direction !== 'down') direction = 'up';
+                }
+            }
+        });
+    }
 }
 

@@ -1,5 +1,66 @@
 /* Games CSS - Tetris & Snake */
 
+/* Mobile Support for Games */
+@media (max-width: 768px) {
+    .tetris-game {
+        width: 90vw;
+        height: 80vh;
+        padding: 10px;
+        max-width: 400px;
+        max-height: 600px;
+    }
+    
+    .tetris-canvas {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        max-height: 500px;
+    }
+    
+    .snake-game {
+        width: 90vw;
+        height: 80vh;
+        padding: 10px;
+        max-width: 400px;
+        max-height: 400px;
+    }
+    
+    .snake-canvas {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        max-height: 300px;
+    }
+    
+    .tetris-controls,
+    .snake-controls {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    }
+    
+    .tetris-controls::after {
+        content: " | Mobile: Swipe to move, double-tap to drop";
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.6rem;
+        opacity: 0.8;
+    }
+    
+    .snake-controls::after {
+        content: " | Mobile: Swipe to change direction";
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.6rem;
+        opacity: 0.8;
+    }
+    
+    .game-over {
+        width: 90vw;
+        max-width: 400px;
+        padding: 20px;
+    }
+}
+
 /* --- Tetris Game (UI) --- */
 .tetris-game {
     position: fixed;

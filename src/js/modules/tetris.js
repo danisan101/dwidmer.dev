@@ -318,6 +318,55 @@ export function initTetrisGame() {
         }
     });
 
+    // Mobile touch controls
+    if (gameContainer) {
+        // Touch controls for mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+        
+        gameContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+        
+        gameContainer.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+            
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                // Horizontal swipe
+                if (deltaX > 30) {
+                    movePiece(currentPiece, 1, 0); // Right
+                } else if (deltaX < -30) {
+                    movePiece(currentPiece, -1, 0); // Left
+                }
+            } else {
+                // Vertical swipe
+                if (deltaY > 30) {
+                    // Down swipe - soft drop
+                    movePiece(currentPiece, 0, 1);
+                } else if (deltaY < -30) {
+                    // Up swipe - rotate
+                    rotatePiece(currentPiece);
+                }
+            }
+        });
+        
+        // Double tap for hard drop
+        let lastTap = 0;
+        gameContainer.addEventListener('touchend', (e) => {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 500 && tapLength > 0) {
+                // Double tap - hard drop
+                while (movePiece(currentPiece, 0, 1)) {}
+            }
+            lastTap = currentTime;
+        });
+    }
+
     // Make startTetris available globally for button clicks
     window.startTetris = startTetris;
     window.hideTetris = hideTetris;
