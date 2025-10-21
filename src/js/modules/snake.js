@@ -88,7 +88,17 @@ export function initSnakeGame() {
     }
 
     function showSnakeGame() {
-        gameContainer.classList.add('active');
+        console.log('🐍 showSnakeGame called');
+        console.log('Game container:', gameContainer);
+        
+        if (gameContainer) {
+            gameContainer.classList.add('active');
+            gameContainer.style.display = 'flex'; // Force display
+            console.log('✅ Snake game container activated');
+        } else {
+            console.error('❌ Game container not found!');
+        }
+        
         gameRunning = true;
         snake = [{x: 150, y: 150}];
         dx = 0;

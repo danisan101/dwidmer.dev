@@ -235,7 +235,17 @@ export function initTetrisGame() {
     }
 
     function startTetris() {
-        gameContainer.classList.add('active');
+        console.log('🧩 startTetris called');
+        console.log('Game container:', gameContainer);
+        
+        if (gameContainer) {
+            gameContainer.classList.add('active');
+            gameContainer.style.display = 'flex'; // Force display
+            console.log('✅ Tetris game container activated');
+        } else {
+            console.error('❌ Game container not found!');
+        }
+        
         gameRunning = true;
         score = 0;
         lines = 0;
