@@ -238,6 +238,15 @@ export function initTetrisGame() {
         console.log('🧩 startTetris called');
         console.log('Game container:', gameContainer);
         
+        // Hide Snake if it's running
+        const snakeGame = document.getElementById('snakeGame');
+        const snakeGameOver = document.getElementById('snakeGameOver');
+        if (snakeGame && snakeGame.classList.contains('active')) {
+            snakeGame.classList.remove('active');
+            if (snakeGameOver) snakeGameOver.classList.remove('active');
+            if (window.hideSnakeGame) window.hideSnakeGame();
+        }
+        
         if (gameContainer) {
             // Force visibility with multiple methods
             gameContainer.style.display = 'flex';
@@ -246,7 +255,7 @@ export function initTetrisGame() {
             gameContainer.classList.add('active');
             
             // Ensure it's on top
-            gameContainer.style.zIndex = '10002';
+            gameContainer.style.zIndex = '10000';
             
             console.log('✅ Tetris game container activated');
             console.log('Container styles:', {
@@ -285,9 +294,16 @@ export function initTetrisGame() {
     }
 
     function hideTetris() {
-        gameContainer.classList.remove('active');
-        gameOverScreen.classList.remove('active');
+        if (gameContainer) {
+            gameContainer.classList.remove('active');
+            gameContainer.style.display = 'none';
+        }
+        if (gameOverScreen) {
+            gameOverScreen.classList.remove('active');
+            gameOverScreen.style.display = 'none';
+        }
         gameRunning = false;
+        console.log('🧩 Tetris game hidden');
     }
 
     // Controls

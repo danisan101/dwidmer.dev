@@ -91,6 +91,15 @@ export function initSnakeGame() {
         console.log('🐍 showSnakeGame called');
         console.log('Game container:', gameContainer);
         
+        // Hide Tetris if it's running
+        const tetrisGame = document.getElementById('tetrisGame');
+        const tetrisGameOver = document.getElementById('gameOver');
+        if (tetrisGame && tetrisGame.classList.contains('active')) {
+            tetrisGame.classList.remove('active');
+            if (tetrisGameOver) tetrisGameOver.classList.remove('active');
+            if (window.hideTetris) window.hideTetris();
+        }
+        
         if (gameContainer) {
             // Force visibility with multiple methods
             gameContainer.style.display = 'flex';
@@ -99,7 +108,7 @@ export function initSnakeGame() {
             gameContainer.classList.add('active');
             
             // Ensure it's on top
-            gameContainer.style.zIndex = '10002';
+            gameContainer.style.zIndex = '10000';
             
             console.log('✅ Snake game container activated');
             console.log('Container styles:', {
@@ -125,10 +134,17 @@ export function initSnakeGame() {
     }
 
     function hideSnakeGame() {
-        gameContainer.classList.remove('active');
+        if (gameContainer) {
+            gameContainer.classList.remove('active');
+            gameContainer.style.display = 'none';
+        }
         const gameOverScreen = document.getElementById('snakeGameOver');
-        if (gameOverScreen) gameOverScreen.classList.remove('active');
+        if (gameOverScreen) {
+            gameOverScreen.classList.remove('active');
+            gameOverScreen.style.display = 'none';
+        }
         gameRunning = false;
+        console.log('🐍 Snake game hidden');
     }
     
     function showGameOver() {
@@ -205,6 +221,8 @@ export function initSnakeGame() {
         });
         
         snakeContainer.addEventListener('touchend', (e) => {
+            if (!gameRunning) return;
+            
             const touchEndX = e.changedTouches[0].clientX;
             const touchEndY = e.changedTouches[0].clientY;
             const deltaX = touchEndX - touchStartX;
@@ -214,19 +232,19 @@ export function initSnakeGame() {
                 // Horizontal swipe
                 if (deltaX > 30) {
                     // Right swipe
-                    if (direction !== 'left') direction = 'right';
+                    if (dy === 0) { dx = 10; dy = 0; }
                 } else if (deltaX < -30) {
                     // Left swipe
-                    if (direction !== 'right') direction = 'left';
+                    if (dy === 0) { dx = -10; dy = 0; }
                 }
             } else {
                 // Vertical swipe
                 if (deltaY > 30) {
                     // Down swipe
-                    if (direction !== 'up') direction = 'down';
+                    if (dx === 0) { dx = 0; dy = 10; }
                 } else if (deltaY < -30) {
                     // Up swipe
-                    if (direction !== 'down') direction = 'up';
+                    if (dx === 0) { dx = 0; dy = -10; }
                 }
             }
         });

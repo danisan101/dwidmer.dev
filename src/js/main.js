@@ -71,8 +71,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         initContactForm();
         initCVDownload();
         
-        // Initialize Easter Egg Buttons AFTER games are ready
-        initEasterEggButtons();
+        // Initialize Easter Egg Buttons AFTER games are ready (with delay)
+        setTimeout(() => {
+            initEasterEggButtons();
+        }, 100);
         
         // Initialize SEO, Analytics and Retro Stats
         initSEO();
@@ -82,19 +84,44 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Global ESC handler for games
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
+            
             const snake = document.getElementById('snakeGame');
-            const tetris = document.getElementById('tetrisGame');
-            const gameOver = document.getElementById('gameOver');
             const snakeGameOver = document.getElementById('snakeGameOver');
+            const tetris = document.getElementById('tetrisGame');
+            const tetrisGameOver = document.getElementById('gameOver');
+            
+            // Close Snake game
             if (snake && snake.classList.contains('active')) {
                 snake.classList.remove('active');
+                snake.style.display = 'none';
+                if (window.hideSnakeGame) window.hideSnakeGame();
+                console.log('🐍 Snake game closed via ESC');
+                return;
             }
+            
+            // Close Snake game over screen
             if (snakeGameOver && snakeGameOver.classList.contains('active')) {
                 snakeGameOver.classList.remove('active');
+                snakeGameOver.style.display = 'none';
+                console.log('🐍 Snake game over screen closed via ESC');
+                return;
             }
-            if (tetris && (tetris.classList.contains('active') || gameOver.classList.contains('active'))) {
+            
+            // Close Tetris game
+            if (tetris && tetris.classList.contains('active')) {
                 tetris.classList.remove('active');
-                gameOver.classList.remove('active');
+                tetris.style.display = 'none';
+                if (window.hideTetris) window.hideTetris();
+                console.log('🧩 Tetris game closed via ESC');
+                return;
+            }
+            
+            // Close Tetris game over screen
+            if (tetrisGameOver && tetrisGameOver.classList.contains('active')) {
+                tetrisGameOver.classList.remove('active');
+                tetrisGameOver.style.display = 'none';
+                console.log('🧩 Tetris game over screen closed via ESC');
+                return;
             }
         });
         
@@ -109,6 +136,10 @@ function initEasterEggButtons() {
     console.log('🎮 Initializing Easter Egg Buttons...');
     const buttons = document.querySelectorAll('.easter-egg-btn');
     console.log('Found buttons:', buttons.length);
+    
+    // Debug: Check if game functions are available
+    console.log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
+    console.log('🧩 startTetris available:', typeof window.startTetris);
     
     buttons.forEach((btn, index) => {
         const game = btn.getAttribute('data-game');
