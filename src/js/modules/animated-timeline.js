@@ -12,7 +12,7 @@ export function initAnimatedTimeline() {
             year: '2017',
             title: 'Senior Business Analyst',
             description: 'Requirement Engineering, Analysen und Coding',
-            icon: '💼',
+            icon: '',
             color: '#ffffff',
             details: [
                 'Analyse und Dokumentation von Geschäftsprozessen',
@@ -25,7 +25,7 @@ export function initAnimatedTimeline() {
             year: '2024',
             title: 'App Developer',
             description: 'Private Entwicklung iOS Applikationen',
-            icon: '📱',
+            icon: '',
             color: '#ffffff',
             details: [
                 'Entwicklung der "Schälle Sau" iOS App',
@@ -38,7 +38,7 @@ export function initAnimatedTimeline() {
             year: '2025',
             title: 'Creative Developer',
             description: 'Portfolio-Website und innovative Projekte',
-            icon: '🎨',
+            icon: '',
             color: '#ffffff',
             details: [
                 'Entwicklung dieser Portfolio-Website',

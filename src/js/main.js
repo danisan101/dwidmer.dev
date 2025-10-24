@@ -26,6 +26,7 @@ import { initAnimatedTimeline } from './modules/animated-timeline.js';
 import { initProjectHoverEffects } from './modules/project-hover.js';
 import { initGlitchEffects } from './modules/glitch-effects.js';
 import { initPWAFeatures } from './modules/pwa-features.js';
+import { initEnhancedSkills } from './modules/enhanced-skills.js';
 
 // Make confetti available globally for contact form
 window.confetti = confetti;
@@ -81,6 +82,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         initProjectHoverEffects();
         initGlitchEffects();
         initPWAFeatures();
+        initEnhancedSkills();
         
         // Initialize interactive features
         initSnakeGame();

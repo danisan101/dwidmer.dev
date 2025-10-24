@@ -1,0 +1,284 @@
+/* Terminal Style Components */
+.terminal-skills {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    margin: 2rem 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.terminal-header {
+    background: #333333;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #555555;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 6px;
+    margin-right: 12px;
+}
+
+.terminal-buttons .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.terminal-buttons .close {
+    background: #ff5f57;
+}
+
+.terminal-buttons .minimize {
+    background: #ffbd2e;
+}
+
+.terminal-buttons .maximize {
+    background: #28ca42;
+}
+
+.terminal-title {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.terminal-body {
+    padding: 16px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.terminal-line {
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+
+.terminal-line .command {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.terminal-line .cursor {
+    animation: cursor-blink 1s infinite;
+}
+
+/* Terminal Glitch Animation */
+@keyframes terminal-glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(1px, -1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(1px, 1px); }
+    100% { transform: translate(0); }
+}
+
+/* CV Download Terminal Style */
+.cv-download-terminal {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    margin: 2rem 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cv-download-terminal:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.cv-download-terminal .terminal-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.cv-download-terminal .download-command {
+    color: #00ff00;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.cv-download-terminal .download-description {
+    color: #cccccc;
+    font-size: 0.9rem;
+}
+
+/* Session Stats Terminal Style */
+.session-stats-terminal {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    margin: 2rem 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.session-stats-terminal .terminal-body {
+    padding: 20px;
+    color: #ffffff;
+}
+
+.session-stats-terminal .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.session-stats-terminal .stat-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.session-stats-terminal .stat-label {
+    color: #cccccc;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.session-stats-terminal .stat-value {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Game Terminal Windows */
+.game-terminal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    z-index: 10000;
+    display: none;
+    min-width: 500px;
+    max-width: 90vw;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.game-terminal.active {
+    display: block;
+}
+
+.game-terminal .terminal-header {
+    background: #333333;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #555555;
+}
+
+.game-terminal .terminal-title {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.game-terminal .close-btn {
+    background: #ff5f57;
+    color: #ffffff;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-terminal .terminal-body {
+    padding: 20px;
+    color: #ffffff;
+}
+
+.game-terminal .game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.game-terminal .score-info {
+    color: #00ff00;
+}
+
+.game-terminal .controls-info {
+    color: #cccccc;
+    text-align: right;
+}
+
+.game-terminal .game-canvas-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.game-terminal .game-canvas {
+    border: 1px solid #ffffff;
+    background: #000000;
+}
+
+.game-terminal .game-controls {
+    text-align: center;
+    color: #cccccc;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* Remove blue colors from projects */
+.project-card {
+    color: #ffffff !important;
+}
+
+.project-card h3 {
+    color: #ffffff !important;
+}
+
+.project-card p {
+    color: #cccccc !important;
+}
+
+.project-card .project-tech {
+    color: #ffffff !important;
+}
+
+/* Footer adjustments */
+.footer {
+    margin-top: 2rem;
+    padding: 2rem 0;
+}
+
+.footer .social-links a {
+    font-size: 1.5rem;
+    margin: 0 10px;
+}
+
+/* Theme-dependent images */
+.theme-light .profile-image,
+.theme-light .project-image {
+    filter: invert(1);
+}
+
+.theme-dark .profile-image,
+.theme-dark .project-image {
+    filter: invert(0);
+}

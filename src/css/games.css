@@ -64,20 +64,18 @@
 /* --- Tetris Game (UI) --- */
 .tetris-game {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.98);
-    border: none;
-    padding: 20px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
     z-index: 10000;
-    border-radius: 0;
-    overflow-y: auto;
+    display: none;
+    min-width: 500px;
+    max-width: 90vw;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 .tetris-game.active {
@@ -139,20 +137,18 @@
 /* --- Snake Game (UI) --- */
 .snake-game {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.98);
-    border: none;
-    padding: 20px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
     z-index: 10000;
-    border-radius: 0;
-    overflow-y: auto;
+    display: none;
+    min-width: 500px;
+    max-width: 90vw;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 .snake-game.active {
