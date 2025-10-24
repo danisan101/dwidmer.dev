@@ -10,6 +10,7 @@ import { initThemeToggle } from './modules/theme.js';
 import { initCRTToggle } from './modules/crt-toggle.js';
 import { initMobileMenu, initSmoothScrolling, initActiveNavigation } from './modules/navigation.js';
 import { initParallax } from './modules/parallax.js';
+import { initAdvancedParallax } from './modules/advanced-parallax.js';
 import { initScrollAnimations, initASCIIAnimations, initAnimatedStats, initSkillProgress } from './modules/animations.js';
 import { initLazyLoading } from './modules/lazy-loading.js';
 import { initLazyCSS } from './modules/lazy-css.js';
@@ -21,6 +22,11 @@ import { initSEO } from './modules/seo.js';
 import { initAnalytics } from './modules/analytics.js';
 import { initRetroStats } from './modules/retro-stats.js';
 import { initPerformanceMonitoring } from './modules/performance.js';
+import { initAIAssistant } from './modules/ai-assistant.js';
+import { initAnimatedTimeline } from './modules/animated-timeline.js';
+import { initProjectHoverEffects } from './modules/project-hover.js';
+import { initGlitchEffects } from './modules/glitch-effects.js';
+import { initPWAFeatures } from './modules/pwa-features.js';
 
 // Make confetti available globally for contact form
 window.confetti = confetti;
@@ -64,11 +70,19 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         // Initialize visual effects
         initParallax();
+        initAdvancedParallax();
         initScrollAnimations();
         initASCIIAnimations();
         initAnimatedStats();
         initSkillProgress();
         initLazyLoading();
+        
+        // Initialize cool features
+        initAIAssistant();
+        initAnimatedTimeline();
+        initProjectHoverEffects();
+        initGlitchEffects();
+        initPWAFeatures();
         
         // Initialize interactive features
         initSnakeGame();
