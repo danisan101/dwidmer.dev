@@ -123,7 +123,7 @@
     border-radius: 8px;
     font-family: 'Space Mono', monospace;
     z-index: 10000;
-    display: none;
+    display: none !important;
     min-width: 500px;
     max-width: 90vw;
     max-height: 90vh;
@@ -132,7 +132,8 @@
 }
 
 .game-terminal.active {
-    display: block;
+    display: flex !important;
+    flex-direction: column;
 }
 
 .game-terminal .terminal-header {
