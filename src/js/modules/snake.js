@@ -1,4 +1,115 @@
 // Snake Game Module
+let gameRunning = false;
+let snake = [{x: 150, y: 150}];
+let food = {x: 90, y: 90};
+let dx = 0;
+let dy = 0;
+let score = 0;
+let highscore = Number(localStorage.getItem('snakeHighscore') || 0);
+
+// Global functions
+function showSnakeGame() {
+    console.log('🐍 showSnakeGame called');
+    
+    // Create game container dynamically
+    const existingContainer = document.getElementById('snakeGame');
+    if (existingContainer) {
+        existingContainer.remove();
+    }
+    
+    const gameContainer = document.createElement('div');
+    gameContainer.className = 'game-terminal';
+    gameContainer.id = 'snakeGame';
+    gameContainer.style.display = 'none';
+    
+    gameContainer.innerHTML = `
+        <div class="terminal-header">
+            <div class="terminal-title">snake.exe</div>
+            <button class="close-btn" onclick="hideSnakeGame()">✕</button>
+        </div>
+        <div class="terminal-body">
+            <div class="game-info">
+                <div class="score-info">
+                    Score: <span id="snakeScore">0</span> | Highscore: <span id="snakeHighscore">0</span>
+                </div>
+                <div class="controls-info">
+                    Use WASD or Arrow Keys
+                </div>
+            </div>
+            <div class="game-canvas-container">
+                <canvas class="game-canvas" id="snakeCanvas" width="300" height="300"></canvas>
+            </div>
+            <div class="game-controls">
+                Use WASD or Arrow Keys | ESC to close
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(gameContainer);
+    
+    const canvas = document.getElementById('snakeCanvas');
+    const scoreElement = document.getElementById('snakeScore');
+    const highscoreElement = document.getElementById('snakeHighscore');
+    
+    console.log('Game container:', gameContainer);
+    
+    // Hide Tetris if it's running
+    const tetrisGame = document.getElementById('tetrisGame');
+    const tetrisGameOver = document.getElementById('gameOver');
+    if (tetrisGame && tetrisGame.classList.contains('active')) {
+        tetrisGame.classList.remove('active');
+        if (tetrisGameOver) tetrisGameOver.classList.remove('active');
+        if (window.hideTetris) window.hideTetris();
+    }
+    
+    if (gameContainer) {
+        // Force visibility with multiple methods
+        gameContainer.style.display = 'flex';
+        gameContainer.style.visibility = 'visible';
+        gameContainer.style.opacity = '1';
+        gameContainer.classList.add('active');
+        
+        // Ensure it's on top
+        gameContainer.style.zIndex = '10000';
+        
+        console.log('✅ Snake game container activated');
+        console.log('Container styles:', {
+            display: gameContainer.style.display,
+            visibility: gameContainer.style.visibility,
+            opacity: gameContainer.style.opacity,
+            zIndex: gameContainer.style.zIndex
+        });
+    } else {
+        console.error('❌ Game container not found!');
+    }
+    
+    gameRunning = true;
+    snake = [{x: 150, y: 150}];
+    dx = 0;
+    dy = 0;
+    score = 0;
+    scoreElement.textContent = score;
+    highscore = Number(localStorage.getItem('snakeHighscore') || 0);
+    highscoreElement.textContent = String(highscore);
+    generateFood();
+    gameLoop();
+}
+
+function hideSnakeGame() {
+    const gameContainer = document.getElementById('snakeGame');
+    if (gameContainer) {
+        gameContainer.classList.remove('active');
+        gameContainer.style.display = 'none';
+    }
+    const gameOverScreen = document.getElementById('snakeGameOver');
+    if (gameOverScreen) {
+        gameOverScreen.classList.remove('active');
+        gameOverScreen.style.display = 'none';
+    }
+    gameRunning = false;
+    console.log('🐍 Snake game hidden');
+}
+
 export function initSnakeGame() {
     console.log('🐍 Initializing Snake Game...');
     
@@ -303,5 +414,91 @@ export function initSnakeGame() {
     
     console.log('✅ Snake Game initialized successfully!');
     console.log('🎮 Available functions:', { showSnakeGame, hideSnakeGame });
+}
+
+// Game logic functions
+function drawSnake() {
+    const canvas = document.getElementById('snakeCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    snake.forEach(segment => {
+        ctx.fillRect(segment.x, segment.y, 10, 10);
+    });
+}
+
+function drawFood() {
+    const canvas = document.getElementById('snakeCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(food.x, food.y, 10, 10);
+}
+
+function moveSnake() {
+    const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+    snake.unshift(head);
+
+    if (head.x === food.x && head.y === food.y) {
+        score += 10;
+        const scoreElement = document.getElementById('snakeScore');
+        if (scoreElement) scoreElement.textContent = score;
+        generateFood();
+    } else {
+        snake.pop();
+    }
+}
+
+function generateFood() {
+    food = {
+        x: Math.floor(Math.random() * 30) * 10,
+        y: Math.floor(Math.random() * 30) * 10
+    };
+}
+
+function checkCollision() {
+    const head = snake[0];
+    if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300) {
+        return true;
+    }
+    return false;
+}
+
+function gameLoop() {
+    if (!gameRunning) return;
+
+    const canvas = document.getElementById('snakeCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    ctx.clearRect(0, 0, 300, 300);
+    moveSnake();
+    
+    if (checkCollision()) {
+        gameRunning = false;
+        if (score > highscore) {
+            highscore = score;
+            localStorage.setItem('snakeHighscore', String(highscore));
+        }
+        const highscoreElement = document.getElementById('snakeHighscore');
+        if (highscoreElement) highscoreElement.textContent = String(highscore);
+        showGameOver();
+        return;
+    }
+
+    drawSnake();
+    drawFood();
+    setTimeout(gameLoop, 150);
+}
+
+function showGameOver() {
+    const gameOverScreen = document.getElementById('snakeGameOver');
+    if (gameOverScreen) {
+        const finalScoreElement = document.getElementById('snakeFinalScore');
+        const finalHighscoreElement = document.getElementById('snakeFinalHighscore');
+        if (finalScoreElement) finalScoreElement.textContent = score;
+        if (finalHighscoreElement) finalHighscoreElement.textContent = highscore;
+        gameOverScreen.classList.add('active');
+    }
 }
 
