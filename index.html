@@ -207,11 +207,6 @@
             color: var(--light);
         }
         
-        .profile-section img {
-            max-width: 100%;
-            height: auto;
-            border: 2px solid var(--light);
-        }
         
         /* Projects */
         .projects-grid {
@@ -385,19 +380,30 @@
     </div>
 
     <!-- Tetris Game -->
-    <div class="tetris-game" id="tetrisGame" style="display: none;">
-        <div class="tetris-header">
-            <div>
-                <div>Score: <span id="tetrisScore">0</span></div>
-                <div>Highscore: <span id="tetrisHighscore">0</span></div>
-                <div>Lines: <span id="tetrisLines">0</span></div>
-                <div>Level: <span id="tetrisLevel">1</span></div>
-            </div>
-            <canvas class="next-piece" id="nextPieceCanvas" width="80" height="80"></canvas>
+    <div class="game-terminal" id="tetrisGame" style="display: none;">
+        <div class="terminal-header">
+            <div class="terminal-title">tetris.exe</div>
+            <button class="close-btn" onclick="hideTetris()">✕</button>
         </div>
-        <canvas class="tetris-canvas" id="tetrisCanvas" width="300" height="600"></canvas>
-        <div class="tetris-controls">
-            A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop | ESC: Close
+        <div class="terminal-body">
+            <div class="game-info">
+                <div class="score-info">
+                    Score: <span id="tetrisScore">0</span> | 
+                    Highscore: <span id="tetrisHighscore">0</span> | 
+                    Lines: <span id="tetrisLines">0</span> | 
+                    Level: <span id="tetrisLevel">1</span>
+                </div>
+                <div class="controls-info">
+                    Next Piece:
+                </div>
+            </div>
+            <div class="game-canvas-container">
+                <canvas class="next-piece" id="nextPieceCanvas" width="80" height="80"></canvas>
+                <canvas class="game-canvas" id="tetrisCanvas" width="300" height="600"></canvas>
+            </div>
+            <div class="game-controls">
+                A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop | ESC: Close
+            </div>
         </div>
     </div>
 
@@ -419,11 +425,26 @@
     </div>
 
     <!-- Snake Game -->
-    <div class="snake-game" id="snakeGame" style="display: none;">
-        <div class="snake-score">Score: <span id="snakeScore">0</span> | Highscore: <span id="snakeHighscore">0</span></div>
-        <canvas class="snake-canvas" id="snakeCanvas" width="300" height="300"></canvas>
-        <div class="snake-controls">
-            Use WASD or Arrow Keys | ESC to close
+    <div class="game-terminal" id="snakeGame" style="display: none;">
+        <div class="terminal-header">
+            <div class="terminal-title">snake.exe</div>
+            <button class="close-btn" onclick="hideSnakeGame()">✕</button>
+        </div>
+        <div class="terminal-body">
+            <div class="game-info">
+                <div class="score-info">
+                    Score: <span id="snakeScore">0</span> | Highscore: <span id="snakeHighscore">0</span>
+                </div>
+                <div class="controls-info">
+                    Use WASD or Arrow Keys
+                </div>
+            </div>
+            <div class="game-canvas-container">
+                <canvas class="game-canvas" id="snakeCanvas" width="300" height="300"></canvas>
+            </div>
+            <div class="game-controls">
+                Use WASD or Arrow Keys | ESC to close
+            </div>
         </div>
     </div>
 
@@ -494,42 +515,25 @@
                     </div>
 
                     <!-- Skills -->
-                    <h4 class="subsection-title">Skills</h4>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <h5>Frontend Development</h5>
-                            <p>JavaScript, HTML5, CSS3, Swift</p>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h5>Backend Development</h5>
-                            <p>Node.js, Python, PHP, SQL</p>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h5>Design & UX</h5>
-                            <p>Figma, Adobe Suite, UI/UX</p>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h5>Tools & Technologies</h5>
-                            <p>Git, AWS, Vite</p>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-progress="80"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="skills-section"></div>
                 </div>
             </div>
 
             <div class="cv-actions">
-                <a href="#download-cv" class="cv-download">📄 Lebenslauf downloaden</a>
+                <div class="cv-download-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn close"></span>
+                            <span class="btn minimize"></span>
+                            <span class="btn maximize"></span>
+                        </div>
+                        <div class="terminal-title">cv-download.exe</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="download-command">PS C:\Users\Daniel\CV> Get-CV</div>
+                        <div class="download-description">Lebenslauf herunterladen</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -617,30 +621,43 @@
 
         <!-- Session Stats Section -->
         <section class="fade-in session-stats-section">
-            <h3 class="session-stats-header">Session Stats</h3>
-            <div class="retro-stats-section">
-                <div class="retro-stats-title">LIVE DATA</div>
-                <div class="retro-stats-grid">
-                    <div class="retro-stat-item">
-                        <span class="retro-stat-label">Zeit</span>
-                        <span class="retro-stat-value" id="stat-time">00:00</span>
+            <div class="session-stats-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn close"></span>
+                        <span class="btn minimize"></span>
+                        <span class="btn maximize"></span>
                     </div>
-                    <div class="retro-stat-item">
-                        <span class="retro-stat-label">Zeichen</span>
-                        <span class="retro-stat-value" id="stat-chars">0</span>
+                    <div class="terminal-title">session-stats.exe</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">PS C:\Users\Daniel\Session> Get-SessionStats</div>
+                    <div class="terminal-line"></div>
+                    <div class="terminal-line">[LIVE SESSION DATA]</div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Zeit auf Website</div>
+                            <div class="stat-value" id="stat-time">00:00</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Zeichen gelesen</div>
+                            <div class="stat-value" id="stat-chars">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Maus-Bewegung</div>
+                            <div class="stat-value" id="stat-mouse">0m</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Klicks</div>
+                            <div class="stat-value" id="stat-clicks">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Scroll-Distanz</div>
+                            <div class="stat-value" id="stat-scroll">0px</div>
+                        </div>
                     </div>
-                    <div class="retro-stat-item">
-                        <span class="retro-stat-label">Maus</span>
-                        <span class="retro-stat-value" id="stat-mouse">0m</span>
-                    </div>
-                    <div class="retro-stat-item">
-                        <span class="retro-stat-label">Klicks</span>
-                        <span class="retro-stat-value" id="stat-clicks">0</span>
-                    </div>
-                    <div class="retro-stat-item">
-                        <span class="retro-stat-label">Scroll</span>
-                        <span class="retro-stat-value" id="stat-scroll">0px</span>
-                    </div>
+                    <div class="terminal-line"></div>
+                    <div class="terminal-line">PS C:\Users\Daniel\Session> <span class="cursor">_</span></div>
                 </div>
             </div>
         </section>

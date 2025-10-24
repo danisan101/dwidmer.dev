@@ -61,7 +61,7 @@
 }
 
 .terminal-line .command {
-    color: #00ff00;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .cv-download-terminal .download-command {
-    color: #00ff00;
+    color: #ffffff;
     font-size: 1.1rem;
     margin-bottom: 10px;
 }
@@ -218,7 +218,7 @@
 }
 
 .game-terminal .score-info {
-    color: #00ff00;
+    color: #ffffff;
 }
 
 .game-terminal .controls-info {
