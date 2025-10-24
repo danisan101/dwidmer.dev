@@ -110,6 +110,63 @@ function hideSnakeGame() {
     console.log('🐍 Snake game hidden');
 }
 
+// Make functions available globally
+window.showSnakeGame = showSnakeGame;
+window.hideSnakeGame = hideSnakeGame;
+
+// Controls
+document.addEventListener('keydown', (e) => {
+    if (!gameRunning) return;
+    
+    switch(e.key) {
+        case 'ArrowUp':
+        case 'w':
+            e.preventDefault();
+            if (dy === 0) { dx = 0; dy = -10; }
+            break;
+        case 'ArrowDown':
+        case 's':
+            e.preventDefault();
+            if (dy === 0) { dx = 0; dy = 10; }
+            break;
+        case 'ArrowLeft':
+        case 'a':
+            e.preventDefault();
+            if (dx === 0) { dx = -10; dy = 0; }
+            break;
+        case 'ArrowRight':
+        case 'd':
+            e.preventDefault();
+            if (dx === 0) { dx = 10; dy = 0; }
+            break;
+        case 'Escape':
+            hideSnakeGame();
+            break;
+    }
+});
+
+// Easter Egg: Ctrl+Alt+Shift+S
+document.addEventListener('keydown', (e) => {
+    if (e.shiftKey && e.altKey && e.ctrlKey && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        showSnakeGame();
+    }
+});
+
+// Handle game over screen restart
+document.addEventListener('keydown', (e) => {
+    const gameOverScreen = document.getElementById('snakeGameOver');
+    if (gameOverScreen && gameOverScreen.classList.contains('active')) {
+        if (e.key === ' ') {
+            e.preventDefault();
+            gameOverScreen.classList.remove('active');
+            showSnakeGame();
+        } else if (e.key === 'Escape') {
+            hideSnakeGame();
+        }
+    }
+});
+
 export function initSnakeGame() {
     console.log('🐍 Initializing Snake Game...');
     
@@ -314,104 +371,6 @@ export function initSnakeGame() {
         }
     }
 
-    // Controls
-    document.addEventListener('keydown', (e) => {
-        if (!gameRunning) return;
-        
-        switch(e.key) {
-            case 'ArrowUp':
-            case 'w':
-                e.preventDefault();
-                if (dy === 0) { dx = 0; dy = -10; }
-                break;
-            case 'ArrowDown':
-            case 's':
-                e.preventDefault();
-                if (dy === 0) { dx = 0; dy = 10; }
-                break;
-            case 'ArrowLeft':
-            case 'a':
-                e.preventDefault();
-                if (dx === 0) { dx = -10; dy = 0; }
-                break;
-            case 'ArrowRight':
-            case 'd':
-                e.preventDefault();
-                if (dx === 0) { dx = 10; dy = 0; }
-                break;
-            case 'Escape':
-                hideSnakeGame();
-                break;
-        }
-    });
-
-    // Easter Egg: Ctrl+Alt+Shift+S
-    document.addEventListener('keydown', (e) => {
-        if (e.shiftKey && e.altKey && e.ctrlKey && e.key.toLowerCase() === 's') {
-            e.preventDefault();
-            showSnakeGame();
-        }
-    });
-    
-    // Handle game over screen restart
-    document.addEventListener('keydown', (e) => {
-        const gameOverScreen = document.getElementById('snakeGameOver');
-        if (gameOverScreen && gameOverScreen.classList.contains('active')) {
-            if (e.key === ' ') {
-                e.preventDefault();
-                gameOverScreen.classList.remove('active');
-                showSnakeGame();
-            } else if (e.key === 'Escape') {
-                hideSnakeGame();
-            }
-        }
-    });
-    
-    // Mobile touch controls for Snake
-    const snakeContainer = document.getElementById('snakeGame');
-    if (snakeContainer) {
-        let touchStartX = 0;
-        let touchStartY = 0;
-        
-        snakeContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        });
-        
-        snakeContainer.addEventListener('touchend', (e) => {
-            if (!gameRunning) return;
-            
-            const touchEndX = e.changedTouches[0].clientX;
-            const touchEndY = e.changedTouches[0].clientY;
-            const deltaX = touchEndX - touchStartX;
-            const deltaY = touchEndY - touchStartY;
-            
-            if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                // Horizontal swipe
-                if (deltaX > 30) {
-                    // Right swipe
-                    if (dy === 0) { dx = 10; dy = 0; }
-                } else if (deltaX < -30) {
-                    // Left swipe
-                    if (dy === 0) { dx = -10; dy = 0; }
-                }
-            } else {
-                // Vertical swipe
-                if (deltaY > 30) {
-                    // Down swipe
-                    if (dx === 0) { dx = 0; dy = 10; }
-                } else if (deltaY < -30) {
-                    // Up swipe
-                    if (dx === 0) { dx = 0; dy = -10; }
-                }
-            }
-        });
-    }
-    
-    // Make functions available globally for button clicks
-    window.showSnakeGame = showSnakeGame;
-    window.hideSnakeGame = hideSnakeGame;
-    
     console.log('✅ Snake Game initialized successfully!');
     console.log('🎮 Available functions:', { showSnakeGame, hideSnakeGame });
 }
