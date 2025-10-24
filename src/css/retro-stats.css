@@ -29,11 +29,97 @@
     }
 }
 
-/* Session Stats Section - Smaller and subtle */
-.session-stats-section {
-    padding: 2rem 1rem !important;
-    max-width: 700px;
-    margin: 0 auto;
+/* Session Stats Terminal */
+.session-stats-terminal {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    color: #fff;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.session-stats-terminal .terminal-header {
+    background: #2d2d30;
+    padding: 8px 12px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.session-stats-terminal .terminal-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.session-stats-terminal .terminal-buttons .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.session-stats-terminal .terminal-buttons .close { background: #ff5f56; }
+.session-stats-terminal .terminal-buttons .minimize { background: #ffbd2e; }
+.session-stats-terminal .terminal-buttons .maximize { background: #27ca3f; }
+
+.session-stats-terminal .terminal-title {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.session-stats-terminal .terminal-body {
+    padding: 16px;
+    background: #1e1e1e;
+    min-height: 200px;
+}
+
+.session-stats-terminal .terminal-line {
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.session-stats-terminal .terminal-line .command {
+    color: #4fc1ff;
+}
+
+.session-stats-terminal .terminal-line .cursor {
+    animation: blink 1s infinite;
+    color: #fff;
+}
+
+.session-stats-terminal .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.session-stats-terminal .stat-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.session-stats-terminal .stat-label {
+    font-size: 0.7rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.session-stats-terminal .stat-value {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    font-family: 'Space Mono', monospace;
 }
 
 .session-stats-header {

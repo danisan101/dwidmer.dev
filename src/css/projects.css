@@ -1,4 +1,4 @@
-/* Projects Section */
+/* Projects Section - Monochrome Style */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -11,12 +11,14 @@
     border-radius: 5px;
     overflow: hidden;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
     border-color: var(--light);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    animation: monochromeGlitch 0.5s ease-in-out;
 }
 
 .project-image {
@@ -35,6 +37,7 @@
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
+    filter: grayscale(100%) contrast(1.2);
 }
 
 /* Special styling for Schälle Sau image to fit better */
@@ -43,10 +46,12 @@
     object-position: center;
     padding: 1rem;
     background: var(--dark);
+    filter: grayscale(100%) contrast(1.2);
 }
 
 .project-card:hover .project-image img {
     transform: scale(1.05);
+    filter: grayscale(100%) contrast(1.5) brightness(1.1);
 }
 
 .project-card a {
@@ -63,6 +68,11 @@
     font-family: 'Orbitron', sans-serif;
     color: var(--light);
     margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-title {
+    animation: textGlitch 0.3s ease-in-out;
 }
 
 .project-tech {
@@ -85,6 +95,50 @@
 .tech-tag:hover {
     background: var(--light);
     color: var(--dark);
+    animation: tagGlitch 0.2s ease-in-out;
+}
+
+/* Monochrome Glitch Effects */
+@keyframes monochromeGlitch {
+    0% { 
+        transform: translateY(-10px) translateX(0);
+        filter: brightness(1);
+    }
+    10% { 
+        transform: translateY(-10px) translateX(-2px);
+        filter: brightness(1.2);
+    }
+    20% { 
+        transform: translateY(-10px) translateX(2px);
+        filter: brightness(0.8);
+    }
+    30% { 
+        transform: translateY(-10px) translateX(-1px);
+        filter: brightness(1.1);
+    }
+    40% { 
+        transform: translateY(-10px) translateX(1px);
+        filter: brightness(0.9);
+    }
+    100% { 
+        transform: translateY(-10px) translateX(0);
+        filter: brightness(1);
+    }
+}
+
+@keyframes textGlitch {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-1px); }
+    40% { transform: translateX(1px); }
+    60% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes tagGlitch {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 @media (max-width: 768px) {

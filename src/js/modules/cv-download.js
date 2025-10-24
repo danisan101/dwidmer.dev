@@ -1,14 +1,46 @@
-// CV Download Module - Fixed with proper PDF generation
+// CV Download Module with Glitch Effects
 export function initCVDownload() {
-    const downloadLink = document.querySelector('.cv-download');
-    if (!downloadLink) return;
+    const downloadTerminal = document.querySelector('.cv-download-terminal');
+    if (!downloadTerminal) return;
 
-    downloadLink.addEventListener('click', async function(e) {
+    downloadTerminal.addEventListener('click', async function(e) {
         e.preventDefault();
         
-        // Simplified: Just use print dialog
-        printCV();
+        // Add glitch effect
+        addGlitchEffect(downloadTerminal);
+        
+        // Wait for glitch effect to complete
+        setTimeout(() => {
+            printCV();
+        }, 1000);
     });
+}
+
+// Glitch effect for CV download button
+function addGlitchEffect(element) {
+    element.classList.add('glitch-active');
+    
+    // Add random glitch text variations
+    const originalText = element.querySelector('.download-command').textContent;
+    const glitchTexts = [
+        'PS C:\\Users\\Daniel\\CV> Get-CV --corrupted',
+        'PS C:\\Users\\Daniel\\CV> Get-CV --error',
+        'PS C:\\Users\\Daniel\\CV> Get-CV --glitch',
+        'PS C:\\Users\\Daniel\\CV> Get-CV --download',
+        'PS C:\\Users\\Daniel\\CV> Get-CV --success'
+    ];
+    
+    let glitchCount = 0;
+    const glitchInterval = setInterval(() => {
+        if (glitchCount < 5) {
+            element.querySelector('.download-command').textContent = glitchTexts[glitchCount];
+            glitchCount++;
+        } else {
+            clearInterval(glitchInterval);
+            element.querySelector('.download-command').textContent = originalText;
+            element.classList.remove('glitch-active');
+        }
+    }, 150);
 }
 
 // Simple print function - no hanging

@@ -179,12 +179,163 @@
     transform: translateY(-3px);
 }
 
-/* Skills Grid */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+/* Terminal Boxes */
+.terminal-interests,
+.terminal-skills {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    color: #fff;
+    margin: 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.terminal-interests .terminal-header,
+.terminal-skills .terminal-header {
+    background: #2d2d30;
+    padding: 8px 12px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.terminal-interests .terminal-buttons,
+.terminal-skills .terminal-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal-interests .terminal-buttons .btn,
+.terminal-skills .terminal-buttons .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.terminal-interests .terminal-buttons .close,
+.terminal-skills .terminal-buttons .close { background: #ff5f56; }
+.terminal-interests .terminal-buttons .minimize,
+.terminal-skills .terminal-buttons .minimize { background: #ffbd2e; }
+.terminal-interests .terminal-buttons .maximize,
+.terminal-skills .terminal-buttons .maximize { background: #27ca3f; }
+
+.terminal-interests .terminal-title,
+.terminal-skills .terminal-title {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.terminal-interests .terminal-body,
+.terminal-skills .terminal-body {
+    padding: 16px;
+    background: #1e1e1e;
+    min-height: 150px;
+}
+
+.terminal-interests .terminal-line,
+.terminal-skills .terminal-line {
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.terminal-interests .terminal-line .command,
+.terminal-skills .terminal-line .command {
+    color: #4fc1ff;
+}
+
+.terminal-interests .terminal-line .cursor,
+.terminal-skills .terminal-line .cursor {
+    animation: blink 1s infinite;
+    color: #fff;
+}
+
+/* CV Download Terminal */
+.cv-download-terminal {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    color: #fff;
+    margin: 2rem auto;
+    max-width: 400px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cv-download-terminal:hover {
+    border-color: #4fc1ff;
+    box-shadow: 0 0 30px rgba(79, 193, 255, 0.3);
+}
+
+.cv-download-terminal .terminal-header {
+    background: #2d2d30;
+    padding: 8px 12px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cv-download-terminal .terminal-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.cv-download-terminal .terminal-buttons .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cv-download-terminal .terminal-buttons .close { background: #ff5f56; }
+.cv-download-terminal .terminal-buttons .minimize { background: #ffbd2e; }
+.cv-download-terminal .terminal-buttons .maximize { background: #27ca3f; }
+
+.cv-download-terminal .terminal-title {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.cv-download-terminal .terminal-body {
+    padding: 16px;
+    background: #1e1e1e;
+    text-align: center;
+}
+
+.cv-download-terminal .download-command {
+    color: #4fc1ff;
+    margin-bottom: 8px;
+}
+
+.cv-download-terminal .download-description {
+    color: #ccc;
+    font-size: 12px;
+}
+
+/* Glitch Effect */
+.cv-download-terminal.glitch-active {
+    animation: glitch 0.3s ease-in-out;
+    border-color: #ff0040;
+    box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
 }
 
 .skill-item {
