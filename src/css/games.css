@@ -114,21 +114,21 @@
 
 /* --- Game Terminal (UI) - Popup with Mobile Support --- */
 .game-terminal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.98);
-    border: 2px solid #ffffff;
-    border-radius: 8px;
-    font-family: 'Space Mono', monospace;
-    z-index: 10000;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: rgba(0, 0, 0, 0.98) !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 8px !important;
+    font-family: 'Space Mono', monospace !important;
+    z-index: 99999 !important;
     display: none !important;
-    min-width: 500px;
-    max-width: 90vw;
-    max-height: 90vh;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-    overflow: hidden;
+    min-width: 500px !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
+    overflow: hidden !important;
 }
 
 .game-terminal.active {
