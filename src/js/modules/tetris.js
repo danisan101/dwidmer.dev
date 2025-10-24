@@ -1,7 +1,51 @@
 // Tetris Game Module
 export function initTetrisGame() {
     console.log('🧩 Initializing Tetris Game...');
-    const gameContainer = document.getElementById('tetrisGame');
+    
+    // Create game container dynamically
+    function createTetrisGameContainer() {
+        const existingContainer = document.getElementById('tetrisGame');
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+        
+        const gameContainer = document.createElement('div');
+        gameContainer.className = 'game-terminal';
+        gameContainer.id = 'tetrisGame';
+        gameContainer.style.display = 'none';
+        
+        gameContainer.innerHTML = `
+            <div class="terminal-header">
+                <div class="terminal-title">tetris.exe</div>
+                <button class="close-btn" onclick="hideTetris()">✕</button>
+            </div>
+            <div class="terminal-body">
+                <div class="game-info">
+                    <div class="score-info">
+                        Score: <span id="tetrisScore">0</span> | 
+                        Highscore: <span id="tetrisHighscore">0</span> | 
+                        Lines: <span id="tetrisLines">0</span> | 
+                        Level: <span id="tetrisLevel">1</span>
+                    </div>
+                    <div class="controls-info">
+                        Next Piece:
+                    </div>
+                </div>
+                <div class="game-canvas-container">
+                    <canvas class="next-piece" id="nextPieceCanvas" width="80" height="80"></canvas>
+                    <canvas class="game-canvas" id="tetrisCanvas" width="300" height="600"></canvas>
+                </div>
+                <div class="game-controls">
+                    A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop | ESC: Close
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(gameContainer);
+        return gameContainer;
+    }
+    
+    const gameContainer = createTetrisGameContainer();
     const canvas = document.getElementById('tetrisCanvas');
     const gameOverScreen = document.getElementById('gameOver');
     
@@ -236,6 +280,17 @@ export function initTetrisGame() {
 
     function startTetris() {
         console.log('🧩 startTetris called');
+        
+        // Recreate container to ensure it's fresh
+        const gameContainer = createTetrisGameContainer();
+        const canvas = document.getElementById('tetrisCanvas');
+        const nextCanvas = document.getElementById('nextPieceCanvas');
+        const scoreElement = document.getElementById('tetrisScore');
+        const linesElement = document.getElementById('tetrisLines');
+        const levelElement = document.getElementById('tetrisLevel');
+        const highscoreElement = document.getElementById('tetrisHighscore');
+        const gameOverScreen = document.getElementById('gameOver');
+        
         console.log('Game container:', gameContainer);
         
         // Hide Snake if it's running

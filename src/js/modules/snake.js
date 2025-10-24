@@ -1,7 +1,47 @@
 // Snake Game Module
 export function initSnakeGame() {
     console.log('🐍 Initializing Snake Game...');
-    const gameContainer = document.getElementById('snakeGame');
+    
+    // Create game container dynamically
+    function createSnakeGameContainer() {
+        const existingContainer = document.getElementById('snakeGame');
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+        
+        const gameContainer = document.createElement('div');
+        gameContainer.className = 'game-terminal';
+        gameContainer.id = 'snakeGame';
+        gameContainer.style.display = 'none';
+        
+        gameContainer.innerHTML = `
+            <div class="terminal-header">
+                <div class="terminal-title">snake.exe</div>
+                <button class="close-btn" onclick="hideSnakeGame()">✕</button>
+            </div>
+            <div class="terminal-body">
+                <div class="game-info">
+                    <div class="score-info">
+                        Score: <span id="snakeScore">0</span> | Highscore: <span id="snakeHighscore">0</span>
+                    </div>
+                    <div class="controls-info">
+                        Use WASD or Arrow Keys
+                    </div>
+                </div>
+                <div class="game-canvas-container">
+                    <canvas class="game-canvas" id="snakeCanvas" width="300" height="300"></canvas>
+                </div>
+                <div class="game-controls">
+                    Use WASD or Arrow Keys | ESC to close
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(gameContainer);
+        return gameContainer;
+    }
+    
+    const gameContainer = createSnakeGameContainer();
     const canvas = document.getElementById('snakeCanvas');
     
     if (!canvas) {
@@ -89,6 +129,13 @@ export function initSnakeGame() {
 
     function showSnakeGame() {
         console.log('🐍 showSnakeGame called');
+        
+        // Recreate container to ensure it's fresh
+        const gameContainer = createSnakeGameContainer();
+        const canvas = document.getElementById('snakeCanvas');
+        const scoreElement = document.getElementById('snakeScore');
+        const highscoreElement = document.getElementById('snakeHighscore');
+        
         console.log('Game container:', gameContainer);
         
         // Hide Tetris if it's running

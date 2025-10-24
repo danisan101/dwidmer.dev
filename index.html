@@ -368,57 +368,6 @@
     </div>
 
 
-    <!-- Tetris Game Popup -->
-    <div class="game-terminal" id="tetrisGame" style="display: none;">
-        <div class="terminal-header">
-            <div class="terminal-title">tetris.exe</div>
-            <button class="close-btn" onclick="hideTetris()">✕</button>
-        </div>
-        <div class="terminal-body">
-            <div class="game-info">
-                <div class="score-info">
-                    Score: <span id="tetrisScore">0</span> | 
-                    Highscore: <span id="tetrisHighscore">0</span> | 
-                    Lines: <span id="tetrisLines">0</span> | 
-                    Level: <span id="tetrisLevel">1</span>
-                </div>
-                <div class="controls-info">
-                    Next Piece:
-                </div>
-            </div>
-            <div class="game-canvas-container">
-                <canvas class="next-piece" id="nextPieceCanvas" width="80" height="80"></canvas>
-                <canvas class="game-canvas" id="tetrisCanvas" width="300" height="600"></canvas>
-            </div>
-            <div class="game-controls">
-                A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop | ESC: Close
-            </div>
-        </div>
-    </div>
-
-    <!-- Snake Game Popup -->
-    <div class="game-terminal" id="snakeGame" style="display: none;">
-        <div class="terminal-header">
-            <div class="terminal-title">snake.exe</div>
-            <button class="close-btn" onclick="hideSnakeGame()">✕</button>
-        </div>
-        <div class="terminal-body">
-            <div class="game-info">
-                <div class="score-info">
-                    Score: <span id="snakeScore">0</span> | Highscore: <span id="snakeHighscore">0</span>
-                </div>
-                <div class="controls-info">
-                    Use WASD or Arrow Keys
-                </div>
-            </div>
-            <div class="game-canvas-container">
-                <canvas class="game-canvas" id="snakeCanvas" width="300" height="300"></canvas>
-            </div>
-            <div class="game-controls">
-                Use WASD or Arrow Keys | ESC to close
-            </div>
-        </div>
-    </div>
 
     <!-- Tetris Game Over Screen -->
     <div class="game-over" id="gameOver" style="display: none;">
