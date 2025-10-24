@@ -2,7 +2,7 @@
 
 /* Mobile Support for Games */
 @media (max-width: 768px) {
-    .tetris-game {
+    .game-terminal {
         width: 90vw;
         height: 80vh;
         padding: 10px;
@@ -10,59 +10,20 @@
         max-height: 600px;
     }
     
-    .tetris-canvas {
+    .game-terminal .game-canvas {
         width: 100%;
         height: auto;
         max-width: 300px;
         max-height: 500px;
     }
     
-    .snake-game {
-        width: 90vw;
-        height: 80vh;
-        padding: 10px;
-        max-width: 400px;
-        max-height: 400px;
-    }
-    
-    .snake-canvas {
-        width: 100%;
-        height: auto;
-        max-width: 300px;
-        max-height: 300px;
-    }
-    
-    .tetris-controls,
-    .snake-controls {
-        font-size: 0.7rem;
-        padding: 0.5rem;
-    }
-    
-    .tetris-controls::after {
-        content: " | Mobile: Swipe to move, double-tap to drop";
-        display: block;
-        margin-top: 0.5rem;
-        font-size: 0.6rem;
-        opacity: 0.8;
-    }
-    
-    .snake-controls::after {
-        content: " | Mobile: Swipe to change direction";
-        display: block;
-        margin-top: 0.5rem;
-        font-size: 0.6rem;
-        opacity: 0.8;
-    }
-    
-    .game-over {
-        width: 90vw;
-        max-width: 400px;
+    .game-terminal .terminal-body {
         padding: 20px;
     }
 }
 
-/* --- Tetris Game (UI) --- */
-.tetris-game {
+/* --- Game Terminal (UI) --- */
+.game-terminal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -78,53 +39,90 @@
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-.tetris-game.active {
+.game-terminal.active {
+    display: block;
+}
+
+.game-terminal .terminal-header {
+    background: #333333;
+    padding: 8px 12px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #555555;
 }
 
-.tetris-header {
+.game-terminal .terminal-title {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.game-terminal .close-btn {
+    background: #ff5f57;
+    color: #ffffff;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
     display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    color: var(--light);
-    font-family: 'Space Mono', monospace;
-    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-terminal .terminal-body {
+    padding: 20px;
+    color: #ffffff;
+}
+
+.game-terminal .game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.game-terminal .score-info {
+    color: #ffffff;
+}
+
+.game-terminal .controls-info {
+    color: #cccccc;
+    text-align: right;
+}
+
+.game-terminal .game-canvas-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.game-terminal .game-canvas {
+    border: 1px solid #ffffff;
+    background: #000000;
+}
+
+.game-terminal .game-controls {
     text-align: center;
+    color: #cccccc;
+    font-size: 0.8rem;
+    line-height: 1.4;
 }
 
-.tetris-canvas {
-    border: 2px solid var(--light);
-    background: #000;
-    margin-bottom: 1rem;
-}
-
-.tetris-controls {
-    margin-top: 1rem;
-    text-align: center;
-    color: var(--light);
-    font-size: 1rem;
-    font-family: 'Space Mono', monospace;
-    max-width: 600px;
-    line-height: 1.5;
-}
-
-.next-piece {
-    border: 2px solid var(--light);
-    background: #000;
-    margin-left: 1rem;
-}
-
-/* Tetris Game Over Screen */
+/* Game Over Screens */
 .game-over {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.95);
-    border: 2px solid var(--light);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
     padding: 2rem;
     text-align: center;
-    color: var(--light);
+    color: #ffffff;
     font-family: 'Space Mono', monospace;
     z-index: 10001;
     display: none;
@@ -134,62 +132,17 @@
     display: block;
 }
 
-/* --- Snake Game (UI) --- */
-.snake-game {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.98);
-    border: 2px solid #ffffff;
-    border-radius: 8px;
-    font-family: 'Space Mono', monospace;
-    z-index: 10000;
-    display: none;
-    min-width: 500px;
-    max-width: 90vw;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-}
-
-.snake-game.active {
-    display: flex;
-}
-
-.snake-canvas {
-    border: 2px solid var(--light);
-    background: #000;
-    margin-bottom: 1rem;
-}
-
-.snake-score {
-    color: var(--light);
-    margin-bottom: 1rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 1.2rem;
-    text-align: center;
-}
-
-.snake-controls {
-    margin-top: 1rem;
-    text-align: center;
-    color: var(--light);
-    font-size: 1rem;
-    font-family: 'Space Mono', monospace;
-    max-width: 600px;
-    line-height: 1.5;
-}
-
-/* Snake Game Over Screen */
 .snake-game-over {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.95);
-    border: 2px solid var(--light);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
     padding: 2rem;
     text-align: center;
-    color: var(--light);
+    color: #ffffff;
     font-family: 'Space Mono', monospace;
     z-index: 10001;
     display: none;
@@ -201,31 +154,11 @@
 
 /* Mobile Responsive for Games */
 @media (max-width: 768px) {
-    .tetris-game,
-    .snake-game {
+    .game-terminal,
+    .game-over,
+    .snake-game-over {
         width: 90%;
         max-width: 350px;
         padding: 15px;
     }
-    
-    .tetris-canvas {
-        width: 250px;
-        height: 500px;
-    }
-    
-    .snake-canvas {
-        width: 250px;
-        height: 250px;
-    }
-    
-    .tetris-header {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .next-piece {
-        margin-left: 0;
-        margin-top: 0.5rem;
-    }
 }
-
