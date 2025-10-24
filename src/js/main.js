@@ -1,5 +1,5 @@
 // Main JavaScript Entry Point
-import '../css/main.css';
+import '../css/critical.css';
 import confetti from 'canvas-confetti';
 
 // Import all modules
@@ -12,6 +12,7 @@ import { initMobileMenu, initSmoothScrolling, initActiveNavigation } from './mod
 import { initParallax } from './modules/parallax.js';
 import { initScrollAnimations, initASCIIAnimations, initAnimatedStats, initSkillProgress } from './modules/animations.js';
 import { initLazyLoading } from './modules/lazy-loading.js';
+import { initLazyCSS } from './modules/lazy-css.js';
 import { initContactForm } from './modules/contact.js';
 import { initCVDownload } from './modules/cv-download.js';
 import { initSnakeGame } from './modules/snake.js';
@@ -19,6 +20,7 @@ import { initTetrisGame } from './modules/tetris.js';
 import { initSEO } from './modules/seo.js';
 import { initAnalytics } from './modules/analytics.js';
 import { initRetroStats } from './modules/retro-stats.js';
+import { initPerformanceMonitoring } from './modules/performance.js';
 
 // Make confetti available globally for contact form
 window.confetti = confetti;
@@ -57,6 +59,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         initSmoothScrolling();
         initActiveNavigation();
         
+        // Initialize lazy loading
+        initLazyCSS();
+        
         // Initialize visual effects
         initParallax();
         initScrollAnimations();
@@ -76,10 +81,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             initEasterEggButtons();
         }, 100);
         
-        // Initialize SEO, Analytics and Retro Stats
+        // Initialize SEO, Analytics, Performance and Retro Stats
         initSEO();
         initAnalytics();
         initRetroStats();
+        initPerformanceMonitoring();
         
         // Global ESC handler for games
         document.addEventListener('keydown', (e) => {

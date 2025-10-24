@@ -1,0 +1,9 @@
+/* Non-critical CSS - Below the fold content */
+@import './components.css';
+@import './about.css';
+@import './projects.css';
+@import './contact.css';
+@import './games.css';
+@import './retro-stats.css';
+@import './footer.css';
+@import './powershell.css';

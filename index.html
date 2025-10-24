@@ -6,9 +6,13 @@
     <meta name="theme-color" content="#000000">
     <title>Daniel Widmer - Portfolio | Creative Developer & Digital Artist</title>
     <!-- Force deployment trigger - v3 - MANUAL TRIGGER -->
-    <meta name="description" content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development.">
+    <meta name="description" content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development. Spezialisiert auf JavaScript, Swift, React und innovative digitale Lösungen.">
+    <meta name="keywords" content="Daniel Widmer, Creative Developer, Frontend Development, JavaScript, Swift, iOS Development, UI/UX Design, Portfolio, Business Analyst, App Developer, React, Vite, Web Development">
+    <meta name="author" content="Daniel Widmer">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dwidmer.dev/">
     <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.ico">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
@@ -24,6 +28,41 @@
     <meta name="twitter:title" content="Daniel Widmer - Portfolio">
     <meta name="twitter:description" content="Creative Developer & Digital Artist.">
     <meta name="twitter:image" content="https://dwidmer.dev/assets/me1.png">
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniel Widmer",
+        "jobTitle": "Creative Developer & Digital Artist",
+        "description": "Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development",
+        "url": "https://dwidmer.dev",
+        "image": "https://dwidmer.dev/assets/me1.png",
+        "sameAs": [
+            "https://github.com/danisan101",
+            "https://www.linkedin.com/in/daniel-widmer-26426a173"
+        ],
+        "knowsAbout": [
+            "Frontend Development",
+            "JavaScript",
+            "Swift",
+            "iOS Development",
+            "UI/UX Design",
+            "React",
+            "Vite",
+            "Web Development"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Freelance"
+        },
+        "alumniOf": {
+            "@type": "Organization",
+            "name": "Business Analyst"
+        }
+    }
+    </script>
     
     <!-- Preconnect to external resources -->
     <meta name="preconnect" href="https://fonts.googleapis.com">
@@ -296,6 +335,9 @@
     </style>
 </head>
 <body class="crt-enabled">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    
     <!-- Parallax Background -->
     <div class="parallax-container">
         <div class="parallax-layer parallax-dots"></div>
@@ -386,37 +428,37 @@
     </div>
 
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Hauptnavigation">
         <div class="nav-container">
-            <a href="#home" class="logo">DW</a>
+            <a href="#home" class="logo" aria-label="Daniel Widmer - Zurück zur Startseite">DW</a>
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Über mich</a></li>
-                <li><a href="#projects">Projekte</a></li>
-                <li><a href="#contact">Kontakt</a></li>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="#home" role="menuitem" aria-current="page">Home</a></li>
+                <li role="none"><a href="#about" role="menuitem">Über mich</a></li>
+                <li role="none"><a href="#projects" role="menuitem">Projekte</a></li>
+                <li role="none"><a href="#contact" role="menuitem">Kontakt</a></li>
             </ul>
-            <div class="nav-controls">
-                <button class="easter-egg-btn" data-game="snake" aria-label="Snake spielen">SNAKE</button>
-                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris spielen">TETRIS</button>
-                <button class="crt-toggle" id="crtToggle" aria-label="CRT-Effekt umschalten">TV</button>
-                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">DARK</button>
+            <div class="nav-controls" role="group" aria-label="Spiel- und Theme-Kontrollen">
+                <button class="easter-egg-btn" data-game="snake" aria-label="Snake-Spiel starten" title="Snake-Spiel mit WASD oder Pfeiltasten steuern">SNAKE</button>
+                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris-Spiel starten" title="Tetris-Spiel mit WASD oder Pfeiltasten steuern">TETRIS</button>
+                <button class="crt-toggle" id="crtToggle" aria-label="CRT-Effekt umschalten" title="Retro-TV-Effekt ein- oder ausschalten">TV</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme zwischen Hell und Dunkel umschalten" title="Zwischen hellem und dunklem Theme wechseln">DARK</button>
             </div>
         </div>
     </nav>
 
-    <main>
+    <main role="main" id="main-content">
         <!-- Hero Section -->
-        <section id="home" class="hero">
+        <section id="home" class="hero" aria-labelledby="heroTitle">
             <div class="hero-content fade-in">
-                <h1 id="typed-name"></h1>
+                <h1 id="heroTitle" tabindex="-1">Daniel Widmer</h1>
                 <p id="heroTagline">creative developer</p>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="fade-in">
-            <h2 class="section-title">Über mich</h2>
+        <section id="about" class="fade-in" aria-labelledby="aboutTitle">
+            <h2 id="aboutTitle" class="section-title">Über mich</h2>
             <div class="about-content">
                 <div class="about-text">
                     <h3>Hallo, ich bin Daniel!</h3>
@@ -425,7 +467,7 @@
                 
                 <div class="profile-section">
                     <div class="about-gallery">
-                        <img src="/assets/me1.png" alt="Daniel Widmer – Portrait" loading="lazy">
+                        <img src="/assets/me1.png" alt="Daniel Widmer – Portrait-Foto" loading="lazy" width="300" height="300">
                     </div>
                 </div>
 
@@ -539,36 +581,41 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="fade-in">
-            <h2 class="section-title">Kontakt</h2>
+        <section id="contact" class="fade-in" aria-labelledby="contactTitle">
+            <h2 id="contactTitle" class="section-title">Kontakt</h2>
             <div class="contact-form">
-                <form id="contactForm">
+                <form id="contactForm" aria-label="Kontaktformular">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required aria-describedby="name-help" aria-required="true">
+                        <div id="name-help" class="sr-only">Bitte geben Sie Ihren vollständigen Namen ein</div>
                     </div>
                     <div class="form-group">
-                        <label for="email">E-Mail</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">E-Mail *</label>
+                        <input type="email" id="email" name="email" required aria-describedby="email-help" aria-required="true">
+                        <div id="email-help" class="sr-only">Bitte geben Sie eine gültige E-Mail-Adresse ein</div>
                     </div>
                     <div class="form-group">
-                        <label for="subject">Betreff</label>
-                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Betreff *</label>
+                        <input type="text" id="subject" name="subject" required aria-describedby="subject-help" aria-required="true">
+                        <div id="subject-help" class="sr-only">Bitte geben Sie einen Betreff für Ihre Nachricht ein</div>
                     </div>
                     <div class="form-group">
-                        <label for="message">Nachricht</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Nachricht *</label>
+                        <textarea id="message" name="message" required aria-describedby="message-help" aria-required="true" rows="6"></textarea>
+                        <div id="message-help" class="sr-only">Bitte beschreiben Sie Ihr Anliegen oder Ihre Frage</div>
                     </div>
                     
                     <!-- Spam Protection -->
-                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
                     <input type="hidden" name="_subject" value="Neue Nachricht von dwidmer.dev">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_captcha" value="true">
                     <input type="hidden" name="_next" value="https://dwidmer.dev/#contact">
                     
-                    <button type="submit" class="submit-btn">Nachricht senden</button>
-                    <div class="form-message"></div>
+                    <button type="submit" class="submit-btn" aria-describedby="submit-help">Nachricht senden</button>
+                    <div id="submit-help" class="sr-only">Klicken Sie hier, um Ihre Nachricht zu senden</div>
+                    <div class="form-message" role="status" aria-live="polite"></div>
                 </form>
             </div>
         </section>
