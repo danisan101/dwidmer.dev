@@ -23,10 +23,14 @@
 }
 
 .hero-content p {
+    font-family: 'Space Mono', monospace;
     font-size: clamp(1rem, 3vw, 1.2rem);
-    color: var(--light);
+    font-weight: 400;
+    color: #ffffff;
     margin-bottom: 2rem;
     max-width: 600px;
+    text-transform: lowercase;
+    letter-spacing: 3px;
 }
 
 
