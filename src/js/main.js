@@ -90,10 +90,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         initContactForm();
         initCVDownload();
         
+        // Make game functions globally available
+        window.initSnakeGame = initSnakeGame;
+        window.initTetrisGame = initTetrisGame;
+        
         // Initialize Easter Egg Buttons AFTER games are ready (with delay)
         setTimeout(() => {
             initEasterEggButtons();
-        }, 100);
+        }, 200);
         
         // Initialize SEO, Analytics, Performance and Retro Stats
         initSEO();
@@ -161,6 +165,13 @@ function initEasterEggButtons() {
     console.log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
     console.log('🧩 startTetris available:', typeof window.startTetris);
     
+    // Force re-check after a short delay
+    setTimeout(() => {
+        console.log('🔄 Re-checking game functions...');
+        console.log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
+        console.log('🧩 startTetris available:', typeof window.startTetris);
+    }, 500);
+    
     buttons.forEach((btn, index) => {
         const game = btn.getAttribute('data-game');
         console.log(`Button ${index}:`, game);
@@ -177,6 +188,11 @@ function initEasterEggButtons() {
                 } else {
                     console.error('❌ showSnakeGame not available!');
                     console.log('Available window functions:', Object.keys(window).filter(k => k.includes('snake') || k.includes('Snake')));
+                    // Try to re-initialize Snake
+                    console.log('🔄 Attempting to re-initialize Snake...');
+                    if (window.initSnakeGame) {
+                        window.initSnakeGame();
+                    }
                 }
             } else if (game === 'tetris') {
                 console.log('🧩 Starting Tetris Game...');
@@ -186,6 +202,11 @@ function initEasterEggButtons() {
                 } else {
                     console.error('❌ startTetris not available!');
                     console.log('Available window functions:', Object.keys(window).filter(k => k.includes('tetris') || k.includes('Tetris')));
+                    // Try to re-initialize Tetris
+                    console.log('🔄 Attempting to re-initialize Tetris...');
+                    if (window.initTetrisGame) {
+                        window.initTetrisGame();
+                    }
                 }
             }
         });
