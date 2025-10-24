@@ -1,10 +1,13 @@
 /* Footer */
 footer {
-    background: #111;
-    padding: 2rem;
+    background: #000000;
+    padding: 1rem 2rem;
     text-align: center;
-    border-top: 2px solid var(--light);
-    transition: background var(--transition-speed) ease;
+    border-top: 1px solid #ffffff;
+    margin-top: 2rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 body.light-mode footer {
@@ -19,9 +22,10 @@ body.light-mode footer {
 }
 
 .social-links a {
-    color: var(--light);
-    font-size: 1rem;
+    color: #ffffff;
+    font-size: 0.8rem;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .social-links a:hover {
