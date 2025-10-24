@@ -13,7 +13,7 @@ export function initAnimatedTimeline() {
             title: 'Senior Business Analyst',
             description: 'Requirement Engineering, Analysen und Coding',
             icon: '💼',
-            color: '#667eea',
+            color: '#ffffff',
             details: [
                 'Analyse und Dokumentation von Geschäftsprozessen',
                 'Entwicklung von technischen Lösungen',
@@ -26,7 +26,7 @@ export function initAnimatedTimeline() {
             title: 'App Developer',
             description: 'Private Entwicklung iOS Applikationen',
             icon: '📱',
-            color: '#764ba2',
+            color: '#ffffff',
             details: [
                 'Entwicklung der "Schälle Sau" iOS App',
                 'UI/UX Design und Implementierung',
@@ -39,12 +39,12 @@ export function initAnimatedTimeline() {
             title: 'Creative Developer',
             description: 'Portfolio-Website und innovative Projekte',
             icon: '🎨',
-            color: '#f093fb',
+            color: '#ffffff',
             details: [
                 'Entwicklung dieser Portfolio-Website',
                 '3D-Parallax-Effekte und Animationen',
                 'Retro-Games (Snake, Tetris)',
-                'AI-Assistent und interaktive Features'
+                'Interaktive Features und Animationen'
             ]
         }
     ];
@@ -184,7 +184,7 @@ export function initAnimatedTimeline() {
         top: 0;
         bottom: 0;
         width: 2px;
-        background: linear-gradient(to bottom, #667eea, #764ba2, #f093fb);
+        background: linear-gradient(to bottom, #ffffff, #cccccc, #ffffff);
         z-index: 1;
     `;
     timeline.style.position = 'relative';

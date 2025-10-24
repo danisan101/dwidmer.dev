@@ -70,31 +70,31 @@ function addGlitchStyles() {
         @keyframes glitch-text {
             0% { 
                 transform: translate(0);
-                filter: hue-rotate(0deg);
+                filter: contrast(1);
             }
             10% { 
                 transform: translate(-1px, 1px);
-                filter: hue-rotate(90deg);
+                filter: contrast(1.5);
             }
             20% { 
                 transform: translate(1px, -1px);
-                filter: hue-rotate(180deg);
+                filter: contrast(0.5);
             }
             30% { 
                 transform: translate(-1px, -1px);
-                filter: hue-rotate(270deg);
+                filter: contrast(1.2);
             }
             40% { 
                 transform: translate(1px, 1px);
-                filter: hue-rotate(360deg);
+                filter: contrast(0.8);
             }
             50% { 
                 transform: translate(0);
-                filter: hue-rotate(0deg);
+                filter: contrast(1);
             }
             100% { 
                 transform: translate(0);
-                filter: hue-rotate(0deg);
+                filter: contrast(1);
             }
         }
         
@@ -128,23 +128,23 @@ function addGlitchStyles() {
         
         .glitch-effect::before {
             animation: glitch-text 0.3s ease-in-out;
-            color: #ff0000;
+            color: #ffffff;
             z-index: -1;
         }
         
         .glitch-effect::after {
             animation: glitch-text 0.3s ease-in-out 0.1s;
-            color: #00ff00;
+            color: #000000;
             z-index: -2;
         }
         
         .glitch-bg {
             background: linear-gradient(45deg, 
-                #ff0000 0%, 
-                #00ff00 25%, 
-                #0000ff 50%, 
-                #ffff00 75%, 
-                #ff00ff 100%);
+                #000000 0%, 
+                #ffffff 25%, 
+                #000000 50%, 
+                #ffffff 75%, 
+                #000000 100%);
             background-size: 400% 400%;
             animation: glitch-bg 0.5s ease-in-out;
         }
@@ -161,9 +161,9 @@ function addGlitchEffect(element) {
         element.setAttribute('data-text', element.textContent);
     }
     
-    // Add random color shift
-    const hue = Math.random() * 360;
-    element.style.filter = `hue-rotate(${hue}deg) saturate(1.5)`;
+    // Add monochrome contrast shift
+    const contrast = 0.5 + Math.random() * 1.5;
+    element.style.filter = `contrast(${contrast})`;
     
     // Add background glitch for certain elements
     if (element.classList.contains('project-card') || element.classList.contains('easter-egg-btn')) {
@@ -200,8 +200,8 @@ function triggerRandomGlitch(element) {
             break;
             
         case 'color':
-            const hue = Math.random() * 360;
-            element.style.filter = `hue-rotate(${hue}deg)`;
+            const contrast = 0.5 + Math.random() * 1.5;
+            element.style.filter = `contrast(${contrast})`;
             setTimeout(() => {
                 element.style.filter = 'none';
             }, 200);

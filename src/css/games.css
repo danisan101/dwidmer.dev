@@ -64,17 +64,20 @@
 /* --- Tetris Game (UI) --- */
 .tetris-game {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.95);
-    border: 2px solid var(--light);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
+    border: none;
     padding: 20px;
     display: none;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     z-index: 10000;
-    border-radius: 10px;
+    border-radius: 0;
+    overflow-y: auto;
 }
 
 .tetris-game.active {
@@ -84,25 +87,31 @@
 .tetris-header {
     display: flex;
     gap: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     color: var(--light);
     font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 .tetris-canvas {
-    border: 1px solid var(--light);
+    border: 2px solid var(--light);
     background: #000;
+    margin-bottom: 1rem;
 }
 
 .tetris-controls {
     margin-top: 1rem;
     text-align: center;
     color: var(--light);
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-family: 'Space Mono', monospace;
+    max-width: 600px;
+    line-height: 1.5;
 }
 
 .next-piece {
-    border: 1px solid var(--light);
+    border: 2px solid var(--light);
     background: #000;
     margin-left: 1rem;
 }
@@ -130,17 +139,20 @@
 /* --- Snake Game (UI) --- */
 .snake-game {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.95);
-    border: 2px solid var(--light);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
+    border: none;
     padding: 20px;
     display: none;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     z-index: 10000;
-    border-radius: 10px;
+    border-radius: 0;
+    overflow-y: auto;
 }
 
 .snake-game.active {
@@ -148,21 +160,27 @@
 }
 
 .snake-canvas {
-    border: 1px solid var(--light);
+    border: 2px solid var(--light);
     background: #000;
+    margin-bottom: 1rem;
 }
 
 .snake-score {
     color: var(--light);
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
     font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 .snake-controls {
-    margin-top: 10px;
+    margin-top: 1rem;
     text-align: center;
     color: var(--light);
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-family: 'Space Mono', monospace;
+    max-width: 600px;
+    line-height: 1.5;
 }
 
 /* Snake Game Over Screen */

@@ -22,7 +22,6 @@ import { initSEO } from './modules/seo.js';
 import { initAnalytics } from './modules/analytics.js';
 import { initRetroStats } from './modules/retro-stats.js';
 import { initPerformanceMonitoring } from './modules/performance.js';
-import { initAIAssistant } from './modules/ai-assistant.js';
 import { initAnimatedTimeline } from './modules/animated-timeline.js';
 import { initProjectHoverEffects } from './modules/project-hover.js';
 import { initGlitchEffects } from './modules/glitch-effects.js';
@@ -78,7 +77,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         initLazyLoading();
         
         // Initialize cool features
-        initAIAssistant();
         initAnimatedTimeline();
         initProjectHoverEffects();
         initGlitchEffects();
