@@ -1,6 +1,8 @@
 // Advanced 3D Parallax Effects Module
+import { log } from '../utils/logger.js';
+
 export function initAdvancedParallax() {
-    console.log('🎨 Initializing Advanced 3D Parallax Effects...');
+    log('🎨 Initializing Advanced 3D Parallax Effects...');
     
     // Create 3D layers
     createParallaxLayers();
@@ -30,23 +32,26 @@ export function initAdvancedParallax() {
             `;
         });
         
-        // 3D Card effects for sections
-        const sections = document.querySelectorAll('section');
-        sections.forEach((section, index) => {
+        // 3D Card effects for selected sections
+        const sections = document.querySelectorAll('[data-parallax-section]');
+        sections.forEach((section) => {
             const rect = section.getBoundingClientRect();
             const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            
+
             if (isVisible) {
                 const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight));
                 const rotateX = (progress - 0.5) * 10;
                 const translateZ = progress * 50;
                 
                 section.style.transform = `
-                    translate3d(0, 0, ${translateZ}px) 
+                    translate3d(0, 0, ${translateZ}px)
                     rotateX(${rotateX}deg)
                     perspective(1000px)
                 `;
                 section.style.opacity = progress;
+            } else {
+                section.style.transform = '';
+                section.style.opacity = '';
             }
         });
         
@@ -79,7 +84,7 @@ export function initAdvancedParallax() {
         }
     });
     
-    console.log('✅ Advanced 3D Parallax Effects initialized!');
+    log('✅ Advanced 3D Parallax Effects initialized!');
 }
 
 function createParallaxLayers() {

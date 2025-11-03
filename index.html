@@ -13,6 +13,7 @@
     <link rel="canonical" href="https://dwidmer.dev/">
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.webmanifest">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
@@ -65,8 +66,8 @@
     </script>
     
     <!-- Preconnect to external resources -->
-    <meta name="preconnect" href="https://fonts.googleapis.com">
-    <meta name="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <!-- CSS Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap">
@@ -409,15 +410,15 @@
 
     <main role="main" id="main-content">
         <!-- Hero Section -->
-        <section id="home" class="hero" aria-labelledby="heroTitle">
+        <section id="home" class="hero" aria-labelledby="heroTitle" data-parallax-section>
             <div class="hero-content fade-in">
-                <h1 id="heroTitle" tabindex="-1">Daniel Widmer<span class="cursor-blink">|</span></h1>
+                <h1 id="heroTitle" tabindex="-1"><span id="heroName" class="hero-name" data-text="Daniel Widmer">Daniel Widmer</span><span class="cursor-blink" aria-hidden="true">_</span></h1>
                 <p id="heroTagline">creative developer</p>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="fade-in" aria-labelledby="aboutTitle">
+        <section id="about" class="fade-in" aria-labelledby="aboutTitle" data-parallax-section>
             <h2 id="aboutTitle" class="section-title">Über mich</h2>
             <div class="about-content">
                 <div class="about-text">
@@ -515,7 +516,7 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="fade-in">
+        <section id="projects" class="fade-in" data-parallax-section>
             <h2 class="section-title">Meine Projekte</h2>
             <div class="projects-grid">
                 <div class="project-card">
@@ -714,7 +715,9 @@
         setTimeout(function() {
             var overlay = document.getElementById('loadingOverlay');
             if (overlay) {
+                overlay.classList.add('hidden');
                 overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden', 'true');
             }
         }, 3000);
         

@@ -1,28 +1,38 @@
 // Typing Animation Module
 export function initTypingAnimation() {
-    const nameElement = document.getElementById('typed-name');
+    const nameElement = document.getElementById('heroName');
     if (!nameElement) return;
-    
-    const name = 'daniel widmer';
-    let i = 0;
-    
-    function typeWriter() {
-        if (i < name.length) {
-            nameElement.innerHTML = name.substring(0, i + 1) + '<span class="cursor">_</span>';
-            i++;
-            setTimeout(typeWriter, 150);
-        } else {
-            nameElement.innerHTML = name + '<span class="cursor">_</span>';
-            setInterval(() => {
-                const cursor = nameElement.querySelector('.cursor');
-                if (cursor) {
-                    cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-                }
-            }, 500);
-        }
+
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fullText = (nameElement.getAttribute('data-text') || nameElement.textContent || '').trim();
+
+    if (!fullText) {
+        return;
     }
-    
-    typeWriter();
+
+    if (prefersReducedMotion) {
+        nameElement.textContent = fullText;
+        return;
+    }
+
+    const characters = Array.from(fullText);
+    let index = 0;
+
+    nameElement.textContent = '';
+
+    const typeNextCharacter = () => {
+        if (index >= characters.length) {
+            nameElement.textContent = fullText;
+            return;
+        }
+
+        nameElement.textContent += characters[index];
+        index += 1;
+
+        window.setTimeout(typeNextCharacter, 120);
+    };
+
+    typeNextCharacter();
 }
 
 

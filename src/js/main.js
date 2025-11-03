@@ -27,13 +27,14 @@ import { initProjectHoverEffects } from './modules/project-hover.js';
 import { initGlitchEffects } from './modules/glitch-effects.js';
 import { initPWAFeatures } from './modules/pwa-features.js';
 import { initEnhancedSkills } from './modules/enhanced-skills.js';
+import { log, error } from './utils/logger.js';
 
 // Make confetti available globally for contact form
 window.confetti = confetti;
 
 // Console Easter Egg
-console.log(`
-██████╗ ███████╗████████╗██████╗  ██████╗ 
+log(`
+██████╗ ███████╗████████╗██████╗  ██████╗
 ██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗
 ██████╔╝█████╗     ██║   ██████╔╝██║   ██║
 ██╔══██╗██╔══╝     ██║   ██╔══██╗██║   ██║
@@ -108,102 +109,94 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Global ESC handler for games
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
-            
-            const snake = document.getElementById('snakeGame');
+
+            const snakeOverlay = document.getElementById('snakeGameOverlay');
             const snakeGameOver = document.getElementById('snakeGameOver');
-            const tetris = document.getElementById('tetrisGame');
+            const tetrisOverlay = document.getElementById('tetrisGameOverlay');
             const tetrisGameOver = document.getElementById('gameOver');
-            
-            // Close Snake game
-            if (snake && snake.classList.contains('active')) {
-                snake.classList.remove('active');
-                snake.style.display = 'none';
+
+            if (snakeOverlay && snakeOverlay.classList.contains('active')) {
                 if (window.hideSnakeGame) window.hideSnakeGame();
-                console.log('🐍 Snake game closed via ESC');
+                log('🐍 Snake game closed via ESC');
                 return;
             }
-            
-            // Close Snake game over screen
+
             if (snakeGameOver && snakeGameOver.classList.contains('active')) {
                 snakeGameOver.classList.remove('active');
                 snakeGameOver.style.display = 'none';
-                console.log('🐍 Snake game over screen closed via ESC');
+                log('🐍 Snake game over screen closed via ESC');
                 return;
             }
-            
-            // Close Tetris game
-            if (tetris && tetris.classList.contains('active')) {
-                tetris.classList.remove('active');
-                tetris.style.display = 'none';
+
+            if (tetrisOverlay && tetrisOverlay.classList.contains('active')) {
                 if (window.hideTetris) window.hideTetris();
-                console.log('🧩 Tetris game closed via ESC');
+                log('🧩 Tetris game closed via ESC');
                 return;
             }
-            
-            // Close Tetris game over screen
+
             if (tetrisGameOver && tetrisGameOver.classList.contains('active')) {
                 tetrisGameOver.classList.remove('active');
                 tetrisGameOver.style.display = 'none';
-                console.log('🧩 Tetris game over screen closed via ESC');
+                log('🧩 Tetris game over screen closed via ESC');
                 return;
             }
         });
         
-        console.log('✓ Portfolio initialized successfully!');
+        log('✓ Portfolio initialized successfully!');
     } catch (error) {
-        console.error('Error initializing portfolio:', error);
+        error('Error initializing portfolio:', error);
     }
 });
 
 // Easter Egg Buttons in Header
 function initEasterEggButtons() {
-    console.log('🎮 Initializing Easter Egg Buttons...');
+    log('🎮 Initializing Easter Egg Buttons...');
     const buttons = document.querySelectorAll('.easter-egg-btn');
-    console.log('Found buttons:', buttons.length);
-    
+    log('Found buttons:', buttons.length);
+
     // Debug: Check if game functions are available
-    console.log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
-    console.log('🧩 startTetris available:', typeof window.startTetris);
-    
+    log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
+    log('🧩 startTetris available:', typeof window.startTetris);
+
     // Force re-check after a short delay
     setTimeout(() => {
-        console.log('🔄 Re-checking game functions...');
-        console.log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
-        console.log('🧩 startTetris available:', typeof window.startTetris);
+        log('🔄 Re-checking game functions...');
+        log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
+        log('🧩 startTetris available:', typeof window.startTetris);
     }, 500);
-    
+
     buttons.forEach((btn, index) => {
         const game = btn.getAttribute('data-game');
-        console.log(`Button ${index}:`, game);
-        
+        log(`Button ${index}:`, game);
+
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log('🎯 Button clicked:', game);
-            
+            log('🎯 Button clicked:', game);
+
             if (game === 'snake') {
-                console.log('🐍 Starting Snake Game...');
+                log('🐍 Starting Snake Game...');
                 if (window.showSnakeGame) {
                     window.showSnakeGame();
-                    console.log('✅ Snake Game started!');
+                    log('✅ Snake Game started!');
                 } else {
-                    console.error('❌ showSnakeGame not available!');
-                    console.log('Available window functions:', Object.keys(window).filter(k => k.includes('snake') || k.includes('Snake')));
+                    error('❌ showSnakeGame not available!');
+                    log('Available window functions:', Object.keys(window).filter(k => k.includes('snake') || k.includes('Snake')));
                     // Try to re-initialize Snake
-                    console.log('🔄 Attempting to re-initialize Snake...');
+                    log('🔄 Attempting to re-initialize Snake...');
                     if (window.initSnakeGame) {
                         window.initSnakeGame();
                     }
                 }
             } else if (game === 'tetris') {
-                console.log('🧩 Starting Tetris Game...');
+                log('🧩 Starting Tetris Game...');
                 if (window.startTetris) {
                     window.startTetris();
-                    console.log('✅ Tetris Game started!');
+                    log('✅ Tetris Game started!');
                 } else {
-                    console.error('❌ startTetris not available!');
-                    console.log('Available window functions:', Object.keys(window).filter(k => k.includes('tetris') || k.includes('Tetris')));
+                    error('❌ startTetris not available!');
+                    log('Available window functions:', Object.keys(window).filter(k => k.includes('tetris') || k.includes('Tetris')));
                     // Try to re-initialize Tetris
-                    console.log('🔄 Attempting to re-initialize Tetris...');
+                    log('🔄 Attempting to re-initialize Tetris...');
                     if (window.initTetrisGame) {
                         window.initTetrisGame();
                     }
@@ -211,16 +204,7 @@ function initEasterEggButtons() {
             }
         });
     });
-    
-    console.log('✅ Easter Egg Buttons initialized!');
-}
 
-// Service Worker for PWA (optional)
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(() => {
-            // Silent fail if SW not available
-        });
-    });
+    log('✅ Easter Egg Buttons initialized!');
 }
 

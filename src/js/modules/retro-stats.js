@@ -7,6 +7,7 @@ let clickCount = 0;
 let scrollDistance = 0;
 let lastScrollY = 0;
 let isVisible = true;
+let cachedCharCount;
 
 export function initRetroStats() {
     // Use Intersection Observer to pause when not visible
@@ -61,7 +62,7 @@ export function initRetroStats() {
 
 function updateStats() {
     const timeOnSite = Math.floor((Date.now() - startTime) / 1000);
-    const chars = document.body.innerText.length;
+    const chars = getCharacterCount();
     const mouseMeters = (mouseDistance / 100).toFixed(2); // Convert px to approximate meters
     
     // Update DOM elements
@@ -88,7 +89,7 @@ function formatTime(seconds) {
 
 export function getStats() {
     const timeOnSite = Math.floor((Date.now() - startTime) / 1000);
-    const chars = document.body.innerText.length;
+    const chars = getCharacterCount();
     const mouseMeters = (mouseDistance / 100).toFixed(2);
     
     return {
@@ -98,6 +99,16 @@ export function getStats() {
         clicks: clickCount,
         scrollDistance: Math.floor(scrollDistance) + 'px'
     };
+}
+
+function getCharacterCount() {
+    if (typeof cachedCharCount === 'number') {
+        return cachedCharCount;
+    }
+
+    const textContent = document.body ? document.body.textContent || '' : '';
+    cachedCharCount = textContent.length;
+    return cachedCharCount;
 }
 
 

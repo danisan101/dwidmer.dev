@@ -90,10 +90,11 @@ function addStructuredData() {
 function updateMetaTags() {
     // Update canonical URL based on hash
     window.addEventListener('hashchange', () => {
-        const hash = window.location.hash;
         const canonical = document.querySelector('link[rel="canonical"]');
         if (canonical) {
-            canonical.href = `https://dwidmer.dev/${hash}`;
+            const url = new URL(window.location.href);
+            url.hash = '';
+            canonical.href = url.toString();
         }
     });
 }

@@ -7,10 +7,40 @@ export function initLoadingScreen() {
             return;
         }
 
+        overlay.classList.remove('hidden');
+        overlay.style.display = 'flex';
+        overlay.setAttribute('aria-hidden', 'false');
+
         const terminalBody = overlay.querySelector('.terminal-body');
         if (!terminalBody) {
             resolve();
             return;
+        }
+
+        function hideOverlay() {
+            if (overlay.classList.contains('hidden')) {
+                overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden', 'true');
+                return;
+            }
+
+            overlay.classList.add('hidden');
+            overlay.setAttribute('aria-hidden', 'true');
+
+            let timeoutId = null;
+
+            const handleTransitionEnd = () => {
+                overlay.style.display = 'none';
+                overlay.removeEventListener('transitionend', handleTransitionEnd);
+
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                    timeoutId = null;
+                }
+            };
+
+            overlay.addEventListener('transitionend', handleTransitionEnd);
+            timeoutId = window.setTimeout(handleTransitionEnd, 600);
         }
 
         // Clear existing content
@@ -49,7 +79,7 @@ export function initLoadingScreen() {
                 
                 // Hide loading screen after a short delay
                 setTimeout(() => {
-                    overlay.classList.add('hidden');
+                    hideOverlay();
                     resolve();
                 }, 1000);
                 return;

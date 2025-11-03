@@ -1,6 +1,8 @@
 // PWA and Homescreen Widget Module
+import { log, error } from '../utils/logger.js';
+
 export function initPWAFeatures() {
-    console.log('📱 Initializing PWA Features...');
+    log('📱 Initializing PWA Features...');
     
     // Create PWA manifest
     createPWAManifest();
@@ -14,40 +16,17 @@ export function initPWAFeatures() {
     // Add service worker
     registerServiceWorker();
     
-    console.log('✅ PWA Features initialized!');
+    log('✅ PWA Features initialized!');
 }
 
 function createPWAManifest() {
-    const manifest = {
-        name: "Daniel Widmer - Portfolio",
-        short_name: "DW Portfolio",
-        description: "Creative Developer & Digital Artist Portfolio",
-        start_url: "/",
-        display: "standalone",
-        background_color: "#000000",
-        theme_color: "#000000",
-        orientation: "portrait-primary",
-        icons: [
-            {
-                src: "/favicon.ico",
-                sizes: "192x192",
-                type: "image/x-icon"
-            },
-            {
-                src: "/favicon.ico",
-                sizes: "512x512",
-                type: "image/x-icon"
-            }
-        ],
-        categories: ["portfolio", "developer", "creative"],
-        lang: "de",
-        scope: "/",
-        id: "dwidmer-portfolio"
-    };
-    
+    if (document.querySelector('link[rel="manifest"]')) {
+        return;
+    }
+
     const manifestLink = document.createElement('link');
     manifestLink.rel = 'manifest';
-    manifestLink.href = 'data:application/json,' + encodeURIComponent(JSON.stringify(manifest));
+    manifestLink.href = '/manifest.webmanifest';
     document.head.appendChild(manifestLink);
 }
 
@@ -82,7 +61,7 @@ function addInstallPrompt() {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
-                console.log(`User response to the install prompt: ${outcome}`);
+                log(`User response to the install prompt: ${outcome}`);
                 deferredPrompt = null;
                 installButton.remove();
             }
@@ -158,46 +137,22 @@ function createHomescreenWidget() {
 }
 
 function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
-        const swCode = `
-            const CACHE_NAME = 'dwidmer-portfolio-v1';
-            const urlsToCache = [
-                '/',
-                '/index.html',
-                '/src/css/critical.css',
-                '/src/js/main.js',
-                '/favicon.ico'
-            ];
-            
-            self.addEventListener('install', (event) => {
-                event.waitUntil(
-                    caches.open(CACHE_NAME)
-                        .then((cache) => cache.addAll(urlsToCache))
-                );
-            });
-            
-            self.addEventListener('fetch', (event) => {
-                event.respondWith(
-                    caches.match(event.request)
-                        .then((response) => {
-                            if (response) {
-                                return response;
-                            }
-                            return fetch(event.request);
-                        })
-                );
-            });
-        `;
-        
-        const blob = new Blob([swCode], { type: 'application/javascript' });
-        const swUrl = URL.createObjectURL(blob);
-        
-        navigator.serviceWorker.register(swUrl)
-            .then((registration) => {
-                console.log('✅ Service Worker registered:', registration);
-            })
-            .catch((error) => {
-                console.log('❌ Service Worker registration failed:', error);
-            });
+    if (!('serviceWorker' in navigator)) {
+        return;
     }
+
+    if (!import.meta.env.PROD) {
+        log('Skipping Service Worker registration in development mode.');
+        return;
+    }
+
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                log('✅ Service Worker registered:', registration);
+            })
+            .catch((registrationError) => {
+                error('❌ Service Worker registration failed:', registrationError);
+            });
+    });
 }
