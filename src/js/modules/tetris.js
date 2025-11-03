@@ -34,11 +34,6 @@ function startTetris() {
     const existingOverlay = document.getElementById('tetrisGameOverlay');
     if (existingOverlay) {
         existingOverlay.remove();
-    
-    // Create game container dynamically
-    const existingContainer = document.getElementById('tetrisGame');
-    if (existingContainer) {
-        existingContainer.remove();
     }
 
     const overlay = document.createElement('div');
@@ -103,9 +98,6 @@ function startTetris() {
     const highscoreElement = document.getElementById('tetrisHighscore');
     const gameOverScreen = document.getElementById('gameOver');
 
-    
-    log('Game container:', gameContainer);
-    
     // Hide Snake if it's running
     const snakeGame = document.getElementById('snakeGame');
     const snakeGameOver = document.getElementById('snakeGameOver');
@@ -117,28 +109,6 @@ function startTetris() {
 
     log('✅ Tetris game container activated');
 
-    
-    if (gameContainer) {
-        // Force visibility with multiple methods
-        gameContainer.style.display = 'flex';
-        gameContainer.style.visibility = 'visible';
-        gameContainer.style.opacity = '1';
-        gameContainer.classList.add('active');
-        
-        // Ensure it's on top
-        gameContainer.style.zIndex = '10000';
-        
-        log('✅ Tetris game container activated');
-        log('Container styles:', {
-            display: gameContainer.style.display,
-            visibility: gameContainer.style.visibility,
-            opacity: gameContainer.style.opacity,
-            zIndex: gameContainer.style.zIndex
-        });
-    } else {
-        error('❌ Game container not found!');
-    }
-    
     gameRunning = true;
     score = 0;
     lines = 0;

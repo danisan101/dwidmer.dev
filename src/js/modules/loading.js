@@ -18,15 +18,29 @@ export function initLoadingScreen() {
         }
 
         function hideOverlay() {
+            if (overlay.classList.contains('hidden')) {
+                overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden', 'true');
+                return;
+            }
+
             overlay.classList.add('hidden');
             overlay.setAttribute('aria-hidden', 'true');
+
+            let timeoutId = null;
 
             const handleTransitionEnd = () => {
                 overlay.style.display = 'none';
                 overlay.removeEventListener('transitionend', handleTransitionEnd);
+
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                    timeoutId = null;
+                }
             };
 
-            overlay.addEventListener('transitionend', handleTransitionEnd, { once: true });
+            overlay.addEventListener('transitionend', handleTransitionEnd);
+            timeoutId = window.setTimeout(handleTransitionEnd, 600);
         }
 
         // Clear existing content
