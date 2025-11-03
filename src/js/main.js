@@ -109,39 +109,31 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Global ESC handler for games
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
-            
-            const snake = document.getElementById('snakeGame');
+
+            const snakeOverlay = document.getElementById('snakeGameOverlay');
             const snakeGameOver = document.getElementById('snakeGameOver');
-            const tetris = document.getElementById('tetrisGame');
+            const tetrisOverlay = document.getElementById('tetrisGameOverlay');
             const tetrisGameOver = document.getElementById('gameOver');
-            
-            // Close Snake game
-            if (snake && snake.classList.contains('active')) {
-                snake.classList.remove('active');
-                snake.style.display = 'none';
+
+            if (snakeOverlay && snakeOverlay.classList.contains('active')) {
                 if (window.hideSnakeGame) window.hideSnakeGame();
                 log('🐍 Snake game closed via ESC');
                 return;
             }
-            
-            // Close Snake game over screen
+
             if (snakeGameOver && snakeGameOver.classList.contains('active')) {
                 snakeGameOver.classList.remove('active');
                 snakeGameOver.style.display = 'none';
                 log('🐍 Snake game over screen closed via ESC');
                 return;
             }
-            
-            // Close Tetris game
-            if (tetris && tetris.classList.contains('active')) {
-                tetris.classList.remove('active');
-                tetris.style.display = 'none';
+
+            if (tetrisOverlay && tetrisOverlay.classList.contains('active')) {
                 if (window.hideTetris) window.hideTetris();
                 log('🧩 Tetris game closed via ESC');
                 return;
             }
-            
-            // Close Tetris game over screen
+
             if (tetrisGameOver && tetrisGameOver.classList.contains('active')) {
                 tetrisGameOver.classList.remove('active');
                 tetrisGameOver.style.display = 'none';

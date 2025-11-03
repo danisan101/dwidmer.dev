@@ -30,29 +30,46 @@ const colors = ['#00f', '#ff0', '#f0f', '#0f0', '#f00', '#00f', '#fa0'];
 // Global functions
 function startTetris() {
     log('🧩 startTetris called');
+
+    const existingOverlay = document.getElementById('tetrisGameOverlay');
+    if (existingOverlay) {
+        existingOverlay.remove();
     
     // Create game container dynamically
     const existingContainer = document.getElementById('tetrisGame');
     if (existingContainer) {
         existingContainer.remove();
     }
-    
+
+    const overlay = document.createElement('div');
+    overlay.id = 'tetrisGameOverlay';
+    overlay.className = 'game-overlay active';
+    overlay.setAttribute('aria-hidden', 'false');
+
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            hideTetris();
+        }
+    });
+
     const gameContainer = document.createElement('div');
-    gameContainer.className = 'game-terminal';
+    gameContainer.className = 'game-terminal active';
     gameContainer.id = 'tetrisGame';
-    gameContainer.style.display = 'none';
-    
+    gameContainer.setAttribute('role', 'dialog');
+    gameContainer.setAttribute('aria-modal', 'true');
+    gameContainer.setAttribute('aria-labelledby', 'tetrisTitle');
+
     gameContainer.innerHTML = `
         <div class="terminal-header">
-            <div class="terminal-title">tetris.exe</div>
-            <button class="close-btn" onclick="hideTetris()">✕</button>
+            <div class="terminal-title" id="tetrisTitle">tetris.exe</div>
+            <button class="close-btn" type="button" aria-label="Tetris schliessen">✕</button>
         </div>
         <div class="terminal-body">
             <div class="game-info">
                 <div class="score-info">
-                    Score: <span id="tetrisScore">0</span> | 
-                    Highscore: <span id="tetrisHighscore">0</span> | 
-                    Lines: <span id="tetrisLines">0</span> | 
+                    Score: <span id="tetrisScore">0</span> |
+                    Highscore: <span id="tetrisHighscore">0</span> |
+                    Lines: <span id="tetrisLines">0</span> |
                     Level: <span id="tetrisLevel">1</span>
                 </div>
                 <div class="controls-info">
@@ -61,16 +78,23 @@ function startTetris() {
             </div>
             <div class="game-canvas-container">
                 <canvas class="next-piece" id="nextPieceCanvas" width="80" height="80"></canvas>
-                <canvas class="game-canvas" id="tetrisCanvas" width="300" height="600"></canvas>
+                <canvas class="game-canvas" id="tetrisCanvas" width="300" height="600" aria-label="Tetris Spielfeld" tabindex="0"></canvas>
             </div>
             <div class="game-controls">
                 A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop | ESC: Close
             </div>
         </div>
     `;
-    
-    document.body.appendChild(gameContainer);
-    
+
+    const closeButton = gameContainer.querySelector('.close-btn');
+    if (closeButton) {
+        closeButton.addEventListener('click', () => hideTetris());
+    }
+
+    overlay.appendChild(gameContainer);
+    document.body.appendChild(overlay);
+    document.body.classList.add('game-modal-open');
+
     const canvas = document.getElementById('tetrisCanvas');
     const nextCanvas = document.getElementById('nextPieceCanvas');
     const scoreElement = document.getElementById('tetrisScore');
@@ -78,6 +102,7 @@ function startTetris() {
     const levelElement = document.getElementById('tetrisLevel');
     const highscoreElement = document.getElementById('tetrisHighscore');
     const gameOverScreen = document.getElementById('gameOver');
+
     
     log('Game container:', gameContainer);
     
@@ -89,6 +114,9 @@ function startTetris() {
         if (snakeGameOver) snakeGameOver.classList.remove('active');
         if (window.hideSnakeGame) window.hideSnakeGame();
     }
+
+    log('✅ Tetris game container activated');
+
     
     if (gameContainer) {
         // Force visibility with multiple methods
@@ -121,16 +149,31 @@ function startTetris() {
     highscore = Number(localStorage.getItem('tetrisHighscore') || 0);
     updateDisplay();
     gameLoop();
+
+    if (canvas) {
+        canvas.focus();
+    }
 }
 
-function hideTetris() {
-    const gameContainer = document.getElementById('tetrisGame');
+function hideTetris(options = {}) {
+    const { preserveGameOver = false } = options;
+    const overlay = document.getElementById('tetrisGameOverlay');
+    const gameContainer = overlay ? overlay.querySelector('#tetrisGame') : null;
+
     if (gameContainer) {
         gameContainer.classList.remove('active');
-        gameContainer.style.display = 'none';
     }
+
+    if (overlay) {
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.remove();
+    }
+
+    document.body.classList.remove('game-modal-open');
+
     const gameOverScreen = document.getElementById('gameOver');
-    if (gameOverScreen) {
+    if (!preserveGameOver && gameOverScreen) {
         gameOverScreen.classList.remove('active');
         gameOverScreen.style.display = 'none';
     }
@@ -420,5 +463,6 @@ function endGame() {
     if (finalScoreElement) finalScoreElement.textContent = score;
     if (finalLinesElement) finalLinesElement.textContent = lines;
     if (finalHighscoreElement) finalHighscoreElement.textContent = String(highscore);
+    hideTetris({ preserveGameOver: true });
     if (gameOverScreen) gameOverScreen.classList.add('active');
 }

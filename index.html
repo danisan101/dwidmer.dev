@@ -412,7 +412,7 @@
         <!-- Hero Section -->
         <section id="home" class="hero" aria-labelledby="heroTitle" data-parallax-section>
             <div class="hero-content fade-in">
-                <h1 id="heroTitle" tabindex="-1">Daniel Widmer<span class="cursor-blink">|</span></h1>
+                <h1 id="heroTitle" tabindex="-1">Daniel Widmer<span class="cursor-blink">_</span></h1>
                 <p id="heroTagline">creative developer</p>
             </div>
         </section>
@@ -715,7 +715,9 @@
         setTimeout(function() {
             var overlay = document.getElementById('loadingOverlay');
             if (overlay) {
+                overlay.classList.add('hidden');
                 overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden', 'true');
             }
         }, 3000);
         

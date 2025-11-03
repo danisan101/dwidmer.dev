@@ -7,10 +7,26 @@ export function initLoadingScreen() {
             return;
         }
 
+        overlay.classList.remove('hidden');
+        overlay.style.display = 'flex';
+        overlay.setAttribute('aria-hidden', 'false');
+
         const terminalBody = overlay.querySelector('.terminal-body');
         if (!terminalBody) {
             resolve();
             return;
+        }
+
+        function hideOverlay() {
+            overlay.classList.add('hidden');
+            overlay.setAttribute('aria-hidden', 'true');
+
+            const handleTransitionEnd = () => {
+                overlay.style.display = 'none';
+                overlay.removeEventListener('transitionend', handleTransitionEnd);
+            };
+
+            overlay.addEventListener('transitionend', handleTransitionEnd, { once: true });
         }
 
         // Clear existing content
@@ -49,7 +65,7 @@ export function initLoadingScreen() {
                 
                 // Hide loading screen after a short delay
                 setTimeout(() => {
-                    overlay.classList.add('hidden');
+                    hideOverlay();
                     resolve();
                 }, 1000);
                 return;

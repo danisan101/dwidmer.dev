@@ -1,3 +1,4 @@
+import { log, error } from '../utils/logger.js';
 // Snake Game Module
 import { log, error } from '../utils/logger.js';
 let gameRunning = false;
@@ -111,63 +112,55 @@ function hideSnakeGame() {
     log('🐍 Snake game hidden');
 }
 
-// Make functions available globally
-window.showSnakeGame = showSnakeGame;
-window.hideSnakeGame = hideSnakeGame;
+const OVERLAY_ID = 'snakeGameOverlay';
+const CONTAINER_ID = 'snakeGame';
+const CANVAS_ID = 'snakeCanvas';
+const SCORE_ID = 'snakeScore';
+const HIGHSCORE_ID = 'snakeHighscore';
+const STEP = 10;
+const SIZE = 300;
+const LOOP_DELAY = 150;
 
-// Controls
-document.addEventListener('keydown', (e) => {
-    if (!gameRunning) return;
-    
-    switch(e.key) {
-        case 'ArrowUp':
-        case 'w':
-            e.preventDefault();
-            if (dy === 0) { dx = 0; dy = -10; }
-            break;
-        case 'ArrowDown':
-        case 's':
-            e.preventDefault();
-            if (dy === 0) { dx = 0; dy = 10; }
-            break;
-        case 'ArrowLeft':
-        case 'a':
-            e.preventDefault();
-            if (dx === 0) { dx = -10; dy = 0; }
-            break;
-        case 'ArrowRight':
-        case 'd':
-            e.preventDefault();
-            if (dx === 0) { dx = 10; dy = 0; }
-            break;
-        case 'Escape':
-            hideSnakeGame();
-            break;
+const state = {
+    running: false,
+    snake: [],
+    food: { x: 0, y: 0 },
+    dx: 0,
+    dy: 0,
+    score: 0,
+    highscore: 0,
+    loopHandle: null,
+};
+
+function ensureHighscore() {
+    try {
+        state.highscore = Number(localStorage.getItem('snakeHighscore') || 0);
+    } catch (storageError) {
+        error('🐍 Unable to access snake highscore from storage:', storageError);
+        state.highscore = 0;
     }
-});
+}
 
-// Easter Egg: Ctrl+Alt+Shift+S
-document.addEventListener('keydown', (e) => {
-    if (e.shiftKey && e.altKey && e.ctrlKey && e.key.toLowerCase() === 's') {
-        e.preventDefault();
-        showSnakeGame();
-    }
-});
+function ensureOverlay() {
+    let overlay = document.getElementById(OVERLAY_ID);
 
-// Handle game over screen restart
-document.addEventListener('keydown', (e) => {
-    const gameOverScreen = document.getElementById('snakeGameOver');
-    if (gameOverScreen && gameOverScreen.classList.contains('active')) {
-        if (e.key === ' ') {
-            e.preventDefault();
-            gameOverScreen.classList.remove('active');
-            showSnakeGame();
-        } else if (e.key === 'Escape') {
-            hideSnakeGame();
-        }
-    }
-});
-
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = OVERLAY_ID;
+        overlay.className = 'game-overlay';
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.innerHTML = `
+            <div class="game-terminal" id="${CONTAINER_ID}" role="dialog" aria-modal="true" aria-labelledby="snakeTitle">
+                <div class="terminal-header">
+                    <div class="terminal-title" id="snakeTitle">snake.exe</div>
+                    <button type="button" class="close-btn" aria-label="Snake schliessen">✕</button>
+                </div>
+                <div class="terminal-body">
+                    <div class="game-info">
+                        <div class="score-info">
+                            Score: <span id="${SCORE_ID}">0</span> | Highscore: <span id="${HIGHSCORE_ID}">0</span>
+                        </div>
+                        <div class="controls-info">WASD / Pfeiltasten – ESC zum Schliessen</div>
 export function initSnakeGame() {
     log('🐍 Initializing Snake Game...');
     
@@ -193,18 +186,18 @@ export function initSnakeGame() {
                     <div class="score-info">
                         Score: <span id="snakeScore">0</span> | Highscore: <span id="snakeHighscore">0</span>
                     </div>
-                    <div class="controls-info">
-                        Use WASD or Arrow Keys
+                    <div class="game-canvas-container">
+                        <canvas class="game-canvas" id="${CANVAS_ID}" width="${SIZE}" height="${SIZE}" aria-label="Snake Spielbrett" tabindex="0"></canvas>
                     </div>
-                </div>
-                <div class="game-canvas-container">
-                    <canvas class="game-canvas" id="snakeCanvas" width="300" height="300"></canvas>
-                </div>
-                <div class="game-controls">
-                    Use WASD or Arrow Keys | ESC to close
+                    <div class="game-controls">Füttere die Schlange, aber meide die Wände!</div>
                 </div>
             </div>
         `;
+
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                hideSnakeGame();
+            }
         
         document.body.appendChild(gameContainer);
         return gameContainer;
@@ -238,64 +231,132 @@ export function initSnakeGame() {
         snake.forEach(segment => {
             ctx.fillRect(segment.x, segment.y, 10, 10);
         });
-    }
 
-    function drawFood() {
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(food.x, food.y, 10, 10);
-    }
+        document.body.appendChild(overlay);
 
-    function moveSnake() {
-        const head = {x: snake[0].x + dx, y: snake[0].y + dy};
-        snake.unshift(head);
-
-        if (head.x === food.x && head.y === food.y) {
-            score += 10;
-            scoreElement.textContent = score;
-            generateFood();
-        } else {
-            snake.pop();
+        const closeBtn = overlay.querySelector('.close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', hideSnakeGame);
         }
     }
 
-    function generateFood() {
-        food = {
-            x: Math.floor(Math.random() * 30) * 10,
-            y: Math.floor(Math.random() * 30) * 10
-        };
+    const container = overlay.querySelector(`#${CONTAINER_ID}`);
+    const canvas = overlay.querySelector(`#${CANVAS_ID}`);
+    const scoreElement = overlay.querySelector(`#${SCORE_ID}`);
+    const highscoreElement = overlay.querySelector(`#${HIGHSCORE_ID}`);
+
+    if (!container || !canvas || !scoreElement || !highscoreElement) {
+        throw new Error('Snake game markup is incomplete');
     }
 
-    function checkCollision() {
-        const head = snake[0];
-        if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300) {
-            return true;
-        }
-        return false;
+    const context = canvas.getContext('2d');
+
+    return { overlay, container, canvas, context, scoreElement, highscoreElement };
+}
+
+function resetGame() {
+    state.snake = [{ x: SIZE / 2, y: SIZE / 2 }];
+    state.dx = 0;
+    state.dy = 0;
+    state.score = 0;
+    state.food = randomFood();
+}
+
+function randomFood() {
+    const max = SIZE / STEP;
+    return {
+        x: Math.floor(Math.random() * max) * STEP,
+        y: Math.floor(Math.random() * max) * STEP,
+    };
+}
+
+function draw(context) {
+    context.clearRect(0, 0, SIZE, SIZE);
+
+    context.fillStyle = '#ffffff';
+    state.snake.forEach((segment) => {
+        context.fillRect(segment.x, segment.y, STEP, STEP);
+    });
+
+    context.fillRect(state.food.x, state.food.y, STEP, STEP);
+}
+
+function advanceSnake() {
+    const head = {
+        x: state.snake[0].x + state.dx,
+        y: state.snake[0].y + state.dy,
+    };
+
+    state.snake.unshift(head);
+
+    if (head.x === state.food.x && head.y === state.food.y) {
+        state.score += 10;
+        state.food = randomFood();
+    } else {
+        state.snake.pop();
+    }
+}
+
+function hasCollision() {
+    const head = state.snake[0];
+
+    if (head.x < 0 || head.x >= SIZE || head.y < 0 || head.y >= SIZE) {
+        return true;
     }
 
-    function gameLoop() {
-        if (!gameRunning) return;
+    return state.snake.slice(1).some((segment) => segment.x === head.x && segment.y === head.y);
+}
 
-        ctx.clearRect(0, 0, 300, 300);
-        moveSnake();
-        
-        if (checkCollision()) {
-            gameRunning = false;
-            if (score > highscore) {
-                highscore = score;
-                localStorage.setItem('snakeHighscore', String(highscore));
-            }
-            highscoreElement.textContent = String(highscore);
-            // Show game over screen like Tetris
-            showGameOver();
+function updateScoreboard(scoreElement, highscoreElement) {
+    scoreElement.textContent = String(state.score);
+    highscoreElement.textContent = String(state.highscore);
+}
+
+function runLoop(context, scoreElement, highscoreElement) {
+    if (!state.running) {
+        return;
+    }
+
+    if (state.dx !== 0 || state.dy !== 0) {
+        advanceSnake();
+
+        if (hasCollision()) {
+            handleGameOver(scoreElement, highscoreElement);
             return;
         }
-
-        drawSnake();
-        drawFood();
-        setTimeout(gameLoop, 150);
     }
 
+    draw(context);
+    updateScoreboard(scoreElement, highscoreElement);
+
+    state.loopHandle = window.setTimeout(() => {
+        runLoop(context, scoreElement, highscoreElement);
+    }, LOOP_DELAY);
+}
+
+function showSnakeGame() {
+    try {
+        const { overlay, container, context, scoreElement, highscoreElement } = ensureOverlay();
+
+        ensureHighscore();
+        resetGame();
+        updateScoreboard(scoreElement, highscoreElement);
+
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        container.classList.add('active');
+        document.body.classList.add('game-modal-open');
+
+        state.running = true;
+        draw(context);
+
+        window.clearTimeout(state.loopHandle);
+        runLoop(context, scoreElement, highscoreElement);
+
+        context.canvas.focus();
+        log('🐍 Snake game opened');
+    } catch (initializationError) {
+        error('🐍 Unable to start snake game:', initializationError);
     function showSnakeGame() {
         log('🐍 showSnakeGame called');
         
@@ -348,7 +409,17 @@ export function initSnakeGame() {
         generateFood();
         gameLoop();
     }
+}
 
+function hideSnakeGame() {
+    const overlay = document.getElementById(OVERLAY_ID);
+    const container = document.getElementById(CONTAINER_ID);
+
+    window.clearTimeout(state.loopHandle);
+    state.running = false;
+
+    if (container) {
+        container.classList.remove('active');
     function hideSnakeGame() {
         if (gameContainer) {
             gameContainer.classList.remove('active');
@@ -362,103 +433,132 @@ export function initSnakeGame() {
         gameRunning = false;
         log('🐍 Snake game hidden');
     }
-    
-    function showGameOver() {
-        const gameOverScreen = document.getElementById('snakeGameOver');
-        if (gameOverScreen) {
-            document.getElementById('snakeFinalScore').textContent = score;
-            document.getElementById('snakeFinalHighscore').textContent = highscore;
-            gameOverScreen.classList.add('active');
-        }
+
+    if (overlay) {
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
     }
 
+    document.body.classList.remove('game-modal-open');
     log('✅ Snake Game initialized successfully!');
     log('🎮 Available functions:', { showSnakeGame, hideSnakeGame });
 }
 
-// Game logic functions
-function drawSnake() {
-    const canvas = document.getElementById('snakeCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#ffffff';
-    snake.forEach(segment => {
-        ctx.fillRect(segment.x, segment.y, 10, 10);
-    });
-}
-
-function drawFood() {
-    const canvas = document.getElementById('snakeCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(food.x, food.y, 10, 10);
-}
-
-function moveSnake() {
-    const head = {x: snake[0].x + dx, y: snake[0].y + dy};
-    snake.unshift(head);
-
-    if (head.x === food.x && head.y === food.y) {
-        score += 10;
-        const scoreElement = document.getElementById('snakeScore');
-        if (scoreElement) scoreElement.textContent = score;
-        generateFood();
-    } else {
-        snake.pop();
+    const gameOverScreen = document.getElementById('snakeGameOver');
+    if (gameOverScreen) {
+        gameOverScreen.classList.remove('active');
+        gameOverScreen.style.display = 'none';
     }
+
+    log('🐍 Snake game closed');
 }
 
-function generateFood() {
-    food = {
-        x: Math.floor(Math.random() * 30) * 10,
-        y: Math.floor(Math.random() * 30) * 10
-    };
-}
+function handleGameOver(scoreElement, highscoreElement) {
+    state.running = false;
+    window.clearTimeout(state.loopHandle);
 
-function checkCollision() {
-    const head = snake[0];
-    if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300) {
-        return true;
-    }
-    return false;
-}
-
-function gameLoop() {
-    if (!gameRunning) return;
-
-    const canvas = document.getElementById('snakeCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    
-    ctx.clearRect(0, 0, 300, 300);
-    moveSnake();
-    
-    if (checkCollision()) {
-        gameRunning = false;
-        if (score > highscore) {
-            highscore = score;
-            localStorage.setItem('snakeHighscore', String(highscore));
+    if (state.score > state.highscore) {
+        state.highscore = state.score;
+        try {
+            localStorage.setItem('snakeHighscore', String(state.highscore));
+        } catch (storageError) {
+            error('🐍 Unable to store snake highscore:', storageError);
         }
-        const highscoreElement = document.getElementById('snakeHighscore');
-        if (highscoreElement) highscoreElement.textContent = String(highscore);
-        showGameOver();
+    }
+
+    updateScoreboard(scoreElement, highscoreElement);
+
+    hideSnakeGame();
+
+    const gameOverScreen = document.getElementById('snakeGameOver');
+    if (gameOverScreen) {
+        document.getElementById('snakeFinalScore').textContent = String(state.score);
+        document.getElementById('snakeFinalHighscore').textContent = String(state.highscore);
+        gameOverScreen.classList.add('active');
+        gameOverScreen.style.display = 'block';
+    }
+}
+
+function handleKeydown(event) {
+    if (!state.running) {
         return;
     }
 
-    drawSnake();
-    drawFood();
-    setTimeout(gameLoop, 150);
-}
+    const key = event.key.toLowerCase();
 
-function showGameOver() {
-    const gameOverScreen = document.getElementById('snakeGameOver');
-    if (gameOverScreen) {
-        const finalScoreElement = document.getElementById('snakeFinalScore');
-        const finalHighscoreElement = document.getElementById('snakeFinalHighscore');
-        if (finalScoreElement) finalScoreElement.textContent = score;
-        if (finalHighscoreElement) finalHighscoreElement.textContent = highscore;
-        gameOverScreen.classList.add('active');
+    switch (key) {
+        case 'arrowup':
+        case 'w':
+            if (state.dy === 0) {
+                state.dx = 0;
+                state.dy = -STEP;
+            }
+            event.preventDefault();
+            break;
+        case 'arrowdown':
+        case 's':
+            if (state.dy === 0) {
+                state.dx = 0;
+                state.dy = STEP;
+            }
+            event.preventDefault();
+            break;
+        case 'arrowleft':
+        case 'a':
+            if (state.dx === 0) {
+                state.dx = -STEP;
+                state.dy = 0;
+            }
+            event.preventDefault();
+            break;
+        case 'arrowright':
+        case 'd':
+            if (state.dx === 0) {
+                state.dx = STEP;
+                state.dy = 0;
+            }
+            event.preventDefault();
+            break;
+        default:
+            break;
     }
 }
 
+function handleShortcuts(event) {
+    if (event.shiftKey && event.altKey && event.ctrlKey && event.key.toLowerCase() === 's') {
+        event.preventDefault();
+        showSnakeGame();
+    }
+}
+
+function handleGameOverControls(event) {
+    const gameOverScreen = document.getElementById('snakeGameOver');
+    if (!gameOverScreen || !gameOverScreen.classList.contains('active')) {
+        return;
+    }
+
+    if (event.key === ' ') {
+        event.preventDefault();
+        gameOverScreen.classList.remove('active');
+        gameOverScreen.style.display = 'none';
+        showSnakeGame();
+    } else if (event.key === 'Escape') {
+        gameOverScreen.classList.remove('active');
+        gameOverScreen.style.display = 'none';
+        hideSnakeGame();
+    }
+}
+
+export function initSnakeGame() {
+    log('🐍 Initializing Snake Game...');
+    ensureHighscore();
+
+    window.showSnakeGame = showSnakeGame;
+    window.hideSnakeGame = hideSnakeGame;
+
+    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('keydown', handleShortcuts);
+    document.addEventListener('keydown', handleGameOverControls);
+
+    log('🐍 Snake Game ready');
+}
