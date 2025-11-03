@@ -112,6 +112,10 @@
     }
 }
 
+body.game-modal-open {
+    overflow: hidden;
+}
+
 .game-overlay {
     position: fixed;
     inset: 0;
@@ -124,30 +128,26 @@
     padding: 2rem;
 }
 
-body.game-modal-open {
-    overflow: hidden;
-}
-
 .game-overlay.active {
     display: flex;
 }
 
 /* --- Game Terminal (UI) - Popup with Mobile Support --- */
 .game-terminal {
-    background: var(--surface-alt);
-    border: 2px solid var(--surface-border-strong);
+    background: rgba(0, 0, 0, 0.98);
+    border: 2px solid #ffffff;
     border-radius: 8px;
     font-family: 'Space Mono', monospace;
     display: flex;
     flex-direction: column;
     width: min(640px, 90vw);
     max-height: 90vh;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
     overflow: hidden;
 }
 
 .game-terminal.active {
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
 }
 
 .game-terminal .terminal-header {
