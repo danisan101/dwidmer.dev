@@ -1,6 +1,8 @@
 // Enhanced Project Hover Effects Module
+import { log } from '../utils/logger.js';
+
 export function initProjectHoverEffects() {
-    console.log('🎯 Initializing Enhanced Project Hover Effects...');
+    log('🎯 Initializing Enhanced Project Hover Effects...');
     
     const projectCards = document.querySelectorAll('.project-card');
     
@@ -111,7 +113,7 @@ export function initProjectHoverEffects() {
         });
     });
     
-    console.log('✅ Enhanced Project Hover Effects initialized!');
+    log('✅ Enhanced Project Hover Effects initialized!');
 }
 
 function getProjectData(index) {

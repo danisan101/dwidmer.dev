@@ -3,8 +3,8 @@
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid var(--light);
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
     padding: 1rem;
     z-index: 1000;
     min-width: 300px;
@@ -31,21 +31,21 @@
 
 /* Session Stats Terminal */
 .session-stats-terminal {
-    background: #1e1e1e;
-    border: 1px solid #333;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
-    color: #fff;
+    color: var(--light);
     margin: 2rem auto;
     max-width: 600px;
 }
 
 .session-stats-terminal .terminal-header {
-    background: #2d2d30;
+    background: var(--surface-alt);
     padding: 8px 12px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--surface-border);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,12 +69,12 @@
 
 .session-stats-terminal .terminal-title {
     font-size: 12px;
-    color: #ccc;
+    color: var(--text-muted);
 }
 
 .session-stats-terminal .terminal-body {
     padding: 16px;
-    background: #1e1e1e;
+    background: var(--surface);
     min-height: 200px;
 }
 
@@ -89,7 +89,7 @@
 
 .session-stats-terminal .terminal-line .cursor {
     animation: blink 1s infinite;
-    color: #fff;
+    color: var(--light);
 }
 
 .session-stats-terminal .stats-grid {
@@ -100,8 +100,8 @@
 }
 
 .session-stats-terminal .stat-item {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--surface-alt);
+    border: 1px solid var(--surface-border);
     padding: 0.8rem;
     text-align: center;
     border-radius: 3px;
@@ -109,7 +109,7 @@
 
 .session-stats-terminal .stat-label {
     font-size: 0.7rem;
-    color: #ccc;
+    color: var(--text-muted);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -117,7 +117,7 @@
 
 .session-stats-terminal .stat-value {
     font-size: 1.2rem;
-    color: #fff;
+    color: var(--light);
     font-weight: 700;
     font-family: 'Space Mono', monospace;
 }
@@ -135,7 +135,7 @@
 /* Retro Stats Section */
 .retro-stats-section {
     background: transparent;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     padding: 1rem;
     margin: 0 auto;
     font-family: 'Space Mono', monospace;
@@ -146,7 +146,7 @@
     text-align: center;
     font-size: 0.7rem;
     margin-bottom: 0.75rem;
-    color: var(--light);
+    color: var(--text-muted);
     letter-spacing: 2px;
     opacity: 0.6;
 }
@@ -159,7 +159,7 @@
 
 .retro-stat-item {
     background: transparent;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     padding: 0.5rem 0.4rem;
     text-align: center;
     position: relative;
@@ -171,7 +171,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 0.2rem;
-    color: var(--light);
+    color: var(--text-muted);
     display: block;
 }
 
@@ -187,7 +187,7 @@
     font-size: 0.8rem;
     opacity: 0.8;
     margin-top: 0.25rem;
-    color: var(--light);
+    color: var(--text-muted);
 }
 
 .retro-stats-footer {
@@ -195,6 +195,6 @@
     margin-top: 1rem;
     font-size: 0.7rem;
     opacity: 0.5;
-    color: var(--light);
+    color: var(--text-muted);
 }
 

@@ -9,7 +9,7 @@
 }
 
 .games-info p {
-    color: var(--light);
+    color: var(--text-muted);
     margin-bottom: 2rem;
     font-size: 1.1rem;
 }
@@ -26,20 +26,20 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-alt);
     transition: all 0.3s ease;
 }
 
 .shortcut-item:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface);
     transform: translateY(-2px);
 }
 
 .shortcut-item kbd {
     background: var(--light);
-    color: var(--dark);
+    color: var(--text-inverse);
     padding: 0.5rem 1rem;
     border-radius: 3px;
     font-family: 'Space Mono', monospace;
@@ -61,15 +61,15 @@
 
 /* Mobile Support for Games */
 @media (max-width: 768px) {
+    .game-overlay {
+        padding: 1rem;
+    }
+
     .game-terminal {
         width: 95vw;
-        height: 85vh;
         min-width: 300px;
         max-width: 95vw;
         max-height: 85vh;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         padding: 0;
         border-radius: 8px;
     }
@@ -112,48 +112,62 @@
     }
 }
 
+.game-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(2px);
+    z-index: 10000;
+    padding: 2rem;
+}
+
+body.game-modal-open {
+    overflow: hidden;
+}
+
+.game-overlay.active {
+    display: flex;
+}
+
 /* --- Game Terminal (UI) - Popup with Mobile Support --- */
 .game-terminal {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    background: rgba(0, 0, 0, 0.98) !important;
-    border: 2px solid #ffffff !important;
-    border-radius: 8px !important;
-    font-family: 'Space Mono', monospace !important;
-    z-index: 99999 !important;
-    display: none !important;
-    min-width: 500px !important;
-    max-width: 90vw !important;
-    max-height: 90vh !important;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
-    overflow: hidden !important;
+    background: var(--surface-alt);
+    border: 2px solid var(--surface-border-strong);
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    width: min(640px, 90vw);
+    max-height: 90vh;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
 .game-terminal.active {
-    display: flex !important;
-    flex-direction: column;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
 }
 
 .game-terminal .terminal-header {
-    background: #333333;
+    background: var(--surface);
     padding: 8px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #555555;
+    border-bottom: 1px solid var(--surface-border);
 }
 
 .game-terminal .terminal-title {
-    color: #ffffff;
+    color: var(--light);
     font-size: 0.9rem;
     font-weight: 400;
 }
 
 .game-terminal .close-btn {
     background: #ff5f57;
-    color: #ffffff;
+    color: var(--text-inverse);
     border: none;
     width: 20px;
     height: 20px;
@@ -167,7 +181,7 @@
 
 .game-terminal .terminal-body {
     padding: 20px;
-    color: #ffffff;
+    color: var(--light);
 }
 
 .game-terminal .game-info {
@@ -178,11 +192,11 @@
 }
 
 .game-terminal .score-info {
-    color: #ffffff;
+    color: var(--light);
 }
 
 .game-terminal .controls-info {
-    color: #cccccc;
+    color: var(--text-muted);
     text-align: right;
 }
 
@@ -193,13 +207,13 @@
 }
 
 .game-terminal .game-canvas {
-    border: 1px solid #ffffff;
-    background: #000000;
+    border: 1px solid var(--surface-border);
+    background: var(--dark);
 }
 
 .game-terminal .game-controls {
     text-align: center;
-    color: #cccccc;
+    color: var(--text-muted);
     font-size: 0.8rem;
     line-height: 1.4;
 }
@@ -210,15 +224,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.95);
-    border: 2px solid #ffffff;
+    background: var(--surface-alt);
+    border: 2px solid var(--surface-border-strong);
     border-radius: 8px;
     padding: 2rem;
     text-align: center;
-    color: #ffffff;
+    color: var(--light);
     font-family: 'Space Mono', monospace;
     z-index: 10001;
     display: none;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
 .game-over.active {
@@ -230,15 +245,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.95);
-    border: 2px solid #ffffff;
+    background: var(--surface-alt);
+    border: 2px solid var(--surface-border-strong);
     border-radius: 8px;
     padding: 2rem;
     text-align: center;
-    color: #ffffff;
+    color: var(--light);
     font-family: 'Space Mono', monospace;
     z-index: 10001;
     display: none;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
 .snake-game-over.active {

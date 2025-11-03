@@ -1,6 +1,8 @@
 // Glitch Effects Module
+import { log } from '../utils/logger.js';
+
 export function initGlitchEffects() {
-    console.log('⚡ Initializing Glitch Effects...');
+    log('⚡ Initializing Glitch Effects...');
     
     // Add glitch CSS animations
     addGlitchStyles();
@@ -41,18 +43,18 @@ export function initGlitchEffects() {
     }
     
     // Add glitch effect to typing animation
-    const typedName = document.getElementById('typed-name');
-    if (typedName) {
+    const heroName = document.getElementById('heroName');
+    if (heroName) {
         // Trigger glitch during typing
         const observer = new MutationObserver(() => {
             if (Math.random() < 0.2) {
-                triggerRandomGlitch(typedName);
+                triggerRandomGlitch(heroName);
             }
         });
-        observer.observe(typedName, { childList: true, characterData: true });
+        observer.observe(heroName, { childList: true, characterData: true, subtree: true });
     }
     
-    console.log('✅ Glitch Effects initialized!');
+    log('✅ Glitch Effects initialized!');
 }
 
 function addGlitchStyles() {

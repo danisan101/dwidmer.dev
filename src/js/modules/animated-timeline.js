@@ -1,6 +1,8 @@
 // Animated Career Timeline Module
+import { log } from '../utils/logger.js';
+
 export function initAnimatedTimeline() {
-    console.log('📅 Initializing Animated Career Timeline...');
+    log('📅 Initializing Animated Career Timeline...');
     
     // Find existing timeline
     const timeline = document.querySelector('.timeline');
@@ -190,5 +192,5 @@ export function initAnimatedTimeline() {
     timeline.style.position = 'relative';
     timeline.appendChild(connector);
     
-    console.log('✅ Animated Career Timeline initialized!');
+    log('✅ Animated Career Timeline initialized!');
 }
