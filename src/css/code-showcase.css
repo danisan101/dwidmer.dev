@@ -1,25 +1,25 @@
 /* Code Showcase Section */
 .code-showcase {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: var(--surface-alt);
+    border: 1px solid var(--surface-border);
     border-radius: 5px;
     overflow: hidden;
     margin: 2rem 0;
 }
 
 .code-editor {
-    background: #1e1e1e;
+    background: var(--surface);
     border-radius: 5px;
     overflow: hidden;
 }
 
 .code-editor-header {
-    background: #2d2d2d;
+    background: var(--surface-alt);
     padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--surface-border);
 }
 
 .code-editor-dots {
@@ -38,7 +38,7 @@
 .code-editor-dot.green { background: #888; }
 
 .code-editor-title {
-    color: #fff;
+    color: var(--light);
     font-size: 0.9rem;
     margin-left: 1rem;
 }
@@ -61,8 +61,8 @@
 }
 
 .code-tab.active {
-    color: #fff;
-    background: #1e1e1e;
+    color: var(--light);
+    background: var(--surface);
 }
 
 .code-editor-body {
@@ -81,7 +81,7 @@
     display: block;
 }
 
-.code-keyword { color: #ffffff; }
+.code-keyword { color: var(--light); }
 .code-function { color: #d4d4d4; }
 .code-string { color: #cccccc; }
 .code-number { color: #bbbbbb; }

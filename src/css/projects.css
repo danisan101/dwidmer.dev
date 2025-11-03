@@ -6,8 +6,8 @@
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: var(--surface-alt);
+    border: 1px solid var(--surface-border);
     border-radius: 5px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -16,16 +16,16 @@
 
 .project-card:hover {
     transform: translateY(-10px);
-    border-color: var(--light);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    border-color: var(--surface-border-strong);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     animation: monochromeGlitch 0.5s ease-in-out;
 }
 
 .project-image {
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: var(--dark);
-    border: 1px solid var(--light);
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
     display: block;
     overflow: hidden;
     position: relative;
@@ -45,7 +45,7 @@
     object-fit: contain;
     object-position: center;
     padding: 1rem;
-    background: var(--dark);
+    background: var(--surface);
     filter: grayscale(100%) contrast(1.2);
 }
 
@@ -93,13 +93,13 @@
     padding: 0.3rem 0.8rem;
     border-radius: 3px;
     font-size: 0.8rem;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     transition: all 0.3s ease;
 }
 
 .tech-tag:hover {
     background: var(--light);
-    color: var(--dark);
+    color: var(--text-inverse);
     animation: tagGlitch 0.2s ease-in-out;
 }
 

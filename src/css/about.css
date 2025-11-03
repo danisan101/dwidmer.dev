@@ -38,10 +38,10 @@
     width: 200px;
     height: 200px;
     margin: 2rem auto;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     position: relative;
     overflow: hidden;
-    background: #000;
+    background: var(--surface);
 }
 
 .about-gallery {
@@ -54,7 +54,7 @@
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     loading: lazy;
 }
 
@@ -71,16 +71,16 @@
 }
 
 @keyframes asciiGlow {
-    0% { 
-        text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    0% {
+        text-shadow: 0 0 5px rgba(255,255,255,0.35);
         transform: scale(1);
     }
-    50% { 
-        text-shadow: 0 0 15px rgba(255,255,255,0.8);
+    50% {
+        text-shadow: 0 0 15px rgba(255,255,255,0.55);
         transform: scale(1.02);
     }
-    100% { 
-        text-shadow: 0 0 10px rgba(255,255,255,0.6);
+    100% {
+        text-shadow: 0 0 10px rgba(255,255,255,0.45);
         transform: scale(1);
     }
 }
@@ -102,7 +102,7 @@
 }
 
 .timeline-item {
-    border-left: 2px solid var(--light);
+    border-left: 2px solid var(--surface-border-strong);
     padding-left: 2rem;
     margin-bottom: 2rem;
     position: relative;
@@ -129,7 +129,7 @@
     width: 15px;
     height: 15px;
     left: -8.5px;
-    box-shadow: 0 0 10px var(--light);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
 }
 
 .timeline-item.no-dot::before {
@@ -165,7 +165,7 @@
 
 .interest-tag {
     background: transparent;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     color: var(--light);
     padding: 0.5rem 1rem;
     border-radius: 3px;
@@ -175,20 +175,20 @@
 
 .interest-tag:hover {
     background: var(--light);
-    color: var(--dark);
+    color: var(--text-inverse);
     transform: translateY(-3px);
 }
 
 /* Terminal Boxes */
 .terminal-interests,
 .terminal-skills {
-    background: #1e1e1e;
-    border: 1px solid #333;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
-    color: #fff;
+    color: var(--light);
     margin: 2rem 0;
     max-width: 600px;
     margin-left: auto;
@@ -197,9 +197,9 @@
 
 .terminal-interests .terminal-header,
 .terminal-skills .terminal-header {
-    background: #2d2d30;
+    background: var(--surface-alt);
     padding: 8px 12px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--surface-border);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -229,13 +229,13 @@
 .terminal-interests .terminal-title,
 .terminal-skills .terminal-title {
     font-size: 12px;
-    color: #ccc;
+    color: var(--text-muted);
 }
 
 .terminal-interests .terminal-body,
 .terminal-skills .terminal-body {
     padding: 16px;
-    background: #1e1e1e;
+    background: var(--surface);
     min-height: 150px;
 }
 
@@ -253,18 +253,18 @@
 .terminal-interests .terminal-line .cursor,
 .terminal-skills .terminal-line .cursor {
     animation: blink 1s infinite;
-    color: #fff;
+    color: var(--light);
 }
 
 /* CV Download Terminal */
 .cv-download-terminal {
-    background: #1e1e1e;
-    border: 1px solid #333;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
-    color: #fff;
+    color: var(--light);
     margin: 2rem auto;
     max-width: 400px;
     cursor: pointer;
@@ -273,13 +273,13 @@
 
 .cv-download-terminal:hover {
     border-color: #4fc1ff;
-    box-shadow: 0 0 30px rgba(79, 193, 255, 0.3);
+    box-shadow: 0 0 30px rgba(79, 193, 255, 0.25);
 }
 
 .cv-download-terminal .terminal-header {
-    background: #2d2d30;
+    background: var(--surface-alt);
     padding: 8px 12px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--surface-border);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -303,12 +303,12 @@
 
 .cv-download-terminal .terminal-title {
     font-size: 12px;
-    color: #ccc;
+    color: var(--text-muted);
 }
 
 .cv-download-terminal .terminal-body {
     padding: 16px;
-    background: #1e1e1e;
+    background: var(--surface);
     text-align: center;
 }
 
@@ -318,7 +318,7 @@
 }
 
 .cv-download-terminal .download-description {
-    color: #ccc;
+    color: var(--text-muted);
     font-size: 12px;
 }
 

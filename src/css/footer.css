@@ -1,35 +1,32 @@
 /* Footer */
 footer {
-    background: #000000;
-    padding: 1rem 2rem;
+    background: var(--surface-alt);
+    padding: 1.5rem 2rem;
     text-align: center;
-    border-top: 1px solid #ffffff;
+    border-top: 1px solid var(--surface-border);
     margin-top: 2rem;
     position: relative;
     bottom: 0;
     width: 100%;
     font-size: 0.8rem;
     line-height: 1.4;
+    color: var(--text-muted);
 }
 
 footer p {
     margin: 0.3rem 0;
-    color: #ffffff;
-    opacity: 0.8;
+    color: inherit;
+    opacity: 0.85;
 }
 
 footer a {
-    color: inherit;
+    color: var(--light);
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 footer a:hover {
     opacity: 1;
-}
-
-body.light-mode footer {
-    background: #eee;
 }
 
 .social-links {
@@ -41,17 +38,25 @@ body.light-mode footer {
 }
 
 .social-links a {
-    color: #ffffff;
-    font-size: 0.7rem;
+    color: var(--light);
+    font-size: 0.65rem;
     transition: all 0.3s ease;
     text-decoration: none;
-    opacity: 0.8;
+    opacity: 0.75;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
 }
 
 .social-links a:hover {
     transform: translateY(-2px);
     opacity: 1;
-    filter: drop-shadow(0 3px 6px rgba(255,255,255,0.3));
+    border-color: var(--surface-border);
 }
 
 .social-links svg {
@@ -63,10 +68,10 @@ body.light-mode footer {
 
 .cv-download {
     display: inline-block;
-    margin-top: 1rem;
-    padding: 0.8rem 1.5rem;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1.4rem;
     background: transparent;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     color: var(--light);
     text-decoration: none;
     font-family: 'Space Mono', monospace;
@@ -75,7 +80,7 @@ body.light-mode footer {
 
 .cv-download:hover {
     background: var(--light);
-    color: var(--dark);
+    color: var(--text-inverse);
 }
 
 .cv-actions {
