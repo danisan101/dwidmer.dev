@@ -1,4 +1,5 @@
 // Tetris Game Module
+import { log, error } from '../utils/logger.js';
 let gameRunning = false;
 let board = [];
 let currentPiece = null;
@@ -28,7 +29,7 @@ const colors = ['#00f', '#ff0', '#f0f', '#0f0', '#f00', '#00f', '#fa0'];
 
 // Global functions
 function startTetris() {
-    console.log('🧩 startTetris called');
+    log('🧩 startTetris called');
     
     // Create game container dynamically
     const existingContainer = document.getElementById('tetrisGame');
@@ -78,7 +79,7 @@ function startTetris() {
     const highscoreElement = document.getElementById('tetrisHighscore');
     const gameOverScreen = document.getElementById('gameOver');
     
-    console.log('Game container:', gameContainer);
+    log('Game container:', gameContainer);
     
     // Hide Snake if it's running
     const snakeGame = document.getElementById('snakeGame');
@@ -99,15 +100,15 @@ function startTetris() {
         // Ensure it's on top
         gameContainer.style.zIndex = '10000';
         
-        console.log('✅ Tetris game container activated');
-        console.log('Container styles:', {
+        log('✅ Tetris game container activated');
+        log('Container styles:', {
             display: gameContainer.style.display,
             visibility: gameContainer.style.visibility,
             opacity: gameContainer.style.opacity,
             zIndex: gameContainer.style.zIndex
         });
     } else {
-        console.error('❌ Game container not found!');
+        error('❌ Game container not found!');
     }
     
     gameRunning = true;
@@ -134,7 +135,7 @@ function hideTetris() {
         gameOverScreen.style.display = 'none';
     }
     gameRunning = false;
-    console.log('🧩 Tetris game hidden');
+    log('🧩 Tetris game hidden');
 }
 
 // Make functions available globally
@@ -200,10 +201,10 @@ document.addEventListener('keydown', (e) => {
 });
 
 export function initTetrisGame() {
-    console.log('🧩 Initializing Tetris Game...');
+    log('🧩 Initializing Tetris Game...');
     
-    console.log('✅ Tetris Game initialized successfully!');
-    console.log('🎮 Available functions:', { startTetris, hideTetris });
+    log('✅ Tetris Game initialized successfully!');
+    log('🎮 Available functions:', { startTetris, hideTetris });
 }
 
 // Game logic functions

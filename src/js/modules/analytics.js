@@ -1,4 +1,6 @@
 // Analytics Module - Plausible Integration (Privacy-Friendly)
+import { log } from '../utils/logger.js';
+
 export function initAnalytics() {
     // Check if user has consented (if needed)
     // const hasConsent = localStorage.getItem('analyticsConsent');
@@ -44,9 +46,10 @@ function trackPageInteractions() {
     // Track Easter Egg activations
     document.addEventListener('keydown', (e) => {
         if (e.shiftKey && e.altKey && e.ctrlKey) {
-            if (e.key.toLowerCase() === 'g') {
+            const key = e.key.toLowerCase();
+            if (key === 's') {
                 trackEvent('Easter Egg', { game: 'snake' });
-            } else if (e.key.toLowerCase() === 't') {
+            } else if (key === 't') {
                 trackEvent('Easter Egg', { game: 'tetris' });
             }
         }
@@ -57,7 +60,7 @@ function trackEvent(eventName, props = {}) {
     if (typeof window.plausible !== 'undefined') {
         window.plausible(eventName, { props });
     } else {
-        console.log('Analytics Event:', eventName, props);
+        log('Analytics Event:', eventName, props);
     }
 }
 

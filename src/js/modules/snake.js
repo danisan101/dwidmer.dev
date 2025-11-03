@@ -1,4 +1,5 @@
 // Snake Game Module
+import { log, error } from '../utils/logger.js';
 let gameRunning = false;
 let snake = [{x: 150, y: 150}];
 let food = {x: 90, y: 90};
@@ -9,7 +10,7 @@ let highscore = Number(localStorage.getItem('snakeHighscore') || 0);
 
 // Global functions
 function showSnakeGame() {
-    console.log('🐍 showSnakeGame called');
+    log('🐍 showSnakeGame called');
     
     // Create game container dynamically
     const existingContainer = document.getElementById('snakeGame');
@@ -51,7 +52,7 @@ function showSnakeGame() {
     const scoreElement = document.getElementById('snakeScore');
     const highscoreElement = document.getElementById('snakeHighscore');
     
-    console.log('Game container:', gameContainer);
+    log('Game container:', gameContainer);
     
     // Hide Tetris if it's running
     const tetrisGame = document.getElementById('tetrisGame');
@@ -72,15 +73,15 @@ function showSnakeGame() {
         // Ensure it's on top
         gameContainer.style.zIndex = '10000';
         
-        console.log('✅ Snake game container activated');
-        console.log('Container styles:', {
+        log('✅ Snake game container activated');
+        log('Container styles:', {
             display: gameContainer.style.display,
             visibility: gameContainer.style.visibility,
             opacity: gameContainer.style.opacity,
             zIndex: gameContainer.style.zIndex
         });
     } else {
-        console.error('❌ Game container not found!');
+        error('❌ Game container not found!');
     }
     
     gameRunning = true;
@@ -107,7 +108,7 @@ function hideSnakeGame() {
         gameOverScreen.style.display = 'none';
     }
     gameRunning = false;
-    console.log('🐍 Snake game hidden');
+    log('🐍 Snake game hidden');
 }
 
 // Make functions available globally
@@ -168,7 +169,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 export function initSnakeGame() {
-    console.log('🐍 Initializing Snake Game...');
+    log('🐍 Initializing Snake Game...');
     
     // Create game container dynamically
     function createSnakeGameContainer() {
@@ -213,11 +214,11 @@ export function initSnakeGame() {
     const canvas = document.getElementById('snakeCanvas');
     
     if (!canvas) {
-        console.error('❌ Snake canvas not found!');
+        error('❌ Snake canvas not found!');
         return;
     }
     
-    console.log('✅ Snake canvas found, initializing...');
+    log('✅ Snake canvas found, initializing...');
     
     const ctx = canvas.getContext('2d');
     const scoreElement = document.getElementById('snakeScore');
@@ -296,7 +297,7 @@ export function initSnakeGame() {
     }
 
     function showSnakeGame() {
-        console.log('🐍 showSnakeGame called');
+        log('🐍 showSnakeGame called');
         
         // Recreate container to ensure it's fresh
         const gameContainer = createSnakeGameContainer();
@@ -304,7 +305,7 @@ export function initSnakeGame() {
         const scoreElement = document.getElementById('snakeScore');
         const highscoreElement = document.getElementById('snakeHighscore');
         
-        console.log('Game container:', gameContainer);
+        log('Game container:', gameContainer);
         
         // Hide Tetris if it's running
         const tetrisGame = document.getElementById('tetrisGame');
@@ -325,15 +326,15 @@ export function initSnakeGame() {
             // Ensure it's on top
             gameContainer.style.zIndex = '10000';
             
-            console.log('✅ Snake game container activated');
-            console.log('Container styles:', {
+            log('✅ Snake game container activated');
+            log('Container styles:', {
                 display: gameContainer.style.display,
                 visibility: gameContainer.style.visibility,
                 opacity: gameContainer.style.opacity,
                 zIndex: gameContainer.style.zIndex
             });
         } else {
-            console.error('❌ Game container not found!');
+            error('❌ Game container not found!');
         }
         
         gameRunning = true;
@@ -359,7 +360,7 @@ export function initSnakeGame() {
             gameOverScreen.style.display = 'none';
         }
         gameRunning = false;
-        console.log('🐍 Snake game hidden');
+        log('🐍 Snake game hidden');
     }
     
     function showGameOver() {
@@ -371,8 +372,8 @@ export function initSnakeGame() {
         }
     }
 
-    console.log('✅ Snake Game initialized successfully!');
-    console.log('🎮 Available functions:', { showSnakeGame, hideSnakeGame });
+    log('✅ Snake Game initialized successfully!');
+    log('🎮 Available functions:', { showSnakeGame, hideSnakeGame });
 }
 
 // Game logic functions

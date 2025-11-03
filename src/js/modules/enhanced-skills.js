@@ -1,6 +1,8 @@
 // Enhanced Skills Section Module
+import { log } from '../utils/logger.js';
+
 export function initEnhancedSkills() {
-    console.log('🎯 Initializing Enhanced Skills Section...');
+    log('🎯 Initializing Enhanced Skills Section...');
     
     const skillsSection = document.querySelector('.skills-section');
     if (!skillsSection) return;
@@ -56,7 +58,7 @@ export function initEnhancedSkills() {
         removeTerminalGlitch(terminal);
     });
     
-    console.log('✅ Enhanced Skills Section initialized!');
+    log('✅ Enhanced Skills Section initialized!');
 }
 
 function addTerminalGlitch(element) {

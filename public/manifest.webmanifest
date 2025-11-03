@@ -1,0 +1,44 @@
+{
+  "name": "Daniel Widmer - Portfolio",
+  "short_name": "DW Portfolio",
+  "description": "Creative Developer & Digital Artist Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "lang": "de",
+  "scope": "/",
+  "id": "dwidmer-portfolio",
+  "categories": ["portfolio", "developer", "creative"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 128x128 256x256",
+      "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kontakt",
+      "short_name": "Contact",
+      "description": "Kontaktformular öffnen",
+      "url": "/#contact",
+      "icons": [{ "src": "/favicon.ico", "sizes": "96x96", "type": "image/x-icon" }]
+    },
+    {
+      "name": "Projekte",
+      "short_name": "Projects",
+      "description": "Projekte anzeigen",
+      "url": "/#projects",
+      "icons": [{ "src": "/favicon.ico", "sizes": "96x96", "type": "image/x-icon" }]
+    },
+    {
+      "name": "Spiele",
+      "short_name": "Games",
+      "description": "Snake & Tetris spielen",
+      "url": "/#games",
+      "icons": [{ "src": "/favicon.ico", "sizes": "96x96", "type": "image/x-icon" }]
+    }
+  ]
+}
