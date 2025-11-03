@@ -1,6 +1,8 @@
 // Glitch Effects Module
+import { log } from '../utils/logger.js';
+
 export function initGlitchEffects() {
-    console.log('⚡ Initializing Glitch Effects...');
+    log('⚡ Initializing Glitch Effects...');
     
     // Add glitch CSS animations
     addGlitchStyles();
@@ -52,7 +54,7 @@ export function initGlitchEffects() {
         observer.observe(typedName, { childList: true, characterData: true });
     }
     
-    console.log('✅ Glitch Effects initialized!');
+    log('✅ Glitch Effects initialized!');
 }
 
 function addGlitchStyles() {
