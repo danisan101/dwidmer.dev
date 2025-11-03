@@ -1,12 +1,17 @@
 // Performance Monitoring Module
+import { log, shouldLog } from '../utils/logger.js';
+
 export function initPerformanceMonitoring() {
+    if (!shouldLog()) {
+        return;
+    }
     // Monitor Core Web Vitals
     if ('PerformanceObserver' in window) {
         // Largest Contentful Paint (LCP)
         const lcpObserver = new PerformanceObserver((list) => {
             const entries = list.getEntries();
             const lastEntry = entries[entries.length - 1];
-            console.log('LCP:', lastEntry.startTime);
+            log('LCP:', lastEntry.startTime);
         });
         lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
 
@@ -14,7 +19,7 @@ export function initPerformanceMonitoring() {
         const fidObserver = new PerformanceObserver((list) => {
             const entries = list.getEntries();
             entries.forEach((entry) => {
-                console.log('FID:', entry.processingStart - entry.startTime);
+                log('FID:', entry.processingStart - entry.startTime);
             });
         });
         fidObserver.observe({ entryTypes: ['first-input'] });
@@ -28,7 +33,7 @@ export function initPerformanceMonitoring() {
                     clsValue += entry.value;
                 }
             });
-            console.log('CLS:', clsValue);
+            log('CLS:', clsValue);
         });
         clsObserver.observe({ entryTypes: ['layout-shift'] });
     }
@@ -37,7 +42,7 @@ export function initPerformanceMonitoring() {
     if ('memory' in performance) {
         setInterval(() => {
             const memory = performance.memory;
-            console.log('Memory Usage:', {
+            log('Memory Usage:', {
                 used: Math.round(memory.usedJSHeapSize / 1048576) + ' MB',
                 total: Math.round(memory.totalJSHeapSize / 1048576) + ' MB',
                 limit: Math.round(memory.jsHeapSizeLimit / 1048576) + ' MB'

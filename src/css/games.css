@@ -61,15 +61,15 @@
 
 /* Mobile Support for Games */
 @media (max-width: 768px) {
+    .game-overlay {
+        padding: 1rem;
+    }
+
     .game-terminal {
         width: 95vw;
-        height: 85vh;
         min-width: 300px;
         max-width: 95vw;
         max-height: 85vh;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         padding: 0;
         border-radius: 8px;
     }
@@ -112,28 +112,42 @@
     }
 }
 
+body.game-modal-open {
+    overflow: hidden;
+}
+
+.game-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(2px);
+    z-index: 10000;
+    padding: 2rem;
+}
+
+.game-overlay.active {
+    display: flex;
+}
+
 /* --- Game Terminal (UI) - Popup with Mobile Support --- */
 .game-terminal {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    background: rgba(0, 0, 0, 0.98) !important;
-    border: 2px solid #ffffff !important;
-    border-radius: 8px !important;
-    font-family: 'Space Mono', monospace !important;
-    z-index: 99999 !important;
-    display: none !important;
-    min-width: 500px !important;
-    max-width: 90vw !important;
-    max-height: 90vh !important;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
-    overflow: hidden !important;
+    background: rgba(0, 0, 0, 0.98);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    width: min(640px, 90vw);
+    max-height: 90vh;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
 }
 
 .game-terminal.active {
-    display: flex !important;
-    flex-direction: column;
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
 }
 
 .game-terminal .terminal-header {
