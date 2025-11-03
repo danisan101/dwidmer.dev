@@ -1,10 +1,13 @@
 // CSS Lazy Loading Module
+const nonCriticalCSSUrl = new URL('../../css/non-critical.css', import.meta.url).href;
+const criticalCSSUrl = new URL('../../css/critical.css', import.meta.url).href;
+
 export function initLazyCSS() {
     // Load non-critical CSS after page load
     const loadNonCriticalCSS = () => {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
-        link.href = '/src/css/non-critical.css';
+        link.href = nonCriticalCSSUrl;
         link.media = 'print';
         link.onload = function() {
             this.media = 'all';
@@ -23,7 +26,7 @@ export function initLazyCSS() {
     const preloadCriticalResources = () => {
         const criticalCSS = document.createElement('link');
         criticalCSS.rel = 'preload';
-        criticalCSS.href = '/src/css/critical.css';
+        criticalCSS.href = criticalCSSUrl;
         criticalCSS.as = 'style';
         criticalCSS.onload = function() {
             this.rel = 'stylesheet';

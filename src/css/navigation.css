@@ -4,16 +4,12 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.95);
+    background: var(--layer-strong);
     backdrop-filter: blur(10px);
     z-index: 10001;
     padding: 1rem 2rem;
-    border-bottom: 1px solid var(--light);
-    transition: background var(--transition-speed) ease;
-}
-
-body.light-mode nav {
-    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--surface-border);
+    transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 .nav-container {
@@ -46,12 +42,12 @@ body.light-mode nav {
 }
 
 .nav-links a:hover {
-    border-color: var(--light);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border-color: var(--surface-border-strong);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
 }
 
 .nav-links a.active {
-    border-color: var(--light);
+    border-color: var(--surface-border-strong);
 }
 
 /* Controls (Theme & CRT Toggle) */
@@ -65,7 +61,7 @@ body.light-mode nav {
 .crt-toggle,
 .easter-egg-btn {
     background: transparent;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     color: var(--light);
     padding: 0.4rem 0.7rem;
     cursor: pointer;
@@ -85,7 +81,7 @@ body.light-mode nav {
 .easter-egg-btn:hover {
     opacity: 1;
     background: var(--light);
-    color: var(--dark);
+    color: var(--text-inverse);
 }
 
 .easter-egg-btn {
@@ -103,7 +99,7 @@ body.light-mode nav {
 .mobile-menu-toggle {
     display: none;
     background: none;
-    border: 1px solid var(--light);
+    border: 1px solid var(--surface-border);
     color: var(--light);
     font-size: 1.5rem;
     padding: 0.5rem;

@@ -13,20 +13,20 @@
     font-size: clamp(2rem, 8vw, 4rem);
     font-weight: 400;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: var(--light);
     text-transform: lowercase;
     letter-spacing: 3px;
 }
 
-#typed-name {
-    border-right: 2px solid var(--light);
+.hero-name {
+    display: inline-block;
 }
 
 .hero-content p {
     font-family: 'Space Mono', monospace;
     font-size: clamp(1rem, 3vw, 1.2rem);
     font-weight: 400;
-    color: #ffffff;
+    color: var(--light);
     margin-bottom: 2rem;
     max-width: 600px;
     text-transform: lowercase;

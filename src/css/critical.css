@@ -1,5 +1,4 @@
 /* Critical CSS - Above the fold content */
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
 
 @import './reset.css';
 @import './effects.css';
@@ -21,7 +20,7 @@
 
 /* Focus Management */
 *:focus {
-    outline: 2px solid #ffffff;
+    outline: 2px solid var(--focus-outline);
     outline-offset: 2px;
 }
 
@@ -41,11 +40,15 @@
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #000000;
-    color: #ffffff;
-    padding: 8px;
+    background: var(--surface-alt);
+    color: var(--light);
+    padding: 8px 12px;
+    border: 1px solid var(--surface-border);
     text-decoration: none;
     z-index: 1000;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px var(--dark);
+    transition: top var(--transition-speed) ease;
 }
 
 .skip-link:focus {
