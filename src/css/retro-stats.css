@@ -34,8 +34,8 @@
     background: var(--surface);
     border: 1px solid var(--surface-border);
     border-radius: 8px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-    font-family: 'Consolas', 'Monaco', monospace;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+    font-family: 'Space Mono', monospace;
     font-size: 14px;
     color: var(--light);
     margin: 2rem auto;
@@ -81,7 +81,7 @@
 }
 
 .session-stats-terminal .terminal-body {
-    padding: 16px;
+    padding: 16px 16px 18px;
     background: var(--surface);
     min-height: 200px;
 }
@@ -113,29 +113,29 @@
 
 .session-stats-terminal .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-    margin: 1rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.85rem;
+    margin: 1rem 0 0.9rem;
 }
 
 .session-stats-terminal .stat-item {
     background: var(--surface-alt);
     border: 1px solid var(--surface-border);
-    padding: 0.8rem;
-    text-align: center;
-    border-radius: 3px;
+    padding: 0.75rem;
+    text-align: left;
+    border-radius: 4px;
 }
 
 .session-stats-terminal .stat-label {
     font-size: 0.7rem;
     color: var(--text-muted);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .session-stats-terminal .stat-value {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--light);
     font-weight: 700;
     font-family: 'Space Mono', monospace;

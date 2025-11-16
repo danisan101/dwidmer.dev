@@ -1,35 +1,30 @@
 /* About Section */
 .about-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    max-width: 800px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+    align-items: flex-start;
+    gap: 2.5rem;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-.profile-section {
-    text-align: center;
-}
-
 .about-text {
-    text-align: center;
+    text-align: left;
 }
 
 .about-text h3,
 .about-text h4 {
-    text-align: center;
+    text-align: left;
 }
 
 /* Subsection Titles - unified style for Werdegang, Interessen, Skills */
 .subsection-title {
     font-size: 1.3rem;
     font-weight: 700;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
     color: var(--light);
-    text-align: center;
+    text-align: left;
     letter-spacing: 1px;
 }
 
@@ -181,18 +176,16 @@
 
 .matrix-panels {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-    margin: 2rem 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0 0;
 }
 
 .terminal-card {
-    background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.04), transparent 35%),
-        radial-gradient(circle at 85% 0%, rgba(79, 193, 255, 0.08), transparent 30%),
-        var(--surface);
+    background: var(--surface);
     border: 1px solid var(--surface-border);
     border-radius: 10px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
     color: var(--light);
@@ -204,7 +197,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
     mix-blend-mode: screen;
     opacity: 0.4;
     pointer-events: none;
@@ -327,14 +320,17 @@
 .interest-meter span {
     display: block;
     height: 100%;
-    background: linear-gradient(90deg, #4fc1ff, #9bf8f4);
+    background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.4));
     border-radius: 999px;
 }
 
 .skills-dossier {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.9rem;
+    border-top: 1px dashed var(--surface-border);
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
 }
 
 .skill-track {
@@ -342,38 +338,42 @@
     border-radius: 10px;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.02);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+    position: relative;
 }
 
 .skill-track:hover {
     border-color: var(--surface-border-strong);
-    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
 }
 
 .skill-track-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
 }
 
 .skill-track-title {
     font-weight: 700;
     letter-spacing: 0.05em;
     color: var(--light);
+    text-transform: uppercase;
+    font-size: 0.8rem;
 }
 
 .skill-track-level {
     font-size: 0.8rem;
     padding: 0.2rem 0.6rem;
-    border: 1px solid var(--surface-border);
+    border: 1px solid var(--surface-border-strong);
     border-radius: 8px;
     color: var(--text-muted);
 }
 
 .skill-copy {
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.4rem;
     color: var(--text-muted);
     font-size: 0.95rem;
 }
@@ -381,7 +381,7 @@
 .skill-track-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.35rem;
 }
 
 .skill-pill {
@@ -392,15 +392,16 @@
     border-radius: 999px;
     font-size: 0.85rem;
     color: var(--light);
-    background: rgba(255, 255, 255, 0.04);
-    transition: background 0.2s ease, transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.02);
+    transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
     letter-spacing: 0.02em;
 }
 
 .skill-pill:hover {
-    background: var(--light);
-    color: var(--text-inverse);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--light);
+    border-color: var(--surface-border-strong);
+    transform: translateY(-1px);
 }
 
 /* CV Download Terminal */
@@ -408,7 +409,7 @@
     background: var(--surface);
     border: 1px solid var(--surface-border);
     border-radius: 8px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
     color: var(--light);
@@ -419,8 +420,8 @@
 }
 
 .cv-download-terminal:hover {
-    border-color: #4fc1ff;
-    box-shadow: 0 0 30px rgba(79, 193, 255, 0.25);
+    border-color: var(--surface-border-strong);
+    box-shadow: 0 0 26px rgba(255, 255, 255, 0.18);
 }
 
 .cv-download-terminal .terminal-header {
@@ -460,7 +461,7 @@
 }
 
 .cv-download-terminal .download-command {
-    color: #4fc1ff;
+    color: var(--light);
     margin-bottom: 8px;
 }
 
@@ -553,12 +554,24 @@
 @media (max-width: 768px) {
     .about-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-text {
         text-align: center;
     }
 
-    .profile-img {
-        width: 300px;
-        height: 300px;
+    .about-text h3,
+    .about-text h4 {
+        text-align: center;
+    }
+
+    .matrix-panels {
+        grid-template-columns: 1fr;
+    }
+
+    .subsection-title {
+        text-align: center;
     }
 }
 
