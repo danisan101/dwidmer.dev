@@ -264,7 +264,7 @@
 }
 
 .terminal-line .command {
-    color: #4fc1ff;
+    color: var(--light);
 }
 
 .terminal-line .cursor {
@@ -473,8 +473,8 @@
 /* Glitch Effect */
 .cv-download-terminal.glitch-active {
     animation: glitch 0.3s ease-in-out;
-    border-color: #ff0040;
-    box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+    border-color: var(--light);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
 }
 
 @keyframes glitch {

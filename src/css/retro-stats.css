@@ -103,7 +103,7 @@
 }
 
 .session-stats-terminal .terminal-line .command {
-    color: #4fc1ff;
+    color: var(--light);
 }
 
 .session-stats-terminal .terminal-line .cursor {

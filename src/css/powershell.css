@@ -66,7 +66,7 @@
 }
 
 .terminal-line .command {
-    color: #4fc1ff;
+    color: var(--light);
 }
 
 .terminal-line .cursor {
