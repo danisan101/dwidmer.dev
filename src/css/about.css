@@ -239,6 +239,114 @@
     min-height: 150px;
 }
 
+/* Skills Panel */
+.skills-panel {
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    max-width: 900px;
+    margin: 2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.skills-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--surface-border);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.skills-indicators .dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    background: var(--surface-border-strong);
+    margin-right: 6px;
+}
+
+.skills-title {
+    text-align: center;
+}
+
+.skills-status {
+    justify-self: end;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--surface-border);
+    border-radius: 999px;
+    font-size: 0.75rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.skill-card {
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--surface-border-strong);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.skill-heading {
+    font-size: 1rem;
+    color: var(--light);
+    letter-spacing: 0.5px;
+}
+
+.skill-copy {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--surface-border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--light);
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.2s ease;
+}
+
+.skill-pill:hover {
+    background: var(--light);
+    color: var(--text-inverse);
+    transform: translateY(-2px);
+}
+
 .terminal-interests .terminal-line,
 .terminal-skills .terminal-line {
     margin-bottom: 4px;

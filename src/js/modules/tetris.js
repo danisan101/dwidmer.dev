@@ -87,7 +87,7 @@ function startTetris() {
     }
 
     overlay.appendChild(gameContainer);
-    document.body.appendChild(overlay);
+    document.body.prepend(overlay);
     document.body.classList.add('game-modal-open');
 
     const canvas = document.getElementById('tetrisCanvas');

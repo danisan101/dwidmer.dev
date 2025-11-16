@@ -64,7 +64,7 @@ function ensureOverlay() {
             }
         });
 
-        document.body.appendChild(overlay);
+        document.body.prepend(overlay);
 
         const closeBtn = overlay.querySelector('.close-btn');
         if (closeBtn) {
