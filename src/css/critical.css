@@ -4,6 +4,13 @@
 @import './effects.css';
 @import './navigation.css';
 @import './hero.css';
+@import './about.css';
+@import './projects.css';
+@import './contact.css';
+@import './retro-stats.css';
+@import './footer.css';
+@import './powershell.css';
+@import './terminal-styles.css';
 
 /* Screen Reader Only Content */
 .sr-only {
