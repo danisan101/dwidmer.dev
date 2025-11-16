@@ -169,19 +169,16 @@ body.crt-enabled::after {
     }
 }
 
-/* Apply glitch to important elements */
-.project-card:hover,
+/* Apply glitch to important elements (excluding project cards for monochrome look) */
 .skill-item:hover,
 .btn:hover,
 .cta-button:hover,
 .submit-btn:hover,
-.tech-tag:hover,
 .interest-tag:hover {
     animation: glitch 0.3s ease-in-out;
 }
 
-/* VHS color shift effect */
-.project-card:hover::before,
+/* VHS color shift effect (removed for project cards - monochrome only) */
 .skill-item:hover::after {
     content: '';
     position: absolute;
@@ -190,16 +187,15 @@ body.crt-enabled::after {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, 
-        rgba(255,0,0,0.03) 0%,
-        rgba(0,255,0,0.03) 50%,
-        rgba(0,0,255,0.03) 100%);
+        rgba(255,255,255,0.02) 0%,
+        rgba(255,255,255,0.01) 50%,
+        rgba(255,255,255,0.02) 100%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 999;
 }
 
-.project-card:hover::before,
 .skill-item:hover::after {
     opacity: 1;
 }
