@@ -179,189 +179,228 @@
     transform: translateY(-3px);
 }
 
-/* Terminal Boxes */
-.terminal-interests,
-.terminal-skills {
-    background: var(--surface);
+.matrix-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.terminal-card {
+    background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.04), transparent 35%),
+        radial-gradient(circle at 85% 0%, rgba(79, 193, 255, 0.08), transparent 30%),
+        var(--surface);
     border: 1px solid var(--surface-border);
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
     color: var(--light);
-    margin: 2rem 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    position: relative;
+    overflow: hidden;
 }
 
-.terminal-interests .terminal-header,
-.terminal-skills .terminal-header {
+.terminal-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.terminal-card .terminal-header {
     background: var(--surface-alt);
-    padding: 8px 12px;
+    padding: 10px 12px;
     border-bottom: 1px solid var(--surface-border);
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.75rem;
     align-items: center;
-    justify-content: space-between;
+    position: relative;
+    z-index: 1;
 }
 
-.terminal-interests .terminal-buttons,
-.terminal-skills .terminal-buttons {
+.terminal-buttons {
     display: flex;
     gap: 6px;
 }
 
-.terminal-interests .terminal-buttons .btn,
-.terminal-skills .terminal-buttons .btn {
+.terminal-buttons .btn {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.terminal-interests .terminal-buttons .close,
-.terminal-skills .terminal-buttons .close { background: #ff5f56; }
-.terminal-interests .terminal-buttons .minimize,
-.terminal-skills .terminal-buttons .minimize { background: #ffbd2e; }
-.terminal-interests .terminal-buttons .maximize,
-.terminal-skills .terminal-buttons .maximize { background: #27ca3f; }
+.terminal-buttons .close { background: #ff5f56; }
+.terminal-buttons .minimize { background: #ffbd2e; }
+.terminal-buttons .maximize { background: #27ca3f; }
 
-.terminal-interests .terminal-title,
-.terminal-skills .terminal-title {
+.terminal-title {
     font-size: 12px;
     color: var(--text-muted);
+    letter-spacing: 0.08em;
 }
 
-.terminal-interests .terminal-body,
-.terminal-skills .terminal-body {
-    padding: 16px;
-    background: var(--surface);
-    min-height: 150px;
-}
-
-/* Skills Panel */
-.skills-panel {
-    background: var(--surface);
+.terminal-status {
     border: 1px solid var(--surface-border);
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-    max-width: 900px;
-    margin: 2rem auto 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.skills-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--surface-border);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-}
-
-.skills-indicators .dot {
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    border-radius: 50%;
-    background: var(--surface-border-strong);
-    margin-right: 6px;
-}
-
-.skills-title {
-    text-align: center;
-}
-
-.skills-status {
-    justify-self: end;
     padding: 0.25rem 0.75rem;
-    border: 1px solid var(--surface-border);
     border-radius: 999px;
     font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+.terminal-card .terminal-body {
+    padding: 16px;
+    position: relative;
+    z-index: 1;
 }
 
-.skill-card {
-    border: 1px solid var(--surface-border);
-    border-radius: 8px;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    text-align: left;
+.terminal-grid {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    transition: all 0.3s ease;
 }
 
-.skill-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--surface-border-strong);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+.terminal-line {
+    line-height: 1.4;
+    color: var(--text-muted);
 }
 
-.skill-heading {
-    font-size: 1rem;
+.terminal-line .command {
+    color: #4fc1ff;
+}
+
+.terminal-line .cursor {
+    animation: blink 1s infinite;
     color: var(--light);
-    letter-spacing: 0.5px;
+}
+
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+}
+
+.interest-item {
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+}
+
+.interest-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.interest-label {
+    font-weight: 600;
+    color: var(--light);
+}
+
+.interest-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    border: 1px solid var(--surface-border);
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+}
+
+.interest-meter {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+}
+
+.interest-meter span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #4fc1ff, #9bf8f4);
+    border-radius: 999px;
+}
+
+.skills-dossier {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.skill-track {
+    border: 1px solid var(--surface-border);
+    border-radius: 10px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.skill-track:hover {
+    border-color: var(--surface-border-strong);
+    transform: translateY(-3px);
+}
+
+.skill-track-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.35rem;
+}
+
+.skill-track-title {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--light);
+}
+
+.skill-track-level {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
+    color: var(--text-muted);
 }
 
 .skill-copy {
-    margin: 0;
+    margin: 0 0 0.5rem;
     color: var(--text-muted);
     font-size: 0.95rem;
 }
 
-.skill-pills {
+.skill-track-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .skill-pill {
     display: inline-flex;
     align-items: center;
-    padding: 0.35rem 0.7rem;
+    padding: 0.35rem 0.75rem;
     border: 1px solid var(--surface-border);
     border-radius: 999px;
     font-size: 0.85rem;
     color: var(--light);
-    background: rgba(255, 255, 255, 0.02);
-    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.04);
+    transition: background 0.2s ease, transform 0.2s ease;
+    letter-spacing: 0.02em;
 }
 
 .skill-pill:hover {
     background: var(--light);
     color: var(--text-inverse);
     transform: translateY(-2px);
-}
-
-.terminal-interests .terminal-line,
-.terminal-skills .terminal-line {
-    margin-bottom: 4px;
-    line-height: 1.4;
-}
-
-.terminal-interests .terminal-line .command,
-.terminal-skills .terminal-line .command {
-    color: #4fc1ff;
-}
-
-.terminal-interests .terminal-line .cursor,
-.terminal-skills .terminal-line .cursor {
-    animation: blink 1s infinite;
-    color: var(--light);
 }
 
 /* CV Download Terminal */
