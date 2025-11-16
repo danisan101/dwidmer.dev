@@ -46,9 +46,10 @@
     background: var(--surface-alt);
     padding: 8px 12px;
     border-bottom: 1px solid var(--surface-border);
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.75rem;
 }
 
 .session-stats-terminal .terminal-buttons {
@@ -72,6 +73,13 @@
     color: var(--text-muted);
 }
 
+.session-stats-terminal .terminal-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: right;
+    letter-spacing: 0.5px;
+}
+
 .session-stats-terminal .terminal-body {
     padding: 16px;
     background: var(--surface);
@@ -81,6 +89,17 @@
 .session-stats-terminal .terminal-line {
     margin-bottom: 4px;
     line-height: 1.4;
+}
+
+.session-stats-terminal .terminal-line.sub-line {
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+.session-stats-terminal .terminal-divider {
+    margin: 0.75rem 0;
+    border-top: 1px dashed var(--surface-border);
+    opacity: 0.6;
 }
 
 .session-stats-terminal .terminal-line .command {
@@ -120,6 +139,10 @@
     color: var(--light);
     font-weight: 700;
     font-family: 'Space Mono', monospace;
+}
+
+.session-stats-terminal .terminal-footline {
+    margin-top: 0.75rem;
 }
 
 .session-stats-header {
