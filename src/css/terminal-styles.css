@@ -28,6 +28,9 @@
     height: 12px;
     border-radius: 50%;
     cursor: pointer;
+    padding: 0;
+    min-width: 0;
+    line-height: normal;
 }
 
 .terminal-buttons .close {
@@ -71,12 +74,29 @@
 
 /* Terminal Glitch Animation */
 @keyframes terminal-glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-1px, 1px); }
-    40% { transform: translate(1px, -1px); }
-    60% { transform: translate(-1px, -1px); }
-    80% { transform: translate(1px, 1px); }
-    100% { transform: translate(0); }
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-1px, 1px);
+    }
+
+    40% {
+        transform: translate(1px, -1px);
+    }
+
+    60% {
+        transform: translate(-1px, -1px);
+    }
+
+    80% {
+        transform: translate(1px, 1px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
 }
 
 /* CV Download Terminal Style */
@@ -94,7 +114,6 @@
 
 .cv-download-terminal:hover {
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
 }
 
 .cv-download-terminal .terminal-body {

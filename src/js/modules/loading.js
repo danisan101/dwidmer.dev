@@ -76,12 +76,12 @@ export function initLoadingScreen() {
                     cursor.textContent = '_';
                     lastLine.appendChild(cursor);
                 }
-                
+
                 // Hide loading screen after a short delay
                 setTimeout(() => {
                     hideOverlay();
                     resolve();
-                }, 1000);
+                }, 300);
                 return;
             }
 
@@ -91,28 +91,28 @@ export function initLoadingScreen() {
 
             const line = lines[currentLine];
             const isCommand = line.includes('PS C:\\Users\\Daniel>');
-            
+
             function typeChar() {
                 if (currentChar < line.length) {
                     const char = line[currentChar];
                     const span = document.createElement('span');
-                    
+
                     if (isCommand && currentChar >= line.indexOf('npm run dev')) {
                         span.className = 'command';
                     }
-                    
+
                     span.textContent = char;
                     lineDiv.appendChild(span);
                     currentChar++;
-                    
-                    setTimeout(typeChar, isCommand ? 50 : 30);
+
+                    setTimeout(typeChar, isCommand ? 10 : 5);
                 } else {
                     currentLine++;
                     currentChar = 0;
-                    setTimeout(typeNextLine, 200);
+                    setTimeout(typeNextLine, 50);
                 }
             }
-            
+
             typeChar();
         }
 

@@ -6,9 +6,9 @@ body.crt-enabled::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.2) 100%),
-        linear-gradient(transparent 50%, rgba(0,0,0,0.05) 50%);
+    background:
+        radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.2) 100%),
+        linear-gradient(transparent 50%, rgba(0, 0, 0, 0.05) 50%);
     background-size: 100% 100%, 100% 4px;
     z-index: 9998;
     pointer-events: none;
@@ -17,8 +17,13 @@ body.crt-enabled::before {
 }
 
 @keyframes scanlines {
-    0% { background-position: 0 0, 0 0; }
-    100% { background-position: 0 0, 0 4px; }
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 0 0, 0 4px;
+    }
 }
 
 body.crt-enabled::after {
@@ -28,11 +33,11 @@ body.crt-enabled::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.3) 100%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.3) 100%);
     z-index: 9997;
     pointer-events: none;
     border-radius: 15px;
-    box-shadow: inset 0 0 120px rgba(0,0,0,0.8);
+    box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.8);
 }
 
 /* Parallax Background */
@@ -73,6 +78,7 @@ body.crt-enabled::after {
         transform: translateY(0) scale(1);
         opacity: 1;
     }
+
     100% {
         transform: translateY(-100px) scale(0);
         opacity: 0;
@@ -126,12 +132,31 @@ body.crt-enabled::after {
     animation: bootFadeIn 0.3s ease forwards;
 }
 
-#bootLine1 { animation-delay: 0s; font-weight: 700; }
-#bootLine2 { animation-delay: 0.4s; }
-#bootLine3 { animation-delay: 0.8s; }
-#bootLine4 { animation-delay: 1.2s; }
-#bootLine5 { animation-delay: 1.6s; }
-#bootLine6 { animation-delay: 2.2s; font-weight: 700; }
+#bootLine1 {
+    animation-delay: 0s;
+    font-weight: 700;
+}
+
+#bootLine2 {
+    animation-delay: 0.4s;
+}
+
+#bootLine3 {
+    animation-delay: 0.8s;
+}
+
+#bootLine4 {
+    animation-delay: 1.2s;
+}
+
+#bootLine5 {
+    animation-delay: 1.6s;
+}
+
+#bootLine6 {
+    animation-delay: 2.2s;
+    font-weight: 700;
+}
 
 @keyframes bootFadeIn {
     to {
@@ -152,18 +177,23 @@ body.crt-enabled::after {
     0% {
         transform: translate(0);
     }
+
     20% {
         transform: translate(-2px, 2px);
     }
+
     40% {
         transform: translate(-2px, -2px);
     }
+
     60% {
         transform: translate(2px, 2px);
     }
+
     80% {
         transform: translate(2px, -2px);
     }
+
     100% {
         transform: translate(0);
     }
@@ -171,7 +201,6 @@ body.crt-enabled::after {
 
 /* Apply glitch to important elements (excluding project cards for monochrome look) */
 .skill-item:hover,
-.btn:hover,
 .cta-button:hover,
 .submit-btn:hover,
 .interest-tag:hover {
@@ -186,10 +215,10 @@ body.crt-enabled::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        rgba(255,255,255,0.02) 0%,
-        rgba(255,255,255,0.01) 50%,
-        rgba(255,255,255,0.02) 100%);
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.02) 0%,
+            rgba(255, 255, 255, 0.01) 50%,
+            rgba(255, 255, 255, 0.02) 100%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -199,5 +228,3 @@ body.crt-enabled::after {
 .skill-item:hover::after {
     opacity: 1;
 }
-
-
