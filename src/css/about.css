@@ -148,11 +148,31 @@
     font-weight: 700;
     margin: 0;
     grid-column: 2;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .timeline-item p {
     grid-column: 2;
     margin: 0.25rem 0 0;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-title,
+.timeline-item:hover p {
+    opacity: 1;
+    max-height: 50px;
+    /* Approx height */
+}
+
+.timeline-item {
+    /* ... existing props ... */
+    cursor: pointer;
 }
 
 /* Interests */

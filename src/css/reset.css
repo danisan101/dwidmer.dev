@@ -30,17 +30,20 @@ body.light-mode {
     --gray: #333333;
     --surface: #f5f6f7;
     --surface-alt: #ffffff;
-    --surface-border: rgba(0, 0, 0, 0.14);
-    --surface-border-strong: rgba(0, 0, 0, 0.32);
-    --text-muted: rgba(0, 0, 0, 0.7);
-    --text-strong: rgba(0, 0, 0, 0.92);
+    --surface-border: rgba(0, 0, 0, 0.18);
+    /* Darker border */
+    --surface-border-strong: rgba(0, 0, 0, 0.35);
+    --text-muted: rgba(0, 0, 0, 0.75);
+    /* Darker muted text */
+    --text-strong: rgba(0, 0, 0, 0.95);
     --text-inverse: #ffffff;
     --focus-outline: rgba(0, 0, 0, 0.75);
     --link-hover: rgba(0, 0, 0, 0.08);
     --layer-strong: rgba(255, 255, 255, 0.95);
 }
 
-html, body {
+html,
+body {
     background: var(--dark);
     transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
 }
@@ -61,12 +64,19 @@ body {
     font-family: 'Space Mono', monospace !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Space Mono', monospace !important;
 }
 
 @supports (height: 100dvh) {
-    body { min-height: 100dvh; }
+    body {
+        min-height: 100dvh;
+    }
 }
 
 /* Custom Retro Cursor */
@@ -91,4 +101,3 @@ body.light-mode {
     background: var(--light);
     border-radius: 4px;
 }
-

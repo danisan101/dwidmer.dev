@@ -138,9 +138,12 @@
     border: 1px solid var(--surface-border);
     border-radius: 8px;
     font-family: 'Space Mono', monospace;
-    margin: 2rem 0;
+    margin: 2rem auto;
+    /* Centered */
     overflow: hidden;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    max-width: 600px;
+    /* Ensure max-width is set */
 }
 
 .session-stats-terminal .terminal-body {
