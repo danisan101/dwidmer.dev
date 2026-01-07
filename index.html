@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#000000">
     <title>Daniel Widmer - Portfolio | Creative Developer & Digital Artist</title>
     <!-- Force deployment trigger - v3 - MANUAL TRIGGER -->
-    <meta name="description" content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development. Spezialisiert auf JavaScript, Swift, React und innovative digitale Lösungen.">
-    <meta name="keywords" content="Daniel Widmer, Creative Developer, Frontend Development, JavaScript, Swift, iOS Development, UI/UX Design, Portfolio, Business Analyst, App Developer, React, Vite, Web Development">
+    <meta name="description"
+        content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development. Spezialisiert auf JavaScript, Swift, React und innovative digitale Lösungen.">
+    <meta name="keywords"
+        content="Daniel Widmer, Creative Developer, Frontend Development, JavaScript, Swift, iOS Development, UI/UX Design, Portfolio, Business Analyst, App Developer, React, Vite, Web Development">
     <meta name="author" content="Daniel Widmer">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dwidmer.dev/">
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/favicon.ico">
     <link rel="manifest" href="/manifest.webmanifest">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="de_DE">
     <meta property="og:title" content="Daniel Widmer - Portfolio">
-    <meta property="og:description" content="Creative Developer & Digital Artist. Digitale Erlebnisse, die begeistern und inspirieren.">
+    <meta property="og:description"
+        content="Creative Developer & Digital Artist. Digitale Erlebnisse, die begeistern und inspirieren.">
     <meta property="og:url" content="https://dwidmer.dev/">
     <meta property="og:site_name" content="Daniel Widmer">
     <meta property="og:image" content="https://dwidmer.dev/assets/me1.png">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Daniel Widmer - Portfolio">
     <meta name="twitter:description" content="Creative Developer & Digital Artist.">
     <meta name="twitter:image" content="https://dwidmer.dev/assets/me1.png">
-    
+
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
@@ -64,14 +68,10 @@
         }
     }
     </script>
-    
-    <!-- Preconnect to external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <!-- CSS Styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap">
-    
+
+
     <!-- Critical CSS for immediate display -->
     <style>
         :root {
@@ -124,10 +124,11 @@
         }
 
         /* Hide game over overlays initially */
-        .game-over, .snake-game-over {
+        .game-over,
+        .snake-game-over {
             display: none;
         }
-        
+
         /* Basic layout */
         section {
             padding: 4rem 2rem;
@@ -139,7 +140,7 @@
             flex-direction: column;
             gap: 2rem;
         }
-        
+
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -221,8 +222,16 @@
         }
 
         @keyframes cursor-blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
         }
 
         section {
@@ -371,10 +380,11 @@
         }
     </style>
 </head>
+
 <body class="crt-enabled">
     <!-- Skip Link for Accessibility -->
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
-    
+
     <!-- Parallax Background -->
     <div class="parallax-container">
         <div class="parallax-layer parallax-dots"></div>
@@ -433,7 +443,8 @@
     <nav role="navigation" aria-label="Hauptnavigation">
         <div class="nav-container">
             <a href="#home" class="logo" aria-label="Daniel Widmer - Zurück zur Startseite">DW</a>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false"
+                aria-label="Menü umschalten">☰</button>
             <ul class="nav-links" id="navLinks" role="menubar">
                 <li role="none"><a href="#home" role="menuitem" aria-current="page">Home</a></li>
                 <li role="none"><a href="#about" role="menuitem">Über mich</a></li>
@@ -441,10 +452,15 @@
                 <li role="none"><a href="#contact" role="menuitem">Kontakt</a></li>
             </ul>
             <div class="nav-controls" role="group" aria-label="Spiel- und Theme-Kontrollen">
-                <button class="easter-egg-btn" data-game="snake" aria-label="Snake-Spiel starten" title="Snake-Spiel mit WASD oder Pfeiltasten steuern">SNAKE</button>
-                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris-Spiel starten" title="Tetris-Spiel mit WASD oder Pfeiltasten steuern">TETRIS</button>
-                <button class="crt-toggle" id="crtToggle" aria-label="CRT-Effekt umschalten" title="Retro-TV-Effekt ein- oder ausschalten">TV</button>
-                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme zwischen Hell und Dunkel umschalten" title="Zwischen hellem und dunklem Theme wechseln">DARK</button>
+                <button class="easter-egg-btn" data-game="snake" aria-label="Snake-Spiel starten"
+                    title="Snake-Spiel mit WASD oder Pfeiltasten steuern">SNAKE</button>
+                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris-Spiel starten"
+                    title="Tetris-Spiel mit WASD oder Pfeiltasten steuern">TETRIS</button>
+                <button class="crt-toggle" id="crtToggle" aria-label="CRT-Effekt umschalten"
+                    title="Retro-TV-Effekt ein- oder ausschalten">TV</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false"
+                    aria-label="Theme zwischen Hell und Dunkel umschalten"
+                    title="Zwischen hellem und dunklem Theme wechseln">DARK</button>
             </div>
         </div>
     </nav>
@@ -453,7 +469,8 @@
         <!-- Hero Section -->
         <section id="home" class="hero" aria-labelledby="heroTitle" data-parallax-section>
             <div class="hero-content fade-in">
-                <h1 id="heroTitle" tabindex="-1"><span id="heroName" class="hero-name" data-text="Daniel Widmer">Daniel Widmer</span><span class="cursor-blink" aria-hidden="true">_</span></h1>
+                <h1 id="heroTitle" tabindex="-1"><span id="heroName" class="hero-name" data-text="Daniel Widmer">Daniel
+                        Widmer</span><span class="cursor-blink" aria-hidden="true">_</span></h1>
                 <p id="heroTagline">creative developer</p>
             </div>
         </section>
@@ -464,9 +481,11 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Hallo, ich bin Daniel!</h3>
-                    <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer Vision. Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur funktional, sondern auch ästhetisch ansprechend sind.</p>
+                    <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer
+                        Vision. Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur
+                        funktional, sondern auch ästhetisch ansprechend sind.</p>
                 </div>
-                
+
 
                 <div class="about-text">
                     <!-- Career Timeline -->
@@ -498,7 +517,8 @@
                             </div>
                             <div class="terminal-body">
                                 <div class="terminal-grid">
-                                    <div class="terminal-line">PS C:\\Users\\Daniel\\Interests> <span class="command">Get-Interests</span></div>
+                                    <div class="terminal-line">PS C:\\Users\\Daniel\\Interests> <span
+                                            class="command">Get-Interests</span></div>
                                     <div class="terminal-line">── personal passions feed creativity</div>
                                     <div class="interest-grid">
                                         <div class="interest-item">
@@ -544,7 +564,8 @@
                                             <div class="interest-meter"><span style="width: 90%"></span></div>
                                         </div>
                                     </div>
-                                    <div class="terminal-line">PS C:\\Users\\Daniel\\Interests> <span class="cursor">_</span></div>
+                                    <div class="terminal-line">PS C:\\Users\\Daniel\\Interests> <span
+                                            class="cursor">_</span></div>
                                 </div>
                             </div>
                         </div>
@@ -567,7 +588,8 @@
                                             <span class="skill-track-title">Frontend &amp; UI</span>
                                             <span class="skill-track-level">A+</span>
                                         </div>
-                                        <p class="skill-copy">Pixelgenaue Interfaces, schnelle Transitions, klare Typo.</p>
+                                        <p class="skill-copy">Pixelgenaue Interfaces, schnelle Transitions, klare Typo.
+                                        </p>
                                         <div class="skill-track-pills">
                                             <span class="skill-pill">HTML</span>
                                             <span class="skill-pill">CSS</span>
@@ -654,7 +676,8 @@
                                 <span class="project-year">2025</span>
                             </div>
                             <h3 class="project-title">Meine Website</h3>
-                            <p class="project-description">Monochrome Portfolio-Experience mit CRT-Flair, animierten Terminals und Easter Eggs.</p>
+                            <p class="project-description">Monochrome Portfolio-Experience mit CRT-Flair, animierten
+                                Terminals und Easter Eggs.</p>
                             <ul class="project-highlights">
                                 <li>Experimentierfläche für Retro-UI, Parallax & Micro-Interactions</li>
                                 <li>Performance-optimiert mit Vite und modularem JS</li>
@@ -680,7 +703,8 @@
                                 <span class="project-year">2025</span>
                             </div>
                             <h3 class="project-title">Schälle Sau</h3>
-                            <p class="project-description">Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge.</p>
+                            <p class="project-description">Scorekeeper-App mit minimalistischer UI, optimiert für
+                                schnelle Spielzüge.</p>
                             <ul class="project-highlights">
                                 <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
                                 <li>Native iOS-Experience mit klaren, reduzierten Controls</li>
@@ -731,28 +755,37 @@
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label for="name">Name *</label>
-                                        <input type="text" id="name" name="name" required aria-describedby="name-help" aria-required="true">
-                                        <div id="name-help" class="sr-only">Bitte geben Sie Ihren vollständigen Namen ein</div>
+                                        <input type="text" id="name" name="name" required aria-describedby="name-help"
+                                            aria-required="true">
+                                        <div id="name-help" class="sr-only">Bitte geben Sie Ihren vollständigen Namen
+                                            ein</div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">E-Mail *</label>
-                                        <input type="email" id="email" name="email" required aria-describedby="email-help" aria-required="true">
-                                        <div id="email-help" class="sr-only">Bitte geben Sie eine gültige E-Mail-Adresse ein</div>
+                                        <input type="email" id="email" name="email" required
+                                            aria-describedby="email-help" aria-required="true">
+                                        <div id="email-help" class="sr-only">Bitte geben Sie eine gültige E-Mail-Adresse
+                                            ein</div>
                                     </div>
                                     <div class="form-group">
                                         <label for="subject">Betreff *</label>
-                                        <input type="text" id="subject" name="subject" required aria-describedby="subject-help" aria-required="true">
-                                        <div id="subject-help" class="sr-only">Bitte geben Sie einen Betreff für Ihre Nachricht ein</div>
+                                        <input type="text" id="subject" name="subject" required
+                                            aria-describedby="subject-help" aria-required="true">
+                                        <div id="subject-help" class="sr-only">Bitte geben Sie einen Betreff für Ihre
+                                            Nachricht ein</div>
                                     </div>
                                     <div class="form-group full-width">
                                         <label for="message">Nachricht *</label>
-                                        <textarea id="message" name="message" required aria-describedby="message-help" aria-required="true" rows="6"></textarea>
-                                        <div id="message-help" class="sr-only">Bitte beschreiben Sie Ihr Anliegen oder Ihre Frage</div>
+                                        <textarea id="message" name="message" required aria-describedby="message-help"
+                                            aria-required="true" rows="6"></textarea>
+                                        <div id="message-help" class="sr-only">Bitte beschreiben Sie Ihr Anliegen oder
+                                            Ihre Frage</div>
                                     </div>
                                 </div>
 
                                 <!-- Spam Protection -->
-                                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+                                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"
+                                    aria-hidden="true">
                                 <input type="hidden" name="_subject" value="Neue Nachricht von dwidmer.dev">
                                 <input type="hidden" name="_template" value="table">
                                 <input type="hidden" name="_captcha" value="true">
@@ -763,7 +796,8 @@
                                         <span class="retro-loading-bar" aria-hidden="true"></span>
                                         <span>Nachricht senden</span>
                                     </button>
-                                    <div id="submit-help" class="sr-only">Klicken Sie hier, um Ihre Nachricht zu senden</div>
+                                    <div id="submit-help" class="sr-only">Klicken Sie hier, um Ihre Nachricht zu senden
+                                    </div>
                                     <div class="form-message" role="status" aria-live="polite"></div>
                                 </div>
                             </form>
@@ -822,14 +856,20 @@
     <footer>
         <div class="footer-inner">
             <div class="social-links">
-                <a href="https://github.com/danisan101" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
+                <a href="https://github.com/danisan101" title="GitHub" aria-label="GitHub" rel="noopener"
+                    target="_blank">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.85 3.14 8.96 7.49 10.41.55.1.75-.24.75-.53 0-.26-.01-1.12-.02-2.03-3.05.66-3.69-1.34-3.69-1.34-.5-1.27-1.23-1.61-1.23-1.61-1-.69.08-.68.08-.68 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5-1.22-5-5.43 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.42.11-2.96 0 0 .93-.3 3.05 1.13.88-.24 1.82-.37 2.78-.37s1.9.13 2.78.37c2.12-1.43 3.05-1.13 3.05-1.13.6 1.54.22 2.68.11 2.96.7.77 1.13 1.75 1.13 2.95 0 4.22-2.57 5.15-5.02 5.42.39.33.74.98.74 1.98 0 1.43-.01 2.59-.01 2.95 0 .29.2.64.76.53 4.35-1.45 7.49-5.56 7.49-10.41C23.02 5.24 18.27.5 12 .5z"></path>
+                        <path
+                            d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.85 3.14 8.96 7.49 10.41.55.1.75-.24.75-.53 0-.26-.01-1.12-.02-2.03-3.05.66-3.69-1.34-3.69-1.34-.5-1.27-1.23-1.61-1.23-1.61-1-.69.08-.68.08-.68 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5-1.22-5-5.43 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.42.11-2.96 0 0 .93-.3 3.05 1.13.88-.24 1.82-.37 2.78-.37s1.9.13 2.78.37c2.12-1.43 3.05-1.13 3.05-1.13.6 1.54.22 2.68.11 2.96.7.77 1.13 1.75 1.13 2.95 0 4.22-2.57 5.15-5.02 5.42.39.33.74.98.74 1.98 0 1.43-.01 2.59-.01 2.95 0 .29.2.64.76.53 4.35-1.45 7.49-5.56 7.49-10.41C23.02 5.24 18.27.5 12 .5z">
+                        </path>
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/daniel-widmer-26426a173?" title="LinkedIn" aria-label="LinkedIn" rel="noopener" target="_blank">
+                <a href="https://www.linkedin.com/in/daniel-widmer-26426a173?" title="LinkedIn" aria-label="LinkedIn"
+                    rel="noopener" target="_blank">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zM8 8h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.79 2.66 4.79 6.12V24h-4V15.2c0-2.1-.04-4.8-2.92-4.8-2.92 0-3.37 2.28-3.37 4.64V24H8V8z"></path>
+                        <path
+                            d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zM8 8h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.79 2.66 4.79 6.12V24h-4V15.2c0-2.1-.04-4.8-2.92-4.8-2.92 0-3.37 2.28-3.37 4.64V24H8V8z">
+                        </path>
                     </svg>
                 </a>
             </div>
@@ -837,61 +877,73 @@
             <p><a href="/impressum.html" style="color:inherit;">Impressum</a></p>
             <div class="keyboard-shortcuts">
                 <p style="font-size:0.8rem; opacity:0.7; margin-top:0.5rem;">
-                    🎮 <strong>Easter Eggs:</strong> Snake: <kbd>Ctrl+Alt+Shift+S</kbd> | Tetris: <kbd>Ctrl+Alt+Shift+T</kbd>
+                    🎮 <strong>Easter Eggs:</strong> Snake: <kbd>Ctrl+Alt+Shift+S</kbd> | Tetris:
+                    <kbd>Ctrl+Alt+Shift+T</kbd>
                 </p>
             </div>
         </div>
     </footer>
 
     <!-- Printable CV (hidden) -->
-    <div id="cvPrintable" style="display:none;">
-        <div style="font-family: 'Space Mono', monospace; color:#000; padding:20px; max-width:800px; margin:0 auto;">
-            <h1 style="margin-bottom:0;">Daniel Widmer</h1>
-            <p style="margin-top:4px;">creative developer</p>
-            <hr style="margin:16px 0;">
-            
+    <!-- Printable CV (hidden on screen, visible on print via print.css) -->
+    <div id="cvPrintable">
+        <div class="cv-container">
+            <h1>Daniel Widmer</h1>
+            <p class="subtitle">creative developer</p>
+            <hr>
+
             <h2>Über mich</h2>
-            <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer Vision. Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur funktional, sondern auch ästhetisch ansprechend sind.</p>
-            <hr style="margin:16px 0;">
-            
+            <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer Vision.
+                Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur funktional, sondern auch
+                ästhetisch ansprechend sind.</p>
+            <hr>
+
             <h2>Werdegang</h2>
-            <ul style="list-style: none; padding: 0; margin-bottom:1rem;">
-                <li style="margin-bottom:0.5rem;"><strong>2017 - Heute</strong> — Senior Business Analyst<br><span style="font-size:0.9rem;opacity:0.8;">Requirement Engineering, Analysen und Coding</span></li>
-                <li><strong>2024 - Heute</strong> — App Developer<br><span style="font-size:0.9rem;opacity:0.8;">Private Entwicklung iOS Applikationen</span></li>
+            <ul>
+                <li>
+                    <strong>2017 - Heute</strong>
+                    Senior Business Analyst
+                    <span class="meta">Requirement Engineering, Analysen und Coding</span>
+                </li>
+                <li>
+                    <strong>2024 - Heute</strong>
+                    App Developer
+                    <span class="meta">Private Entwicklung iOS Applikationen</span>
+                </li>
             </ul>
-            <hr style="margin:16px 0;">
-            
+            <hr>
+
             <h2>Interessen</h2>
             <p>Fussball • Coding • Gaming • Elektronik/Gadgets • Sport • Fotografie</p>
-            <hr style="margin:16px 0;">
-            
+            <hr>
+
             <h2>Skills</h2>
-            <div style="margin-bottom:1rem;">
-                <h3 style="font-size:1rem;margin-top:1rem;margin-bottom:0.5rem;">Frontend Development</h3>
-                <p style="margin:0;">JavaScript, HTML5, CSS3, Swift</p>
-                
-                <h3 style="font-size:1rem;margin-top:1rem;margin-bottom:0.5rem;">Backend Development</h3>
-                <p style="margin:0;">Node.js, Python, PHP, SQL</p>
-                
-                <h3 style="font-size:1rem;margin-top:1rem;margin-bottom:0.5rem;">Design & UX</h3>
-                <p style="margin:0;">Figma, Adobe Suite, UI/UX</p>
-                
-                <h3 style="font-size:1rem;margin-top:1rem;margin-bottom:0.5rem;">Tools & Technologies</h3>
-                <p style="margin:0;">Git, AWS, Vite</p>
+            <div>
+                <h3>Frontend Development</h3>
+                <p>JavaScript, HTML5, CSS3, Swift</p>
+
+                <h3>Backend Development</h3>
+                <p>Node.js, Python, PHP, SQL</p>
+
+                <h3>Design & UX</h3>
+                <p>Figma, Adobe Suite, UI/UX</p>
+
+                <h3>Tools & Technologies</h3>
+                <p>Git, AWS, Vite</p>
             </div>
-            <hr style="margin:16px 0;">
-            
+            <hr>
+
             <h2>Kontakt</h2>
             <p>Web: www.dwidmer.dev • E-Mail: widmer.daniel40@gmail.com</p>
         </div>
     </div>
 
     <script type="module" src="/src/js/main.js"></script>
-    
+
     <!-- Fallback: Hide loading screen after 3 seconds (guaranteed) -->
     <script>
         // This script runs immediately and guarantees the loading screen disappears
-        setTimeout(function() {
+        setTimeout(function () {
             var overlay = document.getElementById('loadingOverlay');
             if (overlay) {
                 overlay.classList.add('hidden');
@@ -899,9 +951,10 @@
                 overlay.setAttribute('aria-hidden', 'true');
             }
         }, 3000);
-        
+
         // Games are controlled by their own JavaScript modules
         // No need to force hide them here
     </script>
 </body>
+
 </html>

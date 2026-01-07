@@ -1,4 +1,6 @@
 // Main JavaScript Entry Point
+import '../css/fonts.css';
+import '../css/print.css';
 import '../css/critical.css';
 import confetti from 'canvas-confetti';
 
@@ -50,25 +52,25 @@ log(`
 `);
 
 // Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
     try {
         // Check for first visit and show boot sequence
         initBootSequence();
-        
+
         // Show loading screen and initialize typing
         await initLoadingScreen();
         initTypingAnimation();
-        
+
         // Initialize core features
         initMobileMenu();
         initThemeToggle();
         initCRTToggle();
         initSmoothScrolling();
         initActiveNavigation();
-        
+
         // Initialize lazy loading
         initLazyCSS();
-        
+
         // Initialize visual effects
         initParallax();
         initAdvancedParallax();
@@ -77,35 +79,35 @@ document.addEventListener('DOMContentLoaded', async function() {
         initAnimatedStats();
         initSkillProgress();
         initLazyLoading();
-        
+
         // Initialize cool features
         initAnimatedTimeline();
         initProjectHoverEffects();
         initGlitchEffects();
         initPWAFeatures();
         initEnhancedSkills();
-        
+
         // Initialize interactive features
         initSnakeGame();
         initTetrisGame();
         initContactForm();
         initCVDownload();
-        
+
         // Make game functions globally available
         window.initSnakeGame = initSnakeGame;
         window.initTetrisGame = initTetrisGame;
-        
+
         // Initialize Easter Egg Buttons AFTER games are ready (with delay)
         setTimeout(() => {
             initEasterEggButtons();
         }, 200);
-        
+
         // Initialize SEO, Analytics, Performance and Retro Stats
         initSEO();
         initAnalytics();
         initRetroStats();
         initPerformanceMonitoring();
-        
+
         // Global ESC handler for games
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
@@ -141,7 +143,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 return;
             }
         });
-        
+
         log('✓ Portfolio initialized successfully!');
     } catch (error) {
         error('Error initializing portfolio:', error);
