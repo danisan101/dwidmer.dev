@@ -67,6 +67,21 @@ export function initProjectHoverEffects() {
 
         card.appendChild(hoverOverlay);
 
+        // Let clicks pass through the overlay to the <a> tag underneath
+        hoverOverlay.style.pointerEvents = 'none';
+
+        // But keep the action button clickable
+        const actionBtn = hoverOverlay.querySelector('.project-action');
+        actionBtn.style.pointerEvents = 'auto';
+
+        actionBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (projectData.url) {
+                window.location.href = projectData.url;
+            }
+        });
+
         card.addEventListener('mouseenter', () => {
             card.style.transform = 'translateY(-8px)';
             card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
@@ -79,7 +94,6 @@ export function initProjectHoverEffects() {
             hoverOverlay.style.opacity = '0';
         });
 
-        const actionBtn = hoverOverlay.querySelector('.project-action');
         actionBtn.addEventListener('mouseenter', () => {
             actionBtn.style.borderColor = 'rgba(255, 255, 255, 0.8)';
             actionBtn.style.background = 'rgba(255, 255, 255, 0.1)';
