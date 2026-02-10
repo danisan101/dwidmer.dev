@@ -211,12 +211,22 @@ body.game-modal-open {
 .game-terminal .game-canvas-container {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
     margin-bottom: 20px;
 }
 
 .game-terminal .game-canvas {
     border: 1px solid var(--surface-border);
     background: var(--dark);
+}
+
+.game-terminal .next-piece {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--surface-border);
+    background: var(--dark);
+    flex-shrink: 0;
 }
 
 .game-terminal .game-controls {
