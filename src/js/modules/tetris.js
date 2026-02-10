@@ -40,6 +40,18 @@ function startTetris() {
     overlay.id = 'tetrisGameOverlay';
     overlay.className = 'game-overlay active';
     overlay.setAttribute('aria-hidden', 'false');
+    // Inline critical styles so overlay works even before CSS loads
+    overlay.style.cssText = `
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(2px);
+        z-index: 12000;
+        padding: 2rem;
+    `;
 
     overlay.addEventListener('click', (event) => {
         if (event.target === overlay) {
@@ -87,7 +99,7 @@ function startTetris() {
     }
 
     overlay.appendChild(gameContainer);
-    document.body.prepend(overlay);
+    document.body.appendChild(overlay);
     document.body.classList.add('game-modal-open');
 
     const canvas = document.getElementById('tetrisCanvas');
@@ -135,6 +147,7 @@ function hideTetris(options = {}) {
     }
 
     if (overlay) {
+        overlay.style.display = 'none';
         overlay.classList.remove('active');
         overlay.setAttribute('aria-hidden', 'true');
         overlay.remove();

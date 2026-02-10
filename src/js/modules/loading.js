@@ -7,6 +7,20 @@ export function initLoadingScreen() {
             return;
         }
 
+        // Only show loading animation on first visit per session
+        try {
+            if (sessionStorage.getItem('dw-loading-shown')) {
+                overlay.classList.add('hidden');
+                overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden', 'true');
+                resolve();
+                return;
+            }
+            sessionStorage.setItem('dw-loading-shown', 'true');
+        } catch (e) {
+            // sessionStorage not available — show animation anyway
+        }
+
         overlay.classList.remove('hidden');
         overlay.style.display = 'flex';
         overlay.setAttribute('aria-hidden', 'false');

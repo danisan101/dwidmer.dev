@@ -37,6 +37,18 @@ function ensureOverlay() {
         overlay.id = OVERLAY_ID;
         overlay.className = 'game-overlay';
         overlay.setAttribute('aria-hidden', 'true');
+        // Inline critical styles so overlay works even before CSS loads
+        overlay.style.cssText = `
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(2px);
+            z-index: 12000;
+            padding: 2rem;
+        `;
         overlay.innerHTML = `
             <div class="game-terminal" id="${CONTAINER_ID}" role="dialog" aria-modal="true" aria-labelledby="snakeTitle">
                 <div class="terminal-header">
@@ -64,7 +76,7 @@ function ensureOverlay() {
             }
         });
 
-        document.body.prepend(overlay);
+        document.body.appendChild(overlay);
 
         const closeBtn = overlay.querySelector('.close-btn');
         if (closeBtn) {
@@ -174,6 +186,7 @@ function showSnakeGame() {
         resetGame();
         updateScoreboard(scoreElement, highscoreElement);
 
+        overlay.style.display = 'flex';
         overlay.classList.add('active');
         overlay.setAttribute('aria-hidden', 'false');
         container.classList.add('active');
@@ -204,6 +217,7 @@ function hideSnakeGame() {
     }
 
     if (overlay) {
+        overlay.style.display = 'none';
         overlay.classList.remove('active');
         overlay.setAttribute('aria-hidden', 'true');
     }
