@@ -37,26 +37,27 @@ function addInstallPrompt() {
         e.preventDefault();
         deferredPrompt = e;
         
-        // Create install button
+        // Create install button — matches monochrome terminal design
         const installButton = document.createElement('button');
-        installButton.textContent = '📱 App installieren';
+        installButton.textContent = '> App installieren';
+        installButton.className = 'pwa-install-btn';
         installButton.style.cssText = `
             position: fixed;
             bottom: 90px;
             left: 20px;
-            padding: 12px 20px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 25px;
+            padding: 0.6rem 1.2rem;
+            background: var(--surface-alt, #151515);
+            color: var(--light, #ffffff);
+            border: 1px solid var(--surface-border-strong, rgba(255,255,255,0.35));
+            border-radius: 4px;
             cursor: pointer;
             font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
+            transition: border-color 0.2s ease, opacity 0.2s ease;
         `;
-        
+
         installButton.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
@@ -66,23 +67,22 @@ function addInstallPrompt() {
                 installButton.remove();
             }
         });
-        
+
         installButton.addEventListener('mouseenter', () => {
-            installButton.style.transform = 'scale(1.05)';
-            installButton.style.boxShadow = '0 6px 20px rgba(0,0,0,0.4)';
+            installButton.style.borderColor = 'var(--light, #ffffff)';
         });
-        
+
         installButton.addEventListener('mouseleave', () => {
-            installButton.style.transform = 'scale(1)';
-            installButton.style.boxShadow = '0 4px 15px rgba(0,0,0,0.3)';
+            installButton.style.borderColor = 'var(--surface-border-strong, rgba(255,255,255,0.35))';
         });
-        
+
         document.body.appendChild(installButton);
-        
+
         // Auto-hide after 10 seconds
         setTimeout(() => {
             if (installButton.parentNode) {
-                installButton.remove();
+                installButton.style.opacity = '0';
+                setTimeout(() => installButton.remove(), 300);
             }
         }, 10000);
     });

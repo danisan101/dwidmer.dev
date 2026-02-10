@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#000000">
     <title>Daniel Widmer - Portfolio | Creative Developer & Digital Artist</title>
-    <!-- Force deployment trigger - v3 - MANUAL TRIGGER -->
     <meta name="description"
         content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development. Spezialisiert auf JavaScript, Swift, React und innovative digitale Lösungen.">
     <meta name="keywords"
@@ -63,8 +62,8 @@
             "name": "Freelance"
         },
         "alumniOf": {
-            "@type": "Organization",
-            "name": "Business Analyst"
+            "@type": "EducationalOrganization",
+            "name": "Weiterbildung in Web Development"
         }
     }
     </script>
@@ -247,51 +246,6 @@
             color: var(--light);
         }
 
-        footer {
-            background: var(--surface-alt);
-            border-top: 1px solid var(--surface-border);
-            padding: 1.5rem 2rem;
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        .footer-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            color: var(--light);
-            font-size: 0.65rem;
-        }
-
-        .social-links a:hover {
-            border-color: var(--surface-border);
-        }
-
-        .social-links svg {
-            width: 0.8rem;
-            height: 0.8rem;
-        }
-
         .loading-overlay {
             position: fixed;
             inset: 0;
@@ -303,66 +257,6 @@
             z-index: 10000;
         }
 
-        .game-overlay {
-            position: fixed;
-            inset: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 10000;
-        }
-
-        .game-overlay.active {
-            display: flex;
-        }
-
-        .game-terminal {
-            background: var(--surface-alt);
-            border: 2px solid var(--surface-border-strong);
-            border-radius: 8px;
-            width: min(640px, 90vw);
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .game-terminal .terminal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--surface-border);
-        }
-
-        .game-terminal .terminal-body {
-            padding: 1.5rem;
-            color: var(--light);
-        }
-
-        .game-over,
-        .snake-game-over {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--surface-alt);
-            border: 2px solid var(--surface-border-strong);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            color: var(--light);
-            font-family: 'Space Mono', monospace;
-            display: none;
-            z-index: 10001;
-        }
-
-        .game-over.active,
-        .snake-game-over.active {
-            display: block;
-        }
-
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -370,11 +264,6 @@
 
             section {
                 padding: 3.5rem 1.25rem;
-            }
-
-            .game-terminal {
-                width: 95vw;
-                max-height: 85vh;
             }
         }
     </style>
@@ -672,7 +561,7 @@
                 <div class="project-card">
                     <a href="/website.html" aria-label="Projektseite: Meine Website">
                         <div class="project-image">
-                            <img src="/assets/website.png" alt="Vorschau: Meine Website" loading="lazy">
+                            <img src="/assets/website.png" alt="Vorschau: Meine Website" loading="lazy" width="600" height="400">
                         </div>
                         <div class="project-content">
                             <div class="project-meta">
@@ -699,7 +588,7 @@
                 <div class="project-card">
                     <a href="/app.html" aria-label="Projektseite: Schälle Sau">
                         <div class="project-image">
-                            <img src="/assets/schaellesau.png" alt="Vorschau: Schälle Sau App" loading="lazy">
+                            <img src="/assets/schaellesau.png" alt="Vorschau: Schälle Sau App" loading="lazy" width="600" height="400">
                         </div>
                         <div class="project-content">
                             <div class="project-meta">
@@ -712,6 +601,32 @@
                             <ul class="project-highlights">
                                 <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
                                 <li>Native iOS-Experience mit klaren, reduzierten Controls</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">iOS</span>
+                                <span class="tech-tag">UI/UX</span>
+                                <span class="tech-tag">Mobile Design</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <a href="/monodot.html" aria-label="Projektseite: monodot.">
+                        <div class="project-image">
+                            <img src="/assets/app_icon_monodot.png" alt="Vorschau: monodot. App" loading="lazy" width="600" height="400">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-label">WORK IN PROGRESS</span>
+                                <span class="project-year">2026</span>
+                            </div>
+                            <h3 class="project-title">monodot.</h3>
+                            <p class="project-description">Minimalistische App mit Fokus auf Reduktion und klare Interaktion.</p>
+                            <ul class="project-highlights">
+                                <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
+                                <li>Native iOS-Experience mit monochromer Ästhetik</li>
                             </ul>
                             <div class="project-tech">
                                 <span class="tech-tag">Swift</span>
@@ -876,7 +791,8 @@
                     </svg>
                 </a>
             </div>
-            <p>&copy; 2025 Daniel Widmer. Alle Rechte vorbehalten.</p>
+            <p>&copy; <span id="copyrightYear">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
+            <script>document.getElementById('copyrightYear').textContent = new Date().getFullYear();</script>
             <p><a href="/impressum.html" style="color:inherit;">Impressum</a></p>
             <div class="keyboard-shortcuts">
                 <p style="font-size:0.8rem; opacity:0.7; margin-top:0.5rem;">

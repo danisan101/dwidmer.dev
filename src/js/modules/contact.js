@@ -1,5 +1,5 @@
 // Contact Form Module with better feedback
-const FORMSPREE_ENDPOINT = 'https://formsubmit.co/widmer.daniel40@gmail.com';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/widmer.daniel40@gmail.com';
 
 export function initContactForm() {
     const form = document.getElementById('contactForm');
@@ -30,7 +30,7 @@ export function initContactForm() {
         
         try {
             const formData = new FormData(form);
-            const response = await fetch(FORMSPREE_ENDPOINT, {
+            const response = await fetch(FORMSUBMIT_ENDPOINT, {
                 method: 'POST',
                 body: formData,
                 headers: {

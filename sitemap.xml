@@ -7,25 +7,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dwidmer.dev/#about</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://dwidmer.dev/#projects</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://dwidmer.dev/#blog</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://dwidmer.dev/#contact</loc>
+    <loc>https://dwidmer.dev/website.html</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -34,13 +16,25 @@
     <loc>https://dwidmer.dev/app.html</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dwidmer.dev/website.html</loc>
-    <lastmod>2025-01-08</lastmod>
+    <loc>https://dwidmer.dev/monodot.html</loc>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dwidmer.dev/monodot-privacy.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://dwidmer.dev/impressum.html</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://dwidmer.dev/app-privacy.html</loc>

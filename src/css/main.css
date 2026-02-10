@@ -1,5 +1,5 @@
 /* Main Stylesheet - Imports all modules */
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
+/* Fonts are loaded locally via fonts.css (imported in main.js) — no Google Fonts needed */
 
 @import './reset.css';
 @import './effects.css';

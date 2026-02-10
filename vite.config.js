@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { copyFileSync } from 'fs';
+import { resolve } from 'path';
 
 export default defineConfig({
   base: '/', // Für Custom Domain (dwidmer.dev)
@@ -9,36 +9,26 @@ export default defineConfig({
     minify: 'esbuild',
     sourcemap: false,
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        app: resolve(__dirname, 'app.html'),
+        website: resolve(__dirname, 'website.html'),
+        monodot: resolve(__dirname, 'monodot.html'),
+        monodotPrivacy: resolve(__dirname, 'monodot-privacy.html'),
+        impressum: resolve(__dirname, 'impressum.html'),
+        appPrivacy: resolve(__dirname, 'app-privacy.html'),
+      },
       output: {
         manualChunks: {
           games: ['./src/js/modules/snake.js', './src/js/modules/tetris.js']
         }
       }
     },
-    // Copy CNAME file to dist
     copyPublicDir: true
   },
   publicDir: 'public',
   server: {
     port: 3000,
     open: true
-  },
-  plugins: [
-    // Plugin to copy HTML files to dist
-    {
-      name: 'copy-html-files',
-      writeBundle() {
-        const htmlFiles = ['app.html', 'website.html', 'impressum.html', 'app-privacy.html'];
-        htmlFiles.forEach(file => {
-          try {
-            copyFileSync(file, `dist/${file}`);
-            console.log(`✓ Copied ${file} to dist/`);
-          } catch (err) {
-            console.warn(`⚠ Could not copy ${file}:`, err.message);
-          }
-        });
-      }
-    }
-  ]
+  }
 });
-

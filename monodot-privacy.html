@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Schälle Sau – Projekt</title>
+    <title>Datenschutzerklärung – monodot.</title>
     <meta name="theme-color" content="#000000">
-    <link rel="canonical" href="https://dwidmer.dev/app.html">
+    <link rel="canonical" href="https://dwidmer.dev/monodot-privacy.html">
+    <meta name="description" content="Datenschutzerklärung für die iOS App monodot. von Daniel Widmer.">
     <style>
         @font-face { font-family:'Space Mono'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/space-mono-v17-latin-400.ttf') format('truetype'); }
         @font-face { font-family:'Space Mono'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-mono-v17-latin-700.woff2') format('woff2'); }
         @font-face { font-family:'Orbitron'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/orbitron-v35-latin-700.woff2') format('woff2'); }
-        :root { --primary:#ffffff; --dark:#000000; --light:#ffffff; --gray:#cccccc; }
+        :root { --primary:#ffffff; --dark:#000000; --light:#ffffff; --gray:#cccccc; --muted:#bbb; }
         body.light-mode { --primary:#000000; --dark:#ffffff; --light:#000000; --gray:#333333; }
         html, body { background: var(--dark); }
-        body { margin:0; font-family: 'Space Mono', monospace; color:var(--light); min-height:100vh; overflow-x:hidden; }
+        body { margin:0; font-family: 'Space Mono', monospace; color:var(--light); line-height:1.7; overflow-x:hidden; }
 
         /* Navigation */
         nav { position: fixed; top:0; left:0; right:0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 10001; padding: 1rem 2rem; border-bottom:1px solid var(--light); }
@@ -30,16 +31,17 @@
 
         /* Layout */
         main { max-width: 1200px; margin: 0 auto; padding: 7rem 2rem 3rem; }
-        section { max-width: 900px; margin: 0 auto; text-align:center; }
+        section { max-width: 900px; margin: 0 auto; }
         .section-title { font-family:'Orbitron', sans-serif; font-size: clamp(2rem, 5vw, 2.5rem); text-align:center; margin-bottom:2rem; color:var(--light); }
         .section-title::after { content:''; display:block; width:100px; height:3px; background:var(--light); margin:1rem auto; }
         a { color: var(--light); }
-        .card { border:1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.02); padding:2rem; border-radius:8px; }
-        h1 { margin-top:0; font-weight:400; }
-        .muted { opacity: .85; }
-        .links { margin-top:1rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-        .btn { border:1px solid var(--light); padding:0.6rem 1rem; text-decoration:none; border-radius:4px; }
-        .btn:hover { background: var(--light); color: var(--dark); }
+        hr { border:0; border-top:1px solid var(--light); opacity:.2; margin:1.5rem 0; }
+        .sep { text-align:center; opacity:.4; margin:1.25rem 0; }
+        .back { margin-top:1.5rem; display:inline-block; border:1px solid var(--light); padding:.6rem 1rem; border-radius:4px; text-decoration:none; }
+        .back:hover { background: var(--light); color: var(--dark); }
+        ul { margin:.75rem 0; padding-left:1.5rem; }
+        ul li { margin-bottom:.35rem; }
+        .update-note { opacity:.6; font-size:.85rem; margin-top:1.5rem; }
 
         /* Footer */
         footer { background:#111; padding:2rem; text-align:center; border-top:2px solid var(--light); }
@@ -80,14 +82,88 @@
     </nav>
     <main>
         <section>
-            <h2 class="section-title">Schälle Sau (App)</h2>
-            <div class="card">
-                <p class="muted">Kommt bald, ganz ruhig...</p>
-                <div class="links">
-                    <a class="btn" href="/app-privacy.html" aria-label="Datenschutzerklärung">Datenschutz</a>
-                    <a class="btn" href="/index.html#projects" aria-label="Zurück zu Projekte">Zurück</a>
-                </div>
-            </div>
+            <h2 class="section-title">Datenschutz­erklärung</h2>
+
+            <p><strong>App:</strong> monodot.</p>
+
+            <p><strong>Anbieter / Verantwortlicher:</strong><br>
+            Daniel Widmer<br>
+            E-Mail: <a href="mailto:widmer.daniel40@gmail.com">widmer.daniel40@gmail.com</a><br>
+            Website: <a href="https://dwidmer.dev">https://dwidmer.dev</a></p>
+
+            <div class="sep">⸻</div>
+
+            <h2>1) Überblick</h2>
+            <p>Der Schutz deiner Daten ist uns wichtig. Diese Datenschutzerklärung erklärt, welche Daten die App monodot. verarbeitet und zu welchem Zweck.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>2) Welche Daten werden verarbeitet?</h2>
+            <p>Die App selbst erfasst keine personenbezogenen Daten, die dich direkt identifizieren.</p>
+            <p>Es können jedoch Daten durch Drittanbieter-Dienste verarbeitet werden, wenn du diese verwendest.</p>
+
+            <h3>a) Werbung (Google AdMob)</h3>
+            <p>Die App verwendet Google AdMob zur Anzeige von Werbung. AdMob kann dabei technische Informationen verarbeiten, unter anderem:</p>
+            <ul>
+                <li>Geräte-Informationen (z.&nbsp;B. Gerätemodell, Betriebssystem)</li>
+                <li>IP-Adresse (kann zur ungefähren Standortbestimmung genutzt werden)</li>
+                <li>Werbe-IDs (z.&nbsp;B. IDFA, sofern vom Nutzer freigegeben)</li>
+                <li>Interaktionsdaten (z.&nbsp;B. Werbe-Impressionen, Klicks)</li>
+            </ul>
+
+            <p><strong>Rechtsgrundlage:</strong><br>
+            Einwilligung gemäss Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO, soweit erforderlich.</p>
+
+            <p><strong>Einwilligung (Consent):</strong><br>
+            Nutzerinnen und Nutzer in der EU, der Schweiz und im Vereinigten Königreich werden – sofern erforderlich – vor der Anzeige personalisierter Werbung über ein Google-Consent-Formular (User Messaging Platform, UMP) um Einwilligung gebeten.</p>
+
+            <p><strong>Weitere Informationen:</strong></p>
+            <ul>
+                <li>Google Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
+                <li>Google AdMob: <a href="https://support.google.com/admob" target="_blank" rel="noopener">https://support.google.com/admob</a></li>
+            </ul>
+
+            <div class="sep">⸻</div>
+
+            <h3>b) In-App-Käufe (Apple App Store)</h3>
+            <p>Die App bietet den In-App-Kauf „Remove Ads" an.</p>
+            <p>Die Kaufabwicklung erfolgt ausschliesslich über den Apple App Store. Zahlungs- und Abrechnungsdaten werden nicht von uns verarbeitet, sondern ausschliesslich von Apple.</p>
+
+            <p><strong>Weitere Informationen:</strong></p>
+            <ul>
+                <li>Apple Datenschutz: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">https://www.apple.com/legal/privacy/</a></li>
+            </ul>
+
+            <div class="sep">⸻</div>
+
+            <h2>3) Speicherung auf dem Gerät (lokal)</h2>
+            <p>Die App speichert bestimmte Daten ausschliesslich lokal auf deinem Gerät, z.&nbsp;B.:</p>
+            <ul>
+                <li>Highscores und Spielstatistiken</li>
+                <li>Einstellungen (z.&nbsp;B. Sound, Haptik, Darstellung)</li>
+            </ul>
+            <p>Diese Daten verlassen dein Gerät nicht und werden nicht an uns übermittelt.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>4) Weitergabe von Daten</h2>
+            <p>Es erfolgt keine Weitergabe personenbezogener Daten an Dritte, ausser an die genannten Dienstleister (Google AdMob, Apple), soweit dies für die Anzeige von Werbung oder die Abwicklung von In-App-Käufen erforderlich ist.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>5) Deine Rechte</h2>
+            <p>Du hast das Recht auf Auskunft, Berichtigung oder Löschung deiner personenbezogenen Daten.</p>
+            <p>Da wir selbst keine personenbezogenen Daten speichern, erfolgen entsprechende Anfragen in der Regel über die jeweiligen Drittanbieter (z.&nbsp;B. Google oder Apple).</p>
+            <p>Bei Fragen kannst du uns jederzeit kontaktieren:<br>
+            <a href="mailto:widmer.daniel40@gmail.com">widmer.daniel40@gmail.com</a></p>
+
+            <div class="sep">⸻</div>
+
+            <h2>6) Änderungen</h2>
+            <p>Diese Datenschutzerklärung kann angepasst werden, wenn sich Funktionen der App oder gesetzliche Anforderungen ändern.</p>
+            <p class="update-note">Letzte Aktualisierung: 9. Februar 2026</p>
+
+            <p><a class="back" href="/monodot.html" aria-label="Zurück zur App-Seite">← Zurück zur App-Seite</a></p>
         </section>
     </main>
     <footer>
@@ -100,7 +176,7 @@
             </a>
         </div>
         <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
-        <p><a href="/impressum.html" style="color:inherit;">Impressum</a> | <a href="/app-privacy.html" style="color:inherit;">Datenschutz (App)</a></p>
+        <p><a href="/impressum.html" style="color:inherit;">Impressum</a></p>
     </footer>
     <script>
         function initMobileMenu() {
@@ -142,4 +218,3 @@
     </script>
 </body>
 </html>
-

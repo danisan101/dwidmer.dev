@@ -145,68 +145,35 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
         log('✓ Portfolio initialized successfully!');
-    } catch (error) {
-        error('Error initializing portfolio:', error);
+    } catch (err) {
+        error('Error initializing portfolio:', err);
     }
 });
 
 // Easter Egg Buttons in Header
 function initEasterEggButtons() {
-    log('🎮 Initializing Easter Egg Buttons...');
     const buttons = document.querySelectorAll('.easter-egg-btn');
-    log('Found buttons:', buttons.length);
 
-    // Debug: Check if game functions are available
-    log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
-    log('🧩 startTetris available:', typeof window.startTetris);
-
-    // Force re-check after a short delay
-    setTimeout(() => {
-        log('🔄 Re-checking game functions...');
-        log('🐍 showSnakeGame available:', typeof window.showSnakeGame);
-        log('🧩 startTetris available:', typeof window.startTetris);
-    }, 500);
-
-    buttons.forEach((btn, index) => {
+    buttons.forEach((btn) => {
         const game = btn.getAttribute('data-game');
-        log(`Button ${index}:`, game);
 
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            log('🎯 Button clicked:', game);
 
             if (game === 'snake') {
-                log('🐍 Starting Snake Game...');
                 if (window.showSnakeGame) {
                     window.showSnakeGame();
-                    log('✅ Snake Game started!');
-                } else {
-                    error('❌ showSnakeGame not available!');
-                    log('Available window functions:', Object.keys(window).filter(k => k.includes('snake') || k.includes('Snake')));
-                    // Try to re-initialize Snake
-                    log('🔄 Attempting to re-initialize Snake...');
-                    if (window.initSnakeGame) {
-                        window.initSnakeGame();
-                    }
+                } else if (window.initSnakeGame) {
+                    window.initSnakeGame();
                 }
             } else if (game === 'tetris') {
-                log('🧩 Starting Tetris Game...');
                 if (window.startTetris) {
                     window.startTetris();
-                    log('✅ Tetris Game started!');
-                } else {
-                    error('❌ startTetris not available!');
-                    log('Available window functions:', Object.keys(window).filter(k => k.includes('tetris') || k.includes('Tetris')));
-                    // Try to re-initialize Tetris
-                    log('🔄 Attempting to re-initialize Tetris...');
-                    if (window.initTetrisGame) {
-                        window.initTetrisGame();
-                    }
+                } else if (window.initTetrisGame) {
+                    window.initTetrisGame();
                 }
             }
         });
     });
-
-    log('✅ Easter Egg Buttons initialized!');
 }
 
