@@ -1,21 +1,18 @@
-// Enhanced Project Hover Effects Module
+// Enhanced Project Hover Effects Module — Monochrome
 import { log } from '../utils/logger.js';
 
 export function initProjectHoverEffects() {
-    log('🎯 Initializing Enhanced Project Hover Effects...');
-    
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     projectCards.forEach((card, index) => {
-        // Add enhanced hover effects
         card.style.cssText += `
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             transform-style: preserve-3d;
         `;
-        
-        // Create hover overlay
+
+        // Monochrome hover overlay
         const hoverOverlay = document.createElement('div');
         hoverOverlay.className = 'project-hover-overlay';
         hoverOverlay.style.cssText = `
@@ -24,11 +21,9 @@ export function initProjectHoverEffects() {
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(102, 126, 234, 0.9) 0%, 
-                rgba(118, 75, 162, 0.9) 100%);
+            background: rgba(0, 0, 0, 0.88);
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -36,84 +31,64 @@ export function initProjectHoverEffects() {
             text-align: center;
             padding: 20px;
             z-index: 2;
+            color: #ffffff;
         `;
-        
-        // Get project data based on index
+
         const projectData = getProjectData(index);
-        
+
         hoverOverlay.innerHTML = `
-            <div class="project-tech-stack" style="
-                margin-bottom: 15px;
-                font-size: 0.9rem;
-                opacity: 0.8;
-            ">
-                ${projectData.techStack.join(' • ')}
+            <div style="margin-bottom: 15px; font-size: 0.9rem; opacity: 0.7; letter-spacing: 0.1em;">
+                ${projectData.techStack.join(' · ')}
             </div>
-            
-            <div class="project-features" style="
-                margin-bottom: 20px;
-                font-size: 0.8rem;
-                line-height: 1.4;
-            ">
-                ${projectData.features.map(feature => `• ${feature}`).join('<br>')}
+            <div style="margin-bottom: 20px; font-size: 0.8rem; line-height: 1.5; opacity: 0.85;">
+                ${projectData.features.map(f => `• ${f}`).join('<br>')}
             </div>
-            
-            <div class="project-stats" style="
-                display: flex;
-                gap: 20px;
-                font-size: 0.8rem;
-                opacity: 0.9;
-            ">
-                <div>📊 ${projectData.stats.complexity}</div>
-                <div>⏱️ ${projectData.stats.duration}</div>
-                <div>🎯 ${projectData.stats.status}</div>
+            <div style="display: flex; gap: 20px; font-size: 0.75rem; opacity: 0.6; letter-spacing: 0.05em;">
+                <div>${projectData.stats.complexity}</div>
+                <div>${projectData.stats.duration}</div>
+                <div>${projectData.stats.status}</div>
             </div>
-            
             <div class="project-action" style="
-                margin-top: 15px;
-                padding: 8px 16px;
-                background: rgba(255, 255, 255, 0.2);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                border-radius: 20px;
+                margin-top: 18px;
+                padding: 8px 18px;
+                background: transparent;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                border-radius: 3px;
                 font-size: 0.8rem;
+                font-family: 'Space Mono', monospace;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: border-color 0.2s ease, background 0.2s ease;
+                color: #ffffff;
+                letter-spacing: 0.05em;
             ">
                 ${projectData.action}
             </div>
         `;
-        
+
         card.appendChild(hoverOverlay);
-        
-        // Enhanced hover effects
+
         card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) rotateX(5deg) rotateY(5deg)';
-            card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
+            card.style.transform = 'translateY(-8px)';
+            card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
             hoverOverlay.style.opacity = '1';
-            
-            // Add glitch effect
-            addGlitchEffect(card);
         });
-        
+
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-            card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '';
             hoverOverlay.style.opacity = '0';
-            
-            // Remove glitch effect
-            removeGlitchEffect(card);
         });
-        
-        // Add click handler for project action
-        hoverOverlay.querySelector('.project-action').addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (projectData.url) {
-                window.open(projectData.url, '_blank');
-            }
+
+        const actionBtn = hoverOverlay.querySelector('.project-action');
+        actionBtn.addEventListener('mouseenter', () => {
+            actionBtn.style.borderColor = 'rgba(255, 255, 255, 0.8)';
+            actionBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+        });
+        actionBtn.addEventListener('mouseleave', () => {
+            actionBtn.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+            actionBtn.style.background = 'transparent';
         });
     });
-    
-    log('✅ Enhanced Project Hover Effects initialized!');
 }
 
 function getProjectData(index) {
@@ -124,7 +99,6 @@ function getProjectData(index) {
                 'Retro-Terminal Design',
                 'Interactive Games (Snake, Tetris)',
                 '3D Parallax Effects',
-                'AI Assistant Chatbot',
                 'Performance Optimized'
             ],
             stats: {
@@ -132,7 +106,7 @@ function getProjectData(index) {
                 duration: '2 Months',
                 status: 'Live'
             },
-            action: 'Explore Website',
+            action: 'View App Details',
             url: '/website.html'
         },
         {
@@ -141,8 +115,7 @@ function getProjectData(index) {
                 'Minimalist Scorekeeper',
                 'Intuitive Touch Interface',
                 'Local Data Storage',
-                'Clean Architecture',
-                'App Store Ready'
+                'Clean Architecture'
             ],
             stats: {
                 complexity: 'Intermediate',
@@ -151,18 +124,24 @@ function getProjectData(index) {
             },
             action: 'View App Details',
             url: '/app.html'
+        },
+        {
+            techStack: ['Swift', 'iOS', 'UI/UX', 'Mobile Design'],
+            features: [
+                'Minimalist Mono-Aesthetic',
+                'Fokus auf Reduktion',
+                'Native iOS Experience',
+                'AdMob Integration'
+            ],
+            stats: {
+                complexity: 'Intermediate',
+                duration: 'Ongoing',
+                status: 'Development'
+            },
+            action: 'View App Details',
+            url: '/monodot.html'
         }
     ];
-    
+
     return projects[index] || projects[0];
-}
-
-function addGlitchEffect(element) {
-    element.style.filter = 'hue-rotate(10deg) saturate(1.2)';
-    element.style.animation = 'glitch 0.3s ease-in-out';
-}
-
-function removeGlitchEffect(element) {
-    element.style.filter = 'none';
-    element.style.animation = 'none';
 }

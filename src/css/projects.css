@@ -40,8 +40,9 @@
     filter: grayscale(100%) contrast(1.2);
 }
 
-/* Special styling for Schälle Sau image to fit better */
-.project-card a[href="/app.html"] .project-image img {
+/* Special styling for app icons to fit better */
+.project-card a[href="/app.html"] .project-image img,
+.project-card a[href="/monodot.html"] .project-image img {
     object-fit: contain;
     object-position: center;
     padding: 1rem;
