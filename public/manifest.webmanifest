@@ -34,10 +34,10 @@
       "icons": [{ "src": "/favicon.ico", "sizes": "96x96", "type": "image/x-icon" }]
     },
     {
-      "name": "Spiele",
-      "short_name": "Games",
-      "description": "Snake & Tetris spielen",
-      "url": "/#games",
+      "name": "Über mich",
+      "short_name": "About",
+      "description": "Über Daniel Widmer",
+      "url": "/#about",
       "icons": [{ "src": "/favicon.ico", "sizes": "96x96", "type": "image/x-icon" }]
     }
   ]

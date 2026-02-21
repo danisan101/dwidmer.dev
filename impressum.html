@@ -6,6 +6,7 @@
     <title>Impressum – Daniel Widmer</title>
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://dwidmer.dev/impressum.html">
+    <meta name="description" content="Impressum von Daniel Widmer – Verantwortlich für dwidmer.dev. Kontakt, Haftungsausschluss und Urheberrecht.">
     <style>
         @font-face { font-family:'Space Mono'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/space-mono-v17-latin-400.ttf') format('truetype'); }
         @font-face { font-family:'Space Mono'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-mono-v17-latin-700.woff2') format('woff2'); }
@@ -113,6 +114,7 @@
             mobileToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
                 mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+                mobileToggle.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
             });
         }
         function initThemeToggle() {
@@ -120,10 +122,12 @@
             const body = document.body;
             body.classList.remove('light-mode');
             themeToggle.textContent = 'DARK';
+            themeToggle.setAttribute('aria-pressed', 'false');
             themeToggle.addEventListener('click', () => {
                 body.classList.toggle('light-mode');
                 const isLight = body.classList.contains('light-mode');
                 themeToggle.textContent = isLight ? 'LIGHT' : 'DARK';
+                themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
             });
         }
         document.addEventListener('DOMContentLoaded', function() {
