@@ -15,7 +15,6 @@ import { initParallax } from './modules/parallax.js';
 import { initAdvancedParallax } from './modules/advanced-parallax.js';
 import { initScrollAnimations, initASCIIAnimations, initAnimatedStats, initSkillProgress } from './modules/animations.js';
 import { initLazyLoading } from './modules/lazy-loading.js';
-import { initLazyCSS } from './modules/lazy-css.js';
 import { initContactForm } from './modules/contact.js';
 import { initCVDownload } from './modules/cv-download.js';
 import { initSnakeGame } from './modules/snake.js';
@@ -67,9 +66,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         initCRTToggle();
         initSmoothScrolling();
         initActiveNavigation();
-
-        // Initialize lazy loading
-        initLazyCSS();
 
         // Initialize visual effects
         initParallax();
@@ -176,4 +172,3 @@ function initEasterEggButtons() {
         });
     });
 }
-
