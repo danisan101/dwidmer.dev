@@ -1,24 +1,28 @@
 /* Projects Section - Monochrome Style */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
     align-items: stretch;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .project-card {
-    background: var(--surface-alt);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
     border: 1px solid var(--surface-border);
-    border-radius: 8px;
+    border-radius: 14px;
     overflow: hidden;
-    transition: transform 0.35s var(--ease-out-expo), border-color 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo);
+    transition: transform 0.35s var(--ease-out-expo), border-color 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo), background 0.35s var(--ease-out-expo);
     position: relative;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
     border-color: var(--surface-border-strong);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
 }
 
 .project-image {
@@ -65,6 +69,7 @@
 .project-content {
     padding: 1.4rem 1.5rem 1.5rem;
     color: var(--light);
+    text-align: left;
 }
 
 .project-meta {
@@ -127,9 +132,10 @@
 .project-title {
     font-family: 'Orbitron', sans-serif;
     color: var(--light);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.55rem;
     letter-spacing: 0.06em;
     font-size: 1.05rem;
+    line-height: 1.35;
 }
 
 .project-tech {
