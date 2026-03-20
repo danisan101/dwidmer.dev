@@ -88,7 +88,15 @@ function startTetris() {
                 <canvas class="game-canvas" id="tetrisCanvas" width="300" height="600" aria-label="Tetris Spielfeld" tabindex="0"></canvas>
             </div>
             <div class="game-controls">
-                A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop | ESC: Close
+                <span class="desktop-hint">A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop</span>
+                <span class="mobile-hint">Verwende die Buttons unten</span>
+            </div>
+            <div class="touch-controls">
+                <button type="button" class="touch-btn" data-action="left" aria-label="Links">←</button>
+                <button type="button" class="touch-btn" data-action="rotate" aria-label="Drehen">↻</button>
+                <button type="button" class="touch-btn" data-action="down" aria-label="Runter">↓</button>
+                <button type="button" class="touch-btn" data-action="drop" aria-label="Drop">⤓</button>
+                <button type="button" class="touch-btn" data-action="right" aria-label="Rechts">→</button>
             </div>
         </div>
     `;
@@ -97,6 +105,22 @@ function startTetris() {
     if (closeButton) {
         closeButton.addEventListener('click', () => hideTetris());
     }
+
+    // Touch controls for mobile
+    gameContainer.querySelectorAll('.touch-btn').forEach(btn => {
+        btn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (!gameRunning) return;
+            const action = btn.dataset.action;
+            switch (action) {
+                case 'left': movePiece(currentPiece, -1, 0); break;
+                case 'right': movePiece(currentPiece, 1, 0); break;
+                case 'down': movePiece(currentPiece, 0, 1); break;
+                case 'rotate': rotatePiece(currentPiece); break;
+                case 'drop': while (movePiece(currentPiece, 0, 1)) {} break;
+            }
+        });
+    });
 
     overlay.appendChild(gameContainer);
     document.body.appendChild(overlay);
@@ -432,20 +456,50 @@ function gameLoop(time = 0) {
     requestAnimationFrame(gameLoop);
 }
 
+function ensureGameOverScreen() {
+    let screen = document.getElementById('gameOver');
+    if (!screen) {
+        screen = document.createElement('div');
+        screen.id = 'gameOver';
+        screen.className = 'game-over';
+        screen.style.display = 'none';
+        screen.innerHTML = `
+            <h2>TETRIS - GAME OVER</h2>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <p>Lines Cleared: <span id="finalLines">0</span></p>
+            <p>Highscore: <span id="finalHighscore">0</span></p>
+            <p>Press SPACE to restart or ESC to close</p>
+            <div class="game-over-touch-controls">
+                <button type="button" class="game-over-btn" data-action="restart">RESTART</button>
+                <button type="button" class="game-over-btn" data-action="close">CLOSE</button>
+            </div>
+        `;
+        screen.querySelector('[data-action="restart"]').addEventListener('click', () => {
+            screen.classList.remove('active');
+            screen.style.display = 'none';
+            startTetris();
+        });
+        screen.querySelector('[data-action="close"]').addEventListener('click', () => {
+            screen.classList.remove('active');
+            screen.style.display = 'none';
+            hideTetris();
+        });
+        document.body.appendChild(screen);
+    }
+    return screen;
+}
+
 function endGame() {
     gameRunning = false;
     if (score > highscore) {
         highscore = score;
         localStorage.setItem('tetrisHighscore', String(highscore));
     }
-    const finalScoreElement = document.getElementById('finalScore');
-    const finalLinesElement = document.getElementById('finalLines');
-    const finalHighscoreElement = document.getElementById('finalHighscore');
-    const gameOverScreen = document.getElementById('gameOver');
-    
-    if (finalScoreElement) finalScoreElement.textContent = score;
-    if (finalLinesElement) finalLinesElement.textContent = lines;
-    if (finalHighscoreElement) finalHighscoreElement.textContent = String(highscore);
+    const gameOverScreen = ensureGameOverScreen();
+    document.getElementById('finalScore').textContent = score;
+    document.getElementById('finalLines').textContent = lines;
+    document.getElementById('finalHighscore').textContent = String(highscore);
     hideTetris({ preserveGameOver: true });
-    if (gameOverScreen) gameOverScreen.classList.add('active');
+    gameOverScreen.classList.add('active');
+    gameOverScreen.style.display = 'block';
 }

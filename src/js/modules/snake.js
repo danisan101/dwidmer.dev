@@ -65,7 +65,10 @@ function ensureOverlay() {
                     <div class="game-canvas-container">
                         <canvas class="game-canvas" id="${CANVAS_ID}" width="${SIZE}" height="${SIZE}" aria-label="Snake Spielbrett" tabindex="0"></canvas>
                     </div>
-                    <div class="game-controls">Füttere die Schlange, aber meide die Wände!</div>
+                    <div class="game-controls">
+                        <span class="desktop-hint">WASD / Pfeiltasten zum Steuern</span>
+                        <span class="mobile-hint">Swipe zum Steuern</span>
+                    </div>
                 </div>
             </div>
         `;
@@ -233,6 +236,38 @@ function hideSnakeGame() {
     log('🐍 Snake game closed');
 }
 
+function ensureGameOverScreen() {
+    let screen = document.getElementById('snakeGameOver');
+    if (!screen) {
+        screen = document.createElement('div');
+        screen.id = 'snakeGameOver';
+        screen.className = 'snake-game-over';
+        screen.style.display = 'none';
+        screen.innerHTML = `
+            <h2>SNAKE - GAME OVER</h2>
+            <p>Final Score: <span id="snakeFinalScore">0</span></p>
+            <p>Highscore: <span id="snakeFinalHighscore">0</span></p>
+            <p>Press SPACE to restart or ESC to close</p>
+            <div class="game-over-touch-controls">
+                <button type="button" class="game-over-btn" data-action="restart">RESTART</button>
+                <button type="button" class="game-over-btn" data-action="close">CLOSE</button>
+            </div>
+        `;
+        screen.querySelector('[data-action="restart"]').addEventListener('click', () => {
+            screen.classList.remove('active');
+            screen.style.display = 'none';
+            showSnakeGame();
+        });
+        screen.querySelector('[data-action="close"]').addEventListener('click', () => {
+            screen.classList.remove('active');
+            screen.style.display = 'none';
+            hideSnakeGame();
+        });
+        document.body.appendChild(screen);
+    }
+    return screen;
+}
+
 function handleGameOver(scoreElement, highscoreElement) {
     state.running = false;
     window.clearTimeout(state.loopHandle);
@@ -250,13 +285,11 @@ function handleGameOver(scoreElement, highscoreElement) {
 
     hideSnakeGame();
 
-    const gameOverScreen = document.getElementById('snakeGameOver');
-    if (gameOverScreen) {
-        document.getElementById('snakeFinalScore').textContent = String(state.score);
-        document.getElementById('snakeFinalHighscore').textContent = String(state.highscore);
-        gameOverScreen.classList.add('active');
-        gameOverScreen.style.display = 'block';
-    }
+    const gameOverScreen = ensureGameOverScreen();
+    document.getElementById('snakeFinalScore').textContent = String(state.score);
+    document.getElementById('snakeFinalHighscore').textContent = String(state.highscore);
+    gameOverScreen.classList.add('active');
+    gameOverScreen.style.display = 'block';
 }
 
 function handleKeydown(event) {
@@ -329,6 +362,36 @@ function handleGameOverControls(event) {
     }
 }
 
+// Touch controls for mobile
+const touch = { startX: 0, startY: 0 };
+
+function handleTouchStart(event) {
+    if (!state.running) return;
+    const t = event.touches[0];
+    touch.startX = t.clientX;
+    touch.startY = t.clientY;
+}
+
+function handleTouchEnd(event) {
+    if (!state.running) return;
+    const t = event.changedTouches[0];
+    const dx = t.clientX - touch.startX;
+    const dy = t.clientY - touch.startY;
+    const minSwipe = 30;
+
+    if (Math.abs(dx) < minSwipe && Math.abs(dy) < minSwipe) return;
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+        // Horizontal swipe
+        if (dx > 0 && state.dx === 0) { state.dx = STEP; state.dy = 0; }
+        else if (dx < 0 && state.dx === 0) { state.dx = -STEP; state.dy = 0; }
+    } else {
+        // Vertical swipe
+        if (dy > 0 && state.dy === 0) { state.dx = 0; state.dy = STEP; }
+        else if (dy < 0 && state.dy === 0) { state.dx = 0; state.dy = -STEP; }
+    }
+}
+
 export function initSnakeGame() {
     log('🐍 Initializing Snake Game...');
     ensureHighscore();
@@ -339,6 +402,8 @@ export function initSnakeGame() {
     document.addEventListener('keydown', handleKeydown);
     document.addEventListener('keydown', handleShortcuts);
     document.addEventListener('keydown', handleGameOverControls);
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     log('🐍 Snake Game ready');
 }

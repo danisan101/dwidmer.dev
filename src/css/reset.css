@@ -21,6 +21,8 @@
     --link-hover: rgba(255, 255, 255, 0.2);
     --layer-strong: rgba(10, 10, 10, 0.95);
     --transition-speed: 0.5s;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 body.light-mode {
@@ -40,6 +42,10 @@ body.light-mode {
     --focus-outline: rgba(0, 0, 0, 0.75);
     --link-hover: rgba(0, 0, 0, 0.08);
     --layer-strong: rgba(255, 255, 255, 0.95);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 html,
@@ -90,7 +96,7 @@ body.light-mode {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -98,6 +104,17 @@ body.light-mode {
 }
 
 ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Modern selection */
+::selection {
     background: var(--light);
-    border-radius: 4px;
+    color: var(--dark);
 }

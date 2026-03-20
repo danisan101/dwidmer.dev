@@ -43,7 +43,7 @@ main {
 }
 
 section {
-    padding: 5rem 2rem;
+    padding: 6rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
@@ -72,17 +72,17 @@ section {
 
 /* Cards */
 .card {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-alt);
     padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
+    transition: border-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart), transform 0.3s var(--ease-out-quart);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: var(--light);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    border-color: var(--surface-border-strong);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* Buttons */
@@ -91,14 +91,14 @@ section {
     display: inline-block;
     padding: 1rem 2rem;
     background: transparent;
-    border: 2px solid var(--light);
+    border: 1px solid var(--surface-border-strong);
     color: var(--light);
     text-decoration: none;
     font-family: 'Space Mono', monospace;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: all 0.3s ease;
+    transition: background 0.25s var(--ease-out-quart), color 0.25s var(--ease-out-quart), border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart);
     cursor: pointer;
 }
 
@@ -106,13 +106,14 @@ section {
 .cta-button:hover {
     background: var(--light);
     color: var(--dark);
+    transform: translateY(-1px);
 }
 
 /* Animations */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
 }
 
 .fade-in.visible {

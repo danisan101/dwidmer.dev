@@ -5,11 +5,12 @@ nav {
     left: 0;
     right: 0;
     background: var(--layer-strong);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     z-index: 10001;
-    padding: 1rem 2rem;
+    padding: 0.85rem 2rem;
     border-bottom: 1px solid var(--surface-border);
-    transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
+    transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, padding 0.3s var(--ease-out-quart);
 }
 
 .nav-container {
@@ -28,7 +29,7 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 0.5rem;
     justify-content: center;
     margin: 0 auto;
 }
@@ -36,24 +37,29 @@ nav {
 .nav-links a {
     color: var(--light);
     text-decoration: none;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
+    transition: all 0.25s var(--ease-out-quart);
+    padding: 0.45rem 0.9rem;
     border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    position: relative;
 }
 
 .nav-links a:hover {
-    border-color: var(--surface-border-strong);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+    border-color: var(--surface-border);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .nav-links a.active {
     border-color: var(--surface-border-strong);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 /* Controls (Theme & CRT Toggle) */
 .nav-controls {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.4rem;
     align-items: center;
 }
 
@@ -63,17 +69,18 @@ nav {
     background: transparent;
     border: 1px solid var(--surface-border);
     color: var(--light);
-    padding: 0.4rem 0.7rem;
+    padding: 0.35rem 0.6rem;
     cursor: pointer;
     font-family: 'Space Mono', monospace;
-    transition: all 0.2s ease;
-    font-size: 0.65rem;
-    opacity: 0.8;
+    transition: all 0.2s var(--ease-out-quart);
+    font-size: 0.6rem;
+    opacity: 0.7;
     display: flex;
     align-items: center;
     justify-content: center;
     letter-spacing: 1px;
     text-transform: uppercase;
+    border-radius: 3px;
 }
 
 .theme-toggle:hover,
@@ -82,16 +89,17 @@ nav {
     opacity: 1;
     background: var(--light);
     color: var(--text-inverse);
+    border-color: var(--light);
 }
 
 .easter-egg-btn {
     font-weight: 400;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .crt-toggle,
 .theme-toggle {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     letter-spacing: 1px;
 }
 
@@ -104,21 +112,34 @@ nav {
     font-size: 1.5rem;
     padding: 0.5rem;
     cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s var(--ease-out-quart);
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.06);
 }
 
 @media (max-width: 768px) {
+    nav {
+        padding: 0.75rem 1.25rem;
+    }
+
     .nav-links {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background: rgba(0, 0, 0, 0.95);
+        background: var(--layer-strong);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         flex-direction: column;
         padding: 1rem;
-        border-top: 1px solid var(--light);
+        gap: 0.25rem;
+        border-top: 1px solid var(--surface-border);
     }
-    
+
     body.light-mode .nav-links {
         background: rgba(255, 255, 255, 0.95);
     }
@@ -130,5 +151,8 @@ nav {
     .mobile-menu-toggle {
         display: block;
     }
-}
 
+    .nav-controls {
+        gap: 0.3rem;
+    }
+}
