@@ -1,15 +1,20 @@
 /* About Section */
 .about-content {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
-    align-items: flex-start;
-    gap: 2.5rem;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
+    align-items: stretch;
+    gap: 1.5rem;
     max-width: 1100px;
     margin: 0 auto;
 }
 
 .about-text {
     text-align: left;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+    border: 1px solid var(--surface-border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
 }
 
 .about-text h3,
@@ -98,8 +103,7 @@
 
 /* Timeline */
 .timeline {
-    margin: 3rem 0;
-    margin-bottom: 4rem;
+    margin: 0;
 }
 
 .timeline-item {
@@ -190,7 +194,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
     max-width: 1100px;
-    margin: 2rem auto 0;
+    margin: 0 auto;
 }
 
 .terminal-card {
@@ -434,10 +438,16 @@
 }
 
 /* CV Download Terminal */
+.cv-actions {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 .cv-download-terminal {
     background: var(--surface);
     border: 1px solid var(--surface-border);
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
@@ -632,6 +642,7 @@
 
     .about-text {
         text-align: center;
+        padding: 1.35rem;
     }
 
     .about-text h3,
