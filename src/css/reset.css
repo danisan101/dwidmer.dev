@@ -42,6 +42,10 @@ body.light-mode {
     --layer-strong: rgba(255, 255, 255, 0.95);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html,
 body {
     background: var(--dark);
