@@ -189,8 +189,82 @@ body.game-modal-open {
     display: block;
 }
 
+/* Game Over Touch Buttons */
+.game-over-touch-controls {
+    display: none;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.game-over-btn {
+    padding: 0.7rem 1.4rem;
+    background: transparent;
+    border: 1px solid var(--surface-border-strong);
+    color: var(--light);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.game-over-btn:active {
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* Touch Controls for Tetris */
+.touch-controls {
+    display: none;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.touch-btn {
+    width: 3rem;
+    height: 3rem;
+    background: transparent;
+    border: 1px solid var(--surface-border-strong);
+    color: var(--light);
+    font-size: 1.2rem;
+    font-family: 'Space Mono', monospace;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+.touch-btn:active {
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* Desktop/Mobile hint visibility */
+.mobile-hint { display: none; }
+.desktop-hint { display: inline; }
+
 /* Mobile Support for Games */
 @media (max-width: 768px) {
+    .mobile-hint { display: inline; }
+    .desktop-hint { display: none; }
+
+    .touch-controls {
+        display: flex;
+    }
+
+    .game-over-touch-controls {
+        display: flex;
+    }
+
     .game-overlay {
         padding: 1rem;
     }
@@ -199,13 +273,13 @@ body.game-modal-open {
         width: 95vw;
         min-width: 300px;
         max-width: 95vw;
-        max-height: 85vh;
+        max-height: 90vh;
         padding: 0;
         border-radius: 8px;
     }
 
     .game-terminal .terminal-body {
-        padding: 15px;
+        padding: 12px;
         height: calc(100% - 40px);
         overflow-y: auto;
     }
@@ -226,8 +300,8 @@ body.game-modal-open {
 
     .game-terminal .game-info {
         flex-direction: column;
-        gap: 10px;
-        margin-bottom: 15px;
+        gap: 8px;
+        margin-bottom: 12px;
     }
 
     .game-terminal .score-info,
@@ -238,7 +312,7 @@ body.game-modal-open {
 
     .game-terminal .game-controls {
         font-size: 0.7rem;
-        margin-top: 10px;
+        margin-top: 8px;
     }
 
     .game-shortcuts {
@@ -251,7 +325,6 @@ body.game-modal-open {
         gap: 0.5rem;
     }
 
-    .game-terminal,
     .game-over,
     .snake-game-over {
         width: 90%;

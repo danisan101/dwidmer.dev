@@ -223,7 +223,7 @@ body.light-mode .form-group textarea:focus {
     opacity: 0.25;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
     }
@@ -234,6 +234,14 @@ body.light-mode .form-group textarea:focus {
 
     .contact-form {
         order: 1;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-shell {
+        padding: 1.2rem 1rem;
     }
 }
 
