@@ -4,9 +4,10 @@
     background: var(--surface);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     max-width: 980px;
     margin: 0 auto;
+    transition: box-shadow 0.3s var(--ease-out-quart);
 }
 
 .contact-terminal .terminal-header {
@@ -139,14 +140,14 @@
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 1rem;
+    padding: 0.85rem 1rem;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    border-radius: 3px;
+    border: 1px solid var(--surface-border);
+    border-radius: 4px;
     color: var(--light);
     font-family: 'Space Mono', monospace;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    transition: border-color 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart);
 }
 
 body.light-mode .form-group input,
@@ -157,13 +158,13 @@ body.light-mode .form-group textarea {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--light);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    border-color: var(--surface-border-strong);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
 body.light-mode .form-group input:focus,
 body.light-mode .form-group textarea:focus {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
 }
 
 .form-group textarea {
@@ -203,17 +204,19 @@ body.light-mode .form-group textarea:focus {
 /* Submit Button */
 .submit-btn {
     width: 100%;
-    padding: 1rem;
+    padding: 0.9rem;
     background: transparent;
-    border: 2px solid var(--light);
+    border: 1px solid var(--surface-border-strong);
     color: var(--light);
     font-family: 'Space Mono', monospace;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.25s var(--ease-out-quart), color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart);
     position: relative;
     overflow: hidden;
+    border-radius: 4px;
+    letter-spacing: 1px;
 }
 
 .submit-btn .retro-loading-bar {

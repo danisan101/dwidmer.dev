@@ -1,6 +1,7 @@
 /* Hero Section */
 .hero {
     height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,14 +9,22 @@
     position: relative;
 }
 
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .hero-content h1 {
     font-family: 'Space Mono', monospace;
-    font-size: clamp(2rem, 8vw, 4rem);
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: var(--light);
     text-transform: lowercase;
-    letter-spacing: 3px;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
 }
 
 .hero-name {
@@ -24,13 +33,11 @@
 
 .hero-content p {
     font-family: 'Space Mono', monospace;
-    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-size: clamp(0.9rem, 2.5vw, 1.15rem);
     font-weight: 400;
-    color: var(--light);
+    color: var(--text-muted);
     margin-bottom: 2rem;
     max-width: 600px;
     text-transform: lowercase;
-    letter-spacing: 3px;
+    letter-spacing: 0.15em;
 }
-
-

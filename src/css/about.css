@@ -117,20 +117,18 @@
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -6px;
-    top: 0;
-    width: 10px;
-    height: 10px;
+    left: -5px;
+    top: 3px;
+    width: 8px;
+    height: 8px;
     background: var(--light);
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
 }
 
 .timeline-item:hover::before {
-    width: 15px;
-    height: 15px;
-    left: -8.5px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    transform: scale(1.4);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
 .timeline-item.no-dot::before {
@@ -148,31 +146,18 @@
     font-weight: 700;
     margin: 0;
     grid-column: 2;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    transition: color 0.25s var(--ease-out-quart);
 }
 
 .timeline-item p {
     grid-column: 2;
     margin: 0.25rem 0 0;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
-.timeline-item:hover .timeline-title,
-.timeline-item:hover p {
-    opacity: 1;
-    max-height: 50px;
-    /* Approx height */
-}
-
-.timeline-item {
-    /* ... existing props ... */
-    cursor: pointer;
+.timeline-item:hover .timeline-title {
+    color: var(--text-strong);
 }
 
 /* Interests */
@@ -212,12 +197,18 @@
     background: var(--surface);
     border: 1px solid var(--surface-border);
     border-radius: 10px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
     color: var(--light);
     position: relative;
     overflow: hidden;
+    transition: border-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart);
+}
+
+.terminal-card:hover {
+    border-color: var(--surface-border-strong);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
 }
 
 .terminal-card::after {
@@ -318,7 +309,12 @@
     border-radius: 8px;
     padding: 0.75rem;
     background: rgba(255, 255, 255, 0.02);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+    transition: border-color 0.25s var(--ease-out-quart), background 0.25s var(--ease-out-quart);
+}
+
+.interest-item:hover {
+    border-color: var(--surface-border-strong);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .interest-meta {
@@ -370,18 +366,17 @@
 
 .skill-track {
     border: 1px solid var(--surface-border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.02);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
-    transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+    transition: border-color 0.25s var(--ease-out-quart), background 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart);
     position: relative;
 }
 
 .skill-track:hover {
     border-color: var(--surface-border-strong);
     background: rgba(255, 255, 255, 0.04);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 .skill-track-head {
@@ -422,13 +417,13 @@
 .skill-pill {
     display: inline-flex;
     align-items: center;
-    padding: 0.35rem 0.75rem;
+    padding: 0.3rem 0.7rem;
     border: 1px solid var(--surface-border);
     border-radius: 999px;
-    font-size: 0.85rem;
-    color: var(--light);
+    font-size: 0.8rem;
+    color: var(--text-muted);
     background: rgba(255, 255, 255, 0.02);
-    transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+    transition: all 0.2s var(--ease-out-quart);
     letter-spacing: 0.02em;
 }
 
@@ -436,7 +431,6 @@
     background: rgba(255, 255, 255, 0.08);
     color: var(--light);
     border-color: var(--surface-border-strong);
-    transform: translateY(-1px);
 }
 
 /* CV Download Terminal */
@@ -444,19 +438,20 @@
     background: var(--surface);
     border: 1px solid var(--surface-border);
     border-radius: 8px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
     color: var(--light);
     margin: 2rem auto;
     max-width: 100%;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart), transform 0.3s var(--ease-out-quart);
 }
 
 .cv-download-terminal:hover {
     border-color: var(--surface-border-strong);
-    box-shadow: 0 0 26px rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
 }
 
 .cv-download-terminal .terminal-header {

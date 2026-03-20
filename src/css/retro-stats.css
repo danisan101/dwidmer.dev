@@ -33,13 +33,19 @@
 .session-stats-terminal {
     background: var(--surface);
     border: 1px solid var(--surface-border);
-    border-radius: 8px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     font-family: 'Space Mono', monospace;
     font-size: 14px;
     color: var(--light);
     margin: 2rem auto;
     max-width: 600px;
+    transition: border-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart);
+}
+
+.session-stats-terminal:hover {
+    border-color: var(--surface-border-strong);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
 }
 
 .session-stats-terminal .terminal-header {
