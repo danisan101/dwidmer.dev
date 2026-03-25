@@ -25,6 +25,15 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
 }
 
+body.light-mode .project-card {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));
+}
+
+body.light-mode .project-card:hover {
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.015));
+}
+
 .project-image {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -45,12 +54,25 @@
 
 /* Special styling for app icons to fit better */
 .project-card a[href="/app.html"] .project-image img,
-.project-card a[href="/monodot.html"] .project-image img {
+.project-card a[href="/monodot.html"] .project-image img,
+.project-image-themeable img {
     object-fit: contain;
     object-position: center;
     padding: 1.5rem;
     background: var(--surface);
     filter: grayscale(100%) contrast(1.1);
+}
+
+.project-image-themeable .project-image-light {
+    display: none;
+}
+
+body.light-mode .project-image-themeable .project-image-dark {
+    display: none;
+}
+
+body.light-mode .project-image-themeable .project-image-light {
+    display: block;
 }
 
 .project-card:hover .project-image img {
