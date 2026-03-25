@@ -9,7 +9,6 @@ import { initLoadingScreen } from './modules/loading.js';
 import { initBootSequence } from './modules/boot-sequence.js';
 import { initTypingAnimation } from './modules/typing.js';
 import { initThemeToggle } from './modules/theme.js';
-import { initCRTToggle } from './modules/crt-toggle.js';
 import { initMobileMenu, initSmoothScrolling, initActiveNavigation } from './modules/navigation.js';
 import { initParallax } from './modules/parallax.js';
 import { initAdvancedParallax } from './modules/advanced-parallax.js';
@@ -45,8 +44,6 @@ log(`
 🎮 Easter Eggs:
 - Snake Game: Ctrl+Alt+Shift+S
 - Tetris: Ctrl+Alt+Shift+T
-- CRT Toggle: Button in Navigation
-
 🚀 Portfolio v2.0 - Fully Refactored with Vite
 `);
 
@@ -63,7 +60,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Initialize core features
         initMobileMenu();
         initThemeToggle();
-        initCRTToggle();
         initSmoothScrolling();
         initActiveNavigation();
 
