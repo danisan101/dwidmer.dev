@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Datenschutzerklärung – katoro</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://dwidmer.dev/katoro-privacy.html">
+    <meta name="description" content="Datenschutzerklärung für die iOS App katoro von Daniel Widmer.">
+    <style>
+        @font-face { font-family:'Space Mono'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/space-mono-v17-latin-400.ttf') format('truetype'); }
+        @font-face { font-family:'Space Mono'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-mono-v17-latin-700.woff2') format('woff2'); }
+        @font-face { font-family:'Orbitron'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/orbitron-v35-latin-700.woff2') format('woff2'); }
+        :root { --primary:#ffffff; --dark:#000000; --light:#ffffff; --gray:#cccccc; --muted:#bbb; }
+        body.light-mode { --primary:#000000; --dark:#ffffff; --light:#000000; --gray:#333333; }
+        html, body { background: var(--dark); }
+        body { margin:0; font-family: 'Space Mono', monospace; color:var(--light); line-height:1.7; overflow-x:hidden; }
+
+        /* Navigation */
+        nav { position: fixed; top:0; left:0; right:0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 10001; padding: 1rem 2rem; border-bottom:1px solid var(--light); }
+        body.light-mode nav { background: rgba(255,255,255,0.95); }
+        .nav-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        .nav-links { display:flex; list-style:none; gap:2rem; justify-content:center; margin:0 auto; }
+        .nav-links a { color: var(--light); text-decoration:none; transition: all .3s ease; padding:.5rem 1rem; border:1px solid transparent; }
+        .nav-links a:hover { border-color: var(--light); box-shadow: 0 0 10px rgba(255,255,255,.5); }
+        .nav-links a.active { border-color: var(--light); }
+        .mobile-menu-toggle { display:none; background:none; border:1px solid var(--light); color:var(--light); font-size:1.5rem; padding:.5rem; cursor:pointer; }
+        .nav-controls { display:flex; gap:.5rem; align-items:center; }
+        .theme-toggle, .crt-toggle, .easter-egg-btn { background:transparent; border:1px solid var(--light); color:var(--light); padding:.4rem .7rem; cursor:pointer; font-family:'Space Mono', monospace; transition:all .2s ease; font-size:.65rem; opacity:.8; }
+        .theme-toggle:hover, .crt-toggle:hover, .easter-egg-btn:hover { opacity:1; background:var(--light); color:var(--dark); }
+
+        /* Layout */
+        main { max-width: 1200px; margin: 0 auto; padding: 7rem 2rem 3rem; }
+        section { max-width: 900px; margin: 0 auto; }
+        .section-title { font-family:'Orbitron', sans-serif; font-size: clamp(2rem, 5vw, 2.5rem); text-align:center; margin-bottom:2rem; color:var(--light); }
+        .section-title::after { content:''; display:block; width:100px; height:3px; background:var(--light); margin:1rem auto; }
+        a { color: var(--light); }
+        hr { border:0; border-top:1px solid var(--light); opacity:.2; margin:1.5rem 0; }
+        .sep { text-align:center; opacity:.4; margin:1.25rem 0; }
+        .back { margin-top:1.5rem; display:inline-block; border:1px solid var(--light); padding:.6rem 1rem; border-radius:4px; text-decoration:none; }
+        .back:hover { background: var(--light); color: var(--dark); }
+        ul { margin:.75rem 0; padding-left:1.5rem; }
+        ul li { margin-bottom:.35rem; }
+        .update-note { opacity:.6; font-size:.85rem; margin-top:1.5rem; }
+
+        /* Footer */
+        footer { background:#111; padding:2rem; text-align:center; border-top:2px solid var(--light); }
+        body.light-mode footer { background:#eee; }
+        .social-links { display:flex; justify-content:center; gap:2rem; margin-bottom:1rem; }
+        .social-links a { color: var(--light); font-size:1.5rem; transition: all .3s ease; }
+        .social-links a:hover { transform: translateY(-3px); filter: drop-shadow(0 5px 10px rgba(255,255,255,0.5)); }
+        .social-links svg { width:24px; height:24px; fill: currentColor; display:block; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background: rgba(0,0,0,0.95); flex-direction:column; padding:1rem; border-top:1px solid var(--light); }
+            body.light-mode .nav-links { background: rgba(255,255,255,0.95); }
+            .nav-links.active { display:flex; }
+            .mobile-menu-toggle { display:block; }
+            main { padding:6rem 1rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/index.html" class="logo" style="display:none;">DW</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#about">Über mich</a></li>
+                <li><a href="/index.html#projects" class="active">Projekte</a></li>
+                <li><a href="/index.html#contact">Kontakt</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="easter-egg-btn" data-game="snake" aria-label="Snake spielen">SNAKE</button>
+                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris spielen">TETRIS</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">DARK</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <h2 class="section-title">Datenschutz­erklärung</h2>
+
+            <p><strong>App:</strong> katoro</p>
+
+            <p><strong>Anbieter / Verantwortlicher:</strong><br>
+            Daniel Widmer<br>
+            E-Mail: <a href="mailto:widmer.daniel40@gmail.com">widmer.daniel40@gmail.com</a><br>
+            Website: <a href="https://dwidmer.dev">https://dwidmer.dev</a></p>
+
+            <div class="sep">⸻</div>
+
+            <h2>1) Überblick</h2>
+            <p>Der Schutz deiner Daten ist uns wichtig. Diese Datenschutzerklärung erklärt, welche Daten die App katoro verarbeitet und zu welchem Zweck.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>2) Welche Daten werden verarbeitet?</h2>
+            <p>Die App selbst erfasst keine personenbezogenen Daten, die dich direkt identifizieren.</p>
+            <p>Es können jedoch Daten durch Drittanbieter-Dienste verarbeitet werden, wenn du diese verwendest.</p>
+
+            <h3>a) Werbung (Google AdMob)</h3>
+            <p>Die App verwendet Google AdMob zur Anzeige von Werbung. AdMob kann dabei technische Informationen verarbeiten, unter anderem:</p>
+            <ul>
+                <li>Geräte-Informationen (z.&nbsp;B. Gerätemodell, Betriebssystem)</li>
+                <li>IP-Adresse (kann zur ungefähren Standortbestimmung genutzt werden)</li>
+                <li>Werbe-IDs (z.&nbsp;B. IDFA, sofern vom Nutzer freigegeben)</li>
+                <li>Interaktionsdaten (z.&nbsp;B. Werbe-Impressionen, Klicks)</li>
+            </ul>
+
+            <p><strong>Rechtsgrundlage:</strong><br>
+            Einwilligung gemäss Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO, soweit erforderlich.</p>
+
+            <p><strong>Einwilligung (Consent):</strong><br>
+            Nutzerinnen und Nutzer in der EU, der Schweiz und im Vereinigten Königreich werden – sofern erforderlich – vor der Anzeige personalisierter Werbung über ein Google-Consent-Formular (User Messaging Platform, UMP) um Einwilligung gebeten.</p>
+
+            <p><strong>Weitere Informationen:</strong></p>
+            <ul>
+                <li>Google Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
+                <li>Google AdMob: <a href="https://support.google.com/admob" target="_blank" rel="noopener">https://support.google.com/admob</a></li>
+            </ul>
+
+            <div class="sep">⸻</div>
+
+            <h3>b) In-App-Käufe (Apple App Store)</h3>
+            <p>Die App bietet den In-App-Kauf „Remove Ads" an.</p>
+            <p>Die Kaufabwicklung erfolgt ausschliesslich über den Apple App Store. Zahlungs- und Abrechnungsdaten werden nicht von uns verarbeitet, sondern ausschliesslich von Apple.</p>
+
+            <p><strong>Weitere Informationen:</strong></p>
+            <ul>
+                <li>Apple Datenschutz: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">https://www.apple.com/legal/privacy/</a></li>
+            </ul>
+
+            <div class="sep">⸻</div>
+
+            <h2>3) Speicherung auf dem Gerät (lokal)</h2>
+            <p>Die App speichert bestimmte Daten ausschliesslich lokal auf deinem Gerät, z.&nbsp;B.:</p>
+            <ul>
+                <li>Highscores und Spielstatistiken</li>
+                <li>Einstellungen (z.&nbsp;B. Sound, Haptik, Darstellung)</li>
+            </ul>
+            <p>Diese Daten verlassen dein Gerät nicht und werden nicht an uns übermittelt.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>4) Weitergabe von Daten</h2>
+            <p>Es erfolgt keine Weitergabe personenbezogener Daten an Dritte, ausser an die genannten Dienstleister (Google AdMob, Apple), soweit dies für die Anzeige von Werbung oder die Abwicklung von In-App-Käufen erforderlich ist.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>5) Deine Rechte</h2>
+            <p>Du hast das Recht auf Auskunft, Berichtigung oder Löschung deiner personenbezogenen Daten.</p>
+            <p>Da wir selbst keine personenbezogenen Daten speichern, erfolgen entsprechende Anfragen in der Regel über die jeweiligen Drittanbieter (z.&nbsp;B. Google oder Apple).</p>
+            <p>Bei Fragen kannst du uns jederzeit kontaktieren:<br>
+            <a href="mailto:widmer.daniel40@gmail.com">widmer.daniel40@gmail.com</a></p>
+
+            <div class="sep">⸻</div>
+
+            <h2>6) Änderungen</h2>
+            <p>Diese Datenschutzerklärung kann angepasst werden, wenn sich Funktionen der App oder gesetzliche Anforderungen ändern.</p>
+            <p class="update-note">Letzte Aktualisierung: 9. Februar 2026</p>
+
+            <p><a class="back" href="/katoro.html" aria-label="Zurück zur katoro App-Seite">← Zurück zur katoro App-Seite</a></p>
+        </section>
+    </main>
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/danisan101" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.85 3.14 8.96 7.49 10.41.55.1.75-.24.75-.53 0-.26-.01-1.12-.02-2.03-3.05.66-3.69-1.34-3.69-1.34-.5-1.27-1.23-1.61-1.23-1.61-1-.69.08-.68.08-.68 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5-1.22-5-5.43 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.42.11-2.96 0 0 .93-.3 3.05 1.13.88-.24 1.82-.37 2.78-.37s1.9.13 2.78.37c2.12-1.43 3.05-1.13 3.05-1.13.6 1.54.22 2.68.11 2.96.7.77 1.13 1.75 1.13 2.95 0 4.22-2.57 5.15-5.02 5.42.39.33.74.98.74 1.98 0 1.43-.01 2.59-.01 2.95 0 .29.2.64.76.53 4.35-1.45 7.49-5.56 7.49-10.41C23.02 5.24 18.27.5 12 .5z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/daniel-widmer-26426a173?" title="LinkedIn" aria-label="LinkedIn" rel="noopener" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zM8 8h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.79 2.66 4.79 6.12V24h-4V15.2c0-2.1-.04-4.8-2.92-4.8-2.92 0-3.37 2.28-3.37 4.64V24H8V8z"></path></svg>
+            </a>
+        </div>
+        <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
+        <p><a href="/impressum.html" style="color:inherit;">Impressum</a></p>
+    </footer>
+    <script>
+        function initMobileMenu() {
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+                mobileToggle.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
+            });
+        }
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            body.classList.remove('light-mode');
+            themeToggle.textContent = 'DARK';
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                const isLight = body.classList.contains('light-mode');
+                themeToggle.textContent = isLight ? 'LIGHT' : 'DARK';
+                themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+            });
+        }
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+                });
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initThemeToggle();
+            initSmoothScrolling();
+            document.querySelectorAll('.copyright-year').forEach(el => el.textContent = new Date().getFullYear());
+        });
+    </script>
+</body>
+</html>
