@@ -442,6 +442,8 @@
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .cv-download-terminal {
@@ -453,7 +455,7 @@
     font-size: 14px;
     color: var(--light);
     margin: 2rem auto;
-    max-width: 100%;
+    max-width: min(680px, 100%);
     cursor: pointer;
     transition: border-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart), transform 0.3s var(--ease-out-quart);
 }
@@ -534,6 +536,14 @@
 .cv-download-terminal:hover .cv-download-button {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+body.light-mode .cv-download-terminal {
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .cv-download-terminal:hover .cv-download-button {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
 }
 
 /* Glitch Effect */
