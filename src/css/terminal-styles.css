@@ -105,11 +105,13 @@
     border: 1px solid var(--surface-border);
     border-radius: 8px;
     font-family: 'Space Mono', monospace;
-    margin: 2rem 0;
+    margin: 2rem auto;
     overflow: hidden;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
+    max-width: min(680px, 100%);
 }
 
 .cv-download-terminal:hover {
@@ -125,11 +127,28 @@
     color: var(--light);
     font-size: 1.1rem;
     margin-bottom: 10px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.35;
 }
 
 .cv-download-terminal .download-description {
     color: var(--text-muted);
     font-size: 0.9rem;
+}
+
+body.light-mode .cv-download-terminal {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 640px) {
+    .cv-download-terminal .terminal-body {
+        padding: 16px 12px;
+    }
+
+    .cv-download-terminal .download-command {
+        font-size: 0.92rem;
+    }
 }
 
 /* Session Stats Terminal Style */
