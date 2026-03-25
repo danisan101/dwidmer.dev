@@ -1,45 +1,3 @@
-/* CRT Monitor Effects - Can be toggled - IMPROVED */
-body.crt-enabled::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.2) 100%),
-        linear-gradient(transparent 50%, rgba(0, 0, 0, 0.05) 50%);
-    background-size: 100% 100%, 100% 4px;
-    z-index: 9998;
-    pointer-events: none;
-    animation: scanlines 0.1s linear infinite;
-    will-change: background-position;
-}
-
-@keyframes scanlines {
-    0% {
-        background-position: 0 0, 0 0;
-    }
-
-    100% {
-        background-position: 0 0, 0 4px;
-    }
-}
-
-body.crt-enabled::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.3) 100%);
-    z-index: 9997;
-    pointer-events: none;
-    border-radius: 15px;
-    box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.8);
-}
-
 /* Parallax Background */
 .parallax-container {
     position: fixed;
@@ -62,6 +20,10 @@ body.crt-enabled::after {
     background-image: radial-gradient(circle, var(--light) 1px, transparent 1px);
     background-size: 50px 50px;
     opacity: 0.1;
+}
+
+body.light-mode .parallax-dots {
+    opacity: 0.05;
 }
 
 /* Particle Effects */
