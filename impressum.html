@@ -126,7 +126,7 @@
             themeToggle.addEventListener('click', () => {
                 body.classList.toggle('light-mode');
                 const isLight = body.classList.contains('light-mode');
-                themeToggle.textContent = isLight ? 'LIGHT' : 'DARK';
+                themeToggle.textContent = isLight ? 'DARK' : 'LIGHT';
                 themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
             });
         }

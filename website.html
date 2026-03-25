@@ -162,7 +162,7 @@
             themeToggle.addEventListener('click', () => {
                 document.body.classList.toggle('light-mode');
                 const isLight = document.body.classList.contains('light-mode');
-                themeToggle.textContent = isLight ? 'LIGHT' : 'DARK';
+                themeToggle.textContent = isLight ? 'DARK' : 'LIGHT';
                 themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
             });
             document.querySelectorAll('.copyright-year').forEach(el => el.textContent = new Date().getFullYear());

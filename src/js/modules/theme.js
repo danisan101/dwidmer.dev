@@ -45,7 +45,7 @@ function applyTheme(theme, body, toggle, updateStorage = true) {
         body.classList.remove('light-mode');
     }
 
-    toggle.textContent = theme === 'light' ? 'LIGHT' : 'DARK';
+    toggle.textContent = theme === 'light' ? 'DARK' : 'LIGHT';
     toggle.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
 
     if (updateStorage) {
