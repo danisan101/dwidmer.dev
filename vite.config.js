@@ -14,6 +14,7 @@ export default defineConfig({
         app: resolve(__dirname, 'app.html'),
         website: resolve(__dirname, 'website.html'),
         monodot: resolve(__dirname, 'monodot.html'),
+        katoro: resolve(__dirname, 'katoro.html'),
         monodotPrivacy: resolve(__dirname, 'monodot-privacy.html'),
         katoroPrivacy: resolve(__dirname, 'katoro-privacy.html'),
         impressum: resolve(__dirname, 'impressum.html'),
