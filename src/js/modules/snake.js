@@ -67,7 +67,13 @@ function ensureOverlay() {
                     </div>
                     <div class="game-controls">
                         <span class="desktop-hint">WASD / Pfeiltasten zum Steuern</span>
-                        <span class="mobile-hint">Swipe zum Steuern</span>
+                        <span class="mobile-hint">Verwende die Buttons unten</span>
+                    </div>
+                    <div class="touch-controls snake-touch-controls">
+                        <button type="button" class="touch-btn" data-action="left" aria-label="Links">←</button>
+                        <button type="button" class="touch-btn" data-action="up" aria-label="Hoch">↑</button>
+                        <button type="button" class="touch-btn" data-action="down" aria-label="Runter">↓</button>
+                        <button type="button" class="touch-btn" data-action="right" aria-label="Rechts">→</button>
                     </div>
                 </div>
             </div>
@@ -85,6 +91,28 @@ function ensureOverlay() {
         if (closeBtn) {
             closeBtn.addEventListener('click', hideSnakeGame);
         }
+
+        overlay.querySelectorAll('.snake-touch-controls .touch-btn').forEach(btn => {
+            btn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (!state.running) return;
+                const action = btn.dataset.action;
+                switch (action) {
+                    case 'up':
+                        if (state.dy === 0) { state.dx = 0; state.dy = -STEP; }
+                        break;
+                    case 'down':
+                        if (state.dy === 0) { state.dx = 0; state.dy = STEP; }
+                        break;
+                    case 'left':
+                        if (state.dx === 0) { state.dx = -STEP; state.dy = 0; }
+                        break;
+                    case 'right':
+                        if (state.dx === 0) { state.dx = STEP; state.dy = 0; }
+                        break;
+                }
+            });
+        });
     }
 
     const container = overlay.querySelector(`#${CONTAINER_ID}`);

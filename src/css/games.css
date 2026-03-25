@@ -50,6 +50,7 @@
 /* Lock body scroll when game modal is open */
 body.game-modal-open {
     overflow: hidden;
+    touch-action: none;
 }
 
 /* Game overlay (backdrop) */
@@ -226,15 +227,15 @@ body.game-modal-open {
 }
 
 .touch-btn {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     background: transparent;
-    border: 1px solid var(--surface-border-strong);
+    border: 2px solid var(--surface-border-strong);
     color: var(--light);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: 'Space Mono', monospace;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
