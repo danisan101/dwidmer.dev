@@ -154,6 +154,22 @@ function getProjectData(index) {
             },
             action: 'View App Details',
             url: '/monodot.html'
+        },
+        {
+            techStack: ['Swift', 'SwiftUI', 'iOS', 'UI/UX'],
+            features: [
+                'Klare Struktur & Rhythmus',
+                'Schnelle Interaktion',
+                'Native iOS Experience',
+                'Monochrome Ästhetik'
+            ],
+            stats: {
+                complexity: 'Intermediate',
+                duration: 'Ongoing',
+                status: 'Development'
+            },
+            action: 'View App Details',
+            url: '/katoro.html'
         }
     ];
 
