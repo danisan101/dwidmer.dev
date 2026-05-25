@@ -190,3 +190,17 @@ body.light-mode .parallax-dots {
 .skill-item:hover::after {
     opacity: 1;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .cursor-blink,
+    .particle,
+    .parallax-layer {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+    }
+}

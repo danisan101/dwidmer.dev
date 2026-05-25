@@ -2,169 +2,139 @@
 import '../css/fonts.css';
 import '../css/print.css';
 import '../css/critical.css';
-import confetti from 'canvas-confetti';
 
-// Import all modules
 import { initLoadingScreen } from './modules/loading.js';
-import { initBootSequence } from './modules/boot-sequence.js';
 import { initTypingAnimation } from './modules/typing.js';
 import { initThemeToggle } from './modules/theme.js';
 import { initMobileMenu, initSmoothScrolling, initActiveNavigation } from './modules/navigation.js';
 import { initParallax } from './modules/parallax.js';
-import { initAdvancedParallax } from './modules/advanced-parallax.js';
-import { initScrollAnimations, initASCIIAnimations, initAnimatedStats, initSkillProgress } from './modules/animations.js';
+import { initScrollAnimations, initASCIIAnimations } from './modules/animations.js';
 import { initLazyLoading } from './modules/lazy-loading.js';
 import { initContactForm } from './modules/contact.js';
 import { initCVDownload } from './modules/cv-download.js';
-import { initSnakeGame } from './modules/snake.js';
-import { initTetrisGame } from './modules/tetris.js';
 import { initSEO } from './modules/seo.js';
 import { initAnalytics } from './modules/analytics.js';
-import { initRetroStats } from './modules/retro-stats.js';
 import { initPerformanceMonitoring } from './modules/performance.js';
 import { initAnimatedTimeline } from './modules/animated-timeline.js';
 import { initProjectHoverEffects } from './modules/project-hover.js';
 import { initGlitchEffects } from './modules/glitch-effects.js';
 import { initPWAFeatures } from './modules/pwa-features.js';
 import { initEnhancedSkills } from './modules/enhanced-skills.js';
+import { prefersReducedMotion } from './utils/motion.js';
 import { log, error } from './utils/logger.js';
 
-// Make confetti available globally for contact form
-window.confetti = confetti;
+let gamesLoadPromise = null;
 
-// Console Easter Egg
+async function ensureGamesLoaded() {
+    if (!gamesLoadPromise) {
+        gamesLoadPromise = Promise.all([
+            import('./modules/snake.js'),
+            import('./modules/tetris.js')
+        ]).then(([snake, tetris]) => {
+            snake.initSnakeGame();
+            tetris.initTetrisGame();
+            window.initSnakeGame = snake.initSnakeGame;
+            window.initTetrisGame = tetris.initTetrisGame;
+        });
+    }
+    return gamesLoadPromise;
+}
+
+function initGameKeyboardShortcuts() {
+    document.addEventListener('keydown', async (e) => {
+        if (!(e.shiftKey && e.altKey && e.ctrlKey)) return;
+
+        const key = e.key.toLowerCase();
+        if (key !== 's' && key !== 't') return;
+
+        e.preventDefault();
+        await ensureGamesLoaded();
+
+        if (key === 's') {
+            if (window.showSnakeGame) window.showSnakeGame();
+        } else if (window.startTetris) {
+            window.startTetris();
+        }
+    });
+}
+
+function initGameEscapeHandler() {
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+
+        const snakeOverlay = document.getElementById('snakeGameOverlay');
+        const snakeGameOver = document.getElementById('snakeGameOver');
+        const tetrisOverlay = document.getElementById('tetrisGameOverlay');
+        const tetrisGameOver = document.getElementById('gameOver');
+
+        if (snakeOverlay && snakeOverlay.classList.contains('active')) {
+            if (window.hideSnakeGame) window.hideSnakeGame();
+            return;
+        }
+
+        if (snakeGameOver && snakeGameOver.classList.contains('active')) {
+            snakeGameOver.classList.remove('active');
+            snakeGameOver.style.display = 'none';
+            return;
+        }
+
+        if (tetrisOverlay && tetrisOverlay.classList.contains('active')) {
+            if (window.hideTetris) window.hideTetris();
+            return;
+        }
+
+        if (tetrisGameOver && tetrisGameOver.classList.contains('active')) {
+            tetrisGameOver.classList.remove('active');
+            tetrisGameOver.style.display = 'none';
+        }
+    });
+}
+
 log(`
 ██████╗ ███████╗████████╗██████╗  ██████╗
 ██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗
 ██████╔╝█████╗     ██║   ██████╔╝██║   ██║
 ██╔══██╗██╔══╝     ██║   ██╔══██╗██║   ██║
 ██║  ██║███████╗   ██║   ██║  ██║╚██████╔╝
-╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ 
+╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 
-🎮 Easter Eggs:
-- Snake Game: Ctrl+Alt+Shift+S
-- Tetris: Ctrl+Alt+Shift+T
-🚀 Portfolio v2.0 - Fully Refactored with Vite
+Easter Eggs: Snake Ctrl+Alt+Shift+S | Tetris Ctrl+Alt+Shift+T
 `);
 
-// Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        // Check for first visit and show boot sequence
-        initBootSequence();
-
-        // Show loading screen and initialize typing
         await initLoadingScreen();
         initTypingAnimation();
 
-        // Initialize core features
         initMobileMenu();
         initThemeToggle();
         initSmoothScrolling();
         initActiveNavigation();
 
-        // Initialize visual effects
-        initParallax();
-        initAdvancedParallax();
-        initScrollAnimations();
-        initASCIIAnimations();
-        initAnimatedStats();
-        initSkillProgress();
-        initLazyLoading();
+        if (!prefersReducedMotion()) {
+            initParallax();
+            initASCIIAnimations();
+            initGlitchEffects();
+        }
 
-        // Initialize cool features
+        initScrollAnimations();
+        initLazyLoading();
         initAnimatedTimeline();
         initProjectHoverEffects();
-        initGlitchEffects();
         initPWAFeatures();
         initEnhancedSkills();
-
-        // Initialize interactive features
-        initSnakeGame();
-        initTetrisGame();
         initContactForm();
         initCVDownload();
 
-        // Make game functions globally available
-        window.initSnakeGame = initSnakeGame;
-        window.initTetrisGame = initTetrisGame;
+        initGameKeyboardShortcuts();
+        initGameEscapeHandler();
 
-        // Initialize Easter Egg Buttons AFTER games are ready (with delay)
-        setTimeout(() => {
-            initEasterEggButtons();
-        }, 200);
-
-        // Initialize SEO, Analytics, Performance and Retro Stats
         initSEO();
         initAnalytics();
-        initRetroStats();
         initPerformanceMonitoring();
-
-        // Global ESC handler for games
-        document.addEventListener('keydown', (e) => {
-            if (e.key !== 'Escape') return;
-
-            const snakeOverlay = document.getElementById('snakeGameOverlay');
-            const snakeGameOver = document.getElementById('snakeGameOver');
-            const tetrisOverlay = document.getElementById('tetrisGameOverlay');
-            const tetrisGameOver = document.getElementById('gameOver');
-
-            if (snakeOverlay && snakeOverlay.classList.contains('active')) {
-                if (window.hideSnakeGame) window.hideSnakeGame();
-                log('🐍 Snake game closed via ESC');
-                return;
-            }
-
-            if (snakeGameOver && snakeGameOver.classList.contains('active')) {
-                snakeGameOver.classList.remove('active');
-                snakeGameOver.style.display = 'none';
-                log('🐍 Snake game over screen closed via ESC');
-                return;
-            }
-
-            if (tetrisOverlay && tetrisOverlay.classList.contains('active')) {
-                if (window.hideTetris) window.hideTetris();
-                log('🧩 Tetris game closed via ESC');
-                return;
-            }
-
-            if (tetrisGameOver && tetrisGameOver.classList.contains('active')) {
-                tetrisGameOver.classList.remove('active');
-                tetrisGameOver.style.display = 'none';
-                log('🧩 Tetris game over screen closed via ESC');
-                return;
-            }
-        });
 
         log('✓ Portfolio initialized successfully!');
     } catch (err) {
         error('Error initializing portfolio:', err);
     }
 });
-
-// Easter Egg Buttons in Header
-function initEasterEggButtons() {
-    const buttons = document.querySelectorAll('.easter-egg-btn');
-
-    buttons.forEach((btn) => {
-        const game = btn.getAttribute('data-game');
-
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            if (game === 'snake') {
-                if (window.showSnakeGame) {
-                    window.showSnakeGame();
-                } else if (window.initSnakeGame) {
-                    window.initSnakeGame();
-                }
-            } else if (game === 'tetris') {
-                if (window.startTetris) {
-                    window.startTetris();
-                } else if (window.initTetrisGame) {
-                    window.initTetrisGame();
-                }
-            }
-        });
-    });
-}

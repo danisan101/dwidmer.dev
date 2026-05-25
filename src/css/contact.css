@@ -325,6 +325,19 @@ body.light-mode .form-group textarea:focus {
     color: #ff4444;
 }
 
+.form-privacy-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.form-privacy-note a {
+    color: var(--light);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 @keyframes slideIn {
     from {
         opacity: 0;

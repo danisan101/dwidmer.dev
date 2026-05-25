@@ -1,5 +1,23 @@
 # Changelog - Portfolio v2.0
 
+## Version 2.1.0 (Mai 2026)
+
+### Rechtliches und Vertrauen
+- Neue Website-Datenschutzseite (`datenschutz.html`) mit Hinweisen zu FormSubmit, Plausible und LocalStorage
+- Footer-Links Impressum | Datenschutz auf allen Hauptseiten
+- Datenschutz-Hinweis am Kontaktformular
+
+### UX und Performance
+- Boot-Sequence entfernt; nur PowerShell-Loading (einmal pro Session)
+- Session-Stats-Section entfernt
+- Spiele nur noch per Tastenkürzel (nicht mehr in der Navigation)
+- CV-Download öffnet direkt das PDF
+- Spiele lazy geladen (separater Chunk)
+- Orbitron-Fonts reduziert; ungenutzte Module entfernt
+- `prefers-reduced-motion` für Loading, Parallax, Glitch, Theme-Partikel
+- Favicon und PWA-Icons (`favicon.ico`, `icon-192.png`, `icon-512.png`)
+- Meta-Keywords entfernt; dynamische Section-Meta an Navigation gekoppelt
+
 ## 🚀 Version 2.0.0 (Januar 2025)
 
 ### ✅ Komplett überarbeitet

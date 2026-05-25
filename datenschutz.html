@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Datenschutz – Daniel Widmer</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://dwidmer.dev/datenschutz.html">
+    <meta name="description" content="Datenschutzerklärung für dwidmer.dev – Kontaktformular, Analytics, LocalStorage und deine Rechte.">
+    <link rel="icon" href="/favicon.ico">
+    <style>
+        @font-face { font-family:'Space Mono'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/space-mono-v17-latin-400.ttf') format('truetype'); }
+        @font-face { font-family:'Space Mono'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-mono-v17-latin-700.woff2') format('woff2'); }
+        :root { --primary:#ffffff; --dark:#000000; --light:#ffffff; --gray:#cccccc; }
+        body.light-mode { --primary:#000000; --dark:#ffffff; --light:#000000; --gray:#333333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Mono', monospace !important; }
+        html, body { background: var(--dark); }
+        body { color:var(--light); line-height:1.7; overflow-x:hidden; }
+        nav { position: fixed; top:0; left:0; right:0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 10001; padding: 1rem 2rem; border-bottom:1px solid var(--light); }
+        body.light-mode nav { background: rgba(255,255,255,0.95); }
+        .nav-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        .nav-links { display:flex; list-style:none; gap:2rem; justify-content:center; margin:0 auto; }
+        .nav-links a { color: var(--light); text-decoration:none; transition: all .3s ease; padding:.5rem 1rem; border:1px solid transparent; }
+        .nav-links a:hover { border-color: var(--light); }
+        .nav-links a.active { border-color: var(--light); }
+        .mobile-menu-toggle { display:none; background:none; border:1px solid var(--light); color:var(--light); font-size:1.5rem; padding:.5rem; cursor:pointer; }
+        .nav-controls { display:flex; gap:.5rem; align-items:center; }
+        .theme-toggle { background:transparent; border:1px solid var(--light); color:var(--light); padding:.4rem .7rem; cursor:pointer; font-family:'Space Mono', monospace; font-size:.65rem; }
+        .theme-toggle:hover { background:var(--light); color:var(--dark); }
+        main { max-width: 1200px; margin: 0 auto; padding: 7rem 2rem 3rem; }
+        section { max-width: 900px; margin: 0 auto; }
+        .section-title { font-size: clamp(2rem, 5vw, 2.5rem); text-align:center; margin-bottom:2rem; color:var(--light); }
+        .section-title::after { content:''; display:block; width:100px; height:3px; background:var(--light); margin:1rem auto; }
+        h2 { font-size: 1.1rem; margin: 1.25rem 0 0.5rem; }
+        a { color: var(--light); }
+        ul { margin: 0.5rem 0 1rem 1.25rem; }
+        hr { border:0; border-top:1px solid var(--light); opacity:.2; margin:1.5rem 0; }
+        .sep { text-align:center; opacity:.4; margin:1.25rem 0; }
+        .back { margin-top:1.5rem; display:inline-block; border:1px solid var(--light); padding:.6rem 1rem; border-radius:4px; text-decoration:none; }
+        .back:hover { background: var(--light); color: var(--dark); }
+        footer { background:#111; padding:2rem; text-align:center; border-top:2px solid var(--light); margin-top:3rem; }
+        body.light-mode footer { background:#eee; }
+        @media (max-width: 768px) {
+            .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background: rgba(0,0,0,0.95); flex-direction:column; padding:1rem; border-top:1px solid var(--light); }
+            body.light-mode .nav-links { background: rgba(255,255,255,0.95); }
+            .nav-links.active { display:flex; }
+            .mobile-menu-toggle { display:block; }
+            main { padding:6rem 1rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#about">Über mich</a></li>
+                <li><a href="/#projects">Projekte</a></li>
+                <li><a href="/#contact">Kontakt</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">DARK</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <h2 class="section-title">Datenschutz</h2>
+            <p>Stand: Mai 2026</p>
+            <hr>
+
+            <h2>1. Verantwortliche Stelle</h2>
+            <p>Verantwortlich für diese Website:<br>
+            Daniel Widmer<br>
+            8047 Zürich, Schweiz<br>
+            Website: <a href="https://dwidmer.dev">dwidmer.dev</a></p>
+
+            <div class="sep">⸻</div>
+
+            <h2>2. Allgemeines</h2>
+            <p>Der Schutz deiner Daten ist mir wichtig. Diese Erklärung beschreibt, welche Daten auf <strong>dwidmer.dev</strong> (Portfolio-Startseite und zugehörige statische Seiten) verarbeitet werden. App-spezifische Hinweise findest du auf den jeweiligen Datenschutzseiten der Apps.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>3. Kontaktformular</h2>
+            <p>Wenn du das Kontaktformular nutzt, werden die von dir eingegebenen Angaben (Name, E-Mail, Betreff, Nachricht) zur Bearbeitung deiner Anfrage verarbeitet.</p>
+            <ul>
+                <li><strong>Dienst:</strong> FormSubmit (FormSubmit.co) leitet die Nachricht per E-Mail weiter.</li>
+                <li><strong>Zweck:</strong> Beantwortung deiner Kontaktanfrage.</li>
+                <li><strong>Rechtsgrundlage:</strong> Berechtigtes Interesse bzw. vorvertragliche Kommunikation; bei sensiblen Inhalten bitte nur notwendige Angaben senden.</li>
+                <li><strong>Drittland:</strong> FormSubmit kann Server in den USA nutzen. Es können zusätzliche Schutzmassnahmen des Anbieters gelten.</li>
+            </ul>
+            <p>Ein unsichtbares Honeypot-Feld dient dem Spam-Schutz. Optional kann FormSubmit ein Captcha anzeigen.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>4. Web-Analyse (Plausible)</h2>
+            <p>Diese Website nutzt <a href="https://plausible.io" rel="noopener" target="_blank">Plausible Analytics</a> (privacy-freundlich, ohne Cookies für Werbezwecke). Es werden u.&nbsp;a. Seitenaufrufe und anonymisierte Nutzungsdaten erfasst, um die Website zu verbessern.</p>
+            <ul>
+                <li><strong>Anbieter:</strong> Plausible Insights OÜ (EU).</li>
+                <li><strong>Keine</strong> Weitergabe an Werbenetzwerke durch mich.</li>
+            </ul>
+
+            <div class="sep">⸻</div>
+
+            <h2>5. LocalStorage im Browser</h2>
+            <p>Ohne Anmeldung speichert die Website lokal im Browser (LocalStorage / SessionStorage), z.&nbsp;B.:</p>
+            <ul>
+                <li><strong>dw-theme:</strong> deine Wahl Hell/Dunkel</li>
+                <li><strong>dw-loading-shown:</strong> ob die Intro-Animation in dieser Sitzung bereits lief</li>
+                <li><strong>Spiel-Highscores:</strong> Snake/Tetris (Easter Eggs), falls du spielst</li>
+            </ul>
+            <p>Diese Daten verlassen dein Gerät nicht automatisch; du kannst sie durch Löschen der Website-Daten im Browser entfernen.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>6. Hosting und Server-Logs</h2>
+            <p>Die Website wird statisch ausgeliefert (z.&nbsp;B. GitHub Pages). Beim Aufruf können beim Hosting-Anbieter technische Logdaten (IP-Adresse, Zeitstempel, angeforderte URL, User-Agent) kurzzeitig anfallen – gemäss dessen Datenschutzhinweisen.</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>7. Cookies</h2>
+            <p>Ich setze keine Marketing-Cookies ein. Plausible arbeitet ohne klassische Tracking-Cookies. Der Service Worker der PWA cached Inhalte für Offline-Nutzung (technisch notwendig).</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>8. Deine Rechte</h2>
+            <p>Du hast nach geltendem Datenschutzrecht u.&nbsp;a. Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Widerspruch. Kontaktiere mich dafür über das <a href="/#contact">Kontaktformular</a> oder die Angaben im <a href="/impressum.html">Impressum</a>.</p>
+            <p>Beschwerden kannst du bei der zuständigen Aufsichtsbehörde einreichen (in der Schweiz: Eidgenössischer Datenschutz- und Öffentlichkeitsbeauftragter, EDÖB).</p>
+
+            <div class="sep">⸻</div>
+
+            <h2>9. Änderungen</h2>
+            <p>Diese Datenschutzerklärung kann bei neuen Funktionen oder rechtlichen Anpassungen aktualisiert werden. Die aktuelle Fassung findest du immer unter dieser URL.</p>
+
+            <p><a class="back" href="/" aria-label="Zurück zur Startseite">← Zurück zur Startseite</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
+        <p><a href="/impressum.html" style="color:inherit;">Impressum</a> | <a href="/datenschutz.html" style="color:inherit;">Datenschutz</a></p>
+    </footer>
+    <script>
+        const THEME_KEY = 'dw-theme';
+        function initMobileMenu() {
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+                mobileToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+            });
+        }
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            let stored = null;
+            try { stored = localStorage.getItem(THEME_KEY); } catch (e) {}
+            const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+            const theme = stored || (prefersLight ? 'light' : 'dark');
+            if (theme === 'light') body.classList.add('light-mode');
+            themeToggle.textContent = body.classList.contains('light-mode') ? 'DARK' : 'LIGHT';
+            themeToggle.setAttribute('aria-pressed', body.classList.contains('light-mode'));
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                const isLight = body.classList.contains('light-mode');
+                themeToggle.textContent = isLight ? 'DARK' : 'LIGHT';
+                themeToggle.setAttribute('aria-pressed', isLight);
+                try { localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark'); } catch (e) {}
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initThemeToggle();
+            document.querySelectorAll('.copyright-year').forEach(el => el.textContent = new Date().getFullYear());
+        });
+    </script>
+</body>
+</html>

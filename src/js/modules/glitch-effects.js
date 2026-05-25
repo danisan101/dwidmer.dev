@@ -1,7 +1,10 @@
 // Glitch Effects Module
 import { log } from '../utils/logger.js';
+import { prefersReducedMotion } from '../utils/motion.js';
 
 export function initGlitchEffects() {
+    if (prefersReducedMotion()) return;
+
     log('⚡ Initializing Glitch Effects...');
     
     // Add glitch CSS animations
