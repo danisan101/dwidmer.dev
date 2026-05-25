@@ -18,6 +18,7 @@ export default defineConfig({
         monodotPrivacy: resolve(__dirname, 'monodot-privacy.html'),
         katoroPrivacy: resolve(__dirname, 'katoro-privacy.html'),
         impressum: resolve(__dirname, 'impressum.html'),
+        datenschutz: resolve(__dirname, 'datenschutz.html'),
         appPrivacy: resolve(__dirname, 'app-privacy.html'),
       },
       output: {

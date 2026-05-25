@@ -54,6 +54,10 @@ export function initActiveNavigation() {
                 link.classList.add('active');
             }
         });
+
+        if (current) {
+            updateSectionMeta(current);
+        }
     });
 }
 

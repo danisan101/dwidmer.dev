@@ -33,8 +33,9 @@ export function initThemeToggle() {
         const nextTheme = body.classList.contains('light-mode') ? 'dark' : 'light';
         applyTheme(nextTheme, body, themeToggle);
 
-        // Optional: Add particle effect on toggle
-        createThemeParticles(nextTheme === 'light');
+        if (!prefersReducedMotion()) {
+            createThemeParticles(nextTheme === 'light');
+        }
     });
 }
 
