@@ -3,7 +3,6 @@
     background: var(--surface);
     border: 1px solid var(--surface-border);
     border-radius: 8px;
-    font-family: 'Space Mono', monospace;
     margin: 2rem 0;
     overflow: hidden;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
@@ -47,14 +46,14 @@
 
 .terminal-title {
     color: var(--light);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     font-weight: 400;
 }
 
 .terminal-body {
     padding: 16px;
     color: var(--light);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     line-height: 1.4;
 }
 
@@ -65,7 +64,7 @@
 
 .terminal-line .command {
     color: var(--light);
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .terminal-line .cursor {
@@ -76,7 +75,6 @@
     background: var(--surface);
     border: 1px solid var(--surface-border);
     border-radius: 8px;
-    font-family: 'Space Mono', monospace;
     margin: 2rem auto;
     overflow: hidden;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
@@ -97,7 +95,7 @@
 
 .cv-download-terminal .download-command {
     color: var(--light);
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
     margin-bottom: 10px;
     overflow-wrap: anywhere;
     word-break: break-word;
@@ -106,7 +104,7 @@
 
 .cv-download-terminal .download-description {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
 }
 
 body.light-mode .cv-download-terminal {
@@ -119,7 +117,7 @@ body.light-mode .cv-download-terminal {
     }
 
     .cv-download-terminal .download-command {
-        font-size: 0.92rem;
+        font-size: var(--text-base);
     }
 }
 

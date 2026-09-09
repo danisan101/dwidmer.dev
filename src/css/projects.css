@@ -100,7 +100,7 @@ body.light-mode .project-image-themeable .project-image-light {
     justify-content: space-between;
     margin-bottom: 0.6rem;
     color: var(--text-muted);
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -113,13 +113,13 @@ body.light-mode .project-image-themeable .project-image-light {
     border: 1px solid var(--surface-border);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.03);
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     letter-spacing: 1.5px;
 }
 
 .project-year {
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
 }
 
 .project-content p {
@@ -130,7 +130,7 @@ body.light-mode .project-image-themeable .project-image-light {
     color: var(--text-muted);
     margin-bottom: 0.75rem;
     line-height: 1.6;
-    font-size: 0.9rem;
+    font-size: var(--text-base);
 }
 
 .project-highlights {
@@ -141,7 +141,7 @@ body.light-mode .project-image-themeable .project-image-light {
     flex-direction: column;
     gap: 0.3rem;
     color: var(--text-muted);
-    font-size: 0.88rem;
+    font-size: var(--text-sm);
 }
 
 .project-highlights li::before {
@@ -152,11 +152,10 @@ body.light-mode .project-image-themeable .project-image-light {
 }
 
 .project-title {
-    font-family: 'Orbitron', sans-serif;
     color: var(--light);
     margin-bottom: 0.55rem;
     letter-spacing: 0.06em;
-    font-size: 1.05rem;
+    font-size: var(--text-lg);
     line-height: 1.35;
 }
 
@@ -172,7 +171,7 @@ body.light-mode .project-image-themeable .project-image-light {
     color: var(--text-muted);
     padding: 0.25rem 0.65rem;
     border-radius: 999px;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     border: 1px solid var(--surface-border);
     transition: all 0.2s var(--ease-out-quart);
     letter-spacing: 0.3px;

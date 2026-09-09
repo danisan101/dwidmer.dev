@@ -9,6 +9,7 @@
 
 html {
     scroll-behavior: smooth;
+    font-family: var(--font-mono);
 }
 
 html,
@@ -18,28 +19,31 @@ body {
 }
 
 body {
-    font-family: 'Space Mono', monospace;
     background: var(--dark);
     color: var(--light);
-    line-height: 1.6;
+    line-height: var(--leading-normal);
     overflow-x: hidden;
     min-height: 100vh;
     padding-bottom: env(safe-area-inset-bottom, 0);
     transition: background var(--dur-base) ease, color var(--dur-base) ease;
 }
 
-/* Force Space Mono everywhere */
-* {
-    font-family: 'Space Mono', monospace !important;
+/* Form controls do not inherit font-family from the UA stylesheet.
+   This is what the former `* { ... !important }` rule was compensating for. */
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    letter-spacing: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Space Mono', monospace !important;
+kbd,
+code,
+samp,
+pre {
+    font-family: inherit;
+    font-size: inherit;
 }
 
 @supports (height: 100dvh) {

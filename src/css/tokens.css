@@ -3,6 +3,9 @@
    Dark is the default; light mode overrides the same names on body.light-mode. */
 
 :root {
+    /* Type family */
+    --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
     /* Colour */
     --primary: #ffffff;
     --dark: #000000;

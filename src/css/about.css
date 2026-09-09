@@ -31,7 +31,7 @@ body.light-mode .about-text {
 
 /* Subsection Titles - unified style for Werdegang, Interessen, Skills */
 .subsection-title {
-    font-size: 1.3rem;
+    font-size: var(--text-xl);
     font-weight: 700;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
@@ -66,8 +66,7 @@ body.light-mode .about-text {
 
 /* ASCII Art Animations */
 .ascii-animation {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     line-height: 1;
     text-align: center;
     margin: 2rem 0;
@@ -149,7 +148,7 @@ body.light-mode .about-text {
 .timeline-date {
     color: var(--light);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     grid-column: 1;
 }
 
@@ -165,7 +164,7 @@ body.light-mode .about-text {
     grid-column: 2;
     margin: 0.25rem 0 0;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
 }
 
 .timeline-item:hover .timeline-title {
@@ -323,7 +322,7 @@ body.light-mode .interest-meter span {
     color: var(--light);
     padding: 0.5rem 1rem;
     border-radius: 3px;
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     transition: all 0.3s ease;
 }
 
@@ -346,8 +345,7 @@ body.light-mode .interest-meter span {
     border: 1px solid var(--surface-border);
     border-radius: 10px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 14px;
+    font-size: var(--text-sm);
     color: var(--light);
     position: relative;
     overflow: hidden;
@@ -406,7 +404,7 @@ body.light-mode .interest-meter span {
 }
 
 .terminal-title {
-    font-size: 12px;
+    font-size: var(--text-xs);
     color: var(--text-muted);
     letter-spacing: 0.08em;
 }
@@ -415,7 +413,7 @@ body.light-mode .interest-meter span {
     border: 1px solid var(--surface-border);
     padding: 0.25rem 0.75rem;
     border-radius: 999px;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
@@ -473,12 +471,12 @@ body.light-mode .interest-meter span {
 }
 
 .interest-label {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--light);
 }
 
 .interest-tag {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--text-muted);
@@ -539,11 +537,11 @@ body.light-mode .interest-meter span {
     letter-spacing: 0.05em;
     color: var(--light);
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
 }
 
 .skill-track-level {
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     padding: 0.2rem 0.6rem;
     border: 1px solid var(--surface-border-strong);
     border-radius: 8px;
@@ -553,7 +551,7 @@ body.light-mode .interest-meter span {
 .skill-copy {
     margin: 0 0 0.4rem;
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: var(--text-base);
 }
 
 .skill-track-pills {
@@ -568,7 +566,7 @@ body.light-mode .interest-meter span {
     padding: 0.3rem 0.7rem;
     border: 1px solid var(--surface-border);
     border-radius: 999px;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
     background: rgba(255, 255, 255, 0.02);
     transition: all 0.2s var(--ease-out-quart);
@@ -595,8 +593,7 @@ body.light-mode .interest-meter span {
     border: 1px solid var(--surface-border);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 14px;
+    font-size: var(--text-sm);
     color: var(--light);
     margin: 2rem auto;
     max-width: min(680px, 100%);
@@ -644,7 +641,7 @@ body.light-mode .interest-meter span {
 }
 
 .cv-download-terminal .terminal-title {
-    font-size: 12px;
+    font-size: var(--text-xs);
     color: var(--text-muted);
 }
 
@@ -661,7 +658,7 @@ body.light-mode .interest-meter span {
 
 .cv-download-terminal .download-description {
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: var(--text-xs);
     margin-bottom: 1rem;
 }
 
@@ -727,7 +724,7 @@ body.light-mode .cv-download-terminal:hover .cv-download-button {
 .skill-item h5 {
     position: relative;
     z-index: 1;
-    font-size: 1rem;
+    font-size: var(--text-base);
     margin-bottom: 0.5rem;
 }
 
