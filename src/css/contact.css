@@ -134,7 +134,7 @@
     margin-bottom: 0.5rem;
     color: var(--light);
     font-weight: 700;
-    transition: color var(--transition-speed) ease;
+    transition: color var(--dur-base) ease;
 }
 
 .form-group input,

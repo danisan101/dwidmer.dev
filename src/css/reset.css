@@ -1,47 +1,10 @@
 /* Reset & Base Styles */
+@import './tokens.css';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-:root {
-    --primary: #ffffff;
-    --dark: #000000;
-    --light: #ffffff;
-    --gray: #cccccc;
-    --surface: #0b0b0b;
-    --surface-alt: #151515;
-    --surface-border: rgba(255, 255, 255, 0.15);
-    --surface-border-strong: rgba(255, 255, 255, 0.35);
-    --text-muted: rgba(255, 255, 255, 0.65);
-    --text-strong: rgba(255, 255, 255, 0.92);
-    --text-inverse: #000000;
-    --focus-outline: rgba(255, 255, 255, 0.8);
-    --link-hover: rgba(255, 255, 255, 0.2);
-    --layer-strong: rgba(10, 10, 10, 0.95);
-    --transition-speed: 0.5s;
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-body.light-mode {
-    --primary: #000000;
-    --dark: #ffffff;
-    --light: #000000;
-    --gray: #333333;
-    --surface: #f5f6f7;
-    --surface-alt: #ffffff;
-    --surface-border: rgba(0, 0, 0, 0.18);
-    /* Darker border */
-    --surface-border-strong: rgba(0, 0, 0, 0.35);
-    --text-muted: rgba(0, 0, 0, 0.75);
-    /* Darker muted text */
-    --text-strong: rgba(0, 0, 0, 0.95);
-    --text-inverse: #ffffff;
-    --focus-outline: rgba(0, 0, 0, 0.75);
-    --link-hover: rgba(0, 0, 0, 0.08);
-    --layer-strong: rgba(255, 255, 255, 0.95);
 }
 
 html {
@@ -51,7 +14,7 @@ html {
 html,
 body {
     background: var(--dark);
-    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+    transition: background var(--dur-base) ease, color var(--dur-base) ease;
 }
 
 body {
@@ -62,7 +25,7 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     padding-bottom: env(safe-area-inset-bottom, 0);
-    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+    transition: background var(--dur-base) ease, color var(--dur-base) ease;
 }
 
 /* Force Space Mono everywhere */

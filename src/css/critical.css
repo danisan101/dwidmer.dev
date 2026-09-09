@@ -57,7 +57,7 @@
     z-index: 1000;
     border-radius: 4px;
     box-shadow: 0 0 0 2px var(--dark);
-    transition: top var(--transition-speed) ease;
+    transition: top var(--dur-base) ease;
 }
 
 .skip-link:focus {
