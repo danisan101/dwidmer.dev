@@ -690,39 +690,6 @@ body.light-mode .cv-download-terminal:hover .cv-download-button {
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
 }
 
-/* Glitch Effect */
-.cv-download-terminal.glitch-active {
-    animation: glitch 0.3s ease-in-out;
-    border-color: var(--light);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
-}
-
-@keyframes glitch {
-    0% {
-        transform: translate(0);
-    }
-
-    20% {
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        transform: translate(-2px, -2px);
-    }
-
-    60% {
-        transform: translate(2px, 2px);
-    }
-
-    80% {
-        transform: translate(2px, -2px);
-    }
-
-    100% {
-        transform: translate(0);
-    }
-}
-
 .skill-item {
     background: rgba(255, 255, 255, 0.02);
     padding: 1.5rem;

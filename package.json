@@ -10,10 +10,5 @@
   },
   "devDependencies": {
     "vite": "^5.0.0"
-  },
-  "dependencies": {
-    "canvas-confetti": "^1.9.2"
   }
 }
-
-

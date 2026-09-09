@@ -1,39 +1,4 @@
-/* Loading Animation */
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--dark);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
-.loading-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.terminal-loader {
-    color: var(--light);
-    font-family: 'Space Mono', monospace;
-    font-size: 1.5rem;
-}
-
-.cursor {
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
+/* Layout & shared components */
 /* Section Styling */
 main {
     display: flex;
@@ -175,14 +140,14 @@ body.light-mode .card:hover {
     transform: translateY(-1px);
 }
 
-/* Animations */
-.fade-in {
+/* Scroll reveal — only ever hides content when JS is present to reveal it again */
+body.js .fade-in {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s var(--ease-out-quart), transform 0.7s var(--ease-out-quart);
+    transform: translateY(var(--space-6));
+    transition: opacity var(--dur-slow) var(--ease-out-quart), transform var(--dur-slow) var(--ease-out-quart);
 }
 
-.fade-in.visible {
+body.js .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
 }
