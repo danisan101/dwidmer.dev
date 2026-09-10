@@ -8,92 +8,21 @@
     <link rel="canonical" href="https://dwidmer.dev/app.html">
     <meta name="description" content="Schälle Sau – Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge. Jetzt im App Store.">
     <link rel="icon" href="/favicon.ico">
-    <style>
-        @font-face { font-family:'Space Mono'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/space-mono-v17-latin-400.woff2') format('woff2'); }
-        @font-face { font-family:'Space Mono'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-mono-v17-latin-700.woff2') format('woff2'); }
-        :root {
-            --primary:#ffffff; --dark:#000000; --light:#ffffff; --gray:#cccccc;
-            --surface: #0b0b0b; --surface-alt: #151515;
-            --surface-border: rgba(255,255,255,0.15); --surface-border-strong: rgba(255,255,255,0.35);
-            --text-muted: rgba(255,255,255,0.65); --text-strong: rgba(255,255,255,0.92);
-            --text-inverse: #000000;
-        }
-        body.light-mode {
-            --primary:#000000; --dark:#ffffff; --light:#000000; --gray:#333333;
-            --surface: #f5f5f5; --surface-alt: #ffffff;
-            --surface-border: rgba(0,0,0,0.14); --surface-border-strong: rgba(0,0,0,0.32);
-            --text-muted: rgba(0,0,0,0.7); --text-strong: rgba(0,0,0,0.92);
-            --text-inverse: #ffffff;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        html, body { background: var(--dark); }
-        body { font-family: 'Space Mono', monospace; color:var(--light); min-height:100vh; overflow-x:hidden; line-height:1.6; }
-
-        /* Navigation */
-        nav { position:fixed; top:0; left:0; right:0; background:rgba(0,0,0,0.92); backdrop-filter:blur(12px); z-index:1000; padding:1rem 2rem; border-bottom:1px solid var(--surface-border); transition: background 0.3s ease; }
-        body.light-mode nav { background:rgba(255,255,255,0.92); }
-        .nav-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
-        .nav-links { display:flex; list-style:none; gap:2rem; justify-content:center; margin:0 auto; }
-        .nav-links a { color:var(--light); text-decoration:none; transition:all .3s ease; padding:.5rem 1rem; border:1px solid transparent; font-size:0.9rem; }
-        .nav-links a:hover { border-color:var(--surface-border-strong); }
-        .nav-links a.active { border-color:var(--surface-border-strong); }
-        .mobile-menu-toggle { display:none; background:none; border:1px solid var(--surface-border); color:var(--light); font-size:1.5rem; padding:.5rem; cursor:pointer; }
-        .nav-controls { display:flex; gap:.5rem; align-items:center; }
-        .theme-toggle { background:transparent; border:1px solid var(--surface-border); color:var(--light); padding:.4rem .7rem; cursor:pointer; font-family:'Space Mono',monospace; transition:all .2s ease; font-size:.6rem; opacity:.8; letter-spacing:1px; }
-        .theme-toggle:hover { opacity:1; background:var(--light); color:var(--text-inverse); }
-
-        /* Hero */
-        .app-hero { padding:8rem 2rem 4rem; text-align:center; max-width:800px; margin:0 auto; }
-        .app-icon { width:120px; height:120px; border-radius:24px; border:1px solid var(--surface-border); margin:0 auto 2rem; display:block; object-fit:contain; background:var(--surface); padding:0.5rem; }
-        .app-hero h1 { font-size:clamp(2rem,5vw,2.8rem); margin-bottom:0.75rem; letter-spacing:0.05em; color:var(--light); }
-        .app-hero .tagline { font-size:1.1rem; color:var(--text-muted); margin-bottom:2.5rem; max-width:500px; margin-left:auto; margin-right:auto; }
-        .app-store-badge { display:inline-block; transition:transform 0.2s ease, opacity 0.2s ease; opacity:0.9; }
-        .app-store-badge:hover { transform:translateY(-2px); opacity:1; }
-        .app-store-badge img { height:48px; display:block; }
-
-        /* Features */
-        .app-features { max-width:900px; margin:0 auto; padding:3rem 2rem 4rem; }
-        .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
-        .feature-card { background:var(--surface-alt); border:1px solid var(--surface-border); border-radius:8px; padding:1.5rem; transition:border-color 0.2s ease, transform 0.2s ease; }
-        .feature-card:hover { border-color:var(--surface-border-strong); transform:translateY(-3px); }
-        .feature-card h3 { font-size:0.95rem; margin-bottom:0.5rem; color:var(--light); letter-spacing:0.5px; }
-        .feature-card p { color:var(--text-muted); font-size:0.9rem; line-height:1.5; }
-
-        /* Tech Stack */
-        .app-tech { max-width:900px; margin:0 auto; padding:0 2rem 4rem; text-align:center; }
-        .app-tech h2 { font-size:1.3rem; margin-bottom:1.5rem; color:var(--light); letter-spacing:0.05em; }
-        .tech-pills { display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; }
-        .tech-pill { padding:0.4rem 1rem; border:1px solid var(--surface-border); border-radius:999px; font-size:0.85rem; color:var(--light); background:rgba(255,255,255,0.02); transition:all 0.2s ease; }
-        .tech-pill:hover { border-color:var(--surface-border-strong); background:rgba(255,255,255,0.06); }
-
-        /* Links */
-        .app-links { max-width:900px; margin:0 auto; padding:0 2rem 4rem; text-align:center; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-        .app-links a { color:var(--light); text-decoration:none; padding:0.6rem 1.2rem; border:1px solid var(--surface-border); border-radius:4px; font-size:0.9rem; transition:all 0.2s ease; }
-        .app-links a:hover { background:var(--light); color:var(--text-inverse); }
-
-        /* Footer */
-        footer { background:var(--surface-alt); padding:1.5rem 2rem; text-align:center; border-top:1px solid var(--surface-border); font-size:0.8rem; color:var(--text-muted); }
-        .footer-inner { max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
-        footer a { color:var(--light); text-decoration:none; transition:opacity 0.3s ease; }
-        footer a:hover { opacity:0.7; }
-        .social-links { display:flex; justify-content:center; gap:0.5rem; margin-bottom:0.25rem; }
-        .social-links a { display:inline-flex; align-items:center; justify-content:center; width:1.5rem; height:1.5rem; border-radius:999px; border:1px solid transparent; opacity:0.75; transition:all 0.3s ease; }
-        .social-links a:hover { transform:translateY(-2px); opacity:1; border-color:var(--surface-border); }
-        .social-links svg { width:0.8rem; height:0.8rem; fill:currentColor; display:block; }
-
-        /* Responsive */
-        @media (max-width:768px) {
-            .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:rgba(0,0,0,0.95); flex-direction:column; padding:1rem; border-top:1px solid var(--surface-border); }
-            body.light-mode .nav-links { background:rgba(255,255,255,0.95); }
-            .nav-links.active { display:flex; }
-            .mobile-menu-toggle { display:block; }
-            .app-hero { padding:6rem 1.5rem 3rem; }
-            .app-features { padding:2rem 1.5rem 3rem; }
-            .features-grid { grid-template-columns:1fr; }
-        }
-    </style>
+    <link rel="stylesheet" href="/src/css/page-project.css">
 </head>
 <body>
+    <script>
+        /* Runs before paint: applies the stored theme so there is no flash, and marks
+           that JS is alive. */
+        (function () {
+            try {
+                var t = localStorage.getItem('dw-theme');
+                var light = t === 'light' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches);
+                if (light) document.body.classList.add('light-mode');
+            } catch (e) { }
+            document.body.classList.add('js');
+        })();
+    </script>
     <nav>
         <div class="nav-container">
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menu umschalten">&#9776;</button>
@@ -104,7 +33,7 @@
                 <li><a href="/index.html#contact">Kontakt</a></li>
             </ul>
             <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">DARK</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">LIGHT</button>
             </div>
         </div>
     </nav>
@@ -168,29 +97,6 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu
-            const mobileToggle = document.getElementById('mobileMenuToggle');
-            const navLinks = document.getElementById('navLinks');
-            mobileToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                mobileToggle.textContent = navLinks.classList.contains('active') ? '\u2715' : '\u2630';
-                mobileToggle.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
-            });
-
-            // Theme toggle
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-mode');
-                const isLight = document.body.classList.contains('light-mode');
-                themeToggle.textContent = isLight ? 'DARK' : 'LIGHT';
-                themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-            });
-
-            // Copyright year
-            document.querySelectorAll('.copyright-year').forEach(el => el.textContent = new Date().getFullYear());
-        });
-    </script>
+    <script type="module" src="/src/js/subpage.js"></script>
 </body>
 </html>

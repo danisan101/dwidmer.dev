@@ -41,14 +41,14 @@ footer a:hover {
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
-    margin-bottom: 0.25rem;
+    gap: var(--space-3);
+    margin-bottom: var(--space-1);
     align-items: center;
 }
 
 .social-links a {
     color: var(--light);
-    transition: all 0.25s var(--ease-out-quart);
+    transition: opacity var(--dur-base) var(--ease-out-quart), border-color var(--dur-base) var(--ease-out-quart), background var(--dur-base) var(--ease-out-quart);
     text-decoration: none;
     opacity: 0.6;
     line-height: 1;
@@ -62,14 +62,9 @@ footer a:hover {
 }
 
 .social-links a:hover {
-    transform: translateY(-2px);
     opacity: 1;
     border-color: var(--surface-border);
-    background: rgba(255, 255, 255, 0.04);
-}
-
-body.light-mode .social-links a:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--tint-weak);
 }
 
 .social-links svg {
@@ -77,26 +72,4 @@ body.light-mode .social-links a:hover {
     height: 1rem;
     fill: currentColor;
     display: block;
-}
-
-.cv-download {
-    display: inline-block;
-    margin-top: 1.25rem;
-    padding: 0.75rem 1.4rem;
-    background: transparent;
-    border: 1px solid var(--surface-border);
-    color: var(--light);
-    text-decoration: none;
-    transition: all 0.25s var(--ease-out-quart);
-    border-radius: var(--radius-sm);
-}
-
-.cv-download:hover {
-    background: var(--light);
-    color: var(--text-inverse);
-}
-
-.cv-actions {
-    text-align: center;
-    margin-top: 2rem;
 }

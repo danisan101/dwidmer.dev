@@ -1,0 +1,9 @@
+/* Homepage — the shared base plus the sections only index.html has. */
+@import './site.css';
+@import './hero.css';
+@import './about.css';
+@import './projects.css';
+@import './contact.css';
+@import './terminal-styles.css';
+@import './games.css';
+@import './print.css';

@@ -1,8 +1,4 @@
 // Main JavaScript Entry Point
-import '../css/fonts.css';
-import '../css/print.css';
-import '../css/critical.css';
-
 // Import all modules
 import { initTypingAnimation } from './modules/typing.js';
 import { initThemeToggle } from './modules/theme.js';

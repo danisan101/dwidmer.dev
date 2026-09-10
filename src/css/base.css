@@ -1,5 +1,5 @@
-/* Reset & Base Styles */
-@import './tokens.css';
+/* Base — reset, document defaults, accessibility affordances,
+   and the drifting dot grid that carries the retro identity. */
 
 * {
     margin: 0;
@@ -84,4 +84,93 @@ body.light-mode {
 ::selection {
     background: var(--light);
     color: var(--dark);
+}
+
+/* Links take the text colour by default; components opt into anything else.
+   Without this the UA's default blue leaks through on unstyled anchors. */
+a {
+    color: inherit;
+    text-decoration-color: var(--surface-border-strong);
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    text-decoration-color: currentColor;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus Management */
+*:focus-visible {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* Pulsating Cursor Animation */
+@keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+    animation: cursor-blink 1s infinite;
+    font-weight: 400;
+}
+
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--surface-alt);
+    color: var(--light);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--surface-border-strong);
+    text-decoration: none;
+    z-index: var(--z-overlay);
+    border-radius: var(--radius-sm);
+    transition: top var(--dur-base) ease;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Parallax Background */
+.parallax-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s ease-out;
+}
+
+.parallax-dots {
+    background-image: radial-gradient(circle, var(--light) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+}
+
+body.light-mode .parallax-dots {
+    opacity: 0.05;
 }

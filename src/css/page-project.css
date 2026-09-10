@@ -1,0 +1,191 @@
+/* Project detail pages: app.html, monodot.html, katoro.html, website.html */
+@import './site.css';
+
+.app-hero,
+.page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-24) var(--space-8) var(--space-12);
+    text-align: center;
+}
+
+.app-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--surface-border);
+    margin: 0 auto var(--space-8);
+    display: block;
+    object-fit: contain;
+    background: var(--surface);
+    padding: var(--space-2);
+}
+
+.app-icon-light {
+    display: none;
+}
+
+body.light-mode .app-icon-dark {
+    display: none;
+}
+
+body.light-mode .app-icon-light {
+    display: block;
+}
+
+.app-hero h1,
+.page-content h1 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--light);
+    margin-bottom: var(--space-3);
+}
+
+.app-hero .tagline {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+    max-width: var(--measure);
+    margin: 0 auto var(--space-8);
+}
+
+.app-store-badge {
+    display: inline-block;
+    opacity: 0.9;
+    transition: opacity var(--dur-base) var(--ease-out-quart);
+}
+
+.app-store-badge:hover {
+    opacity: 1;
+}
+
+.app-store-badge img {
+    height: 48px;
+    display: block;
+}
+
+/* Features */
+.app-features {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--space-8) var(--space-16);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+    text-align: left;
+}
+
+.feature-card {
+    background: var(--tint-weak);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    transition: border-color var(--dur-base) var(--ease-out-quart);
+}
+
+.feature-card:hover {
+    border-color: var(--surface-border-strong);
+}
+
+.feature-card h3 {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--light);
+    margin-bottom: var(--space-2);
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+}
+
+/* Tech stack */
+.app-tech {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--space-8) var(--space-16);
+    text-align: center;
+}
+
+.app-tech h2 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--light);
+    margin-bottom: var(--space-6);
+}
+
+.tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: center;
+}
+
+.tech-pill {
+    padding: var(--space-1) var(--space-4);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    background: var(--tint-weak);
+    transition: border-color var(--dur-base) var(--ease-out-quart), color var(--dur-base) var(--ease-out-quart);
+}
+
+.tech-pill:hover {
+    border-color: var(--surface-border-strong);
+    color: var(--light);
+}
+
+/* Links */
+.app-links {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--space-8) var(--space-16);
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.app-links a,
+.back-link,
+.back {
+    color: var(--light);
+    text-decoration: none;
+    padding: var(--space-3) var(--space-6);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    transition: background var(--dur-base) var(--ease-out-quart), color var(--dur-base) var(--ease-out-quart);
+}
+
+.app-links a:hover,
+.back-link:hover,
+.back:hover {
+    background: var(--light);
+    color: var(--text-inverse);
+}
+
+@media (max-width: 768px) {
+
+    .app-hero,
+    .page-content {
+        padding: var(--space-16) var(--space-4) var(--space-8);
+    }
+
+    .app-features,
+    .app-tech,
+    .app-links {
+        padding-inline: var(--space-4);
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
