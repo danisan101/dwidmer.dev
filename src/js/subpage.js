@@ -3,13 +3,10 @@
 // drifting away from index.html the way the copied inline scripts did.
 import { initThemeToggle } from './modules/theme.js';
 import { initMobileMenu } from './modules/navigation.js';
+import { initCopyrightYear } from './modules/year.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initThemeToggle();
-
-    const year = String(new Date().getFullYear());
-    document.querySelectorAll('.copyright-year').forEach((el) => {
-        el.textContent = year;
-    });
+    initCopyrightYear();
 });

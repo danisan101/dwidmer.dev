@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg { fill: #000000; }
+    .fg { fill: #ffffff; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #ffffff; }
+      .fg { fill: #000000; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="6"/>
+  <!-- terminal caret, the same motif as the hero cursor -->
+  <rect class="fg" x="8" y="21" width="16" height="3"/>
+  <rect class="fg" x="8" y="9" width="3" height="3"/>
+  <rect class="fg" x="12" y="13" width="3" height="3"/>
+  <rect class="fg" x="8" y="17" width="3" height="3"/>
+</svg>

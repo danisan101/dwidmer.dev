@@ -13,8 +13,8 @@
     <meta name="author" content="Daniel Widmer">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dwidmer.dev/">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon.svg">
     <link rel="manifest" href="/manifest.webmanifest">
 
     <!-- Open Graph Meta Tags -->
@@ -454,7 +454,7 @@
                                 </div>
 
                                 <!-- Spam Protection -->
-                                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"
+                                <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off"
                                     aria-hidden="true">
                                 <input type="hidden" name="_subject" value="Neue Nachricht von dwidmer.dev">
                                 <input type="hidden" name="_template" value="table">
@@ -500,14 +500,11 @@
                     </svg>
                 </a>
             </div>
-            <p>&copy; <span id="copyrightYear">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
-            <script>document.getElementById('copyrightYear').textContent = new Date().getFullYear();</script>
-            <p><a href="/impressum.html" style="color:inherit;">Impressum</a></p>
-            <div class="keyboard-shortcuts">
-                <p style="font-size:0.8rem; opacity:0.7; margin-top:0.5rem;">
-                    Easter Eggs: Snake <kbd>Ctrl+Alt+Shift+S</kbd> | Tetris <kbd>Ctrl+Alt+Shift+T</kbd>
-                </p>
-            </div>
+            <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
+            <p><a href="/impressum.html">Impressum</a></p>
+            <p class="keyboard-shortcuts">
+                Easter Eggs: Snake <kbd>Ctrl+Alt+Shift+S</kbd> | Tetris <kbd>Ctrl+Alt+Shift+T</kbd>
+            </p>
         </div>
     </footer>
 

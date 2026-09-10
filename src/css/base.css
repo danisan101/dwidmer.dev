@@ -174,3 +174,8 @@ a:hover {
 body.light-mode .parallax-dots {
     opacity: 0.05;
 }
+
+/* Honeypot field: present for spam bots, never shown or focusable */
+.honeypot {
+    display: none;
+}

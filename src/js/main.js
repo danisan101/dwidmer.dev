@@ -13,6 +13,7 @@ import { initSEO } from './modules/seo.js';
 import { initAnalytics } from './modules/analytics.js';
 import { initPerformanceMonitoring } from './modules/performance.js';
 import { initPWAFeatures } from './modules/pwa-features.js';
+import { initCopyrightYear } from './modules/year.js';
 import { log, error } from './utils/logger.js';
 
 // Console Easter Egg
@@ -22,6 +23,7 @@ log(`Easter Eggs: Snake Ctrl+Alt+Shift+S | Tetris Ctrl+Alt+Shift+T`);
 document.addEventListener('DOMContentLoaded', function () {
     try {
         initTypingAnimation();
+        initCopyrightYear();
 
         // Core features
         initMobileMenu();
