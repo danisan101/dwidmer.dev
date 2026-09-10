@@ -92,7 +92,7 @@
             --dark: #ffffff;
             --light: #000000;
             --gray: #333333;
-            --surface: #f5f6f7;
+            --surface: #f5f5f5;
             --surface-alt: #ffffff;
             --surface-border: rgba(0, 0, 0, 0.14);
             --surface-border-strong: rgba(0, 0, 0, 0.32);
@@ -214,22 +214,13 @@
             <!-- Full Width Matrix Panels (Skills & Interests) -->
             <div class="matrix-panels">
                 <!-- Skills (Links) -->
-                <div class="terminal-card skills-card">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="btn close"></span>
-                            <span class="btn minimize"></span>
-                            <span class="btn maximize"></span>
-                        </div>
-                        <div class="terminal-title">skills.exe</div>
-                        <div class="terminal-status">READY</div>
-                    </div>
-                    <div class="terminal-body">
+                <div class="card skills-card">
+                    <h3 class="card-title">Skills</h3>
+                    <div class="card-body">
                         <div class="skills-dossier">
                             <div class="skill-track">
                                 <div class="skill-track-head">
                                     <span class="skill-track-title">Frontend &amp; UI</span>
-                                    <span class="skill-track-level">A+</span>
                                 </div>
                                 <p class="skill-copy">Pixelgenaue Interfaces, schnelle Transitions, klare Typo.
                                 </p>
@@ -243,7 +234,6 @@
                             <div class="skill-track">
                                 <div class="skill-track-head">
                                     <span class="skill-track-title">Design &amp; Prototyping</span>
-                                    <span class="skill-track-level">A</span>
                                 </div>
                                 <p class="skill-copy">UI/UX Konzepte, Click Dummies, Micro-Interactions.</p>
                                 <div class="skill-track-pills">
@@ -256,7 +246,6 @@
                             <div class="skill-track">
                                 <div class="skill-track-head">
                                     <span class="skill-track-title">Backend &amp; Ops</span>
-                                    <span class="skill-track-level">B+</span>
                                 </div>
                                 <p class="skill-copy">APIs, Automationen und solide Deployments.</p>
                                 <div class="skill-track-pills">
@@ -269,7 +258,6 @@
                             <div class="skill-track">
                                 <div class="skill-track-head">
                                     <span class="skill-track-title">Tools &amp; Workflow</span>
-                                    <span class="skill-track-level">A</span>
                                 </div>
                                 <p class="skill-copy">Saubere Repos, schnelle Iterationen, viel Automation.</p>
                                 <div class="skill-track-pills">
@@ -284,87 +272,55 @@
                 </div>
 
                 <!-- Interests (Rechts) -->
-                <div class="terminal-card interests-card">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="btn close"></span>
-                            <span class="btn minimize"></span>
-                            <span class="btn maximize"></span>
-                        </div>
-                        <div class="terminal-title">interests.exe</div>
-                        <div class="terminal-status">ONLINE</div>
-                    </div>
-                    <div class="terminal-body">
+                <div class="card interests-card">
+                    <h3 class="card-title">Interessen</h3>
+                    <div class="card-body">
                         <div class="terminal-grid">
-                            <div class="terminal-line">PS C:\\Users\\Daniel\\Interests> <span
-                                    class="command">Get-Interests</span></div>
-                            <div class="terminal-line">── personal passions feed creativity</div>
                             <div class="interest-grid">
                                 <div class="interest-item">
                                     <div class="interest-meta">
                                         <span class="interest-label">Fussball</span>
                                         <span class="interest-tag">teamplay</span>
                                     </div>
-                                    <div class="interest-meter"><span style="width: 96%"></span></div>
                                 </div>
                                 <div class="interest-item">
                                     <div class="interest-meta">
                                         <span class="interest-label">Coding</span>
                                         <span class="interest-tag">side quests</span>
                                     </div>
-                                    <div class="interest-meter"><span style="width: 98%"></span></div>
                                 </div>
                                 <div class="interest-item">
                                     <div class="interest-meta">
                                         <span class="interest-label">Gaming</span>
                                         <span class="interest-tag">retro vibes</span>
                                     </div>
-                                    <div class="interest-meter"><span style="width: 94%"></span></div>
                                 </div>
                                 <div class="interest-item">
                                     <div class="interest-meta">
                                         <span class="interest-label">Elektronik &amp; Gadgets</span>
                                         <span class="interest-tag">tinkering</span>
                                     </div>
-                                    <div class="interest-meter"><span style="width: 95%"></span></div>
                                 </div>
                                 <div class="interest-item">
                                     <div class="interest-meta">
                                         <span class="interest-label">Sport</span>
                                         <span class="interest-tag">energy boost</span>
                                     </div>
-                                    <div class="interest-meter"><span style="width: 92%"></span></div>
                                 </div>
                                 <div class="interest-item">
                                     <div class="interest-meta">
                                         <span class="interest-label">Fotografie</span>
                                         <span class="interest-tag">capture</span>
                                     </div>
-                                    <div class="interest-meter"><span style="width: 90%"></span></div>
                                 </div>
-                            </div>
-                            <div class="terminal-line">PS C:\\Users\\Daniel\\Interests> <span class="cursor">_</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="cv-actions">
-                <div class="cv-download-terminal" onclick="window.open('/assets/CV_Daniel_Widmer.pdf', '_blank')">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="btn close"></span>
-                            <span class="btn minimize"></span>
-                            <span class="btn maximize"></span>
-                        </div>
-                        <div class="terminal-title">cv-download.exe</div>
-                    </div>
-                    <div class="terminal-body">
-                        <div class="download-command">PS C:\Users\Daniel\CV> Get-CV</div>
-                        <div class="download-description">Lebenslauf herunterladen</div>
-                        <span class="cv-download-button">Download PDF</span>
-                    </div>
-                </div>
+                <a class="cta-button" href="/assets/CV_Daniel_Widmer.pdf" download>Lebenslauf als PDF</a>
+                <button type="button" class="cta-button cta-button-ghost" data-print-cv>Lebenslauf drucken</button>
             </div>
         </section>
 
@@ -492,13 +448,8 @@
             </div>
             <div class="contact-terminal">
                 <div class="terminal-header">
-                    <div class="terminal-buttons">
-                        <span class="btn close"></span>
-                        <span class="btn minimize"></span>
-                        <span class="btn maximize"></span>
-                    </div>
                     <div class="terminal-title">contact.exe</div>
-                    <div class="terminal-meta">status: live | channel: secure</div>
+                    <div class="terminal-status">READY</div>
                 </div>
                 <div class="contact-shell">
                     <div class="shell-line">PS C:\Users\Daniel\contact> init-form --mode=direct</div>
@@ -506,8 +457,8 @@
                         <div class="contact-aside">
                             <div class="contact-aside-title">Form Status</div>
                             <ul class="contact-aside-list">
-                                <li><span class="bullet">▸</span> Antwortzeit: &lt; 24h</li>
-                                <li><span class="bullet">▸</span> Secure channel aktiv</li>
+                                <li>Antwortzeit: &lt; 24h</li>
+                                <li>Secure channel aktiv</li>
                             </ul>
                             <div class="contact-code-block">
                                 <div class="code-line">$ whoami → daniel.widmer</div>

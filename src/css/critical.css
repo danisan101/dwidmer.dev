@@ -26,7 +26,7 @@
 }
 
 /* Focus Management */
-*:focus {
+*:focus-visible {
     outline: 2px solid var(--focus-outline);
     outline-offset: 2px;
 }
@@ -49,12 +49,11 @@
     left: 6px;
     background: var(--surface-alt);
     color: var(--light);
-    padding: 8px 12px;
-    border: 1px solid var(--surface-border);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--surface-border-strong);
     text-decoration: none;
-    z-index: 1000;
-    border-radius: 4px;
-    box-shadow: 0 0 0 2px var(--dark);
+    z-index: var(--z-overlay);
+    border-radius: var(--radius-sm);
     transition: top var(--dur-base) ease;
 }
 

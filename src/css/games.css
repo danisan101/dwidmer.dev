@@ -27,7 +27,7 @@
     gap: 1rem;
     padding: 1rem;
     border: 1px solid var(--surface-border);
-    border-radius: 5px;
+    border-radius: var(--radius-md);
     background: var(--surface-alt);
     transition: all 0.3s ease;
 }
@@ -41,7 +41,7 @@
     background: var(--light);
     color: var(--text-inverse);
     padding: 0.5rem 1rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     font-size: var(--text-base);
     font-weight: 700;
 }
@@ -61,7 +61,7 @@ body.game-modal-open {
     justify-content: center;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(2px);
-    z-index: 12000;
+    z-index: var(--z-modal);
     padding: 2rem;
 }
 
@@ -73,12 +73,12 @@ body.game-modal-open {
 .game-terminal {
     background: rgba(0, 0, 0, 0.98);
     border: 2px solid #ffffff;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
     width: min(640px, 90vw);
     max-height: 90vh;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-2);
     overflow: hidden;
 }
 
@@ -102,17 +102,23 @@ body.game-modal-open {
 }
 
 .game-terminal .close-btn {
-    background: #ff5f57;
-    color: var(--text-inverse);
-    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--surface-border);
     width: 20px;
     height: 20px;
-    border-radius: 50%;
+    border-radius: var(--radius-pill);
     cursor: pointer;
+    transition: border-color var(--dur-base) var(--ease-out-quart), color var(--dur-base) var(--ease-out-quart);
     font-size: var(--text-xs);
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.game-terminal .close-btn:hover {
+    border-color: var(--surface-border-strong);
+    color: var(--light);
 }
 
 .game-terminal .terminal-body {
@@ -173,11 +179,11 @@ body.game-modal-open {
     transform: translate(-50%, -50%);
     background: var(--surface-alt);
     border: 2px solid var(--surface-border-strong);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 2rem;
     text-align: center;
     color: var(--light);
-    z-index: 13000;
+    z-index: calc(var(--z-modal) + 1);
     display: none;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
@@ -203,7 +209,7 @@ body.game-modal-open {
     font-size: var(--text-sm);
     font-weight: 700;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     letter-spacing: 1px;
     transition: background 0.2s, color 0.2s;
 }
@@ -230,7 +236,7 @@ body.game-modal-open {
     color: var(--light);
     font-size: var(--text-xl);
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -271,10 +277,15 @@ body.game-modal-open {
         max-width: 95vw;
         max-height: 90vh;
         padding: 0;
-        border-radius: 8px;
+        border-radius: var(--radius-md);
     }
 
-    .game-terminal .terminal-body {
+    .game-terminal .close-btn:hover {
+    border-color: var(--surface-border-strong);
+    color: var(--light);
+}
+
+.game-terminal .terminal-body {
         padding: 12px;
         height: calc(100% - 40px);
         overflow-y: auto;

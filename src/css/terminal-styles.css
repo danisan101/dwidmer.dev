@@ -1,124 +1,44 @@
-/* Terminal Style Components */
-.terminal-skills {
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
-    border-radius: 8px;
-    margin: 2rem 0;
-    overflow: hidden;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-}
-
+/* The site's one remaining window frame, on the contact form.
+   Kept because a form inside a terminal is the one place the metaphor earns itself. */
 .terminal-header {
-    background: var(--surface-alt);
-    padding: 8px 12px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
     border-bottom: 1px solid var(--surface-border);
-}
-
-.terminal-buttons {
-    display: flex;
-    gap: 6px;
-    margin-right: 12px;
-}
-
-.terminal-buttons .btn {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 0;
-    min-width: 0;
-    line-height: normal;
-}
-
-.terminal-buttons .close {
-    background: #ff5f57;
-}
-
-.terminal-buttons .minimize {
-    background: #ffbd2e;
-}
-
-.terminal-buttons .maximize {
-    background: #28ca42;
+    background: var(--tint-weak);
 }
 
 .terminal-title {
-    color: var(--light);
-    font-size: var(--text-base);
-    font-weight: 400;
-}
-
-.terminal-body {
-    padding: 16px;
-    color: var(--light);
-    font-size: var(--text-base);
-    line-height: 1.4;
-}
-
-.terminal-line {
-    margin-bottom: 4px;
-    white-space: pre-wrap;
-}
-
-.terminal-line .command {
-    color: var(--light);
-    font-weight: 700;
-}
-
-.terminal-line .cursor {
-    animation: cursor-blink 1s infinite;
-}
-
-.cv-download-terminal {
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
-    border-radius: 8px;
-    margin: 2rem auto;
-    overflow: hidden;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: min(680px, 100%);
-}
-
-.cv-download-terminal:hover {
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
-}
-
-.cv-download-terminal .terminal-body {
-    padding: 20px;
-    text-align: center;
-}
-
-.cv-download-terminal .download-command {
-    color: var(--light);
-    font-size: var(--text-lg);
-    margin-bottom: 10px;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    line-height: 1.35;
-}
-
-.cv-download-terminal .download-description {
+    font-size: var(--text-xs);
     color: var(--text-muted);
-    font-size: var(--text-base);
+    letter-spacing: 0.14em;
 }
 
-body.light-mode .cv-download-terminal {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+.terminal-status {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-pill);
+    padding: 0 var(--space-2);
 }
 
-@media (max-width: 640px) {
-    .cv-download-terminal .terminal-body {
-        padding: 16px 12px;
+.cursor {
+    animation: blink 1s steps(2, jump-none) infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
     }
 
-    .cv-download-terminal .download-command {
-        font-size: var(--text-base);
+    51%,
+    100% {
+        opacity: 0;
     }
 }
-
-/* Session Stats Terminal Style */
