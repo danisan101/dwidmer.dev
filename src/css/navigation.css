@@ -7,10 +7,10 @@ nav {
     background: var(--layer-strong);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    z-index: 10001;
+    z-index: var(--z-nav);
     padding: calc(0.85rem + env(safe-area-inset-top, 0px)) 2rem 0.85rem;
     border-bottom: 1px solid var(--surface-border);
-    transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, padding 0.3s var(--ease-out-quart);
+    transition: background var(--dur-base) ease, border-color var(--dur-base) ease, padding 0.3s var(--ease-out-quart);
 }
 
 .nav-container {
@@ -40,8 +40,8 @@ nav {
     transition: all 0.25s var(--ease-out-quart);
     padding: 0.45rem 0.9rem;
     border: 1px solid transparent;
-    border-radius: 4px;
-    font-size: 0.85rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
     letter-spacing: 0.5px;
     position: relative;
 }
@@ -78,16 +78,15 @@ body.light-mode .nav-links a.active {
     color: var(--light);
     padding: 0.35rem 0.6rem;
     cursor: pointer;
-    font-family: 'Space Mono', monospace;
     transition: all 0.2s var(--ease-out-quart);
-    font-size: 0.6rem;
+    font-size: var(--text-xs);
     opacity: 0.7;
     display: flex;
     align-items: center;
     justify-content: center;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
 }
 
 .theme-toggle:hover,
@@ -104,7 +103,7 @@ body.light-mode .nav-links a.active {
 }
 
 .theme-toggle {
-    font-size: 0.55rem;
+    font-size: var(--text-xs);
     letter-spacing: 1px;
 }
 
@@ -114,10 +113,10 @@ body.light-mode .nav-links a.active {
     background: none;
     border: 1px solid var(--surface-border);
     color: var(--light);
-    font-size: 1.5rem;
+    font-size: var(--text-xl);
     padding: 0.5rem;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all 0.2s var(--ease-out-quart);
 }
 
@@ -170,12 +169,12 @@ body.light-mode .mobile-menu-toggle:hover {
     .theme-toggle,
     .easter-egg-btn {
         padding: 0.3rem 0.4rem;
-        font-size: 0.5rem;
+        font-size: var(--text-xs);
         letter-spacing: 0.5px;
     }
 
     .crt-toggle {
         padding: 0.3rem 0.4rem;
-        font-size: 0.5rem;
+        font-size: var(--text-xs);
     }
 }

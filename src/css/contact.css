@@ -1,123 +1,69 @@
-/* Contact Form */
+/* Contact — the one section that keeps the terminal frame */
 .contact-terminal {
     border: 1px solid var(--surface-border);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    max-width: 1040px;
+    text-align: left;
+    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
-    transition: box-shadow 0.3s var(--ease-out-quart);
-}
-
-.contact-terminal .terminal-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    background: var(--surface-alt);
-    border-bottom: 1px solid var(--surface-border);
-    font-family: 'Space Mono', monospace;
-}
-
-.contact-terminal .terminal-title {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-.contact-terminal .terminal-meta {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-align: right;
-    letter-spacing: 0.5px;
 }
 
 .contact-shell {
-    padding: 1.75rem 1.6rem 1.6rem;
-    background: radial-gradient(circle at 0 0, rgba(255,255,255,0.04), transparent 55%);
-    position: relative;
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
 }
 
 .shell-line {
-    font-family: 'Space Mono', monospace;
+    font-size: var(--text-xs);
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 1.1rem;
-    opacity: 0.85;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px dashed var(--surface-border);
 }
 
 .contact-grid {
     display: grid;
-    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
-    gap: 1.25rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    gap: var(--space-6);
 }
 
 .contact-aside {
-    background: var(--surface-alt);
-    border: 1px solid var(--surface-border);
-    border-radius: 12px;
-    padding: 1.1rem 1rem 1.05rem;
-    font-family: 'Space Mono', monospace;
-    color: var(--light);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
 }
 
 .contact-aside-title {
+    font-size: var(--text-xs);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-    opacity: 0.7;
-    margin-bottom: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--light);
 }
 
 .contact-aside-list {
     list-style: none;
-    padding: 0;
-    margin: 0 0 0.75rem 0;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
     color: var(--text-muted);
 }
 
-.contact-aside-list .bullet {
-    margin-right: 0.5rem;
-    color: var(--light);
-}
-
 .contact-code-block {
-    border: 1px solid var(--surface-border);
-    border-radius: 6px;
-    padding: 0.7rem;
-    background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent);
-    display: grid;
-    gap: 0.35rem;
-    color: var(--light);
-    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    border-left: 1px solid var(--surface-border);
+    padding-left: var(--space-3);
 }
 
-.contact-code-block .code-line {
-    font-family: 'Space Mono', monospace;
-    opacity: 0.9;
-}
-
-.contact-form {
-    background: var(--surface-alt);
-    border: 1px solid var(--surface-border);
-    border-radius: 12px;
-    padding: 1.4rem 1.35rem 1.25rem;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
-}
-
+/* Form */
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 1.25rem;
-    row-gap: 0.9rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
 }
 
 .form-group.full-width {
@@ -125,127 +71,91 @@
 }
 
 .form-group {
-    margin-bottom: 1.25rem;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--light);
-    font-weight: 700;
-    transition: color var(--transition-speed) ease;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
 }
 
 .form-group input,
 .form-group textarea {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    background: transparent;
+    background: var(--tint-weak);
     border: 1px solid var(--surface-border);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     color: var(--light);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.95rem;
-    transition: border-color 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart);
-}
-
-body.light-mode .form-group input,
-body.light-mode .form-group textarea {
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: var(--space-3);
+    font-size: var(--text-sm);
+    width: 100%;
+    transition: border-color var(--dur-base) var(--ease-out-quart);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--surface-border-strong);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
-}
-
-body.light-mode .form-group input:focus,
-body.light-mode .form-group textarea:focus {
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
 }
 
 .form-group textarea {
-    height: 120px;
     resize: vertical;
+    min-height: 8rem;
 }
 
 .form-footer {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
-    margin-top: 0.5rem;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
 }
 
-/* Form Validation */
+/* Validation — carried by weight, border and a glyph, never by colour alone */
 .form-group.error input,
 .form-group.error textarea {
-    border-color: #ff4444;
+    border-color: var(--light);
+    border-left-width: 3px;
 }
 
 .form-group .error-message {
-    color: #ff4444;
-    font-size: 0.8rem;
-    margin-top: 0.25rem;
     display: none;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--light);
 }
 
 .form-group.error .error-message {
     display: block;
 }
 
+.form-group .error-message::before {
+    content: '! ';
+}
+
 .form-group.success input,
 .form-group.success textarea {
-    border-color: #44ff44;
+    border-color: var(--surface-border-strong);
 }
 
-/* Submit Button */
 .submit-btn {
     width: 100%;
-    padding: 0.9rem;
+    padding: var(--space-3);
     background: transparent;
     border: 1px solid var(--surface-border-strong);
+    border-radius: var(--radius-sm);
     color: var(--light);
-    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: var(--text-sm);
     font-weight: 700;
-    font-size: 0.95rem;
     cursor: pointer;
-    transition: background 0.25s var(--ease-out-quart), color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart);
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-    letter-spacing: 1px;
+    transition: background var(--dur-base) var(--ease-out-quart), color var(--dur-base) var(--ease-out-quart);
 }
 
-.submit-btn .retro-loading-bar {
-    opacity: 0.25;
-}
-
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-aside {
-        order: 2;
-    }
-
-    .contact-form {
-        order: 1;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-shell {
-        padding: 1.2rem 1rem;
-    }
-}
-
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
     background: var(--light);
     color: var(--dark);
 }
@@ -255,84 +165,71 @@ body.light-mode .form-group textarea:focus {
     cursor: not-allowed;
 }
 
-/* Retro Loading Bar */
-.submit-btn.loading {
-    position: relative;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.retro-loading-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--light);
-    transition: width 0.3s linear;
-    z-index: 0;
-}
-
-.submit-btn.loading .retro-loading-bar {
-    animation: retroLoad 3s ease-in-out forwards;
-}
-
-@keyframes retroLoad {
-    0% { width: 0%; }
-    10% { width: 15%; }
-    30% { width: 35%; }
-    50% { width: 60%; }
-    70% { width: 80%; }
-    90% { width: 95%; }
-    100% { width: 100%; }
-}
-
-.submit-btn.loading span {
-    position: relative;
-    z-index: 1;
-    mix-blend-mode: difference;
-}
-
-.submit-btn.success {
-    background: var(--light);
-    color: var(--dark);
-    border-color: var(--light);
-}
-
-/* Form Success/Error Messages */
 .form-message {
-    padding: 1rem;
-    margin-top: 1rem;
-    border-radius: 3px;
-    text-align: center;
     display: none;
-    animation: slideIn 0.3s ease;
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    border: 1px solid var(--surface-border-strong);
 }
 
 .form-message.show {
     display: block;
 }
 
-.form-message.success {
-    background: rgba(68, 255, 68, 0.1);
-    border: 1px solid #44ff44;
-    color: #44ff44;
+.form-message.success::before {
+    content: 'OK — ';
+    font-weight: 700;
 }
 
-.form-message.error {
-    background: rgba(255, 68, 68, 0.1);
-    border: 1px solid #ff4444;
-    color: #ff4444;
+.form-message.error::before {
+    content: '! ';
+    font-weight: 700;
 }
 
-@keyframes slideIn {
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-shell {
+        padding: var(--space-4);
+    }
+}
+
+/* Submit progress — a filling bar, no colour and no glow.
+   The bar is in the markup from the start, so it stays hidden until submit. */
+.retro-loading-bar {
+    display: none;
+}
+
+.submit-btn.loading .retro-loading-bar,
+.submit-btn.loading > .retro-loading-bar {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: var(--tint-strong);
+    transform-origin: left;
+    animation: retroLoad 3s var(--ease-out-quart) forwards;
+    pointer-events: none;
+}
+
+.submit-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn.success {
+    border-color: var(--light);
+    font-weight: 700;
+}
+
+@keyframes retroLoad {
     from {
-        opacity: 0;
-        transform: translateY(-10px);
+        transform: scaleX(0);
     }
+
     to {
-        opacity: 1;
-        transform: translateY(0);
+        transform: scaleX(1);
     }
 }
-

@@ -1,0 +1,49 @@
+/* Legal pages: impressum.html and the three privacy pages */
+@import './site.css';
+@import './page-project.css';
+
+.page-content {
+    max-width: 800px;
+    text-align: left;
+}
+
+.page-content .section-title {
+    text-align: center;
+}
+
+.page-content h2 {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--light);
+    margin: var(--space-8) 0 var(--space-3);
+}
+
+.page-content h3 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--light);
+    margin: var(--space-6) 0 var(--space-2);
+}
+
+.page-content p,
+.page-content li {
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+}
+
+.page-content ul,
+.page-content ol {
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-4);
+}
+
+.page-content a {
+    color: var(--light);
+}
+
+.sep,
+.page-content hr {
+    border: 0;
+    border-top: 1px solid var(--surface-border);
+    margin: var(--space-8) 0;
+}

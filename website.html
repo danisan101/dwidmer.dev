@@ -7,94 +7,33 @@
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://dwidmer.dev/website.html">
     <meta name="description" content="Meine Website – Monochrome Portfolio-Experience mit CRT-Flair, animierten Terminals und Easter Eggs. Ein Projekt von Daniel Widmer.">
-    <link rel="icon" href="/favicon.ico">
-    <style>
-        @font-face { font-family:'Space Mono'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/space-mono-v17-latin-400.ttf') format('truetype'); }
-        @font-face { font-family:'Space Mono'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-mono-v17-latin-700.woff2') format('woff2'); }
-        @font-face { font-family:'Orbitron'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/orbitron-v35-latin-700.woff2') format('woff2'); }
-        :root {
-            --primary:#ffffff; --dark:#000000; --light:#ffffff; --gray:#cccccc;
-            --surface: #0b0b0b; --surface-alt: #151515;
-            --surface-border: rgba(255,255,255,0.15); --surface-border-strong: rgba(255,255,255,0.35);
-            --text-muted: rgba(255,255,255,0.65); --text-strong: rgba(255,255,255,0.92);
-            --text-inverse: #000000;
-        }
-        body.light-mode {
-            --primary:#000000; --dark:#ffffff; --light:#000000; --gray:#333333;
-            --surface: #f5f6f7; --surface-alt: #ffffff;
-            --surface-border: rgba(0,0,0,0.14); --surface-border-strong: rgba(0,0,0,0.32);
-            --text-muted: rgba(0,0,0,0.7); --text-strong: rgba(0,0,0,0.92);
-            --text-inverse: #ffffff;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        html, body { background: var(--dark); }
-        body { font-family: 'Space Mono', monospace; color:var(--light); min-height:100vh; overflow-x:hidden; line-height:1.6; }
-
-        /* Navigation */
-        nav { position:fixed; top:0; left:0; right:0; background:rgba(0,0,0,0.92); backdrop-filter:blur(12px); z-index:1000; padding:1rem 2rem; border-bottom:1px solid var(--surface-border); transition: background 0.3s ease; }
-        body.light-mode nav { background:rgba(255,255,255,0.92); }
-        .nav-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
-        .nav-links { display:flex; list-style:none; gap:2rem; justify-content:center; margin:0 auto; }
-        .nav-links a { color:var(--light); text-decoration:none; transition:all .3s ease; padding:.5rem 1rem; border:1px solid transparent; font-size:0.9rem; }
-        .nav-links a:hover { border-color:var(--surface-border-strong); }
-        .nav-links a.active { border-color:var(--surface-border-strong); }
-        .mobile-menu-toggle { display:none; background:none; border:1px solid var(--surface-border); color:var(--light); font-size:1.5rem; padding:.5rem; cursor:pointer; }
-        .nav-controls { display:flex; gap:.5rem; align-items:center; }
-        .theme-toggle { background:transparent; border:1px solid var(--surface-border); color:var(--light); padding:.4rem .7rem; cursor:pointer; font-family:'Space Mono',monospace; transition:all .2s ease; font-size:.6rem; opacity:.8; letter-spacing:1px; }
-        .theme-toggle:hover { opacity:1; background:var(--light); color:var(--text-inverse); }
-
-        /* Content */
-        .page-content { max-width:800px; margin:0 auto; padding:8rem 2rem 4rem; }
-        .page-content h1 { font-family:'Orbitron',sans-serif; font-size:clamp(2rem,5vw,2.8rem); margin-bottom:1rem; letter-spacing:0.05em; text-align:center; }
-        .page-content h1::after { content:''; display:block; width:100px; height:3px; background:var(--light); margin:1rem auto; }
-
-        .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; margin:2rem 0; }
-        .feature-card { background:var(--surface-alt); border:1px solid var(--surface-border); border-radius:8px; padding:1.5rem; transition:border-color 0.2s ease, transform 0.2s ease; }
-        .feature-card:hover { border-color:var(--surface-border-strong); transform:translateY(-3px); }
-        .feature-card h3 { font-size:0.95rem; margin-bottom:0.5rem; color:var(--light); }
-        .feature-card p { color:var(--text-muted); font-size:0.9rem; line-height:1.5; }
-
-        .tech-pills { display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin:2rem 0; }
-        .tech-pill { padding:0.4rem 1rem; border:1px solid var(--surface-border); border-radius:999px; font-size:0.85rem; color:var(--light); background:rgba(255,255,255,0.02); transition:all 0.2s ease; }
-        .tech-pill:hover { border-color:var(--surface-border-strong); background:rgba(255,255,255,0.06); }
-
-        .back-link { text-align:center; margin-top:3rem; }
-        .back-link a { color:var(--light); text-decoration:none; padding:0.6rem 1.2rem; border:1px solid var(--surface-border); border-radius:4px; font-size:0.9rem; transition:all 0.2s ease; }
-        .back-link a:hover { background:var(--light); color:var(--text-inverse); }
-
-        /* Footer */
-        footer { background:var(--surface-alt); padding:1.5rem 2rem; text-align:center; border-top:1px solid var(--surface-border); font-size:0.8rem; color:var(--text-muted); }
-        .footer-inner { max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
-        footer a { color:var(--light); text-decoration:none; transition:opacity 0.3s ease; }
-        footer a:hover { opacity:0.7; }
-        .social-links { display:flex; justify-content:center; gap:0.5rem; margin-bottom:0.25rem; }
-        .social-links a { display:inline-flex; align-items:center; justify-content:center; width:1.5rem; height:1.5rem; border-radius:999px; border:1px solid transparent; opacity:0.75; transition:all 0.3s ease; }
-        .social-links a:hover { transform:translateY(-2px); opacity:1; border-color:var(--surface-border); }
-        .social-links svg { width:0.8rem; height:0.8rem; fill:currentColor; display:block; }
-
-        /* Responsive */
-        @media (max-width:768px) {
-            .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:rgba(0,0,0,0.95); flex-direction:column; padding:1rem; border-top:1px solid var(--surface-border); }
-            body.light-mode .nav-links { background:rgba(255,255,255,0.95); }
-            .nav-links.active { display:flex; }
-            .mobile-menu-toggle { display:block; }
-            .page-content { padding:6rem 1.5rem 3rem; }
-            .features-grid { grid-template-columns:1fr; }
-        }
-    </style>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/src/css/page-project.css">
 </head>
 <body>
+    <script>
+        /* Runs before paint: applies the stored theme so there is no flash, and marks
+           that JS is alive. */
+        (function () {
+            try {
+                var t = localStorage.getItem('dw-theme');
+                var light = t === 'light' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches);
+                if (light) document.body.classList.add('light-mode');
+            } catch (e) { }
+            document.body.classList.add('js');
+        })();
+    </script>
     <nav>
         <div class="nav-container">
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menu umschalten">&#9776;</button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">&#9776;</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="/index.html#home">Home</a></li>
-                <li><a href="/index.html#about">Uber mich</a></li>
+                <li><a href="/index.html#about">Über mich</a></li>
                 <li><a href="/index.html#projects" class="active">Projekte</a></li>
                 <li><a href="/index.html#contact">Kontakt</a></li>
             </ul>
             <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">DARK</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">LIGHT</button>
             </div>
         </div>
     </nav>
@@ -104,20 +43,20 @@
 
         <div class="features-grid">
             <div class="feature-card">
-                <h3>Retro Terminal UI</h3>
-                <p>PowerShell-inspirierte Ladeanimation und Terminal-Karten als Design-Sprache.</p>
+                <h3>Monochromes Design-System</h3>
+                <p>Ein Satz Tokens für Abstand, Typografie, Radius und Bewegung, streng schwarzweiss.</p>
             </div>
             <div class="feature-card">
-                <h3>CRT & Parallax</h3>
-                <p>Optionale CRT-Effekte und Parallax-Scrolling fur ein immersives Erlebnis.</p>
+                <h3>Retro-Akzent</h3>
+                <p>Terminal-Rahmen als bewusster Akzent, dazu ein ruhiges Punkteraster im Hintergrund.</p>
             </div>
             <div class="feature-card">
                 <h3>Easter Eggs</h3>
-                <p>Versteckte Snake- und Tetris-Spiele als spielerische Uberraschung.</p>
+                <p>Versteckte Snake- und Tetris-Spiele als spielerische Überraschung.</p>
             </div>
             <div class="feature-card">
                 <h3>Performance</h3>
-                <p>Modulares JavaScript, Lazy Loading und Vite-Build fur optimale Ladezeiten.</p>
+                <p>Modulares JavaScript ohne Laufzeit-Abhängigkeiten, lokale Schriften und Vite-Build.</p>
             </div>
         </div>
 
@@ -130,7 +69,7 @@
         </div>
 
         <div class="back-link">
-            <a href="/index.html#projects">&larr; Zuruck zu Projekte</a>
+            <a href="/index.html#projects">&larr; Zurück zu Projekte</a>
         </div>
     </main>
 
@@ -149,24 +88,6 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileToggle = document.getElementById('mobileMenuToggle');
-            const navLinks = document.getElementById('navLinks');
-            mobileToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                mobileToggle.textContent = navLinks.classList.contains('active') ? '\u2715' : '\u2630';
-                mobileToggle.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
-            });
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-mode');
-                const isLight = document.body.classList.contains('light-mode');
-                themeToggle.textContent = isLight ? 'DARK' : 'LIGHT';
-                themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-            });
-            document.querySelectorAll('.copyright-year').forEach(el => el.textContent = new Date().getFullYear());
-        });
-    </script>
+    <script type="module" src="/src/js/subpage.js"></script>
 </body>
 </html>

@@ -2,44 +2,28 @@
 
 Mein persönliches Portfolio – komplett überarbeitet mit modernem Build-Setup!
 
-## 🚀 Features
+## Features
 
-- ✅ **Vite Build System** - Schnelle Entwicklung & optimierte Production-Builds
-- ✅ **Modulares CSS** - Organisiert in separate Dateien für bessere Wartbarkeit
-- ✅ **JavaScript Module** - Clean Code mit ES6+ Modulen
-- ✅ **Performance-Optimierungen**
-  - Lazy Loading für Bilder
-  - Optional CRT-Effekte (Toggle)
-  - Code Splitting
-  - Asset Minification
-- ✅ **SEO-Optimiert**
-  - Strukturierte Daten (Schema.org)
-  - Dynamische Meta-Tags
-  - Open Graph & Twitter Cards
-- ✅ **Interactive Features**
-  - Mouse Parallax Effect
-  - Animated Statistics Counter
-  - Skill Progress Visualizations
-  - Smooth Theme Transitions
-  - Easter Eggs (Snake & Tetris)
-- ✅ **Blog Section** (Ready for Content)
-- ✅ **Code Showcase** with Syntax Highlighting
-- ✅ **Testimonials Section**
-- ✅ **Besseres Kontaktformular**
-  - Real-time Validation
-  - Smooth Feedback
-  - Confetti Animation on Success
-- ✅ **CV Download** als PDF (Fixed!)
-- ✅ **Privacy-Friendly Analytics** (Plausible)
+- **Design-System** - Ein Satz Tokens für Farbe, Abstand, Typografie, Radius, Elevation und Bewegung
+- **Monochrom** - Streng schwarzweiss, Hell- und Dunkelmodus über dieselben Tokens
+- **Eine gemeinsame Basis** - Alle neun Seiten laden `site.css`, keine duplizierten Style-Blöcke
+- **Keine Laufzeit-Abhängigkeiten** - Reines HTML, CSS und ES-Module, gebaut mit Vite
+- **Lokale Schriften** - Space Mono in zwei Schnitten als woff2, kein externer Font-Dienst
+- **Barrierefreiheit** - Skip-Link, Fokus-Ringe, `prefers-reduced-motion`, Inhalt auch ohne JavaScript lesbar
+- **SEO** - Strukturierte Daten (Schema.org), Open Graph und Twitter Cards
+- **PWA** - Service Worker und Web App Manifest
+- **Kontaktformular** - Validierung ohne Farbcodierung, Rückmeldung über Rahmen, Gewicht und Zeichen
+- **Lebenslauf** - Als PDF herunterladbar oder direkt druckbar
+- **Easter Eggs** - Snake und Tetris
+- **Analytics** - Plausible, ohne Cookies
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Build Tool**: Vite
-- **Styling**: Pure CSS (modular)
-- **JavaScript**: ES6+ Modules
-- **Animations**: CSS + Canvas
-- **Icons**: SVG
-- **Fonts**: Google Fonts (Space Mono, Orbitron)
+- **Styling**: Handgeschriebenes CSS, modular, ohne Framework
+- **JavaScript**: ES6+ Module, keine Laufzeit-Abhängigkeiten
+- **Icons**: Inline SVG
+- **Fonts**: Space Mono, lokal ausgeliefert
 
 ## 📦 Setup & Development
 
@@ -71,60 +55,57 @@ Erstellt optimierte Dateien im `dist/` Ordner.
 npm run preview
 ```
 
-## 📁 Projektstruktur
+## Projektstruktur
 
 ```
 dwidmer.dev/
 ├── src/
 │   ├── css/
-│   │   ├── main.css           # Main CSS Entry Point
-│   │   ├── reset.css          # Reset & Base Styles
-│   │   ├── effects.css        # CRT & Parallax Effects
-│   │   ├── navigation.css     # Navigation Styles
-│   │   ├── components.css     # Reusable Components
-│   │   ├── hero.css           # Hero Section
-│   │   ├── about.css          # About Section
-│   │   ├── projects.css       # Projects Grid
-│   │   ├── contact.css        # Contact Form
-│   │   ├── games.css          # Snake & Tetris
-│   │   ├── blog.css           # Blog Section
-│   │   ├── code-showcase.css  # Code Editor
-│   │   └── footer.css         # Footer
+│   │   ├── tokens.css          # Design Tokens — einzige Quelle der Wahrheit
+│   │   ├── base.css            # Reset, Dokument-Defaults, Fokus, Skip-Link, Punkteraster
+│   │   ├── fonts.css           # Space Mono 400/700
+│   │   ├── components.css      # Seitenlayout, Karte, Buttons
+│   │   ├── navigation.css      # Navigation
+│   │   ├── footer.css          # Footer
+│   │   ├── site.css            # Gemeinsame Basis — von JEDER Seite geladen
+│   │   ├── home.css            # site.css + Startseiten-Abschnitte
+│   │   ├── page-project.css    # site.css + Projektseiten
+│   │   ├── page-legal.css      # site.css + Impressum und Datenschutz
+│   │   ├── hero.css / about.css / projects.css / contact.css
+│   │   ├── terminal-styles.css # Der eine verbleibende Fensterrahmen
+│   │   ├── games.css           # Snake & Tetris
+│   │   └── print.css           # Druckansicht des Lebenslaufs
 │   └── js/
-│       ├── main.js            # Main JS Entry Point
+│       ├── main.js             # Einstiegspunkt Startseite
+│       ├── subpage.js          # Einstiegspunkt aller übrigen Seiten
 │       └── modules/
-│           ├── loading.js
-│           ├── typing.js
-│           ├── theme.js
-│           ├── crt-toggle.js
-│           ├── navigation.js
-│           ├── parallax.js
-│           ├── animations.js
-│           ├── lazy-loading.js
-│           ├── contact.js
-│           ├── cv-download.js
-│           ├── snake.js
-│           ├── tetris.js
-│           ├── seo.js
-│           └── analytics.js
-├── assets/
-│   ├── me1.png
-│   ├── schaellesau.png
-│   └── website.png
-├── index.html
-├── app.html
-├── website.html
-├── app-privacy.html
+│           ├── theme.js        # Hell/Dunkel, persistent über localStorage
+│           ├── navigation.js   # Mobiles Menü, Smooth Scroll, aktiver Zustand
+│           ├── typing.js       # Tipp-Animation im Hero
+│           ├── parallax.js     # Punkteraster im Hintergrund
+│           ├── animations.js   # Scroll-Reveal
+│           ├── contact.js      # Formularvalidierung und Versand
+│           ├── cv-download.js  # Druck des Lebenslaufs
+│           ├── year.js         # Copyright-Jahr im Footer
+│           ├── snake.js / tetris.js
+│           ├── pwa-features.js / seo.js / analytics.js / performance.js
+│           └── utils/logger.js
+├── public/
+│   ├── fonts/                  # Space Mono 400/700 (woff2)
+│   ├── assets/                 # Bilder und Lebenslauf-PDF
+│   └── favicon.svg
+├── index.html                  # Startseite
+├── app.html / monodot.html / katoro.html / website.html
+├── impressum.html / app-privacy.html / monodot-privacy.html / katoro-privacy.html
 ├── package.json
 ├── vite.config.js
 └── README.md
 ```
 
-## 🎮 Easter Eggs
+## Easter Eggs
 
-- **Snake**: `Ctrl+Alt+Shift+G`
+- **Snake**: `Ctrl+Alt+Shift+S`
 - **Tetris**: `Ctrl+Alt+Shift+T`
-- **CRT Toggle**: Button in Navigation
 - **Console Art**: Öffne die Browser-Konsole
 
 ## 🔧 Deployment

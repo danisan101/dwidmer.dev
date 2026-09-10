@@ -1,5 +1,53 @@
 # Changelog - Portfolio v2.0
 
+## Version 2.1.0 (September 2026)
+
+### Designbereinigung: ruhig, konsistent, minimalistisch
+
+#### Design-System
+- `src/css/tokens.css` als einzige Quelle der Wahrheit für Farbe, Abstand, Typografie, Radius, Elevation, Bewegung und Ebenen
+- Eckradien im gerenderten Bild von 11 auf 4, Schatten von 7 auf 0, Schriftgrössen von 19 auf 7
+- `prefers-reduced-motion` erstmals berücksichtigt
+
+#### Erster Eindruck
+- Boot-Sequenz und Loading-Overlay entfernt; Inhalt ist sofort sichtbar statt nach drei Sekunden
+- Theme wird vor dem ersten Paint gesetzt, kein Hell-Dunkel-Flash mehr
+- Inhalt bleibt lesbar, wenn JavaScript nicht lädt
+
+#### Weniger Dekor
+- Terminal-Rahmen von sechs auf zwei bewusste Stellen: Kontaktformular und Spiele-Overlays
+- macOS-Ampelpunkte entfernt; die Seite ist jetzt vollständig monochrom
+- Dreifache Verlaufshintergründe, 28-px-Radien und grosse Schatten der Abschnitte entfallen
+- Glitch-, Glow- und Partikel-Effekte entfernt
+- Session-Stats-Sektion entfernt
+- Interessen-Balken mit erfundenen Prozentwerten und nicht belegbare Skill-Noten entfernt
+
+#### Typografie
+- Orbitron entfernt; eine Schriftfamilie, Hierarchie über Grösse, Versalien und Laufweite
+- `* { font-family: … !important }` durch `font: inherit` auf Formularelementen ersetzt
+- Space Mono 400 als woff2 statt als TTF; `public/fonts` von 33 auf 2 Dateien
+
+#### Struktur
+- `site.css` als gemeinsame Basis aller neun Seiten; die duplizierten Style-Blöcke der Unterseiten entfallen
+- Stylesheets werden per `<link>` geladen; das widersprüchliche Inline-CSS und der sichtbare Layout-Sprung entfallen
+- Unterseiten nutzen dieselben Theme- und Navigationsmodule; die Themewahl bleibt beim Seitenwechsel erhalten
+- Keine Inline-Styles und keine `<style>`-Blöcke mehr
+
+#### Behoben
+- Lebenslauf-Knopf öffnete zwei Fenster, eines davon mit Schriften von Google Fonts
+- Timeline wurde zur Laufzeit überschrieben, samt eines Karriereeintrags, den es im Markup nicht gab
+- Fehlende `favicon.ico` führte auf jeder Seite zu einem 404; ersetzt durch ein monochromes SVG
+- Fehlende Umlaute auf den Unterseiten ("Uber mich", "Asthetik", "fur")
+- Standard-Linkblau des Browsers auf ungestylten Links
+
+#### Entfernt
+- `canvas-confetti`, importiert aber nie aufgerufen; das Projekt hat jetzt keine Laufzeit-Abhängigkeiten
+- Neun tote JS-Module und vier tote Stylesheets
+- Formularfarben `#ff4444` und `#44ff44`; Validierung läuft über Rahmen, Gewicht und Zeichen
+
+#### Grössen
+- JS-Bundle 48.6 kB auf 8.8 kB, CSS 50.8 kB auf 28 kB, Schriften ~570 kB auf 56 kB
+
 ## 🚀 Version 2.0.0 (Januar 2025)
 
 ### ✅ Komplett überarbeitet

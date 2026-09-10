@@ -1,0 +1,8 @@
+/* Shared base — loaded by every page, homepage and subpages alike.
+   Keeping one file is what stops the nine pages drifting apart again. */
+@import './tokens.css';
+@import './fonts.css';
+@import './base.css';
+@import './components.css';
+@import './navigation.css';
+@import './footer.css';

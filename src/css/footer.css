@@ -8,7 +8,7 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     line-height: 1.5;
     color: var(--text-muted);
 }
@@ -41,14 +41,14 @@ footer a:hover {
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
-    margin-bottom: 0.25rem;
+    gap: var(--space-3);
+    margin-bottom: var(--space-1);
     align-items: center;
 }
 
 .social-links a {
     color: var(--light);
-    transition: all 0.25s var(--ease-out-quart);
+    transition: opacity var(--dur-base) var(--ease-out-quart), border-color var(--dur-base) var(--ease-out-quart), background var(--dur-base) var(--ease-out-quart);
     text-decoration: none;
     opacity: 0.6;
     line-height: 1;
@@ -57,19 +57,14 @@ footer a:hover {
     justify-content: center;
     width: 2rem;
     height: 2rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     border: 1px solid transparent;
 }
 
 .social-links a:hover {
-    transform: translateY(-2px);
     opacity: 1;
     border-color: var(--surface-border);
-    background: rgba(255, 255, 255, 0.04);
-}
-
-body.light-mode .social-links a:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--tint-weak);
 }
 
 .social-links svg {
@@ -79,25 +74,14 @@ body.light-mode .social-links a:hover {
     display: block;
 }
 
-.cv-download {
-    display: inline-block;
-    margin-top: 1.25rem;
-    padding: 0.75rem 1.4rem;
-    background: transparent;
+.keyboard-shortcuts {
+    font-size: var(--text-xs);
+    opacity: 0.7;
+    margin-top: var(--space-2);
+}
+
+.keyboard-shortcuts kbd {
     border: 1px solid var(--surface-border);
-    color: var(--light);
-    text-decoration: none;
-    font-family: 'Space Mono', monospace;
-    transition: all 0.25s var(--ease-out-quart);
-    border-radius: 4px;
-}
-
-.cv-download:hover {
-    background: var(--light);
-    color: var(--text-inverse);
-}
-
-.cv-actions {
-    text-align: center;
-    margin-top: 2rem;
+    border-radius: var(--radius-sm);
+    padding: 0 var(--space-1);
 }
