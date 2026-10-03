@@ -47,3 +47,19 @@
     border-top: 1px solid var(--surface-border);
     margin: var(--space-8) 0;
 }
+
+.page-content .lang-switch {
+    text-align: center;
+}
+
+.page-content blockquote {
+    margin: 0 0 var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-left: 2px solid var(--surface-border);
+    color: var(--text-muted);
+}
+
+.page-content code {
+    font-size: 0.9em;
+    overflow-wrap: anywhere;
+}
