@@ -7,9 +7,9 @@
     <meta name="theme-color" content="#000000">
     <title>Daniel Widmer - Portfolio</title>
     <meta name="description"
-        content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development. Spezialisiert auf JavaScript, Swift, React und innovative digitale Lösungen.">
+        content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development. Spezialisiert auf JavaScript, Swift, SwiftUI und innovative digitale Lösungen.">
     <meta name="keywords"
-        content="Daniel Widmer, Creative Developer, Frontend Development, JavaScript, Swift, iOS Development, UI/UX Design, Portfolio, Business Analyst, App Developer, React, Vite, Web Development">
+        content="Daniel Widmer, Creative Developer, Frontend Development, JavaScript, Swift, iOS Development, UI/UX Design, Portfolio, Business Analyst, App Developer, SwiftUI, Vite, Web Development">
     <meta name="author" content="Daniel Widmer">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dwidmer.dev/">
@@ -53,17 +53,13 @@
             "Swift",
             "iOS Development",
             "UI/UX Design",
-            "React",
+            "SwiftUI",
             "Vite",
             "Web Development"
         ],
         "worksFor": {
             "@type": "Organization",
             "name": "Freelance"
-        },
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Weiterbildung in Web Development"
         }
     }
     </script>
@@ -103,11 +99,11 @@
             <a href="#home" class="logo" aria-label="Daniel Widmer - Zurück zur Startseite">DW</a>
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false"
                 aria-label="Menü umschalten">☰</button>
-            <ul class="nav-links" id="navLinks" role="menubar">
-                <li role="none"><a href="#home" role="menuitem" aria-current="page">Home</a></li>
-                <li role="none"><a href="#about" role="menuitem">Über mich</a></li>
-                <li role="none"><a href="#projects" role="menuitem">Projekte</a></li>
-                <li role="none"><a href="#contact" role="menuitem">Kontakt</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" aria-current="page">Home</a></li>
+                <li><a href="#projects">Projekte</a></li>
+                <li><a href="#about">Über mich</a></li>
+                <li><a href="#contact">Kontakt</a></li>
             </ul>
             <div class="nav-controls" role="group" aria-label="Spiel- und Theme-Kontrollen">
                 <button class="easter-egg-btn" data-game="snake" aria-label="Snake-Spiel starten"
@@ -128,6 +124,126 @@
                 <h1 id="heroTitle" tabindex="-1"><span id="heroName" class="hero-name" data-text="Daniel Widmer">Daniel
                         Widmer</span><span class="cursor-blink" aria-hidden="true">_</span></h1>
                 <p id="heroTagline">creative developer</p>
+                <div class="hero-actions">
+                    <a class="cta-button" href="#projects">Projekte ansehen</a>
+                    <a class="cta-button cta-button-ghost" href="#contact">Kontakt</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-block fade-in" aria-labelledby="projectsTitle">
+            <div class="section-heading">
+                <h2 id="projectsTitle" class="section-title">Meine Projekte</h2>
+                <p class="section-lead">Ausgewählte Arbeiten mit monochromem Charakter, reduzierter UI und Fokus auf Tempo, Lesbarkeit und Nutzbarkeit.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <a href="/website.html" aria-label="Projektseite: Meine Website">
+                        <div class="project-image">
+                            <img src="/assets/website.png" alt="Vorschau: Meine Website" loading="lazy" width="600" height="400">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-label">LIVE</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Meine Website</h3>
+                            <p class="project-description">Monochromes Portfolio auf einem eigenen Design-System, mit
+                                Terminal-Akzent und Easter Eggs.</p>
+                            <ul class="project-highlights">
+                                <li>Ein Satz Tokens für Abstand, Typografie, Radius und Bewegung</li>
+                                <li>Performance-optimiert mit Vite und modularem JS</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Vite</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <a href="/app.html" aria-label="Projektseite: Schälle Sau">
+                        <div class="project-image">
+                            <img src="/assets/schaellesau.png" alt="Vorschau: Schälle Sau App" loading="lazy" width="600" height="400">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-label">LIVE</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Schälle Sau</h3>
+                            <p class="project-description">Scorekeeper-App mit minimalistischer UI, optimiert für
+                                schnelle Spielzüge.</p>
+                            <ul class="project-highlights">
+                                <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
+                                <li>Native iOS-Experience mit klaren, reduzierten Controls</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">iOS</span>
+                                <span class="tech-tag">UI/UX</span>
+                                <span class="tech-tag">Mobile Design</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <a href="/monodot.html" aria-label="Projektseite: monodot.">
+                        <div class="project-image">
+                            <img src="/assets/app_icon_monodot.png" alt="Vorschau: monodot. App" loading="lazy" width="600" height="400">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-label">LIVE</span>
+                                <span class="project-year">2026</span>
+                            </div>
+                            <h3 class="project-title">monodot.</h3>
+                            <p class="project-description">Minimalistische App mit Fokus auf Reduktion und klare Interaktion.</p>
+                            <ul class="project-highlights">
+                                <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
+                                <li>Native iOS-Experience mit monochromer Ästhetik</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">iOS</span>
+                                <span class="tech-tag">UI/UX</span>
+                                <span class="tech-tag">Mobile Design</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <a href="/katoro.html" aria-label="Projektseite: katoro">
+                        <div class="project-image project-image-themeable">
+                            <img src="/assets/katoro_dark.png" alt="Vorschau: katoro App, Dark Mode" class="project-image-dark" loading="lazy" width="600" height="400">
+                            <img src="/assets/katoro_light.png" alt="Vorschau: katoro App, Light Mode" class="project-image-light" loading="lazy" width="600" height="400">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-label">NEW</span>
+                                <span class="project-year">2026</span>
+                            </div>
+                            <h3 class="project-title">katoro</h3>
+                            <p class="project-description">Neues Konzeptprojekt im Pixel-Look mit maximal klarer Struktur und monochromer UI.</p>
+                            <ul class="project-highlights">
+                                <li>Icon- und Interface-Design abgestimmt auf Dark & Light Theme</li>
+                                <li>Native SwiftUI-Experience mit ablenkungsfreier Interaktion</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">iOS</span>
+                                <span class="tech-tag">Design System</span>
+                                <span class="tech-tag">Pixel UI</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -138,11 +254,15 @@
                 <p class="section-lead">Retro im Look, klar in der Führung: Ich verbinde Design, Code und Produktdenken zu Interfaces, die schnell verstanden werden.</p>
             </div>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text about-intro">
+                    <img src="/assets/me-portrait.webp" alt="Illustration von Daniel Widmer am Laptop"
+                        class="about-portrait" loading="lazy" width="480" height="480">
                     <h3>Hallo, ich bin Daniel!</h3>
-                    <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer
-                        Vision. Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur
-                        funktional, sondern auch ästhetisch ansprechend sind.</p>
+                    <p>Seit 2017 arbeite ich als Senior Business Analyst: Anforderungen klären, Abläufe analysieren
+                        und selbst mitcoden. Seit 2024 entwickle ich daneben eigene iOS-Apps, von der Idee über das
+                        Design bis zum Release im App Store.</p>
+                    <p>Mich reizt die Schnittstelle zwischen Fachlichkeit und Technik: verstehen, was gebraucht
+                        wird, und daraus etwas bauen, das schlicht, schnell und gut bedienbar ist.</p>
                 </div>
 
 
@@ -278,122 +398,6 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section-block fade-in">
-            <div class="section-heading">
-                <h2 class="section-title">Meine Projekte</h2>
-                <p class="section-lead">Ausgewählte Arbeiten mit monochromem Charakter, reduzierter UI und Fokus auf Tempo, Lesbarkeit und Nutzbarkeit.</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <a href="/website.html" aria-label="Projektseite: Meine Website">
-                        <div class="project-image">
-                            <img src="/assets/website.png" alt="Vorschau: Meine Website" loading="lazy" width="600" height="400">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-label">LIVE</span>
-                                <span class="project-year">2025</span>
-                            </div>
-                            <h3 class="project-title">Meine Website</h3>
-                            <p class="project-description">Monochromes Portfolio auf einem eigenen Design-System, mit
-                                Terminal-Akzent und Easter Eggs.</p>
-                            <ul class="project-highlights">
-                                <li>Ein Satz Tokens für Abstand, Typografie, Radius und Bewegung</li>
-                                <li>Performance-optimiert mit Vite und modularem JS</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Vite</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <a href="/app.html" aria-label="Projektseite: Schälle Sau">
-                        <div class="project-image">
-                            <img src="/assets/schaellesau.png" alt="Vorschau: Schälle Sau App" loading="lazy" width="600" height="400">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-label">LIVE</span>
-                                <span class="project-year">2025</span>
-                            </div>
-                            <h3 class="project-title">Schälle Sau</h3>
-                            <p class="project-description">Scorekeeper-App mit minimalistischer UI, optimiert für
-                                schnelle Spielzüge.</p>
-                            <ul class="project-highlights">
-                                <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
-                                <li>Native iOS-Experience mit klaren, reduzierten Controls</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">Swift</span>
-                                <span class="tech-tag">iOS</span>
-                                <span class="tech-tag">UI/UX</span>
-                                <span class="tech-tag">Mobile Design</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <a href="/monodot.html" aria-label="Projektseite: monodot.">
-                        <div class="project-image">
-                            <img src="/assets/app_icon_monodot.png" alt="Vorschau: monodot. App" loading="lazy" width="600" height="400">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-label">LIVE</span>
-                                <span class="project-year">2026</span>
-                            </div>
-                            <h3 class="project-title">monodot.</h3>
-                            <p class="project-description">Minimalistische App mit Fokus auf Reduktion und klare Interaktion.</p>
-                            <ul class="project-highlights">
-                                <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
-                                <li>Native iOS-Experience mit monochromer Ästhetik</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">Swift</span>
-                                <span class="tech-tag">iOS</span>
-                                <span class="tech-tag">UI/UX</span>
-                                <span class="tech-tag">Mobile Design</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <a href="/katoro.html" aria-label="Projektseite: katoro">
-                        <div class="project-image project-image-themeable">
-                            <img src="/assets/katoro_dark.png" alt="Vorschau: katoro App, Dark Mode" class="project-image-dark" loading="lazy" width="600" height="400">
-                            <img src="/assets/katoro_light.png" alt="Vorschau: katoro App, Light Mode" class="project-image-light" loading="lazy" width="600" height="400">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-label">NEW</span>
-                                <span class="project-year">2026</span>
-                            </div>
-                            <h3 class="project-title">katoro</h3>
-                            <p class="project-description">Neues Konzeptprojekt im Pixel-Look mit maximal klarer Struktur und monochromer UI.</p>
-                            <ul class="project-highlights">
-                                <li>Icon- und Interface-Design abgestimmt auf Dark & Light Theme</li>
-                                <li>Datenschutz-Seite als Platzhalter ist bereits vorbereitet</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">Swift</span>
-                                <span class="tech-tag">iOS</span>
-                                <span class="tech-tag">Design System</span>
-                                <span class="tech-tag">Pixel UI</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
         <!-- Contact Section -->
         <section id="contact" class="section-block fade-in" aria-labelledby="contactTitle">
             <div class="section-heading">
@@ -406,13 +410,13 @@
                     <div class="terminal-status">READY</div>
                 </div>
                 <div class="contact-shell">
-                    <div class="shell-line">PS C:\Users\Daniel\contact> init-form --mode=direct</div>
                     <div class="contact-grid">
                         <div class="contact-aside">
-                            <div class="contact-aside-title">Form Status</div>
+                            <div class="contact-aside-title">Direkter Draht</div>
                             <ul class="contact-aside-list">
-                                <li>Antwortzeit: &lt; 24h</li>
-                                <li>Secure channel aktiv</li>
+                                <li>Die Nachricht landet direkt in meinem Postfach.</li>
+                                <li>Lieber anders? Schreib mir auf <a href="https://www.linkedin.com/in/daniel-widmer-26426a173"
+                                        rel="noopener" target="_blank">LinkedIn</a>.</li>
                             </ul>
                             <div class="contact-code-block">
                                 <div class="code-line">$ whoami → daniel.widmer</div>
@@ -517,9 +521,9 @@
             <hr>
 
             <h2>Über mich</h2>
-            <p>Als leidenschaftlicher Entwickler und Designer verbinde ich technische Expertise mit kreativer Vision.
-                Meine Mission ist es, innovative digitale Lösungen zu schaffen, die nicht nur funktional, sondern auch
-                ästhetisch ansprechend sind.</p>
+            <p>Seit 2017 arbeite ich als Senior Business Analyst: Anforderungen klären, Abläufe analysieren und selbst
+                mitcoden. Seit 2024 entwickle ich daneben eigene iOS-Apps, von der Idee über das Design bis zum Release
+                im App Store.</p>
             <hr>
 
             <h2>Werdegang</h2>

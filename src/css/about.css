@@ -19,6 +19,24 @@
     line-height: var(--leading-normal);
 }
 
+.about-text p + p {
+    margin-top: var(--space-3);
+}
+
+/* Black-on-white illustration: inverted so it sits on the dark theme */
+.about-portrait {
+    display: block;
+    width: 160px;
+    height: auto;
+    border-radius: var(--radius-pill);
+    margin-bottom: var(--space-4);
+    filter: invert(1);
+}
+
+body.light-mode .about-portrait {
+    filter: none;
+}
+
 .subsection-title {
     font-size: var(--text-base);
     font-weight: 700;

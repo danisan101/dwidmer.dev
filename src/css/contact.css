@@ -16,11 +16,6 @@
     gap: var(--space-6);
 }
 
-.shell-line {
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-}
-
 .contact-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
@@ -37,6 +32,10 @@
     font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: 0.14em;
+    color: var(--light);
+}
+
+.contact-aside-list a {
     color: var(--light);
 }
 
