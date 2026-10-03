@@ -1,5 +1,6 @@
 // Tetris Game Module
 import { log, error } from '../utils/logger.js';
+import { bilingual, translateAttributes } from './i18n.js';
 let gameRunning = false;
 let board = [];
 let currentPiece = null;
@@ -69,7 +70,7 @@ function startTetris() {
     gameContainer.innerHTML = `
         <div class="terminal-header">
             <div class="terminal-title" id="tetrisTitle">tetris.exe</div>
-            <button class="close-btn" type="button" aria-label="Tetris schliessen">✕</button>
+            <button class="close-btn" type="button" aria-label="Tetris schliessen" data-en-aria-label="Close Tetris">✕</button>
         </div>
         <div class="terminal-body">
             <div class="game-info">
@@ -80,23 +81,23 @@ function startTetris() {
                     Level: <span id="tetrisLevel">1</span>
                 </div>
                 <div class="controls-info">
-                    Next Piece:
+                    ${bilingual('Nächster Stein', 'Next Piece')}:
                 </div>
             </div>
             <div class="game-canvas-container">
                 <canvas class="next-piece" id="nextPieceCanvas" width="80" height="80"></canvas>
-                <canvas class="game-canvas" id="tetrisCanvas" width="300" height="600" aria-label="Tetris Spielfeld" tabindex="0"></canvas>
+                <canvas class="game-canvas" id="tetrisCanvas" width="300" height="600" aria-label="Tetris Spielfeld" data-en-aria-label="Tetris board" tabindex="0"></canvas>
             </div>
             <div class="game-controls">
-                <span class="desktop-hint">A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop</span>
-                <span class="mobile-hint">Verwende die Buttons unten</span>
+                <span class="desktop-hint">${bilingual('A/D: Bewegen | S: Soft Drop | W: Drehen | Leertaste: Hard Drop', 'A/D: Move | S: Soft Drop | W: Rotate | Space: Hard Drop')}</span>
+                <span class="mobile-hint">${bilingual('Verwende die Buttons unten', 'Use the buttons below')}</span>
             </div>
             <div class="touch-controls">
-                <button type="button" class="touch-btn" data-action="left" aria-label="Links">←</button>
-                <button type="button" class="touch-btn" data-action="rotate" aria-label="Drehen">↻</button>
-                <button type="button" class="touch-btn" data-action="down" aria-label="Runter">↓</button>
+                <button type="button" class="touch-btn" data-action="left" aria-label="Links" data-en-aria-label="Left">←</button>
+                <button type="button" class="touch-btn" data-action="rotate" aria-label="Drehen" data-en-aria-label="Rotate">↻</button>
+                <button type="button" class="touch-btn" data-action="down" aria-label="Runter" data-en-aria-label="Down">↓</button>
                 <button type="button" class="touch-btn" data-action="drop" aria-label="Drop">⤓</button>
-                <button type="button" class="touch-btn" data-action="right" aria-label="Rechts">→</button>
+                <button type="button" class="touch-btn" data-action="right" aria-label="Rechts" data-en-aria-label="Right">→</button>
             </div>
         </div>
     `;
@@ -124,6 +125,7 @@ function startTetris() {
 
     overlay.appendChild(gameContainer);
     document.body.appendChild(overlay);
+    translateAttributes(overlay);
     document.body.classList.add('game-modal-open');
 
     const canvas = document.getElementById('tetrisCanvas');
@@ -465,13 +467,13 @@ function ensureGameOverScreen() {
         screen.style.display = 'none';
         screen.innerHTML = `
             <h2>TETRIS - GAME OVER</h2>
-            <p>Final Score: <span id="finalScore">0</span></p>
-            <p>Lines Cleared: <span id="finalLines">0</span></p>
+            <p>${bilingual('Punkte', 'Final Score')}: <span id="finalScore">0</span></p>
+            <p>${bilingual('Reihen', 'Lines Cleared')}: <span id="finalLines">0</span></p>
             <p>Highscore: <span id="finalHighscore">0</span></p>
-            <p>Press SPACE to restart or ESC to close</p>
+            <p>${bilingual('LEERTASTE für Neustart, ESC zum Schliessen', 'Press SPACE to restart or ESC to close')}</p>
             <div class="game-over-touch-controls">
-                <button type="button" class="game-over-btn" data-action="restart">RESTART</button>
-                <button type="button" class="game-over-btn" data-action="close">CLOSE</button>
+                <button type="button" class="game-over-btn" data-action="restart">${bilingual('NEUSTART', 'RESTART')}</button>
+                <button type="button" class="game-over-btn" data-action="close">${bilingual('SCHLIESSEN', 'CLOSE')}</button>
             </div>
         `;
         screen.querySelector('[data-action="restart"]').addEventListener('click', () => {

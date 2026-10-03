@@ -2,11 +2,26 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <script>
+        /* Runs before paint: picks the language (?lang= link, #en anchor, saved choice,
+           otherwise German) so the page never flashes the wrong one. */
+        (function () {
+            var d = document.documentElement, l = null;
+            try {
+                var p = new URLSearchParams(location.search).get('lang');
+                if (p === 'en' || p === 'de') { l = p; localStorage.setItem('dw-lang', p); }
+                else if (/^#en(-|$)/.test(location.hash)) l = 'en';
+                else l = localStorage.getItem('dw-lang');
+            } catch (e) { }
+            d.lang = l === 'en' ? 'en' : 'de';
+            d.classList.add('i18n');
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Schälle Sau – iOS App von Daniel Widmer</title>
+    <title data-en-text="Schälle Sau – iOS app by Daniel Widmer">Schälle Sau – iOS App von Daniel Widmer</title>
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://dwidmer.dev/app.html">
-    <meta name="description" content="Schälle Sau – Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge. Jetzt im App Store.">
+    <meta name="description" content="Schälle Sau – Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge. Jetzt im App Store." data-en-content="Schälle Sau – scorekeeper app with a minimal UI, built for quick turns. Available on the App Store.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/src/css/page-project.css">
 </head>
@@ -25,42 +40,43 @@
     </script>
     <nav>
         <div class="nav-container">
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">&#9776;</button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten" data-en-aria-label="Toggle menu">&#9776;</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="/index.html#home">Home</a></li>
-                <li><a href="/index.html#projects" class="active">Projekte</a></li>
-                <li><a href="/index.html#about">Über mich</a></li>
-                <li><a href="/index.html#contact">Kontakt</a></li>
+                <li><a href="/index.html#projects" class="active"><span data-lang="de">Projekte</span><span data-lang="en">Projects</span></a></li>
+                <li><a href="/index.html#about"><span data-lang="de">Über mich</span><span data-lang="en">About</span></a></li>
+                <li><a href="/index.html#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
             </ul>
             <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">LIGHT</button>
+                <button class="lang-toggle" id="langToggle" type="button" lang="en" aria-label="Switch to English" title="Switch to English">EN</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten" data-en-aria-label="Toggle theme">LIGHT</button>
             </div>
         </div>
     </nav>
 
     <main>
         <section class="app-hero">
-            <img src="/assets/schaellesau.png" alt="Schälle Sau App Icon" class="app-icon">
+            <img src="/assets/schaellesau.png" alt="Schälle Sau App Icon" data-en-alt="Schälle Sau app icon" class="app-icon">
             <h1>Schälle Sau</h1>
-            <p class="tagline">Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge.</p>
-            <a href="https://apps.apple.com/ch/app/sch%C3%A4lle-sau/id6752545180?l=de-DE" class="app-store-badge" target="_blank" rel="noopener" aria-label="Schälle Sau im App Store laden">
-                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/de-de?size=250x83" alt="Laden im App Store">
+            <p class="tagline"><span data-lang="de">Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge.</span><span data-lang="en">Scorekeeper app with a minimal UI, built for quick turns.</span></p>
+            <a href="https://apps.apple.com/ch/app/sch%C3%A4lle-sau/id6752545180?l=de-DE" data-en-href="https://apps.apple.com/ch/app/sch%C3%A4lle-sau/id6752545180?l=en-GB" class="app-store-badge" target="_blank" rel="noopener" aria-label="Schälle Sau im App Store laden" data-en-aria-label="Get Schälle Sau on the App Store">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/de-de?size=250x83" data-en-src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Laden im App Store" data-en-alt="Download on the App Store">
             </a>
         </section>
 
         <section class="app-features">
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3>Schnelle Erfassung</h3>
-                    <p>Punkte blitzschnell eintragen mit optimierten Controls für flüssiges Spielen.</p>
+                    <h3><span data-lang="de">Schnelle Erfassung</span><span data-lang="en">Quick entry</span></h3>
+                    <p><span data-lang="de">Punkte blitzschnell eintragen mit optimierten Controls für flüssiges Spielen.</span><span data-lang="en">Enter scores in a flash with controls tuned for smooth play.</span></p>
                 </div>
                 <div class="feature-card">
-                    <h3>Minimalistisches Design</h3>
-                    <p>Klare, reduzierte UI die sich auf das Wesentliche konzentriert.</p>
+                    <h3><span data-lang="de">Minimalistisches Design</span><span data-lang="en">Minimal design</span></h3>
+                    <p><span data-lang="de">Klare, reduzierte UI, die sich auf das Wesentliche konzentriert.</span><span data-lang="en">A clear, reduced UI that focuses on what matters.</span></p>
                 </div>
                 <div class="feature-card">
                     <h3>Native iOS</h3>
-                    <p>Entwickelt mit SwiftUI für eine native, flussige Experience auf iPhone und iPad.</p>
+                    <p><span data-lang="de">Entwickelt mit SwiftUI für eine native, flüssige Experience auf iPhone und iPad.</span><span data-lang="en">Built with SwiftUI for a native, fluid experience on iPhone and iPad.</span></p>
                 </div>
             </div>
         </section>
@@ -77,8 +93,8 @@
         </section>
 
         <section class="app-links">
-            <a href="/app-privacy.html" aria-label="Datenschutzerklärung">Datenschutz</a>
-            <a href="/index.html#projects" aria-label="Zurück zu Projekte">&larr; Zurück zu Projekte</a>
+            <a href="/app-privacy.html" aria-label="Datenschutzerklärung" data-en-aria-label="Privacy policy"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></a>
+            <a href="/index.html#projects" aria-label="Zurück zu Projekte" data-en-aria-label="Back to projects">&larr; <span data-lang="de">Zurück zu Projekte</span><span data-lang="en">Back to projects</span></a>
         </section>
     </main>
 
@@ -92,8 +108,8 @@
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zM8 8h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.79 2.66 4.79 6.12V24h-4V15.2c0-2.1-.04-4.8-2.92-4.8-2.92 0-3.37 2.28-3.37 4.64V24H8V8z"></path></svg>
                 </a>
             </div>
-            <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
-            <p><a href="/impressum.html">Impressum</a> | <a href="/app-privacy.html">Datenschutz (App)</a></p>
+            <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
+            <p><a href="/impressum.html"><span data-lang="de">Impressum</span><span data-lang="en">Legal notice</span></a> | <a href="/app-privacy.html"><span data-lang="de">Datenschutz (App)</span><span data-lang="en">Privacy (app)</span></a></p>
         </div>
     </footer>
 

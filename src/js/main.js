@@ -2,6 +2,7 @@
 // Import all modules
 import { initTypingAnimation } from './modules/typing.js';
 import { initThemeToggle } from './modules/theme.js';
+import { initLanguageToggle } from './modules/i18n.js';
 import { initMobileMenu, initSmoothScrolling, initActiveNavigation } from './modules/navigation.js';
 import { initParallax } from './modules/parallax.js';
 import { initScrollAnimations } from './modules/animations.js';
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Core features
         initMobileMenu();
         initThemeToggle();
+        initLanguageToggle();
         initSmoothScrolling();
         initActiveNavigation();
 

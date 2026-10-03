@@ -3,11 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>
+        /* Runs before paint: picks the language (?lang= link, #en anchor, saved choice,
+           otherwise German) so the page never flashes the wrong one. */
+        (function () {
+            var d = document.documentElement, l = null;
+            try {
+                var p = new URLSearchParams(location.search).get('lang');
+                if (p === 'en' || p === 'de') { l = p; localStorage.setItem('dw-lang', p); }
+                else if (/^#en(-|$)/.test(location.hash)) l = 'en';
+                else l = localStorage.getItem('dw-lang');
+            } catch (e) { }
+            d.lang = l === 'en' ? 'en' : 'de';
+            d.classList.add('i18n');
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#000000">
-    <title>Daniel Widmer - Portfolio</title>
+    <title data-en-text="Daniel Widmer - Portfolio">Daniel Widmer - Portfolio</title>
     <meta name="description"
-        content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development. Spezialisiert auf JavaScript, Swift, SwiftUI und innovative digitale Lösungen.">
+        content="Portfolio von Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst und App Developer mit Expertise in Frontend Development, UI/UX Design und Mobile App Development. Spezialisiert auf JavaScript, Swift, SwiftUI und innovative digitale Lösungen."
+        data-en-content="Portfolio of Daniel Widmer – Creative Developer & Digital Artist. Senior Business Analyst and app developer with expertise in frontend development, UI/UX design and mobile app development. Focused on JavaScript, Swift, SwiftUI and thoughtful digital products.">
     <meta name="keywords"
         content="Daniel Widmer, Creative Developer, Frontend Development, JavaScript, Swift, iOS Development, UI/UX Design, Portfolio, Business Analyst, App Developer, SwiftUI, Vite, Web Development">
     <meta name="author" content="Daniel Widmer">
@@ -20,9 +36,11 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="en_GB">
     <meta property="og:title" content="Daniel Widmer - Portfolio">
     <meta property="og:description"
-        content="Creative Developer & Digital Artist. Digitale Erlebnisse, die begeistern und inspirieren.">
+        content="Creative Developer & Digital Artist. Digitale Erlebnisse, die begeistern und inspirieren."
+        data-en-content="Creative Developer & Digital Artist. Digital experiences that delight and inspire.">
     <meta property="og:url" content="https://dwidmer.dev/">
     <meta property="og:site_name" content="Daniel Widmer">
     <meta property="og:image" content="https://dwidmer.dev/assets/me1.png">
@@ -83,7 +101,7 @@
     </script>
 
     <!-- Skip Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    <a href="#main-content" class="skip-link"><span data-lang="de">Zum Hauptinhalt springen</span><span data-lang="en">Skip to main content</span></a>
 
     <!-- Parallax Background -->
     <div class="parallax-container">
@@ -94,25 +112,26 @@
 
 
     <!-- Navigation -->
-    <nav role="navigation" aria-label="Hauptnavigation">
+    <nav role="navigation" aria-label="Hauptnavigation" data-en-aria-label="Main navigation">
         <div class="nav-container">
-            <a href="#home" class="logo" aria-label="Daniel Widmer - Zurück zur Startseite">DW</a>
+            <a href="#home" class="logo" aria-label="Daniel Widmer - Zurück zur Startseite" data-en-aria-label="Daniel Widmer - Back to the top">DW</a>
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false"
-                aria-label="Menü umschalten">☰</button>
+                aria-label="Menü umschalten" data-en-aria-label="Toggle menu">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" aria-current="page">Home</a></li>
-                <li><a href="#projects">Projekte</a></li>
-                <li><a href="#about">Über mich</a></li>
-                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#projects"><span data-lang="de">Projekte</span><span data-lang="en">Projects</span></a></li>
+                <li><a href="#about"><span data-lang="de">Über mich</span><span data-lang="en">About</span></a></li>
+                <li><a href="#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
             </ul>
-            <div class="nav-controls" role="group" aria-label="Spiel- und Theme-Kontrollen">
-                <button class="easter-egg-btn" data-game="snake" aria-label="Snake-Spiel starten"
-                    title="Snake-Spiel mit WASD oder Pfeiltasten steuern">SNAKE</button>
-                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris-Spiel starten"
-                    title="Tetris-Spiel mit WASD oder Pfeiltasten steuern">TETRIS</button>
+            <div class="nav-controls" role="group" aria-label="Spiel-, Sprach- und Theme-Kontrollen" data-en-aria-label="Game, language and theme controls">
+                <button class="easter-egg-btn" data-game="snake" aria-label="Snake-Spiel starten" data-en-aria-label="Start Snake"
+                    title="Snake-Spiel mit WASD oder Pfeiltasten steuern" data-en-title="Play Snake with WASD or the arrow keys">SNAKE</button>
+                <button class="easter-egg-btn" data-game="tetris" aria-label="Tetris-Spiel starten" data-en-aria-label="Start Tetris"
+                    title="Tetris-Spiel mit WASD oder Pfeiltasten steuern" data-en-title="Play Tetris with WASD or the arrow keys">TETRIS</button>
+                <button class="lang-toggle" id="langToggle" type="button" lang="en" aria-label="Switch to English" title="Switch to English">EN</button>
                 <button class="theme-toggle" id="themeToggle" aria-pressed="false"
-                    aria-label="Theme zwischen Hell und Dunkel umschalten"
-                    title="Zwischen hellem und dunklem Theme wechseln">DARK</button>
+                    aria-label="Theme zwischen Hell und Dunkel umschalten" data-en-aria-label="Switch between light and dark theme"
+                    title="Zwischen hellem und dunklem Theme wechseln" data-en-title="Switch between light and dark theme">DARK</button>
             </div>
         </div>
     </nav>
@@ -125,8 +144,8 @@
                         Widmer</span><span class="cursor-blink" aria-hidden="true">_</span></h1>
                 <p id="heroTagline">creative developer</p>
                 <div class="hero-actions">
-                    <a class="cta-button" href="#projects">Projekte ansehen</a>
-                    <a class="cta-button cta-button-ghost" href="#contact">Kontakt</a>
+                    <a class="cta-button" href="#projects"><span data-lang="de">Projekte ansehen</span><span data-lang="en">View projects</span></a>
+                    <a class="cta-button cta-button-ghost" href="#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a>
                 </div>
             </div>
         </section>
@@ -134,26 +153,25 @@
         <!-- Projects Section -->
         <section id="projects" class="section-block fade-in" aria-labelledby="projectsTitle">
             <div class="section-heading">
-                <h2 id="projectsTitle" class="section-title">Meine Projekte</h2>
-                <p class="section-lead">Ausgewählte Arbeiten mit monochromem Charakter, reduzierter UI und Fokus auf Tempo, Lesbarkeit und Nutzbarkeit.</p>
+                <h2 id="projectsTitle" class="section-title"><span data-lang="de">Meine Projekte</span><span data-lang="en">My projects</span></h2>
+                <p class="section-lead"><span data-lang="de">Ausgewählte Arbeiten mit monochromem Charakter, reduzierter UI und Fokus auf Tempo, Lesbarkeit und Nutzbarkeit.</span><span data-lang="en">Selected work with a monochrome character, a pared-back UI and a focus on speed, readability and usability.</span></p>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <a href="/website.html" aria-label="Projektseite: Meine Website">
+                    <a href="/website.html" aria-label="Projektseite: Meine Website" data-en-aria-label="Project page: My website">
                         <div class="project-image">
-                            <img src="/assets/website.png" alt="Vorschau: Meine Website" loading="lazy" width="600" height="400">
+                            <img src="/assets/website.png" alt="Vorschau: Meine Website" data-en-alt="Preview: My website" loading="lazy" width="600" height="400">
                         </div>
                         <div class="project-content">
                             <div class="project-meta">
                                 <span class="project-label">LIVE</span>
                                 <span class="project-year">2025</span>
                             </div>
-                            <h3 class="project-title">Meine Website</h3>
-                            <p class="project-description">Monochromes Portfolio auf einem eigenen Design-System, mit
-                                Terminal-Akzent und Easter Eggs.</p>
+                            <h3 class="project-title"><span data-lang="de">Meine Website</span><span data-lang="en">My website</span></h3>
+                            <p class="project-description"><span data-lang="de">Monochromes Portfolio auf einem eigenen Design-System, mit Terminal-Akzent und Easter Eggs.</span><span data-lang="en">Monochrome portfolio built on its own design system, with a terminal accent and easter eggs.</span></p>
                             <ul class="project-highlights">
-                                <li>Ein Satz Tokens für Abstand, Typografie, Radius und Bewegung</li>
-                                <li>Performance-optimiert mit Vite und modularem JS</li>
+                                <li><span data-lang="de">Ein Satz Tokens für Abstand, Typografie, Radius und Bewegung</span><span data-lang="en">One set of tokens for spacing, typography, radius and motion</span></li>
+                                <li><span data-lang="de">Performance-optimiert mit Vite und modularem JS</span><span data-lang="en">Performance-tuned with Vite and modular JS</span></li>
                             </ul>
                             <div class="project-tech">
                                 <span class="tech-tag">HTML</span>
@@ -166,9 +184,9 @@
                 </div>
 
                 <div class="project-card">
-                    <a href="/app.html" aria-label="Projektseite: Schälle Sau">
+                    <a href="/app.html" aria-label="Projektseite: Schälle Sau" data-en-aria-label="Project page: Schälle Sau">
                         <div class="project-image">
-                            <img src="/assets/schaellesau.png" alt="Vorschau: Schälle Sau App" loading="lazy" width="600" height="400">
+                            <img src="/assets/schaellesau.png" alt="Vorschau: Schälle Sau App" data-en-alt="Preview: Schälle Sau app" loading="lazy" width="600" height="400">
                         </div>
                         <div class="project-content">
                             <div class="project-meta">
@@ -176,11 +194,10 @@
                                 <span class="project-year">2025</span>
                             </div>
                             <h3 class="project-title">Schälle Sau</h3>
-                            <p class="project-description">Scorekeeper-App mit minimalistischer UI, optimiert für
-                                schnelle Spielzüge.</p>
+                            <p class="project-description"><span data-lang="de">Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge.</span><span data-lang="en">Scorekeeper app with a minimal UI, built for quick turns.</span></p>
                             <ul class="project-highlights">
-                                <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
-                                <li>Native iOS-Experience mit klaren, reduzierten Controls</li>
+                                <li><span data-lang="de">Konzept, Entwicklung & UI/UX aus einer Hand</span><span data-lang="en">Concept, development & UI/UX from a single hand</span></li>
+                                <li><span data-lang="de">Native iOS-Experience mit klaren, reduzierten Controls</span><span data-lang="en">Native iOS experience with clear, reduced controls</span></li>
                             </ul>
                             <div class="project-tech">
                                 <span class="tech-tag">Swift</span>
@@ -193,9 +210,9 @@
                 </div>
 
                 <div class="project-card">
-                    <a href="/monodot.html" aria-label="Projektseite: monodot.">
+                    <a href="/monodot.html" aria-label="Projektseite: monodot." data-en-aria-label="Project page: monodot.">
                         <div class="project-image">
-                            <img src="/assets/app_icon_monodot.png" alt="Vorschau: monodot. App" loading="lazy" width="600" height="400">
+                            <img src="/assets/app_icon_monodot.png" alt="Vorschau: monodot. App" data-en-alt="Preview: monodot. app" loading="lazy" width="600" height="400">
                         </div>
                         <div class="project-content">
                             <div class="project-meta">
@@ -203,10 +220,10 @@
                                 <span class="project-year">2026</span>
                             </div>
                             <h3 class="project-title">monodot.</h3>
-                            <p class="project-description">Minimalistische App mit Fokus auf Reduktion und klare Interaktion.</p>
+                            <p class="project-description"><span data-lang="de">Minimalistische App mit Fokus auf Reduktion und klare Interaktion.</span><span data-lang="en">Minimal app focused on reduction and clear interaction.</span></p>
                             <ul class="project-highlights">
-                                <li>Konzept, Entwicklung & UI/UX aus einer Hand</li>
-                                <li>Native iOS-Experience mit monochromer Ästhetik</li>
+                                <li><span data-lang="de">Konzept, Entwicklung & UI/UX aus einer Hand</span><span data-lang="en">Concept, development & UI/UX from a single hand</span></li>
+                                <li><span data-lang="de">Native iOS-Experience mit monochromer Ästhetik</span><span data-lang="en">Native iOS experience with a monochrome aesthetic</span></li>
                             </ul>
                             <div class="project-tech">
                                 <span class="tech-tag">Swift</span>
@@ -219,10 +236,10 @@
                 </div>
 
                 <div class="project-card">
-                    <a href="/katoro.html" aria-label="Projektseite: katoro">
+                    <a href="/katoro.html" aria-label="Projektseite: katoro" data-en-aria-label="Project page: katoro">
                         <div class="project-image project-image-themeable">
-                            <img src="/assets/katoro_dark.png" alt="Vorschau: katoro App, Dark Mode" class="project-image-dark" loading="lazy" width="600" height="400">
-                            <img src="/assets/katoro_light.png" alt="Vorschau: katoro App, Light Mode" class="project-image-light" loading="lazy" width="600" height="400">
+                            <img src="/assets/katoro_dark.png" alt="Vorschau: katoro App, Dark Mode" data-en-alt="Preview: katoro app, dark mode" class="project-image-dark" loading="lazy" width="600" height="400">
+                            <img src="/assets/katoro_light.png" alt="Vorschau: katoro App, Light Mode" data-en-alt="Preview: katoro app, light mode" class="project-image-light" loading="lazy" width="600" height="400">
                         </div>
                         <div class="project-content">
                             <div class="project-meta">
@@ -230,10 +247,10 @@
                                 <span class="project-year">2026</span>
                             </div>
                             <h3 class="project-title">katoro</h3>
-                            <p class="project-description">Neues Konzeptprojekt im Pixel-Look mit maximal klarer Struktur und monochromer UI.</p>
+                            <p class="project-description"><span data-lang="de">Neues Konzeptprojekt im Pixel-Look mit maximal klarer Struktur und monochromer UI.</span><span data-lang="en">New concept project with a pixel look, a very clear structure and a monochrome UI.</span></p>
                             <ul class="project-highlights">
-                                <li>Icon- und Interface-Design abgestimmt auf Dark & Light Theme</li>
-                                <li>Native SwiftUI-Experience mit ablenkungsfreier Interaktion</li>
+                                <li><span data-lang="de">Icon- und Interface-Design abgestimmt auf Dark & Light Theme</span><span data-lang="en">Icon and interface design tuned for dark & light theme</span></li>
+                                <li><span data-lang="de">Native SwiftUI-Experience mit ablenkungsfreier Interaktion</span><span data-lang="en">Native SwiftUI experience with distraction-free interaction</span></li>
                             </ul>
                             <div class="project-tech">
                                 <span class="tech-tag">Swift</span>
@@ -250,35 +267,32 @@
         <!-- About Section -->
         <section id="about" class="section-block fade-in" aria-labelledby="aboutTitle">
             <div class="section-heading">
-                <h2 id="aboutTitle" class="section-title">Über mich</h2>
-                <p class="section-lead">Retro im Look, klar in der Führung: Ich verbinde Design, Code und Produktdenken zu Interfaces, die schnell verstanden werden.</p>
+                <h2 id="aboutTitle" class="section-title"><span data-lang="de">Über mich</span><span data-lang="en">About me</span></h2>
+                <p class="section-lead"><span data-lang="de">Retro im Look, klar in der Führung: Ich verbinde Design, Code und Produktdenken zu Interfaces, die schnell verstanden werden.</span><span data-lang="en">Retro in look, clear in guidance: I combine design, code and product thinking into interfaces that are understood at a glance.</span></p>
             </div>
             <div class="about-content">
                 <div class="about-text about-intro">
-                    <img src="/assets/me-portrait.webp" alt="Illustration von Daniel Widmer am Laptop"
+                    <img src="/assets/me-portrait.webp" alt="Illustration von Daniel Widmer am Laptop" data-en-alt="Illustration of Daniel Widmer at a laptop"
                         class="about-portrait" loading="lazy" width="480" height="480">
-                    <h3>Hallo, ich bin Daniel!</h3>
-                    <p>Seit 2017 arbeite ich als Senior Business Analyst: Anforderungen klären, Abläufe analysieren
-                        und selbst mitcoden. Seit 2024 entwickle ich daneben eigene iOS-Apps, von der Idee über das
-                        Design bis zum Release im App Store.</p>
-                    <p>Mich reizt die Schnittstelle zwischen Fachlichkeit und Technik: verstehen, was gebraucht
-                        wird, und daraus etwas bauen, das schlicht, schnell und gut bedienbar ist.</p>
+                    <h3><span data-lang="de">Hallo, ich bin Daniel!</span><span data-lang="en">Hi, I'm Daniel!</span></h3>
+                    <p><span data-lang="de">Seit 2017 arbeite ich als Senior Business Analyst: Anforderungen klären, Abläufe analysieren und selbst mitcoden. Seit 2024 entwickle ich daneben eigene iOS-Apps, von der Idee über das Design bis zum Release im App Store.</span><span data-lang="en">Since 2017 I have been working as a Senior Business Analyst: clarifying requirements, analysing processes and writing code myself. Since 2024 I have also been building my own iOS apps, from the idea and the design all the way to the App Store release.</span></p>
+                    <p><span data-lang="de">Mich reizt die Schnittstelle zwischen Fachlichkeit und Technik: verstehen, was gebraucht wird, und daraus etwas bauen, das schlicht, schnell und gut bedienbar ist.</span><span data-lang="en">What draws me in is the point where business and technology meet: understanding what is needed and turning it into something simple, fast and easy to use.</span></p>
                 </div>
 
 
                 <div class="about-text">
                     <!-- Career Timeline -->
                     <div class="timeline">
-                        <h4 class="subsection-title">Werdegang</h4>
+                        <h4 class="subsection-title"><span data-lang="de">Werdegang</span><span data-lang="en">Career</span></h4>
                         <div class="timeline-item">
-                            <div class="timeline-date">2017 - Heute</div>
+                            <div class="timeline-date">2017 - <span data-lang="de">Heute</span><span data-lang="en">Today</span></div>
                             <div class="timeline-title">Senior Business Analyst</div>
-                            <p>Requirement Engineering, Analysen und Coding</p>
+                            <p><span data-lang="de">Requirement Engineering, Analysen und Coding</span><span data-lang="en">Requirements engineering, analysis and coding</span></p>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">2024 - Heute</div>
+                            <div class="timeline-date">2024 - <span data-lang="de">Heute</span><span data-lang="en">Today</span></div>
                             <div class="timeline-title">App Developer</div>
-                            <p>Private Entwicklung iOS Applikationen</p>
+                            <p><span data-lang="de">Private Entwicklung iOS Applikationen</span><span data-lang="en">Independent iOS app development</span></p>
                         </div>
                     </div>
 
@@ -296,8 +310,7 @@
                                 <div class="skill-track-head">
                                     <span class="skill-track-title">Frontend &amp; UI</span>
                                 </div>
-                                <p class="skill-copy">Pixelgenaue Interfaces, schnelle Transitions, klare Typo.
-                                </p>
+                                <p class="skill-copy"><span data-lang="de">Pixelgenaue Interfaces, schnelle Transitions, klare Typo.</span><span data-lang="en">Pixel-perfect interfaces, fast transitions, clear type.</span></p>
                                 <div class="skill-track-pills">
                                     <span class="skill-pill">HTML</span>
                                     <span class="skill-pill">CSS</span>
@@ -309,7 +322,7 @@
                                 <div class="skill-track-head">
                                     <span class="skill-track-title">Design &amp; Prototyping</span>
                                 </div>
-                                <p class="skill-copy">UI/UX Konzepte, Click Dummies, Micro-Interactions.</p>
+                                <p class="skill-copy"><span data-lang="de">UI/UX Konzepte, Click Dummies, Micro-Interactions.</span><span data-lang="en">UI/UX concepts, clickable prototypes, micro-interactions.</span></p>
                                 <div class="skill-track-pills">
                                     <span class="skill-pill">Figma</span>
                                     <span class="skill-pill">Adobe CC</span>
@@ -321,7 +334,7 @@
                                 <div class="skill-track-head">
                                     <span class="skill-track-title">Backend &amp; Ops</span>
                                 </div>
-                                <p class="skill-copy">APIs, Automationen und solide Deployments.</p>
+                                <p class="skill-copy"><span data-lang="de">APIs, Automationen und solide Deployments.</span><span data-lang="en">APIs, automation and solid deployments.</span></p>
                                 <div class="skill-track-pills">
                                     <span class="skill-pill">Node.js</span>
                                     <span class="skill-pill">Python</span>
@@ -333,7 +346,7 @@
                                 <div class="skill-track-head">
                                     <span class="skill-track-title">Tools &amp; Workflow</span>
                                 </div>
-                                <p class="skill-copy">Saubere Repos, schnelle Iterationen, viel Automation.</p>
+                                <p class="skill-copy"><span data-lang="de">Saubere Repos, schnelle Iterationen, viel Automation.</span><span data-lang="en">Clean repos, fast iterations, lots of automation.</span></p>
                                 <div class="skill-track-pills">
                                     <span class="skill-pill">Git</span>
                                     <span class="skill-pill">CI/CD</span>
@@ -347,13 +360,13 @@
 
                 <!-- Interests (Rechts) -->
                 <div class="card interests-card">
-                    <h3 class="card-title">Interessen</h3>
+                    <h3 class="card-title"><span data-lang="de">Interessen</span><span data-lang="en">Interests</span></h3>
                     <div class="card-body">
                         <div class="terminal-grid">
                             <div class="interest-grid">
                                 <div class="interest-item">
                                     <div class="interest-meta">
-                                        <span class="interest-label">Fussball</span>
+                                        <span class="interest-label"><span data-lang="de">Fussball</span><span data-lang="en">Football</span></span>
                                         <span class="interest-tag">teamplay</span>
                                     </div>
                                 </div>
@@ -371,7 +384,7 @@
                                 </div>
                                 <div class="interest-item">
                                     <div class="interest-meta">
-                                        <span class="interest-label">Elektronik &amp; Gadgets</span>
+                                        <span class="interest-label"><span data-lang="de">Elektronik &amp; Gadgets</span><span data-lang="en">Electronics &amp; gadgets</span></span>
                                         <span class="interest-tag">tinkering</span>
                                     </div>
                                 </div>
@@ -383,7 +396,7 @@
                                 </div>
                                 <div class="interest-item">
                                     <div class="interest-meta">
-                                        <span class="interest-label">Fotografie</span>
+                                        <span class="interest-label"><span data-lang="de">Fotografie</span><span data-lang="en">Photography</span></span>
                                         <span class="interest-tag">capture</span>
                                     </div>
                                 </div>
@@ -393,16 +406,16 @@
                 </div>
             </div>
             <div class="cv-actions">
-                <a class="cta-button" href="/assets/CV_Daniel_Widmer.pdf" download>Lebenslauf als PDF</a>
-                <button type="button" class="cta-button cta-button-ghost" data-print-cv>Lebenslauf drucken</button>
+                <a class="cta-button" href="/assets/CV_Daniel_Widmer.pdf" download><span data-lang="de">Lebenslauf als PDF</span><span data-lang="en">CV as PDF</span></a>
+                <button type="button" class="cta-button cta-button-ghost" data-print-cv><span data-lang="de">Lebenslauf drucken</span><span data-lang="en">Print CV</span></button>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="section-block fade-in" aria-labelledby="contactTitle">
             <div class="section-heading">
-                <h2 id="contactTitle" class="section-title">Kontakt</h2>
-                <p class="section-lead">Direkt, reduziert und ohne Umwege: Wenn du ein Projekt, ein Produkt oder ein digitales Erlebnis verbessern willst, lass uns sprechen.</p>
+                <h2 id="contactTitle" class="section-title"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></h2>
+                <p class="section-lead"><span data-lang="de">Direkt, reduziert und ohne Umwege: Wenn du ein Projekt, ein Produkt oder ein digitales Erlebnis verbessern willst, lass uns sprechen.</span><span data-lang="en">Direct, reduced and straight to the point: if you want to improve a project, a product or a digital experience, let's talk.</span></p>
             </div>
             <div class="contact-terminal">
                 <div class="terminal-header">
@@ -412,10 +425,10 @@
                 <div class="contact-shell">
                     <div class="contact-grid">
                         <div class="contact-aside">
-                            <div class="contact-aside-title">Direkter Draht</div>
+                            <div class="contact-aside-title"><span data-lang="de">Direkter Draht</span><span data-lang="en">Direct line</span></div>
                             <ul class="contact-aside-list">
-                                <li>Die Nachricht landet direkt in meinem Postfach.</li>
-                                <li>Lieber anders? Schreib mir auf <a href="https://www.linkedin.com/in/daniel-widmer-26426a173"
+                                <li><span data-lang="de">Die Nachricht landet direkt in meinem Postfach.</span><span data-lang="en">Your message goes straight to my inbox.</span></li>
+                                <li><span data-lang="de">Lieber anders? Schreib mir auf</span><span data-lang="en">Prefer something else? Message me on</span> <a href="https://www.linkedin.com/in/daniel-widmer-26426a173"
                                         rel="noopener" target="_blank">LinkedIn</a>.</li>
                             </ul>
                             <div class="contact-code-block">
@@ -425,35 +438,31 @@
                             </div>
                         </div>
                         <div class="contact-form">
-                            <form id="contactForm" aria-label="Kontaktformular">
+                            <form id="contactForm" aria-label="Kontaktformular" data-en-aria-label="Contact form">
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label for="name">Name *</label>
                                         <input type="text" id="name" name="name" required aria-describedby="name-help"
                                             aria-required="true">
-                                        <div id="name-help" class="sr-only">Bitte geben Sie Ihren vollständigen Namen
-                                            ein</div>
+                                        <div id="name-help" class="sr-only"><span data-lang="de">Bitte gib deinen vollständigen Namen ein</span><span data-lang="en">Please enter your full name</span></div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">E-Mail *</label>
+                                        <label for="email"><span data-lang="de">E-Mail</span><span data-lang="en">Email</span> *</label>
                                         <input type="email" id="email" name="email" required
                                             aria-describedby="email-help" aria-required="true">
-                                        <div id="email-help" class="sr-only">Bitte geben Sie eine gültige E-Mail-Adresse
-                                            ein</div>
+                                        <div id="email-help" class="sr-only"><span data-lang="de">Bitte gib eine gültige E-Mail-Adresse ein</span><span data-lang="en">Please enter a valid email address</span></div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="subject">Betreff *</label>
+                                        <label for="subject"><span data-lang="de">Betreff</span><span data-lang="en">Subject</span> *</label>
                                         <input type="text" id="subject" name="subject" required
                                             aria-describedby="subject-help" aria-required="true">
-                                        <div id="subject-help" class="sr-only">Bitte geben Sie einen Betreff für Ihre
-                                            Nachricht ein</div>
+                                        <div id="subject-help" class="sr-only"><span data-lang="de">Bitte gib einen Betreff für deine Nachricht ein</span><span data-lang="en">Please enter a subject for your message</span></div>
                                     </div>
                                     <div class="form-group full-width">
-                                        <label for="message">Nachricht *</label>
+                                        <label for="message"><span data-lang="de">Nachricht</span><span data-lang="en">Message</span> *</label>
                                         <textarea id="message" name="message" required aria-describedby="message-help"
                                             aria-required="true" rows="6"></textarea>
-                                        <div id="message-help" class="sr-only">Bitte beschreiben Sie Ihr Anliegen oder
-                                            Ihre Frage</div>
+                                        <div id="message-help" class="sr-only"><span data-lang="de">Bitte beschreibe dein Anliegen oder deine Frage</span><span data-lang="en">Please describe your request or question</span></div>
                                     </div>
                                 </div>
 
@@ -468,10 +477,9 @@
                                 <div class="form-footer">
                                     <button type="submit" class="submit-btn" aria-describedby="submit-help">
                                         <span class="retro-loading-bar" aria-hidden="true"></span>
-                                        <span>Nachricht senden</span>
+                                        <span data-lang="de">Nachricht senden</span><span data-lang="en">Send message</span>
                                     </button>
-                                    <div id="submit-help" class="sr-only">Klicken Sie hier, um Ihre Nachricht zu senden
-                                    </div>
+                                    <div id="submit-help" class="sr-only"><span data-lang="de">Klicke hier, um deine Nachricht zu senden</span><span data-lang="en">Click here to send your message</span></div>
                                     <div class="form-message" role="status" aria-live="polite"></div>
                                 </div>
                             </form>
@@ -504,8 +512,8 @@
                     </svg>
                 </a>
             </div>
-            <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
-            <p><a href="/impressum.html">Impressum</a></p>
+            <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
+            <p><a href="/impressum.html"><span data-lang="de">Impressum</span><span data-lang="en">Legal notice</span></a></p>
             <p class="keyboard-shortcuts">
                 Easter Eggs: Snake <kbd>Ctrl+Alt+Shift+S</kbd> | Tetris <kbd>Ctrl+Alt+Shift+T</kbd>
             </p>
@@ -520,29 +528,27 @@
             <p class="subtitle">creative developer</p>
             <hr>
 
-            <h2>Über mich</h2>
-            <p>Seit 2017 arbeite ich als Senior Business Analyst: Anforderungen klären, Abläufe analysieren und selbst
-                mitcoden. Seit 2024 entwickle ich daneben eigene iOS-Apps, von der Idee über das Design bis zum Release
-                im App Store.</p>
+            <h2><span data-lang="de">Über mich</span><span data-lang="en">About me</span></h2>
+            <p><span data-lang="de">Seit 2017 arbeite ich als Senior Business Analyst: Anforderungen klären, Abläufe analysieren und selbst mitcoden. Seit 2024 entwickle ich daneben eigene iOS-Apps, von der Idee über das Design bis zum Release im App Store.</span><span data-lang="en">Since 2017 I have been working as a Senior Business Analyst: clarifying requirements, analysing processes and writing code myself. Since 2024 I have also been building my own iOS apps, from the idea and the design all the way to the App Store release.</span></p>
             <hr>
 
-            <h2>Werdegang</h2>
+            <h2><span data-lang="de">Werdegang</span><span data-lang="en">Career</span></h2>
             <ul>
                 <li>
-                    <strong>2017 - Heute</strong>
+                    <strong>2017 - <span data-lang="de">Heute</span><span data-lang="en">Today</span></strong>
                     Senior Business Analyst
-                    <span class="meta">Requirement Engineering, Analysen und Coding</span>
+                    <span class="meta"><span data-lang="de">Requirement Engineering, Analysen und Coding</span><span data-lang="en">Requirements engineering, analysis and coding</span></span>
                 </li>
                 <li>
-                    <strong>2024 - Heute</strong>
+                    <strong>2024 - <span data-lang="de">Heute</span><span data-lang="en">Today</span></strong>
                     App Developer
-                    <span class="meta">Private Entwicklung iOS Applikationen</span>
+                    <span class="meta"><span data-lang="de">Private Entwicklung iOS Applikationen</span><span data-lang="en">Independent iOS app development</span></span>
                 </li>
             </ul>
             <hr>
 
-            <h2>Interessen</h2>
-            <p>Fussball • Coding • Gaming • Elektronik/Gadgets • Sport • Fotografie</p>
+            <h2><span data-lang="de">Interessen</span><span data-lang="en">Interests</span></h2>
+            <p><span data-lang="de">Fussball • Coding • Gaming • Elektronik/Gadgets • Sport • Fotografie</span><span data-lang="en">Football • Coding • Gaming • Electronics/gadgets • Sport • Photography</span></p>
             <hr>
 
             <h2>Skills</h2>
@@ -561,8 +567,8 @@
             </div>
             <hr>
 
-            <h2>Kontakt</h2>
-            <p>Web: www.dwidmer.dev • E-Mail: widmer.daniel40@gmail.com</p>
+            <h2><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></h2>
+            <p>Web: www.dwidmer.dev • <span data-lang="de">E-Mail</span><span data-lang="en">Email</span>: widmer.daniel40@gmail.com</p>
         </div>
     </div>
 

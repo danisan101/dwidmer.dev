@@ -72,6 +72,7 @@ body.light-mode .nav-links a.active {
 }
 
 .theme-toggle,
+.lang-toggle,
 .easter-egg-btn {
     background: transparent;
     border: 1px solid var(--surface-border);
@@ -90,6 +91,7 @@ body.light-mode .nav-links a.active {
 }
 
 .theme-toggle:hover,
+.lang-toggle:hover,
 .easter-egg-btn:hover {
     opacity: 1;
     background: var(--light);
@@ -167,6 +169,7 @@ body.light-mode .mobile-menu-toggle:hover {
     }
 
     .theme-toggle,
+    .lang-toggle,
     .easter-egg-btn {
         padding: 0.3rem 0.4rem;
         font-size: var(--text-xs);

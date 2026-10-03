@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dwidmer-portfolio-v3';
+const CACHE_NAME = 'dwidmer-portfolio-v4';
 const OFFLINE_FALLBACKS = ['/', '/index.html'];
 
 self.addEventListener('install', (event) => {

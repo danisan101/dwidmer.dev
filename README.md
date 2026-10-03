@@ -6,6 +6,7 @@ Mein persönliches Portfolio – komplett überarbeitet mit modernem Build-Setup
 
 - **Design-System** - Ein Satz Tokens für Farbe, Abstand, Typografie, Radius, Elevation und Bewegung
 - **Monochrom** - Streng schwarzweiss, Hell- und Dunkelmodus über dieselben Tokens
+- **Zweisprachig** - Standard Deutsch, komplett auf Englisch umschaltbar (Button oben rechts, `?lang=en`-Links, Wahl bleibt gespeichert)
 - **Eine gemeinsame Basis** - Alle neun Seiten laden `site.css`, keine duplizierten Style-Blöcke
 - **Keine Laufzeit-Abhängigkeiten** - Reines HTML, CSS und ES-Module, gebaut mit Vite
 - **Lokale Schriften** - Space Mono in zwei Schnitten als woff2, kein externer Font-Dienst
@@ -80,6 +81,7 @@ dwidmer.dev/
 │       ├── subpage.js          # Einstiegspunkt aller übrigen Seiten
 │       └── modules/
 │           ├── theme.js        # Hell/Dunkel, persistent über localStorage
+│           ├── i18n.js         # DE/EN-Umschaltung: data-lang-Spans, data-en-*-Attribute
 │           ├── navigation.js   # Mobiles Menü, Smooth Scroll, aktiver Zustand
 │           ├── typing.js       # Tipp-Animation im Hero
 │           ├── parallax.js     # Punkteraster im Hintergrund
