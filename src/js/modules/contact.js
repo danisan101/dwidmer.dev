@@ -1,4 +1,7 @@
 // Contact Form Module with better feedback
+import { t, bilingual } from './i18n.js';
+
+const SEND_LABEL = bilingual('Nachricht senden', 'Send message');
 const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/widmer.daniel40@gmail.com';
 
 export function initContactForm() {
@@ -25,7 +28,7 @@ export function initContactForm() {
         loadingBar.className = 'retro-loading-bar';
         submitBtn.appendChild(loadingBar);
         const btnText = document.createElement('span');
-        btnText.textContent = 'ÜBERTRAGE NACHRICHT...';
+        btnText.innerHTML = bilingual('ÜBERTRAGE NACHRICHT...', 'TRANSMITTING MESSAGE...');
         submitBtn.appendChild(btnText);
         
         try {
@@ -42,9 +45,9 @@ export function initContactForm() {
                 // Show success state
                 submitBtn.classList.remove('loading');
                 submitBtn.classList.add('success');
-                submitBtn.innerHTML = '<span>✓ NACHRICHT ERFOLGREICH ÜBERTRAGEN</span>';
+                submitBtn.innerHTML = `<span>✓ ${bilingual('NACHRICHT ERFOLGREICH ÜBERTRAGEN', 'MESSAGE SENT SUCCESSFULLY')}</span>`;
                 
-                showMessage(formMessage, 'success', '✓ Nachricht erfolgreich gesendet! Vielen Dank!');
+                showMessage(formMessage, 'success', t('✓ Nachricht erfolgreich gesendet! Vielen Dank!', '✓ Message sent! Thank you!'));
                 form.reset();
                 clearValidation(form);
                 
@@ -52,17 +55,17 @@ export function initContactForm() {
                 setTimeout(() => {
                     submitBtn.classList.remove('success');
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Nachricht senden';
+                    submitBtn.innerHTML = SEND_LABEL;
                 }, 3000);
                 return; // Don't run finally block
             } else {
                 throw new Error('Server error');
             }
         } catch (error) {
-            showMessage(formMessage, 'error', '✗ Fehler beim Senden. Bitte versuche es später erneut.');
+            showMessage(formMessage, 'error', t('✗ Fehler beim Senden. Bitte versuche es später erneut.', '✗ Sending failed. Please try again later.'));
             submitBtn.disabled = false;
             submitBtn.classList.remove('loading');
-            submitBtn.textContent = 'Nachricht senden';
+            submitBtn.innerHTML = SEND_LABEL;
         }
     });
     
@@ -100,7 +103,7 @@ function validateField(field) {
     // Required check
     if (field.hasAttribute('required') && !value) {
         isValid = false;
-        errorMessage = 'Dieses Feld ist erforderlich';
+        errorMessage = bilingual('Dieses Feld ist erforderlich', 'This field is required');
     }
     
     // Email validation
@@ -108,7 +111,7 @@ function validateField(field) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
             isValid = false;
-            errorMessage = 'Bitte gib eine gültige E-Mail-Adresse ein';
+            errorMessage = bilingual('Bitte gib eine gültige E-Mail-Adresse ein', 'Please enter a valid email address');
         }
     }
     
@@ -126,7 +129,7 @@ function validateField(field) {
             errorEl.className = 'error-message';
             formGroup.appendChild(errorEl);
         }
-        errorEl.textContent = errorMessage;
+        errorEl.innerHTML = errorMessage;
     }
     
     return isValid;

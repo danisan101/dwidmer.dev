@@ -1,5 +1,15 @@
 # Changelog - Portfolio v2.0
 
+## Unveröffentlicht
+
+### Englische Version
+- Alle neun Seiten komplett auf Englisch verfügbar, Deutsch bleibt Standard
+- `EN`/`DE`-Button oben rechts neben dem Theme-Toggle; die Wahl wird in `localStorage` (`dw-lang`) gespeichert
+- Sprache wird vor dem ersten Paint gesetzt; `?lang=en` und Anker wie `#en` öffnen direkt die englische Fassung
+- Texte stehen in beiden Sprachen im Markup (`data-lang`), Attribute über `data-en-*`; ohne JavaScript bleibt die Seite deutsch
+- Datenschutzerklärungen von monodot. und Schälle Sau neu auch auf Englisch; Datenschutzerklärungen bleiben ohne JavaScript zweisprachig lesbar
+- Kontaktformular, Install-Button und Snake/Tetris-Overlays übersetzt
+
 ## Version 2.1.0 (September 2026)
 
 ### Designbereinigung: ruhig, konsistent, minimalistisch

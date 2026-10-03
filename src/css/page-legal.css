@@ -52,6 +52,11 @@
     text-align: center;
 }
 
+/* With JS the language toggle in the nav takes over */
+html.i18n .page-content .lang-switch {
+    display: none;
+}
+
 .page-content blockquote {
     margin: 0 0 var(--space-4);
     padding: var(--space-3) var(--space-4);
@@ -62,4 +67,9 @@
 .page-content code {
     font-size: 0.9em;
     overflow-wrap: anywhere;
+}
+
+/* The separator only matters when both languages are shown one after the other (no JS) */
+html.i18n [data-lang-block="en"] > .sep:first-child {
+    display: none;
 }

@@ -179,3 +179,17 @@ body.light-mode .parallax-dots {
 .honeypot {
     display: none;
 }
+
+/* Language switch — text is in the markup twice; <html lang> decides which half shows.
+   Without JS the page stays German. */
+html:not([lang="en"]) [data-lang="en"],
+html[lang="en"] [data-lang="de"] {
+    display: none !important;
+}
+
+/* Long bilingual documents (privacy policies) stay complete for visitors and
+   review crawlers without JS; only a running page hides the other language. */
+html.i18n:not([lang="en"]) [data-lang-block="en"],
+html.i18n[lang="en"] [data-lang-block="de"] {
+    display: none !important;
+}

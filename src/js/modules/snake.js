@@ -1,4 +1,5 @@
 import { log, error } from '../utils/logger.js';
+import { bilingual, translateAttributes } from './i18n.js';
 
 const OVERLAY_ID = 'snakeGameOverlay';
 const CONTAINER_ID = 'snakeGame';
@@ -53,27 +54,27 @@ function ensureOverlay() {
             <div class="game-terminal" id="${CONTAINER_ID}" role="dialog" aria-modal="true" aria-labelledby="snakeTitle">
                 <div class="terminal-header">
                     <div class="terminal-title" id="snakeTitle">snake.exe</div>
-                    <button type="button" class="close-btn" aria-label="Snake schliessen">✕</button>
+                    <button type="button" class="close-btn" aria-label="Snake schliessen" data-en-aria-label="Close Snake">✕</button>
                 </div>
                 <div class="terminal-body">
                     <div class="game-info">
                         <div class="score-info">
                             Score: <span id="${SCORE_ID}">0</span> | Highscore: <span id="${HIGHSCORE_ID}">0</span>
                         </div>
-                        <div class="controls-info">WASD / Pfeiltasten – ESC zum Schliessen</div>
+                        <div class="controls-info">${bilingual('WASD / Pfeiltasten – ESC zum Schliessen', 'WASD / arrow keys – ESC to close')}</div>
                     </div>
                     <div class="game-canvas-container">
-                        <canvas class="game-canvas" id="${CANVAS_ID}" width="${SIZE}" height="${SIZE}" aria-label="Snake Spielbrett" tabindex="0"></canvas>
+                        <canvas class="game-canvas" id="${CANVAS_ID}" width="${SIZE}" height="${SIZE}" aria-label="Snake Spielbrett" data-en-aria-label="Snake board" tabindex="0"></canvas>
                     </div>
                     <div class="game-controls">
-                        <span class="desktop-hint">WASD / Pfeiltasten zum Steuern</span>
-                        <span class="mobile-hint">Verwende die Buttons unten</span>
+                        <span class="desktop-hint">${bilingual('WASD / Pfeiltasten zum Steuern', 'WASD / arrow keys to steer')}</span>
+                        <span class="mobile-hint">${bilingual('Verwende die Buttons unten', 'Use the buttons below')}</span>
                     </div>
                     <div class="touch-controls snake-touch-controls">
-                        <button type="button" class="touch-btn" data-action="left" aria-label="Links">←</button>
-                        <button type="button" class="touch-btn" data-action="up" aria-label="Hoch">↑</button>
-                        <button type="button" class="touch-btn" data-action="down" aria-label="Runter">↓</button>
-                        <button type="button" class="touch-btn" data-action="right" aria-label="Rechts">→</button>
+                        <button type="button" class="touch-btn" data-action="left" aria-label="Links" data-en-aria-label="Left">←</button>
+                        <button type="button" class="touch-btn" data-action="up" aria-label="Hoch" data-en-aria-label="Up">↑</button>
+                        <button type="button" class="touch-btn" data-action="down" aria-label="Runter" data-en-aria-label="Down">↓</button>
+                        <button type="button" class="touch-btn" data-action="right" aria-label="Rechts" data-en-aria-label="Right">→</button>
                     </div>
                 </div>
             </div>
@@ -86,6 +87,7 @@ function ensureOverlay() {
         });
 
         document.body.appendChild(overlay);
+        translateAttributes(overlay);
 
         const closeBtn = overlay.querySelector('.close-btn');
         if (closeBtn) {
@@ -273,12 +275,12 @@ function ensureGameOverScreen() {
         screen.style.display = 'none';
         screen.innerHTML = `
             <h2>SNAKE - GAME OVER</h2>
-            <p>Final Score: <span id="snakeFinalScore">0</span></p>
+            <p>${bilingual('Punkte', 'Final Score')}: <span id="snakeFinalScore">0</span></p>
             <p>Highscore: <span id="snakeFinalHighscore">0</span></p>
-            <p>Press SPACE to restart or ESC to close</p>
+            <p>${bilingual('LEERTASTE für Neustart, ESC zum Schliessen', 'Press SPACE to restart or ESC to close')}</p>
             <div class="game-over-touch-controls">
-                <button type="button" class="game-over-btn" data-action="restart">RESTART</button>
-                <button type="button" class="game-over-btn" data-action="close">CLOSE</button>
+                <button type="button" class="game-over-btn" data-action="restart">${bilingual('NEUSTART', 'RESTART')}</button>
+                <button type="button" class="game-over-btn" data-action="close">${bilingual('SCHLIESSEN', 'CLOSE')}</button>
             </div>
         `;
         screen.querySelector('[data-action="restart"]').addEventListener('click', () => {

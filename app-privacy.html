@@ -2,13 +2,28 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <script>
+        /* Runs before paint: picks the language (?lang= link, #en anchor, saved choice,
+           otherwise German) so the page never flashes the wrong one. */
+        (function () {
+            var d = document.documentElement, l = null;
+            try {
+                var p = new URLSearchParams(location.search).get('lang');
+                if (p === 'en' || p === 'de') { l = p; localStorage.setItem('dw-lang', p); }
+                else if (/^#en(-|$)/.test(location.hash)) l = 'en';
+                else l = localStorage.getItem('dw-lang');
+            } catch (e) { }
+            d.lang = l === 'en' ? 'en' : 'de';
+            d.classList.add('i18n');
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Datenschutzerklärung – Schälle Sau</title>
+    <title data-en-text="Privacy Policy – Schälle Sau">Datenschutzerklärung – Schälle Sau</title>
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://dwidmer.dev/app-privacy.html">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/src/css/page-legal.css">
-    <meta name="description" content="Datenschutzerklärung für die App Schälle Sau und die zugehörige Website.">
+    <meta name="description" content="Datenschutzerklärung für die App Schälle Sau und die zugehörige Website." data-en-content="Privacy policy for the Schälle Sau app and its website.">
 </head>
 <body>
     <script>
@@ -25,20 +40,22 @@
     </script>
     <nav>
         <div class="nav-container">
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten" data-en-aria-label="Toggle menu">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="/index.html#home">Home</a></li>
-                <li><a href="/index.html#projects" class="active">Projekte</a></li>
-                <li><a href="/index.html#about">Über mich</a></li>
-                <li><a href="/index.html#contact">Kontakt</a></li>
+                <li><a href="/index.html#projects" class="active"><span data-lang="de">Projekte</span><span data-lang="en">Projects</span></a></li>
+                <li><a href="/index.html#about"><span data-lang="de">Über mich</span><span data-lang="en">About</span></a></li>
+                <li><a href="/index.html#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
             </ul>
             <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">LIGHT</button>
+                <button class="lang-toggle" id="langToggle" type="button" lang="en" aria-label="Switch to English" title="Switch to English">EN</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten" data-en-aria-label="Toggle theme">LIGHT</button>
             </div>
         </div>
     </nav>
     <main>
         <section class="page-content">
+            <div data-lang-block="de">
             <h2 class="section-title">Datenschutz­erklärung – Schälle Sau</h2>
         <h1>Datenschutz­hinweis – App Schälle Sau</h1>
         <hr>
@@ -88,8 +105,63 @@
         <p>Für Fragen oder Anliegen zum Datenschutz:<br>
         Daniel Widmer<br>
         Website: www.dwidmer.dev</p>
+            </div>
 
-        <p><a class="back" href="/app.html" aria-label="Zurück zur App-Seite">← Zurück zur App-Seite</a></p>
+            <div data-lang-block="en" lang="en">
+            <div class="sep">⸻</div>
+
+            <h2 class="section-title">Privacy Policy – Schälle Sau</h2>
+        <h1>Privacy notice – Schälle Sau app</h1>
+        <hr>
+
+        <h2>1. General</h2>
+        <p>Protecting your personal data is important to us. This privacy policy explains how the Schälle Sau app handles data. The app was built with great care to process as little personal data as possible.</p>
+
+        <div class="sep">⸻</div>
+
+        <h2>2. Controller</h2>
+        <p>Responsible for data processing:<br>
+        Daniel Widmer<br>
+        Website: www.dwidmer.dev</p>
+
+        <div class="sep">⸻</div>
+
+        <h2>3. Data collection and processing</h2>
+        <p>The app does not collect or transmit any personal data to the developer or to third parties.</p>
+
+        <p><strong>a) Local storage</strong><br>
+        All scores, player names and sessions are stored only locally on your device. There is no synchronisation or transfer to servers.</p>
+
+        <p><strong>b) No analytics or tracking services</strong><br>
+        The app uses no cookies, no analytics tools (such as Google Analytics, Firebase or similar) and no advertising. No usage statistics are collected.</p>
+
+        <p><strong>c) No external connections</strong><br>
+        The app does not connect to the internet and works fully offline. No IP addresses or device information are collected.</p>
+
+        <div class="sep">⸻</div>
+
+        <h2>4. Data security</h2>
+        <p>As all data is stored only locally on your device, protecting it is also your responsibility as a user. We recommend securing your device with a strong passcode or biometric protection (Face ID, Touch ID).</p>
+
+        <div class="sep">⸻</div>
+
+        <h2>5. User rights</h2>
+        <p>As no personal data is collected or processed, there is no need for requests for access, correction or deletion. If you want to remove the app and all stored data, simply uninstall the app – all locally stored data is deleted automatically.</p>
+
+        <div class="sep">⸻</div>
+
+        <h2>6. Changes to this privacy policy</h2>
+        <p>This privacy policy may be updated when needed, for example when the app gains new features or legal requirements change. The current version is always available at www.dwidmer.dev. If the German and English versions differ, the German version prevails.</p>
+
+        <div class="sep">⸻</div>
+
+        <h2>7. Contact</h2>
+        <p>For questions or concerns about privacy:<br>
+        Daniel Widmer<br>
+        Website: www.dwidmer.dev</p>
+            </div>
+
+        <p><a class="back" href="/app.html" aria-label="Zurück zur App-Seite" data-en-aria-label="Back to the app page">← <span data-lang="de">Zurück zur App-Seite</span><span data-lang="en">Back to the app page</span></a></p>
         </section>
     </main>
     <footer>
@@ -102,8 +174,8 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zM8 8h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.79 2.66 4.79 6.12V24h-4V15.2c0-2.1-.04-4.8-2.92-4.8-2.92 0-3.37 2.28-3.37 4.64V24H8V8z"></path></svg>
             </a>
         </div>
-        <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
-        <p><a href="/impressum.html">Impressum</a></p>
+        <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
+        <p><a href="/impressum.html"><span data-lang="de">Impressum</span><span data-lang="en">Legal notice</span></a></p>
         </div>
     </footer>
     <script type="module" src="/src/js/subpage.js"></script>

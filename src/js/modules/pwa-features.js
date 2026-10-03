@@ -1,5 +1,6 @@
 // PWA and Homescreen Widget Module
 import { log, error } from '../utils/logger.js';
+import { bilingual } from './i18n.js';
 
 export function initPWAFeatures() {
     log('📱 Initializing PWA Features...');
@@ -39,7 +40,7 @@ function addInstallPrompt() {
         
         // Create install button — matches monochrome terminal design
         const installButton = document.createElement('button');
-        installButton.textContent = '> App installieren';
+        installButton.innerHTML = `&gt; ${bilingual('App installieren', 'Install app')}`;
         installButton.className = 'pwa-install-btn';
         installButton.style.cssText = `
             position: fixed;

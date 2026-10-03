@@ -2,11 +2,26 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <script>
+        /* Runs before paint: picks the language (?lang= link, #en anchor, saved choice,
+           otherwise German) so the page never flashes the wrong one. */
+        (function () {
+            var d = document.documentElement, l = null;
+            try {
+                var p = new URLSearchParams(location.search).get('lang');
+                if (p === 'en' || p === 'de') { l = p; localStorage.setItem('dw-lang', p); }
+                else if (/^#en(-|$)/.test(location.hash)) l = 'en';
+                else l = localStorage.getItem('dw-lang');
+            } catch (e) { }
+            d.lang = l === 'en' ? 'en' : 'de';
+            d.classList.add('i18n');
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Datenschutzerklärung – katoro</title>
+    <title data-en-text="Privacy Policy – katoro">Datenschutzerklärung – katoro</title>
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://dwidmer.dev/katoro-privacy.html">
-    <meta name="description" content="Datenschutzerklärung / Privacy Policy für katoro: lokale Speicherung, optionaler Sync mit iCloud, Google Calendar, Google Tasks und Microsoft Outlook / To Do, kein Tracking, keine Werbung.">
+    <meta name="description" content="Datenschutzerklärung / Privacy Policy für katoro: lokale Speicherung, optionaler Sync mit iCloud, Google Calendar, Google Tasks und Microsoft Outlook / To Do, kein Tracking, keine Werbung." data-en-content="Privacy policy for katoro: local storage, optional sync with iCloud, Google Calendar, Google Tasks and Microsoft Outlook / To Do, no tracking, no ads.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/src/css/page-legal.css">
 </head>
@@ -25,26 +40,29 @@
     </script>
     <nav>
         <div class="nav-container">
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten">☰</button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Menü umschalten" data-en-aria-label="Toggle menu">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="/index.html#home">Home</a></li>
-                <li><a href="/index.html#projects" class="active">Projekte</a></li>
-                <li><a href="/index.html#about">Über mich</a></li>
-                <li><a href="/index.html#contact">Kontakt</a></li>
+                <li><a href="/index.html#projects" class="active"><span data-lang="de">Projekte</span><span data-lang="en">Projects</span></a></li>
+                <li><a href="/index.html#about"><span data-lang="de">Über mich</span><span data-lang="en">About</span></a></li>
+                <li><a href="/index.html#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
             </ul>
             <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten">LIGHT</button>
+                <button class="lang-toggle" id="langToggle" type="button" lang="en" aria-label="Switch to English" title="Switch to English">EN</button>
+                <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Theme umschalten" data-en-aria-label="Toggle theme">LIGHT</button>
             </div>
         </div>
     </nav>
     <main>
         <section class="page-content">
-            <h2 class="section-title">Datenschutz­erklärung</h2>
-
+            <!-- Both versions stay readable without JS; with JS the language toggle shows one.
+                 Links to #en (or any #en-… anchor) open the English version. -->
             <p class="lang-switch"><a href="#de">Deutsch</a> · <a href="#en" hreflang="en">English version</a></p>
 
             <!-- ============================== DEUTSCH ============================== -->
-            <div id="de">
+            <div id="de" data-lang-block="de">
+
+            <h2 class="section-title">Datenschutz­erklärung</h2>
 
             <p><strong>App:</strong> katoro (iOS, iPadOS)<br>
             <strong>Gültig ab:</strong> 3. Oktober 2026</p>
@@ -256,9 +274,8 @@
             </div>
 
             <!-- ============================== ENGLISH ============================== -->
+            <div id="en" lang="en" data-lang-block="en">
             <div class="sep">⸻</div>
-
-            <div id="en" lang="en">
 
             <h2 class="section-title">Privacy Policy</h2>
 
@@ -432,7 +449,7 @@
 
             </div>
 
-            <p><a class="back" href="/katoro.html" aria-label="Zurück zur katoro App-Seite">← Zurück zur katoro App-Seite</a></p>
+            <p><a class="back" href="/katoro.html" aria-label="Zurück zur katoro App-Seite" data-en-aria-label="Back to the katoro app page">← <span data-lang="de">Zurück zur katoro App-Seite</span><span data-lang="en">Back to the katoro app page</span></a></p>
         </section>
     </main>
     <footer>
@@ -445,8 +462,8 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zM8 8h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.79 2.66 4.79 6.12V24h-4V15.2c0-2.1-.04-4.8-2.92-4.8-2.92 0-3.37 2.28-3.37 4.64V24H8V8z"></path></svg>
             </a>
         </div>
-        <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. Alle Rechte vorbehalten.</p>
-        <p><a href="/impressum.html">Impressum</a></p>
+        <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
+        <p><a href="/impressum.html"><span data-lang="de">Impressum</span><span data-lang="en">Legal notice</span></a></p>
         </div>
     </footer>
     <script type="module" src="/src/js/subpage.js"></script>
