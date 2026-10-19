@@ -1,12 +1,13 @@
 /* Projects Section - Monochrome Style */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-6);
     align-items: stretch;
     max-width: var(--page-max);
     width: 100%;
     margin: 0 auto;
+    counter-reset: project;
 }
 
 .project-card {
@@ -14,57 +15,122 @@
     border: 1px solid var(--surface-border);
     border-radius: var(--radius-md);
     overflow: hidden;
-    transition: border-color var(--dur-base) var(--ease-out-quart);
+    transition: border-color var(--dur-base) var(--ease-out-quart), transform var(--dur-slow) var(--ease-out-quart), box-shadow var(--dur-slow) var(--ease-out-quart);
     position: relative;
+    counter-increment: project;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     border-color: var(--surface-border-strong);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-2);
+}
+
+/* Running number in the image corner: 01, 02, ... */
+.project-card .project-image::after {
+    content: counter(project, decimal-leading-zero);
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-4);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+}
+
+/* The newest project spans the full row: image left, text right */
+.project-card-featured {
+    grid-column: 1 / -1;
+}
+
+.project-card-featured > a {
+    display: grid !important;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    height: 100%;
+}
+
+.project-card-featured .project-image {
+    aspect-ratio: auto;
+    min-height: 320px;
+    border-right: 1px solid var(--surface-border);
+}
+
+.project-card-featured .project-image img {
+    width: 44%;
+}
+
+.project-card-featured .project-content {
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-card-featured .project-title {
+    font-size: var(--text-xl);
 }
 
 .project-image {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
     background: var(--surface);
-    display: block;
+    display: grid;
+    place-items: center;
     overflow: hidden;
     position: relative;
+    border-bottom: 1px solid var(--surface-border);
 }
 
-.project-image img {
+/* App icons sit as real icons on a dot grid instead of filling a grey box */
+.project-image-icon {
+    background-color: var(--surface);
+    background-image: radial-gradient(circle, var(--surface-border) 1px, transparent 1.5px);
+    background-size: 16px 16px;
+    background-position: center;
+}
+
+.project-image-icon img {
+    width: 38%;
+    max-width: 180px;
+    aspect-ratio: 1;
+    height: auto;
+    border-radius: 22.5%;
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--shadow-2);
+    filter: grayscale(100%);
+    transition: transform var(--dur-slow) var(--ease-out-quart);
+}
+
+/* Screenshots fill the frame */
+.project-image-shot img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform 0.5s var(--ease-out-quart);
-    filter: grayscale(100%) contrast(1.2);
+    object-position: top center;
+    transition: transform 0.6s var(--ease-out-quart);
 }
 
-/* Special styling for app icons to fit better */
-.project-card a[href="/app.html"] .project-image img,
-.project-card a[href="/monodot.html"] .project-image img,
-.project-image-themeable img {
-    object-fit: contain;
-    object-position: center;
-    padding: var(--space-6);
-    background: var(--surface);
-    filter: grayscale(100%) contrast(1.1);
+.project-card:hover .project-image-icon img {
+    transform: scale(1.06) rotate(-2deg);
 }
 
-.project-image-themeable .project-image-light {
-    display: none;
+.project-card:hover .project-image-shot img {
+    transform: scale(1.03);
 }
 
-body.light-mode .project-image-themeable .project-image-dark {
-    display: none;
+.project-arrow {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity var(--dur-base) var(--ease-out-quart), transform var(--dur-base) var(--ease-out-quart);
 }
 
-body.light-mode .project-image-themeable .project-image-light {
-    display: block;
-}
-
-.project-card:hover .project-image img {
-    transform: scale(1.04);
+.project-card:hover .project-arrow,
+.project-card:focus-within .project-arrow {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .project-card a,
@@ -103,6 +169,15 @@ body.light-mode .project-image-themeable .project-image-light {
     background: var(--tint-weak);
     font-size: var(--text-xs);
     letter-spacing: 1.5px;
+}
+
+.project-label-pulse::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: status-pulse 2s var(--ease-out-quart) infinite;
 }
 
 .project-year {
@@ -171,10 +246,29 @@ body.light-mode .project-image-themeable .project-image-light {
     border-color: var(--surface-border-strong);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: var(--space-4);
+        max-width: 560px;
+    }
+
+    .project-card-featured > a {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card-featured .project-image {
+        aspect-ratio: 16 / 10;
+        min-height: 0;
+        border-right: 0;
+    }
+
+    .project-card-featured .project-image img {
+        width: 38%;
+    }
+
+    .project-card-featured .project-content {
+        padding: var(--space-4);
     }
 
     .project-content {

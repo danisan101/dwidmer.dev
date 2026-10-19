@@ -104,8 +104,8 @@
     <a href="#main-content" class="skip-link"><span data-lang="de">Zum Hauptinhalt springen</span><span data-lang="en">Skip to main content</span></a>
 
     <!-- Parallax Background -->
-    <div class="parallax-container">
-        <div class="parallax-layer parallax-dots"></div>
+    <div class="parallax-container" aria-hidden="true">
+        <div class="parallax-layer parallax-dots"><div class="parallax-spotlight"></div></div>
     </div>
 
     <!-- Game over screens are created dynamically by snake.js and tetris.js -->
@@ -120,7 +120,6 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" aria-current="page">Home</a></li>
                 <li><a href="#projects"><span data-lang="de">Projekte</span><span data-lang="en">Projects</span></a></li>
-                <li><a href="#about"><span data-lang="de">Über mich</span><span data-lang="en">About</span></a></li>
                 <li><a href="#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
             </ul>
             <div class="nav-controls" role="group" aria-label="Spiel-, Sprach- und Theme-Kontrollen" data-en-aria-label="Game, language and theme controls">
@@ -140,6 +139,7 @@
         <!-- Hero Section -->
         <section id="home" class="section-block hero" aria-labelledby="heroTitle">
             <div class="hero-content fade-in">
+                <p class="hero-status"><span class="status-dot" aria-hidden="true"></span><span data-lang="de">Zürich, CH · baut gerade an katoro</span><span data-lang="en">Zurich, CH · currently building katoro</span></p>
                 <h1 id="heroTitle" tabindex="-1"><span id="heroName" class="hero-name" data-text="Daniel Widmer">Daniel
                         Widmer</span><span class="cursor-blink" aria-hidden="true">_</span></h1>
                 <p id="heroTagline">creative developer</p>
@@ -148,26 +148,116 @@
                     <a class="cta-button cta-button-ghost" href="#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a>
                 </div>
             </div>
+            <div class="hero-ticker" aria-hidden="true">
+                <div class="hero-ticker-track">
+                    <span>Swift</span><span>SwiftUI</span><span>iOS</span><span>JavaScript</span><span>HTML &amp; CSS</span><span>UI/UX</span><span>Design Systems</span><span>Figma</span><span>Vite</span><span>Business Analysis</span>
+                    <span>Swift</span><span>SwiftUI</span><span>iOS</span><span>JavaScript</span><span>HTML &amp; CSS</span><span>UI/UX</span><span>Design Systems</span><span>Figma</span><span>Vite</span><span>Business Analysis</span>
+                </div>
+            </div>
+            <a class="hero-scroll" href="#projects" aria-label="Zu den Projekten scrollen" data-en-aria-label="Scroll to projects"><span aria-hidden="true">scroll</span><span class="hero-scroll-line" aria-hidden="true"></span></a>
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="section-block fade-in" aria-labelledby="projectsTitle">
             <div class="section-heading">
+                <span class="section-eyebrow" aria-hidden="true">01 / <span data-lang="de">Projekte</span><span data-lang="en">Projects</span></span>
                 <h2 id="projectsTitle" class="section-title"><span data-lang="de">Meine Projekte</span><span data-lang="en">My projects</span></h2>
                 <p class="section-lead"><span data-lang="de">Ausgewählte Arbeiten mit monochromem Charakter, reduzierter UI und Fokus auf Tempo, Lesbarkeit und Nutzbarkeit.</span><span data-lang="en">Selected work with a monochrome character, a pared-back UI and a focus on speed, readability and usability.</span></p>
             </div>
             <div class="projects-grid">
-                <div class="project-card">
-                    <a href="/website.html" aria-label="Projektseite: Meine Website" data-en-aria-label="Project page: My website">
-                        <div class="project-image">
-                            <img src="/assets/website.png" alt="Vorschau: Meine Website" data-en-alt="Preview: My website" loading="lazy" width="600" height="400">
+                <article class="project-card project-card-featured">
+                    <a href="/katoro.html" aria-label="Projektseite: katoro" data-en-aria-label="Project page: katoro">
+                        <div class="project-image project-image-icon">
+                            <img src="/assets/katoro_dark.png" alt="katoro App-Icon" data-en-alt="katoro app icon" class="theme-img-dark" loading="lazy" width="512" height="512">
+                            <img src="/assets/katoro_light.png" alt="" class="theme-img-light" loading="lazy" width="512" height="512">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-label project-label-pulse"><span data-lang="de">BALD</span><span data-lang="en">SOON</span></span>
+                                <span class="project-year">2026</span>
+                            </div>
+                            <h3 class="project-title">katoro <span class="project-arrow" aria-hidden="true">&rarr;</span></h3>
+                            <p class="project-description"><span data-lang="de">Tagesplaner für Termine, Aufgaben, Routinen und Reflexionen, im Pixel-Look und konsequent monochrom.</span><span data-lang="en">A day planner for events, tasks, routines and reflections, with a pixel look and a strictly monochrome UI.</span></p>
+                            <ul class="project-highlights">
+                                <li><span data-lang="de">Zwei-Wege-Sync mit Apple, Google und Microsoft</span><span data-lang="en">Two-way sync with Apple, Google and Microsoft</span></li>
+                                <li><span data-lang="de">«Mein Tag» mit Wetter, Schritten und Bildschirmzeit</span><span data-lang="en">«My Day» with weather, steps and screen time</span></li>
+                                <li><span data-lang="de">Widgets, Live Activities und Orts-Erinnerungen</span><span data-lang="en">Widgets, Live Activities and location reminders</span></li>
+                                <li><span data-lang="de">Kein Konto, keine Server: Daten bleiben auf dem Gerät oder in deiner iCloud</span><span data-lang="en">No account, no servers: data stays on your device or in your iCloud</span></li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">SwiftUI</span>
+                                <span class="tech-tag">iOS &amp; iPadOS</span>
+                                <span class="tech-tag">WidgetKit</span>
+                                <span class="tech-tag">CloudKit</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="project-card">
+                    <a href="/monodot.html" aria-label="Projektseite: monodot." data-en-aria-label="Project page: monodot.">
+                        <div class="project-image project-image-icon">
+                            <img src="/assets/monodot_dark.png" alt="monodot. App-Icon" data-en-alt="monodot. app icon" class="theme-img-dark" loading="lazy" width="512" height="512">
+                            <img src="/assets/monodot_light.png" alt="" class="theme-img-light" loading="lazy" width="512" height="512">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-label">LIVE</span>
+                                <span class="project-year">2026</span>
+                            </div>
+                            <h3 class="project-title">monodot. <span class="project-arrow" aria-hidden="true">&rarr;</span></h3>
+                            <p class="project-description"><span data-lang="de">Minimalistische App mit Fokus auf Reduktion und klare Interaktion.</span><span data-lang="en">Minimal app focused on reduction and clear interaction.</span></p>
+                            <ul class="project-highlights">
+                                <li><span data-lang="de">Konzept, Entwicklung & UI/UX aus einer Hand</span><span data-lang="en">Concept, development & UI/UX from a single hand</span></li>
+                                <li><span data-lang="de">Native iOS-Experience mit monochromer Ästhetik</span><span data-lang="en">Native iOS experience with a monochrome aesthetic</span></li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">iOS</span>
+                                <span class="tech-tag">UI/UX</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="project-card">
+                    <a href="/app.html" aria-label="Projektseite: Schälle Sau" data-en-aria-label="Project page: Schälle Sau">
+                        <div class="project-image project-image-icon">
+                            <img src="/assets/schaellesau_dark.png" alt="Schälle Sau App-Icon" data-en-alt="Schälle Sau app icon" class="theme-img-dark" loading="lazy" width="512" height="512">
+                            <img src="/assets/schaellesau_light.png" alt="" class="theme-img-light" loading="lazy" width="512" height="512">
                         </div>
                         <div class="project-content">
                             <div class="project-meta">
                                 <span class="project-label">LIVE</span>
                                 <span class="project-year">2025</span>
                             </div>
-                            <h3 class="project-title"><span data-lang="de">Meine Website</span><span data-lang="en">My website</span></h3>
+                            <h3 class="project-title">Schälle Sau <span class="project-arrow" aria-hidden="true">&rarr;</span></h3>
+                            <p class="project-description"><span data-lang="de">Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge.</span><span data-lang="en">Scorekeeper app with a minimal UI, built for quick turns.</span></p>
+                            <ul class="project-highlights">
+                                <li><span data-lang="de">Konzept, Entwicklung & UI/UX aus einer Hand</span><span data-lang="en">Concept, development & UI/UX from a single hand</span></li>
+                                <li><span data-lang="de">Native iOS-Experience mit klaren, reduzierten Controls</span><span data-lang="en">Native iOS experience with clear, reduced controls</span></li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">iOS</span>
+                                <span class="tech-tag">UI/UX</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="project-card">
+                    <a href="/website.html" aria-label="Projektseite: Meine Website" data-en-aria-label="Project page: My website">
+                        <div class="project-image project-image-shot">
+                            <img src="/assets/website_dark.png" alt="Vorschau: Meine Website" data-en-alt="Preview: My website" class="theme-img-dark" loading="lazy" width="1200" height="750">
+                            <img src="/assets/website_light.png" alt="" class="theme-img-light" loading="lazy" width="1200" height="750">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-label">LIVE</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title"><span data-lang="de">Meine Website</span><span data-lang="en">My website</span> <span class="project-arrow" aria-hidden="true">&rarr;</span></h3>
                             <p class="project-description"><span data-lang="de">Monochromes Portfolio auf einem eigenen Design-System, mit Terminal-Akzent und Easter Eggs.</span><span data-lang="en">Monochrome portfolio built on its own design system, with a terminal accent and easter eggs.</span></p>
                             <ul class="project-highlights">
                                 <li><span data-lang="de">Ein Satz Tokens für Abstand, Typografie, Radius und Bewegung</span><span data-lang="en">One set of tokens for spacing, typography, radius and motion</span></li>
@@ -181,239 +271,14 @@
                             </div>
                         </div>
                     </a>
-                </div>
-
-                <div class="project-card">
-                    <a href="/app.html" aria-label="Projektseite: Schälle Sau" data-en-aria-label="Project page: Schälle Sau">
-                        <div class="project-image">
-                            <img src="/assets/schaellesau.png" alt="Vorschau: Schälle Sau App" data-en-alt="Preview: Schälle Sau app" loading="lazy" width="600" height="400">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-label">LIVE</span>
-                                <span class="project-year">2025</span>
-                            </div>
-                            <h3 class="project-title">Schälle Sau</h3>
-                            <p class="project-description"><span data-lang="de">Scorekeeper-App mit minimalistischer UI, optimiert für schnelle Spielzüge.</span><span data-lang="en">Scorekeeper app with a minimal UI, built for quick turns.</span></p>
-                            <ul class="project-highlights">
-                                <li><span data-lang="de">Konzept, Entwicklung & UI/UX aus einer Hand</span><span data-lang="en">Concept, development & UI/UX from a single hand</span></li>
-                                <li><span data-lang="de">Native iOS-Experience mit klaren, reduzierten Controls</span><span data-lang="en">Native iOS experience with clear, reduced controls</span></li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">Swift</span>
-                                <span class="tech-tag">iOS</span>
-                                <span class="tech-tag">UI/UX</span>
-                                <span class="tech-tag">Mobile Design</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <a href="/monodot.html" aria-label="Projektseite: monodot." data-en-aria-label="Project page: monodot.">
-                        <div class="project-image">
-                            <img src="/assets/app_icon_monodot.png" alt="Vorschau: monodot. App" data-en-alt="Preview: monodot. app" loading="lazy" width="600" height="400">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-label">LIVE</span>
-                                <span class="project-year">2026</span>
-                            </div>
-                            <h3 class="project-title">monodot.</h3>
-                            <p class="project-description"><span data-lang="de">Minimalistische App mit Fokus auf Reduktion und klare Interaktion.</span><span data-lang="en">Minimal app focused on reduction and clear interaction.</span></p>
-                            <ul class="project-highlights">
-                                <li><span data-lang="de">Konzept, Entwicklung & UI/UX aus einer Hand</span><span data-lang="en">Concept, development & UI/UX from a single hand</span></li>
-                                <li><span data-lang="de">Native iOS-Experience mit monochromer Ästhetik</span><span data-lang="en">Native iOS experience with a monochrome aesthetic</span></li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">Swift</span>
-                                <span class="tech-tag">iOS</span>
-                                <span class="tech-tag">UI/UX</span>
-                                <span class="tech-tag">Mobile Design</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <a href="/katoro.html" aria-label="Projektseite: katoro" data-en-aria-label="Project page: katoro">
-                        <div class="project-image project-image-themeable">
-                            <img src="/assets/katoro_dark.png" alt="Vorschau: katoro App, Dark Mode" data-en-alt="Preview: katoro app, dark mode" class="project-image-dark" loading="lazy" width="600" height="400">
-                            <img src="/assets/katoro_light.png" alt="Vorschau: katoro App, Light Mode" data-en-alt="Preview: katoro app, light mode" class="project-image-light" loading="lazy" width="600" height="400">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-label">NEW</span>
-                                <span class="project-year">2026</span>
-                            </div>
-                            <h3 class="project-title">katoro</h3>
-                            <p class="project-description"><span data-lang="de">Neues Konzeptprojekt im Pixel-Look mit maximal klarer Struktur und monochromer UI.</span><span data-lang="en">New concept project with a pixel look, a very clear structure and a monochrome UI.</span></p>
-                            <ul class="project-highlights">
-                                <li><span data-lang="de">Icon- und Interface-Design abgestimmt auf Dark & Light Theme</span><span data-lang="en">Icon and interface design tuned for dark & light theme</span></li>
-                                <li><span data-lang="de">Native SwiftUI-Experience mit ablenkungsfreier Interaktion</span><span data-lang="en">Native SwiftUI experience with distraction-free interaction</span></li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">Swift</span>
-                                <span class="tech-tag">iOS</span>
-                                <span class="tech-tag">Design System</span>
-                                <span class="tech-tag">Pixel UI</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section-block fade-in" aria-labelledby="aboutTitle">
-            <div class="section-heading">
-                <h2 id="aboutTitle" class="section-title"><span data-lang="de">Über mich</span><span data-lang="en">About me</span></h2>
-                <p class="section-lead"><span data-lang="de">Retro im Look, klar in der Führung: Ich verbinde Design, Code und Produktdenken zu Interfaces, die schnell verstanden werden.</span><span data-lang="en">Retro in look, clear in guidance: I combine design, code and product thinking into interfaces that are understood at a glance.</span></p>
-            </div>
-            <div class="about-content">
-                <div class="about-text about-intro">
-                    <img src="/assets/me-portrait.webp" alt="Illustration von Daniel Widmer am Laptop" data-en-alt="Illustration of Daniel Widmer at a laptop"
-                        class="about-portrait" loading="lazy" width="480" height="480">
-                    <h3><span data-lang="de">Hallo, ich bin Daniel!</span><span data-lang="en">Hi, I'm Daniel!</span></h3>
-                    <p><span data-lang="de">Seit 2017 arbeite ich als Senior Business Analyst: Anforderungen klären, Abläufe analysieren und selbst mitcoden. Seit 2024 entwickle ich daneben eigene iOS-Apps, von der Idee über das Design bis zum Release im App Store.</span><span data-lang="en">Since 2017 I have been working as a Senior Business Analyst: clarifying requirements, analysing processes and writing code myself. Since 2024 I have also been building my own iOS apps, from the idea and the design all the way to the App Store release.</span></p>
-                    <p><span data-lang="de">Mich reizt die Schnittstelle zwischen Fachlichkeit und Technik: verstehen, was gebraucht wird, und daraus etwas bauen, das schlicht, schnell und gut bedienbar ist.</span><span data-lang="en">What draws me in is the point where business and technology meet: understanding what is needed and turning it into something simple, fast and easy to use.</span></p>
-                </div>
-
-
-                <div class="about-text">
-                    <!-- Career Timeline -->
-                    <div class="timeline">
-                        <h4 class="subsection-title"><span data-lang="de">Werdegang</span><span data-lang="en">Career</span></h4>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2017 - <span data-lang="de">Heute</span><span data-lang="en">Today</span></div>
-                            <div class="timeline-title">Senior Business Analyst</div>
-                            <p><span data-lang="de">Requirement Engineering, Analysen und Coding</span><span data-lang="en">Requirements engineering, analysis and coding</span></p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2024 - <span data-lang="de">Heute</span><span data-lang="en">Today</span></div>
-                            <div class="timeline-title">App Developer</div>
-                            <p><span data-lang="de">Private Entwicklung iOS Applikationen</span><span data-lang="en">Independent iOS app development</span></p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Full Width Matrix Panels (Skills & Interests) -->
-            <div class="matrix-panels">
-                <!-- Skills (Links) -->
-                <div class="card skills-card">
-                    <h3 class="card-title">Skills</h3>
-                    <div class="card-body">
-                        <div class="skills-dossier">
-                            <div class="skill-track">
-                                <div class="skill-track-head">
-                                    <span class="skill-track-title">Frontend &amp; UI</span>
-                                </div>
-                                <p class="skill-copy"><span data-lang="de">Pixelgenaue Interfaces, schnelle Transitions, klare Typo.</span><span data-lang="en">Pixel-perfect interfaces, fast transitions, clear type.</span></p>
-                                <div class="skill-track-pills">
-                                    <span class="skill-pill">HTML</span>
-                                    <span class="skill-pill">CSS</span>
-                                    <span class="skill-pill">JavaScript</span>
-                                    <span class="skill-pill">SwiftUI</span>
-                                </div>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-track-head">
-                                    <span class="skill-track-title">Design &amp; Prototyping</span>
-                                </div>
-                                <p class="skill-copy"><span data-lang="de">UI/UX Konzepte, Click Dummies, Micro-Interactions.</span><span data-lang="en">UI/UX concepts, clickable prototypes, micro-interactions.</span></p>
-                                <div class="skill-track-pills">
-                                    <span class="skill-pill">Figma</span>
-                                    <span class="skill-pill">Adobe CC</span>
-                                    <span class="skill-pill">User Flows</span>
-                                    <span class="skill-pill">Design Systems</span>
-                                </div>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-track-head">
-                                    <span class="skill-track-title">Backend &amp; Ops</span>
-                                </div>
-                                <p class="skill-copy"><span data-lang="de">APIs, Automationen und solide Deployments.</span><span data-lang="en">APIs, automation and solid deployments.</span></p>
-                                <div class="skill-track-pills">
-                                    <span class="skill-pill">Node.js</span>
-                                    <span class="skill-pill">Python</span>
-                                    <span class="skill-pill">SQL</span>
-                                    <span class="skill-pill">AWS</span>
-                                </div>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-track-head">
-                                    <span class="skill-track-title">Tools &amp; Workflow</span>
-                                </div>
-                                <p class="skill-copy"><span data-lang="de">Saubere Repos, schnelle Iterationen, viel Automation.</span><span data-lang="en">Clean repos, fast iterations, lots of automation.</span></p>
-                                <div class="skill-track-pills">
-                                    <span class="skill-pill">Git</span>
-                                    <span class="skill-pill">CI/CD</span>
-                                    <span class="skill-pill">Vite</span>
-                                    <span class="skill-pill">Terminal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interests (Rechts) -->
-                <div class="card interests-card">
-                    <h3 class="card-title"><span data-lang="de">Interessen</span><span data-lang="en">Interests</span></h3>
-                    <div class="card-body">
-                        <div class="terminal-grid">
-                            <div class="interest-grid">
-                                <div class="interest-item">
-                                    <div class="interest-meta">
-                                        <span class="interest-label"><span data-lang="de">Fussball</span><span data-lang="en">Football</span></span>
-                                        <span class="interest-tag">teamplay</span>
-                                    </div>
-                                </div>
-                                <div class="interest-item">
-                                    <div class="interest-meta">
-                                        <span class="interest-label">Coding</span>
-                                        <span class="interest-tag">side quests</span>
-                                    </div>
-                                </div>
-                                <div class="interest-item">
-                                    <div class="interest-meta">
-                                        <span class="interest-label">Gaming</span>
-                                        <span class="interest-tag">retro vibes</span>
-                                    </div>
-                                </div>
-                                <div class="interest-item">
-                                    <div class="interest-meta">
-                                        <span class="interest-label"><span data-lang="de">Elektronik &amp; Gadgets</span><span data-lang="en">Electronics &amp; gadgets</span></span>
-                                        <span class="interest-tag">tinkering</span>
-                                    </div>
-                                </div>
-                                <div class="interest-item">
-                                    <div class="interest-meta">
-                                        <span class="interest-label">Sport</span>
-                                        <span class="interest-tag">energy boost</span>
-                                    </div>
-                                </div>
-                                <div class="interest-item">
-                                    <div class="interest-meta">
-                                        <span class="interest-label"><span data-lang="de">Fotografie</span><span data-lang="en">Photography</span></span>
-                                        <span class="interest-tag">capture</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cv-actions">
-                <a class="cta-button" href="/assets/CV_Daniel_Widmer.pdf" download><span data-lang="de">Lebenslauf als PDF</span><span data-lang="en">CV as PDF</span></a>
-                <button type="button" class="cta-button cta-button-ghost" data-print-cv><span data-lang="de">Lebenslauf drucken</span><span data-lang="en">Print CV</span></button>
+                </article>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="section-block fade-in" aria-labelledby="contactTitle">
             <div class="section-heading">
+                <span class="section-eyebrow" aria-hidden="true">02 / <span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></span>
                 <h2 id="contactTitle" class="section-title"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></h2>
                 <p class="section-lead"><span data-lang="de">Direkt, reduziert und ohne Umwege: Wenn du ein Projekt, ein Produkt oder ein digitales Erlebnis verbessern willst, lass uns sprechen.</span><span data-lang="en">Direct, reduced and straight to the point: if you want to improve a project, a product or a digital experience, let's talk.</span></p>
             </div>
@@ -513,64 +378,12 @@
                 </a>
             </div>
             <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
-            <p><a href="/impressum.html"><span data-lang="de">Impressum</span><span data-lang="en">Legal notice</span></a></p>
+            <p><a href="/impressum.html"><span data-lang="de">Impressum</span><span data-lang="en">Legal notice</span></a> | <a href="/datenschutz.html"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></a></p>
             <p class="keyboard-shortcuts">
                 Easter Eggs: Snake <kbd>Ctrl+Alt+Shift+S</kbd> | Tetris <kbd>Ctrl+Alt+Shift+T</kbd>
             </p>
         </div>
     </footer>
-
-    <!-- Printable CV (hidden) -->
-    <!-- Printable CV (hidden on screen, visible on print via print.css) -->
-    <div id="cvPrintable">
-        <div class="cv-container">
-            <h1>Daniel Widmer</h1>
-            <p class="subtitle">creative developer</p>
-            <hr>
-
-            <h2><span data-lang="de">Über mich</span><span data-lang="en">About me</span></h2>
-            <p><span data-lang="de">Seit 2017 arbeite ich als Senior Business Analyst: Anforderungen klären, Abläufe analysieren und selbst mitcoden. Seit 2024 entwickle ich daneben eigene iOS-Apps, von der Idee über das Design bis zum Release im App Store.</span><span data-lang="en">Since 2017 I have been working as a Senior Business Analyst: clarifying requirements, analysing processes and writing code myself. Since 2024 I have also been building my own iOS apps, from the idea and the design all the way to the App Store release.</span></p>
-            <hr>
-
-            <h2><span data-lang="de">Werdegang</span><span data-lang="en">Career</span></h2>
-            <ul>
-                <li>
-                    <strong>2017 - <span data-lang="de">Heute</span><span data-lang="en">Today</span></strong>
-                    Senior Business Analyst
-                    <span class="meta"><span data-lang="de">Requirement Engineering, Analysen und Coding</span><span data-lang="en">Requirements engineering, analysis and coding</span></span>
-                </li>
-                <li>
-                    <strong>2024 - <span data-lang="de">Heute</span><span data-lang="en">Today</span></strong>
-                    App Developer
-                    <span class="meta"><span data-lang="de">Private Entwicklung iOS Applikationen</span><span data-lang="en">Independent iOS app development</span></span>
-                </li>
-            </ul>
-            <hr>
-
-            <h2><span data-lang="de">Interessen</span><span data-lang="en">Interests</span></h2>
-            <p><span data-lang="de">Fussball • Coding • Gaming • Elektronik/Gadgets • Sport • Fotografie</span><span data-lang="en">Football • Coding • Gaming • Electronics/gadgets • Sport • Photography</span></p>
-            <hr>
-
-            <h2>Skills</h2>
-            <div>
-                <h3>Frontend Development</h3>
-                <p>JavaScript, HTML5, CSS3, Swift</p>
-
-                <h3>Backend Development</h3>
-                <p>Node.js, Python, PHP, SQL</p>
-
-                <h3>Design & UX</h3>
-                <p>Figma, Adobe Suite, UI/UX</p>
-
-                <h3>Tools & Technologies</h3>
-                <p>Git, AWS, Vite</p>
-            </div>
-            <hr>
-
-            <h2><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></h2>
-            <p>Web: www.dwidmer.dev • <span data-lang="de">E-Mail</span><span data-lang="en">Email</span>: widmer.daniel40@gmail.com</p>
-        </div>
-    </div>
 
     <script type="module" src="/src/js/main.js"></script>
 

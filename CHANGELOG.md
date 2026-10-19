@@ -2,6 +2,15 @@
 
 ## Unveröffentlicht
 
+### Website-Refresh (Oktober 2026)
+- «Über mich»-Sektion samt Lebenslauf (PDF, Druckansicht), Porträt und Navigationslink entfernt
+- katoro als Tagesplaner beschrieben (Termine, Aufgaben, Routinen, «Mein Tag», Kalender-Sync, Widgets, Live Activities); Projektkarte als grosse Hauptkarte, Hinweis «Bald im App Store» statt toter App-Store-Link
+- Neue Datenschutzerklärung für die Website (`datenschutz.html`): GitHub Pages, Kontaktformular über FormSubmit, Plausible, localStorage und Service Worker; im Footer jeder Seite verlinkt
+- Projektbilder je in einer hellen und dunklen Fassung (`*_dark.png`/`*_light.png`), App-Icons als echte Icons auf Punkteraster, neue Website-Screenshots; Bilder auf 512 px verkleinert
+- App-Store-Button in eigenem Stil statt Apples verlinktem Badge-Bild, dadurch keine Anfrage an Apple beim Seitenaufruf
+- Hero mit Statuszeile, Skill-Ticker und Scroll-Hinweis; Punkteraster leuchtet um den Mauszeiger auf; Projektkarten mit Nummerierung, Hover-Lift und Pfeil
+- Skip-Link ragte sichtbar oben links ins Bild
+
 ### Englische Version
 - Alle neun Seiten komplett auf Englisch verfügbar, Deutsch bleibt Standard
 - `EN`/`DE`-Button oben rechts neben dem Theme-Toggle; die Wahl wird in `localStorage` (`dw-lang`) gespeichert

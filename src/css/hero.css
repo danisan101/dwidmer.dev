@@ -46,3 +46,108 @@
     justify-content: center;
     gap: var(--space-3);
 }
+
+/* Small status line above the name */
+.hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-pill);
+    background: var(--tint-weak);
+    font-size: var(--text-xs) !important;
+    letter-spacing: 0.08em !important;
+    text-transform: none !important;
+    color: var(--text-muted);
+    margin-bottom: var(--space-4) !important;
+}
+
+/* Endless skills ticker along the bottom of the hero */
+.hero-ticker {
+    position: absolute;
+    left: 50%;
+    bottom: calc(var(--space-16) + var(--space-8));
+    width: 100vw;
+    transform: translateX(-50%);
+    overflow: hidden;
+    border-block: 1px solid var(--surface-border);
+    padding-block: var(--space-3);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+}
+
+.hero-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 40s linear infinite;
+}
+
+.hero-ticker-track span {
+    font-size: var(--text-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding-inline: var(--space-6);
+}
+
+.hero-ticker-track span::after {
+    content: '\25A0';
+    margin-left: var(--space-12);
+    font-size: 0.5em;
+    vertical-align: middle;
+    opacity: 0.5;
+}
+
+@keyframes ticker {
+    to { transform: translateX(-50%); }
+}
+
+/* Scroll cue */
+.hero-scroll {
+    position: absolute;
+    bottom: var(--space-6);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.hero-scroll-line {
+    width: 1px;
+    height: var(--space-8);
+    background: linear-gradient(var(--light), transparent);
+    animation: scroll-cue 2s var(--ease-out-quart) infinite;
+    transform-origin: top;
+}
+
+@keyframes scroll-cue {
+    0% { transform: scaleY(0); opacity: 1; }
+    60% { transform: scaleY(1); opacity: 1; }
+    100% { transform: scaleY(1); opacity: 0; }
+}
+
+.hero-scroll:hover {
+    color: var(--light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-ticker-track {
+        animation: none;
+    }
+}
+
+@media (max-height: 620px) {
+    .hero-ticker,
+    .hero-scroll {
+        display: none;
+    }
+}

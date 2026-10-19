@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dwidmer.dev/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dwidmer.dev/website.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dwidmer.dev/app.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dwidmer.dev/monodot.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -32,19 +32,25 @@
   </url>
   <url>
     <loc>https://dwidmer.dev/katoro.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dwidmer.dev/katoro-privacy.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://dwidmer.dev/impressum.html</loc>
     <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://dwidmer.dev/datenschutz.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

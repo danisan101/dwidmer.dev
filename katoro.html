@@ -21,7 +21,7 @@
     <title data-en-text="katoro – iOS app by Daniel Widmer">katoro – iOS App von Daniel Widmer</title>
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://dwidmer.dev/katoro.html">
-    <meta name="description" content="katoro – Minimalistische iOS-App mit Fokus auf Klarheit, Struktur und Rhythmus. Bald verfügbar." data-en-content="katoro – minimal iOS app focused on clarity, structure and rhythm. Coming soon.">
+    <meta name="description" content="katoro – Tagesplaner für iPhone und iPad: Termine, Aufgaben, Routinen und Reflexionen an einem Ort, mit Kalender-Sync für Apple, Google und Microsoft. Bald im App Store." data-en-content="katoro – a day planner for iPhone and iPad: events, tasks, routines and reflections in one place, with calendar sync for Apple, Google and Microsoft. Coming soon to the App Store.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/src/css/page-project.css">
 </head>
@@ -44,7 +44,6 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/index.html#home">Home</a></li>
                 <li><a href="/index.html#projects" class="active"><span data-lang="de">Projekte</span><span data-lang="en">Projects</span></a></li>
-                <li><a href="/index.html#about"><span data-lang="de">Über mich</span><span data-lang="en">About</span></a></li>
                 <li><a href="/index.html#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
             </ul>
             <div class="nav-controls">
@@ -56,34 +55,40 @@
 
     <main>
         <section class="app-hero">
-            <img src="/assets/katoro_dark.png" alt="katoro App Icon" class="app-icon app-icon-dark">
-            <img src="/assets/katoro_light.png" alt="katoro App Icon (Light)" data-en-alt="katoro app icon (light)" class="app-icon app-icon-light">
+            <img src="/assets/katoro_dark.png" alt="katoro App-Icon" data-en-alt="katoro app icon" class="app-icon theme-img-dark" width="512" height="512">
+            <img src="/assets/katoro_light.png" alt="katoro App-Icon" data-en-alt="katoro app icon" class="app-icon theme-img-light" width="512" height="512">
             <h1>katoro</h1>
-            <p class="tagline"><span data-lang="de">Minimalistische App mit Fokus auf Klarheit, Struktur und schnelle Interaktion.</span><span data-lang="en">Minimal app focused on clarity, structure and fast interaction.</span></p>
-            <a href="#" class="app-store-badge" target="_blank" rel="noopener" aria-label="katoro bald verfügbar" data-en-aria-label="katoro coming soon">
-                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/de-de?size=250x83" data-en-src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Laden im App Store" data-en-alt="Download on the App Store">
-            </a>
+            <p class="tagline"><span data-lang="de">Dein Tag an einem Ort: Termine, Aufgaben, Routinen und Reflexionen, im Pixel-Look und ohne Ablenkung.</span><span data-lang="en">Your day in one place: events, tasks, routines and reflections, with a pixel look and no distractions.</span></p>
+            <span class="app-store-soon"><span class="status-dot" aria-hidden="true"></span><span data-lang="de">Bald im App Store · iPhone &amp; iPad</span><span data-lang="en">Coming soon to the App Store · iPhone &amp; iPad</span></span>
         </section>
 
         <section class="app-features">
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3><span data-lang="de">Monochrome Ästhetik</span><span data-lang="en">Monochrome aesthetic</span></h3>
-                    <p><span data-lang="de">Reduziertes Design mit Fokus auf klare Formen und kontrastreiche Darstellung.</span><span data-lang="en">Reduced design focused on clear shapes and high contrast.</span></p>
+                    <h3><span data-lang="de">Alles an einem Ort</span><span data-lang="en">Everything in one place</span></h3>
+                    <p><span data-lang="de">Termine, Aufgaben, Listen, Routinen und Notizen in einer Ansicht, dazu Reflexionen und Fokus-Sitzungen.</span><span data-lang="en">Events, tasks, lists, routines and notes in one view, plus reflections and focus sessions.</span></p>
                 </div>
                 <div class="feature-card">
-                    <h3><span data-lang="de">Klare Interaktion</span><span data-lang="en">Clear interaction</span></h3>
-                    <p><span data-lang="de">Intuitive Bedienung ohne Ablenkung, jede Geste hat Bedeutung.</span><span data-lang="en">Intuitive, distraction-free controls where every gesture has meaning.</span></p>
-                </div>
-                <div class="feature-card">
-                    <h3>Native iOS</h3>
-                    <p><span data-lang="de">Entwickelt mit SwiftUI für eine reibungslose, native Experience.</span><span data-lang="en">Built with SwiftUI for a smooth, native experience.</span></p>
+                    <h3><span data-lang="de">Mein Tag</span><span data-lang="en">My Day</span></h3>
+                    <p><span data-lang="de">Der Überblick für heute, auf Wunsch mit Wetter, Schritten aus Apple Health und Bildschirmzeit.</span><span data-lang="en">Today at a glance, optionally with weather, steps from Apple Health and screen time.</span></p>
                 </div>
                 <div class="feature-card">
                     <h3><span data-lang="de">Kalender-Sync</span><span data-lang="en">Calendar sync</span></h3>
                     <!-- data-lang-block: both stay readable without JS, for the Google/Microsoft OAuth review -->
                     <p data-lang-block="de">Optional: Termine und Aufgaben mit Apple Kalender und Erinnerungen, Google Calendar, Google Tasks, Outlook und Microsoft To Do in beide Richtungen synchronisieren. Deine Daten bleiben auf dem Gerät oder in deiner eigenen iCloud.</p>
                     <p data-lang-block="en" lang="en">Optional two-way sync of events and tasks with Apple Calendar and Reminders, Google Calendar, Google Tasks, Outlook and Microsoft To Do. Your data stays on your device or in your own iCloud.</p>
+                </div>
+                <div class="feature-card">
+                    <h3><span data-lang="de">Erinnert zur richtigen Zeit</span><span data-lang="en">Reminds you at the right moment</span></h3>
+                    <p><span data-lang="de">Zeit- und Orts-Erinnerungen, Widgets auf dem Home-Bildschirm und Live Activities auf dem Sperrbildschirm.</span><span data-lang="en">Time and location reminders, Home Screen widgets and Live Activities on the Lock Screen.</span></p>
+                </div>
+                <div class="feature-card">
+                    <h3><span data-lang="de">Privat von Grund auf</span><span data-lang="en">Private by design</span></h3>
+                    <p><span data-lang="de">Kein Konto, keine Server, kein Tracking. Mit katoro Pro synchronisieren deine Geräte über deine private iCloud.</span><span data-lang="en">No account, no servers, no tracking. With katoro Pro your devices sync through your private iCloud.</span></p>
+                </div>
+                <div class="feature-card">
+                    <h3><span data-lang="de">Monochrom im Pixel-Look</span><span data-lang="en">Monochrome pixel look</span></h3>
+                    <p><span data-lang="de">Eigene Pixel-Icons, klare Struktur und ein Hell- und Dunkelmodus, der ohne Farbe auskommt.</span><span data-lang="en">Custom pixel icons, a clear structure and a light and dark mode that need no colour.</span></p>
                 </div>
             </div>
         </section>
@@ -93,9 +98,12 @@
             <div class="tech-pills">
                 <span class="tech-pill">Swift</span>
                 <span class="tech-pill">SwiftUI</span>
-                <span class="tech-pill">iOS</span>
-                <span class="tech-pill">Xcode</span>
-                <span class="tech-pill">UI/UX Design</span>
+                <span class="tech-pill">iOS &amp; iPadOS</span>
+                <span class="tech-pill">WidgetKit</span>
+                <span class="tech-pill">ActivityKit</span>
+                <span class="tech-pill">EventKit</span>
+                <span class="tech-pill">CloudKit</span>
+                <span class="tech-pill">StoreKit</span>
             </div>
         </section>
 
@@ -116,7 +124,7 @@
                 </a>
             </div>
             <p>&copy; <span class="copyright-year">2025</span> Daniel Widmer. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
-            <p><a href="/impressum.html"><span data-lang="de">Impressum</span><span data-lang="en">Legal notice</span></a> | <a href="/katoro-privacy.html"><span data-lang="de">Datenschutz (katoro)</span><span data-lang="en">Privacy (katoro)</span></a></p>
+            <p><a href="/impressum.html"><span data-lang="de">Impressum</span><span data-lang="en">Legal notice</span></a> | <a href="/datenschutz.html"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></a> | <a href="/katoro-privacy.html"><span data-lang="de">Datenschutz (katoro)</span><span data-lang="en">Privacy (katoro)</span></a></p>
         </div>
     </footer>
 

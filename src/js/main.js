@@ -7,7 +7,6 @@ import { initMobileMenu, initSmoothScrolling, initActiveNavigation } from './mod
 import { initParallax } from './modules/parallax.js';
 import { initScrollAnimations } from './modules/animations.js';
 import { initContactForm } from './modules/contact.js';
-import { initCVPrint } from './modules/cv-download.js';
 import { initSnakeGame } from './modules/snake.js';
 import { initTetrisGame } from './modules/tetris.js';
 import { initSEO } from './modules/seo.js';
@@ -42,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         initSnakeGame();
         initTetrisGame();
         initContactForm();
-        initCVPrint();
 
         // Make game functions globally available
         window.initSnakeGame = initSnakeGame;
