@@ -23,7 +23,6 @@ Dein Portfolio wurde komplett überarbeitet und modernisiert! Hier ist eine Übe
   - Real-time Validierung
   - Schönes Feedback
   - Confetti bei erfolgreicher Nachricht
-- ✅ **PDF Download** - CV-Download funktioniert jetzt perfekt!
 - ✅ **SEO optimiert** - Strukturierte Daten, Meta-Tags
 - ✅ **Analytics bereit** - Plausible.io Integration vorbereitet
 
@@ -70,7 +69,6 @@ npm run preview
 - `navigation.css` - Navigation
 - `components.css` - Buttons, Cards, etc.
 - `hero.css` - Hero Section
-- `about.css` - Über mich
 - `projects.css` - Projekte
 - `contact.css` - Kontaktformular
 - `games.css` - Snake & Tetris
@@ -89,7 +87,6 @@ npm run preview
 - `animations.js` - Scroll Animations & Stats
 - `lazy-loading.js` - Lazy Loading
 - `contact.js` - Kontaktformular (verbessert!)
-- `cv-download.js` - PDF Download (gefixt!)
 - `snake.js` - Snake Game
 - `tetris.js` - Tetris Game
 - `seo.js` - SEO & Structured Data

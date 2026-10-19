@@ -22,7 +22,6 @@ function updateMetaTags() {
 export function updateSectionMeta(section) {
     const descriptions = {
         'home': 'Portfolio von Daniel Widmer – Creative Developer & Digital Artist',
-        'about': 'Über Daniel Widmer – Senior Business Analyst und App Developer',
         'projects': 'Projekte von Daniel Widmer – Web und Mobile Apps',
         'contact': 'Kontakt zu Daniel Widmer – Lass uns zusammenarbeiten'
     };

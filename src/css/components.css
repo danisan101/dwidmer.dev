@@ -33,6 +33,13 @@
     z-index: 1;
 }
 
+.section-eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
 .section-title {
     font-size: var(--text-2xl);
     text-align: center;

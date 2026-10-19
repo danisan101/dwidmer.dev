@@ -14,7 +14,6 @@ Mein persönliches Portfolio – komplett überarbeitet mit modernem Build-Setup
 - **SEO** - Strukturierte Daten (Schema.org), Open Graph und Twitter Cards
 - **PWA** - Service Worker und Web App Manifest
 - **Kontaktformular** - Validierung ohne Farbcodierung, Rückmeldung über Rahmen, Gewicht und Zeichen
-- **Lebenslauf** - Als PDF herunterladbar oder direkt druckbar
 - **Easter Eggs** - Snake und Tetris
 - **Analytics** - Plausible, ohne Cookies
 
@@ -72,10 +71,9 @@ dwidmer.dev/
 │   │   ├── home.css            # site.css + Startseiten-Abschnitte
 │   │   ├── page-project.css    # site.css + Projektseiten
 │   │   ├── page-legal.css      # site.css + Impressum und Datenschutz
-│   │   ├── hero.css / about.css / projects.css / contact.css
+│   │   ├── hero.css / projects.css / contact.css
 │   │   ├── terminal-styles.css # Der eine verbleibende Fensterrahmen
-│   │   ├── games.css           # Snake & Tetris
-│   │   └── print.css           # Druckansicht des Lebenslaufs
+│   │   └── games.css           # Snake & Tetris
 │   └── js/
 │       ├── main.js             # Einstiegspunkt Startseite
 │       ├── subpage.js          # Einstiegspunkt aller übrigen Seiten
@@ -87,14 +85,13 @@ dwidmer.dev/
 │           ├── parallax.js     # Punkteraster im Hintergrund
 │           ├── animations.js   # Scroll-Reveal
 │           ├── contact.js      # Formularvalidierung und Versand
-│           ├── cv-download.js  # Druck des Lebenslaufs
 │           ├── year.js         # Copyright-Jahr im Footer
 │           ├── snake.js / tetris.js
 │           ├── pwa-features.js / seo.js / analytics.js / performance.js
 │           └── utils/logger.js
 ├── public/
 │   ├── fonts/                  # Space Mono 400/700 (woff2)
-│   ├── assets/                 # Bilder und Lebenslauf-PDF
+│   ├── assets/                 # Bilder (Projektbilder je hell/dunkel)
 │   └── favicon.svg
 ├── index.html                  # Startseite
 ├── app.html / monodot.html / katoro.html / website.html

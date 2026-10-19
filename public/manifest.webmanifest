@@ -32,13 +32,6 @@
       "description": "Projekte anzeigen",
       "url": "/#projects",
       "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
-    },
-    {
-      "name": "Über mich",
-      "short_name": "About",
-      "description": "Über Daniel Widmer",
-      "url": "/#about",
-      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
     }
   ]
 }

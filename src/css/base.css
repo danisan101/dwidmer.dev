@@ -131,7 +131,8 @@ a:hover {
 /* Skip Link */
 .skip-link {
     position: absolute;
-    top: -40px;
+    top: 6px;
+    transform: translateY(-200%);
     left: 6px;
     background: var(--surface-alt);
     color: var(--light);
@@ -140,11 +141,11 @@ a:hover {
     text-decoration: none;
     z-index: var(--z-overlay);
     border-radius: var(--radius-sm);
-    transition: top var(--dur-base) ease;
+    transition: transform var(--dur-base) ease;
 }
 
 .skip-link:focus {
-    top: 6px;
+    transform: none;
 }
 
 /* Parallax Background */
@@ -166,13 +167,59 @@ a:hover {
 }
 
 .parallax-dots {
-    background-image: radial-gradient(circle, var(--light) 1px, transparent 1px);
+    --dot: rgba(255, 255, 255, 0.1);
+    background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px);
     background-size: 50px 50px;
-    opacity: 0.1;
+    background-position: center;
 }
 
 body.light-mode .parallax-dots {
-    opacity: 0.05;
+    --dot: rgba(0, 0, 0, 0.06);
+}
+
+/* A soft light that follows the pointer and brings the grid forward.
+   parallax.js feeds --spot-x/--spot-y; without a pointer it stays off-screen. */
+.parallax-spotlight {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--dot) 1.5px, transparent 1.5px);
+    background-size: 50px 50px;
+    background-position: center;
+    --dot: rgba(255, 255, 255, 0.55);
+    -webkit-mask-image: radial-gradient(circle 260px at var(--spot-x, -999px) var(--spot-y, -999px), #000, transparent);
+    mask-image: radial-gradient(circle 260px at var(--spot-x, -999px) var(--spot-y, -999px), #000, transparent);
+}
+
+body.light-mode .parallax-spotlight {
+    --dot: rgba(0, 0, 0, 0.35);
+}
+
+@keyframes status-pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 55%, transparent); }
+    70%, 100% { box-shadow: 0 0 0 6px transparent; }
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--light);
+    color: var(--light);
+    animation: status-pulse 2s var(--ease-out-quart) infinite;
+}
+
+/* Theme-paired images: projects ship a dark and a light version; the body
+   class (set before first paint) decides which one shows. */
+.theme-img-light {
+    display: none !important;
+}
+
+body.light-mode .theme-img-dark {
+    display: none !important;
+}
+
+body.light-mode .theme-img-light {
+    display: block !important;
 }
 
 /* Honeypot field: present for spam bots, never shown or focusable */
