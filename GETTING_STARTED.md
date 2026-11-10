@@ -210,7 +210,7 @@ Dein Portfolio ist jetzt:
 
 ---
 
-_Made with extra care ❤️ - Portfolio v2.0_
+_Made with extra care ❤️ - Portfolio v2.1_
 
 
 

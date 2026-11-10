@@ -26,6 +26,7 @@ export function initLanguageToggle() {
     const toggle = document.getElementById('langToggle');
 
     applyLanguage(getLanguage(), toggle);
+    pointCanonicalAtLanguage();
     revealHashTarget(toggle);
     window.addEventListener('hashchange', () => revealHashTarget(toggle));
 
@@ -98,6 +99,24 @@ function applyLanguage(lang, toggle) {
     }
 
     document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
+}
+
+// A ?lang=en link is the English version of the page, so it should name itself
+// as canonical; otherwise search engines fold it into the German page and
+// ignore the hreflang alternates.
+function pointCanonicalAtLanguage() {
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) return;
+    let lang = null;
+    try {
+        lang = new URLSearchParams(window.location.search).get('lang');
+    } catch (error) {
+        return;
+    }
+    if (lang !== 'en') return;
+    const url = new URL(canonical.href);
+    url.searchParams.set('lang', 'en');
+    canonical.href = url.toString();
 }
 
 function storeLanguage(lang) {

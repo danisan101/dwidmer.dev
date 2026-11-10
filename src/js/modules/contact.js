@@ -41,7 +41,10 @@ export function initContactForm() {
                 }
             });
             
-            if (response.ok) {
+            // FormSubmit can answer 200 with { success: "false" } (e.g. an
+            // unconfirmed address), so only the body tells whether it was sent.
+            const result = await response.json().catch(() => ({}));
+            if (response.ok && String(result.success) === 'true') {
                 // Show success state
                 submitBtn.classList.remove('loading');
                 submitBtn.classList.add('success');

@@ -1,4 +1,4 @@
-# dwidmer.dev - Portfolio v2.0
+# dwidmer.dev - Portfolio v2.1
 
 Mein persönliches Portfolio – komplett überarbeitet mit modernem Build-Setup!
 
