@@ -5,10 +5,12 @@ import { initThemeToggle } from './modules/theme.js';
 import { initLanguageToggle } from './modules/i18n.js';
 import { initMobileMenu } from './modules/navigation.js';
 import { initCopyrightYear } from './modules/year.js';
+import { initAnalytics } from './modules/analytics.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initThemeToggle();
     initLanguageToggle();
     initCopyrightYear();
+    initAnalytics();
 });
