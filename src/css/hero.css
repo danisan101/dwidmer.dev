@@ -19,7 +19,7 @@
 .hero-content h1 {
     font-size: var(--text-hero);
     font-weight: 400;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2.5rem;
     color: var(--light);
     text-transform: lowercase;
     letter-spacing: 0.08em;

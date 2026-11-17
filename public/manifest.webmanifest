@@ -1,7 +1,7 @@
 {
   "name": "Daniel Widmer - Portfolio",
   "short_name": "DW Portfolio",
-  "description": "Creative Developer & Digital Artist Portfolio",
+  "description": "Portfolio von Daniel Widmer",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
@@ -10,7 +10,7 @@
   "lang": "de",
   "scope": "/",
   "id": "dwidmer-portfolio",
-  "categories": ["portfolio", "developer", "creative"],
+  "categories": ["portfolio", "developer"],
   "icons": [
     {
       "src": "/favicon.svg",
