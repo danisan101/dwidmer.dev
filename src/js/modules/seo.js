@@ -21,9 +21,9 @@ function updateMetaTags() {
 // Update meta description dynamically based on visible section
 export function updateSectionMeta(section) {
     const descriptions = {
-        'home': 'Portfolio von Daniel Widmer – Creative Developer & Digital Artist',
+        'home': 'Daniel Widmer, Business Analyst und App-Entwickler in Zürich',
         'projects': 'Projekte von Daniel Widmer – Web und Mobile Apps',
-        'contact': 'Kontakt zu Daniel Widmer – Lass uns zusammenarbeiten'
+        'contact': 'Kontakt zu Daniel Widmer'
     };
 
     const metaDesc = document.querySelector('meta[name="description"]');
